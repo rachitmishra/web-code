@@ -1,7 +1,7 @@
 # Implementation Plan: Plugin-Based PDP
 
 ## Phase 1: Foundation & Infrastructure
-- [ ] Task: Define Plugin Interface and Registry
+- [x] Task: Define Plugin Interface and Registry (722ad31)
     - [ ] Create `src/plugins/registry.ts` to manage plugin registrations.
     - [ ] Define standard Types/Interfaces for Plugin components and configurations.
 - [ ] Task: Create Plugin Directory Structure
