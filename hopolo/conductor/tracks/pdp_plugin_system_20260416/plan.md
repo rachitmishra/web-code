@@ -16,7 +16,7 @@
 - [x] Task: Convert Product Info to Plugin (ea71086)
     - [ ] Write tests for `ProductInfoPlugin`.
     - [ ] Implement component in `src/plugins/pdp/ProductInfo/`.
-- [ ] Task: Convert Reviews to Plugin
+- [x] Task: Convert Reviews to Plugin (d1393c0)
     - [ ] Write tests for `ReviewsPlugin`.
     - [ ] Implement component in `src/plugins/pdp/Reviews/`.
 - [ ] Task: Convert Related Products to Plugin
