@@ -1,0 +1,105 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.name {
+  font-family: var(--font-family-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.9;
+  color: var(--color-text);
+  margin: 0;
+  letter-spacing: -0.04em;
+}
+
+.price {
+  font-family: var(--font-family-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: 0.05em;
+}
+
+.rating {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  max-width: 500px;
+}
+
+.infoSection {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--spacing-2) var(--spacing-6);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.infoKey {
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.infoValue {
+  color: var(--color-text);
+}
+
+.actions {
+  margin-top: var(--spacing-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.addToCartRow {
+  display: flex;
+  gap: var(--spacing-4);
+  align-items: center;
+}
+
+.addToCartButton {
+  flex: 1;
+  height: 56px;
+  font-family: var(--font-family-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1rem;
+}
+
+.ratingBtn {
+  background: none;
+  border: 1px solid var(--color-border);
+  padding: 12px 24px;
+  cursor: pointer;
+  font-family: var(--font-family-sans);
+  font-weight: 600;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+.activeRating {
+  background-color: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
