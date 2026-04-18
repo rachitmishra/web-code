@@ -8,6 +8,7 @@ import { type Product } from '../services/productService';
 import { fetchProductById, fetchProducts } from '../services/productService.server';
 import { type Review } from '../services/reviewService';
 import { fetchReviews, addReview } from '../services/reviewService.server';
+import { fetchPDPLayout } from '../services/storefrontService.server';
 import { addToCart } from '../services/cartService.server';
 import { auth } from '../lib/firebase';
 import { getAuthenticatedUser } from '../lib/auth.server';
@@ -19,10 +20,11 @@ export async function loader({ params }: { params: any }) {
   if (!id) throw new Response("Product ID required", { status: 400 });
 
   try {
-    const [product, reviews, allProducts] = await Promise.all([
+    const [product, reviews, allProducts, layout] = await Promise.all([
       fetchProductById(id),
       fetchReviews(id),
-      fetchProducts()
+      fetchProducts(),
+      fetchPDPLayout()
     ]);
 
     if (!product) throw new Response("Product not found", { status: 404 });
@@ -31,7 +33,7 @@ export async function loader({ params }: { params: any }) {
       .filter(p => p.category === product.category && p.id !== id)
       .slice(0, 4);
 
-    return { product, reviews, relatedProducts };
+    return { product, reviews, relatedProducts, layout };
   } catch (error) {
     console.error("[ProductDetail Loader] Error:", error);
     throw error;
