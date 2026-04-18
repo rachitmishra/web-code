@@ -4,7 +4,7 @@
 - [x] Task: Define Plugin Interface and Registry (722ad31)
     - [ ] Create `src/plugins/registry.ts` to manage plugin registrations.
     - [ ] Define standard Types/Interfaces for Plugin components and configurations.
-- [ ] Task: Create Plugin Directory Structure
+- [x] Task: Create Plugin Directory Structure (ff482fe)
     - [ ] Create `src/plugins/pdp/` for PDP-specific plugins.
     - [ ] Create initial empty folders for ImageGallery, ProductInfo, Reviews, etc.
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Foundation & Infrastructure' (Protocol in workflow.md)
