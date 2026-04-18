@@ -19,7 +19,7 @@
 - [x] Task: Convert Reviews to Plugin (d1393c0)
     - [ ] Write tests for `ReviewsPlugin`.
     - [ ] Implement component in `src/plugins/pdp/Reviews/`.
-- [ ] Task: Convert Related Products to Plugin
+- [x] Task: Convert Related Products to Plugin (b6500f7)
     - [ ] Write tests for `RelatedProductsPlugin`.
     - [ ] Implement component in `src/plugins/pdp/RelatedProducts/`.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Refactor PDP Sections to Plugins' (Protocol in workflow.md)
