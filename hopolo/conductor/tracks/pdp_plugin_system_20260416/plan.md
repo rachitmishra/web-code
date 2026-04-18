@@ -32,7 +32,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Configuration Persistence (Firestore)' (Protocol in workflow.md) (34c7810)
 
 ## Phase 4: Dynamic PDP Rendering
-- [ ] Task: Update PDP Route to Load Configuration
+- [x] Task: Update PDP Route to Load Configuration (b9475c3)
     - [ ] Modify PDP loader to fetch the layout config from Firestore.
 - [ ] Task: Implement Dynamic Plugin Renderer
     - [ ] Create a `PluginRenderer` component that takes a layout config and renders components from the registry.
