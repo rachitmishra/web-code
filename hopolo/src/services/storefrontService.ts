@@ -93,3 +93,24 @@ export const subscribeToStorefrontSettings = (
     console.error("Error subscribing to storefront settings:", error);
   });
 };
+
+
+export interface PDPPluginConfig {
+  id: string;
+  type: string;
+  visible: boolean;
+  settings?: Record<string, any>;
+}
+
+export interface PDPLayout {
+  plugins: PDPPluginConfig[];
+}
+
+export const DEFAULT_PDP_LAYOUT: PDPLayout = {
+  plugins: [
+    { id: 'pdp-gallery', type: 'ImageGallery', visible: true },
+    { id: 'pdp-info', type: 'ProductInfo', visible: true },
+    { id: 'pdp-reviews', type: 'Reviews', visible: true },
+    { id: 'pdp-related', type: 'RelatedProducts', visible: true, settings: { limit: 4 } },
+  ],
+};
