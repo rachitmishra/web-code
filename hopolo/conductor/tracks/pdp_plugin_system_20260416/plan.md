@@ -9,7 +9,7 @@
     - [ ] Create initial empty folders for ImageGallery, ProductInfo, Reviews, etc.
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Foundation & Infrastructure' (Protocol in workflow.md) (0547f96)
 
-## Phase 2: Refactor PDP Sections to Plugins
+## Phase 2: Refactor PDP Sections to Plugins [checkpoint: a47b953]
 - [x] Task: Convert Image Gallery to Plugin (c1c7984)
     - [ ] Write tests for `ImageGalleryPlugin`.
     - [ ] Implement component in `src/plugins/pdp/ImageGallery/`.
@@ -22,7 +22,7 @@
 - [x] Task: Convert Related Products to Plugin (b6500f7)
     - [ ] Write tests for `RelatedProductsPlugin`.
     - [ ] Implement component in `src/plugins/pdp/RelatedProducts/`.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Refactor PDP Sections to Plugins' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Refactor PDP Sections to Plugins' (Protocol in workflow.md) (a47b953)
 
 ## Phase 3: Configuration Persistence (Firestore)
 - [ ] Task: Define Layout Schema
