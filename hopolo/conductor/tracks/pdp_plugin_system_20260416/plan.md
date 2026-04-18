@@ -25,9 +25,9 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Refactor PDP Sections to Plugins' (Protocol in workflow.md) (a47b953)
 
 ## Phase 3: Configuration Persistence (Firestore)
-- [ ] Task: Define Layout Schema
+- [x] Task: Define Layout Schema (130d368)
     - [ ] Update or create `src/services/storefrontService.ts` to include PDP layout configuration types.
-- [ ] Task: Implement Layout Persistence Service
+- [x] Task: Implement Layout Persistence Service (130d368)
     - [ ] Create `fetchPDPLayout` and `updatePDPLayout` in `src/services/storefrontService.server.ts`.
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Configuration Persistence (Firestore)' (Protocol in workflow.md)
 
