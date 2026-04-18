@@ -1,0 +1,21 @@
+.gallery {
+  position: sticky;
+  top: var(--header-height);
+}
+
+.mainImage {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background-color: var(--color-bg-alt);
+}
+
+.placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eee;
+  color: var(--color-text-muted);
+}
