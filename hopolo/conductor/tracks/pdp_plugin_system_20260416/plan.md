@@ -10,7 +10,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Foundation & Infrastructure' (Protocol in workflow.md) (0547f96)
 
 ## Phase 2: Refactor PDP Sections to Plugins
-- [ ] Task: Convert Image Gallery to Plugin
+- [x] Task: Convert Image Gallery to Plugin (c1c7984)
     - [ ] Write tests for `ImageGalleryPlugin`.
     - [ ] Implement component in `src/plugins/pdp/ImageGallery/`.
 - [ ] Task: Convert Product Info to Plugin
