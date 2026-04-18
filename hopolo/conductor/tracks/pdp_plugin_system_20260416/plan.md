@@ -13,7 +13,7 @@
 - [x] Task: Convert Image Gallery to Plugin (c1c7984)
     - [ ] Write tests for `ImageGalleryPlugin`.
     - [ ] Implement component in `src/plugins/pdp/ImageGallery/`.
-- [ ] Task: Convert Product Info to Plugin
+- [x] Task: Convert Product Info to Plugin (ea71086)
     - [ ] Write tests for `ProductInfoPlugin`.
     - [ ] Implement component in `src/plugins/pdp/ProductInfo/`.
 - [ ] Task: Convert Reviews to Plugin
