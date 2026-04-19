@@ -11,8 +11,3 @@ This file tracks all major tracks for the project. Each track has its own detail
   *Link: [./conductor/tracks/admin_sidebar_20260304/](./conductor/tracks/admin_sidebar_20260304/)*
 - [x] Track: Admin Panel UI Polish & Consistency
   *Link: [./conductor/tracks/admin_ui_polish_20260304/](./conductor/tracks/admin_ui_polish_20260304/)*
-
----
-
-- [x] **Track: Transform the Product Detail Page (PDP) design into a plugin-based system.**
-*Link: [./tracks/pdp_plugin_system_20260416/](./tracks/pdp_plugin_system_20260416/)*
