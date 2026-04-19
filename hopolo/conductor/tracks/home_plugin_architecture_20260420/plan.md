@@ -1,7 +1,7 @@
 # Implementation Plan: Home Page Plugin Architecture
 
 ## Phase 1: Foundation & Types
-- [ ] Task: Define Home Layout interfaces and types in `src/services/storefrontService.ts`
+- [x] Task: Define Home Layout interfaces and types in `src/services/storefrontService.ts` (1308cd4)
     - [ ] Add `HomePluginConfig` and `HomeLayout` interfaces.
     - [ ] Update `StorefrontSettings` to include `homeLayout`.
     - [ ] Provide `DEFAULT_HOME_LAYOUT`.
