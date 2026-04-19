@@ -49,8 +49,8 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 5: Admin Layout Manager' (Protocol in workflow.md) (aa7c19d)
 
 ## Phase 6: Final Verification & Polish
-- [ ] Task: End-to-End Testing
+- [x] Task: End-to-End Testing (e25b0df/aa7c19d)
     - [ ] Verify that reordering in Admin correctly updates the live PDP.
-- [ ] Task: Documentation
+- [x] Task: Documentation (e58fb53)
     - [ ] Add a `PLUGINS.md` to `src/plugins/` explaining how to add new plugins.
 - [ ] Task: Conductor - User Manual Verification 'Phase 6: Final Verification & Polish' (Protocol in workflow.md)
