@@ -1,16 +1,16 @@
 import React, { useState, useMemo, useRef } from "react";
 import { useNavigate, useLoaderData, useSubmit, useActionData } from "react-router-dom";
-import CinematicHero from '../components/ui/Hero/CinematicHero';
-import CategoryTabs from '../components/ui/CategoryTabs/CategoryTabs';
-import ProductCard from '../components/ui/ProductCard/ProductCard';
-import BestSellers from '../components/ui/BestSellers/BestSellers';
-import { type Product, type Category } from '../services/productService';
-import { fetchProducts, fetchCategories, fetchBestSellers } from '../services/productService.server';
-import { type StorefrontSettings, DEFAULT_SETTINGS } from '../services/storefrontService';
-import { getStorefrontSettings } from '../services/storefrontService.server';
-import { addToCart } from '../services/cartService.server';
-import { getSessionIdFromRequest } from '../lib/session';
-import { useSEO } from '../hooks/useSEO';
+import CinematicHero from '../../components/ui/Hero/CinematicHero';
+import CategoryTabs from '../../components/ui/CategoryTabs/CategoryTabs';
+import ProductCard from '../../components/ui/ProductCard/ProductCard';
+import BestSellers from '../../components/ui/BestSellers/BestSellers';
+import { type Product, type Category } from '../../services/productService';
+import { fetchProducts, fetchCategories, fetchBestSellers } from '../../services/productService.server';
+import { type StorefrontSettings, DEFAULT_SETTINGS } from '../../services/storefrontService';
+import { getStorefrontSettings } from '../../services/storefrontService.server';
+import { addToCart } from '../../services/cartService.server';
+import { getSessionIdFromRequest } from '../../lib/session';
+import { useSEO } from '../../hooks/useSEO';
 import styles from './Home.module.css';
 
 export async function loader() {

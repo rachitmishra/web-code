@@ -2,13 +2,13 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Home from './Home';
-import * as productService from '../services/productService';
-import * as storefrontService from '../services/storefrontService';
-import { useSEO } from '../hooks/useSEO';
+import * as productService from '../../services/productService';
+import * as storefrontService from '../../services/storefrontService';
+import { useSEO } from '../../hooks/useSEO';
 
-vi.mock('../services/productService');
-vi.mock('../services/storefrontService');
-vi.mock('../hooks/useSEO');
+vi.mock('../../services/productService');
+vi.mock('../../services/storefrontService');
+vi.mock('../../hooks/useSEO');
 
 const mockProducts: productService.Product[] = [
   { id: '1', name: 'Product 1', price: 10, category: 'cat1' },
