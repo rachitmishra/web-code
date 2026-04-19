@@ -5,7 +5,7 @@
     - [ ] Add `HomePluginConfig` and `HomeLayout` interfaces.
     - [ ] Update `StorefrontSettings` to include `homeLayout`.
     - [ ] Provide `DEFAULT_HOME_LAYOUT`.
-- [ ] Task: Create `HomeContext` for data sharing between Home plugins
+- [x] Task: Create `HomeContext` for data sharing between Home plugins (5fe4003)
     - [ ] Define `HomeContextState` interface.
     - [ ] Create `HomeContext.tsx` in `src/pages/Home/Context.tsx`.
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Foundation & Types' (Protocol in workflow.md)
