@@ -1,0 +1,47 @@
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import PDPManager from './PDPManager';
+import { useLoaderData, useSubmit, useActionData } from 'react-router-dom';
+
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual('react-router-dom');
+  return {
+    ...actual,
+    useLoaderData: vi.fn(),
+    useSubmit: vi.fn(),
+    useActionData: vi.fn(),
+  };
+});
+
+describe('PDPManager', () => {
+  const mockLayout = {
+    plugins: [
+      { id: '1', type: 'ImageGallery', visible: true },
+      { id: '2', type: 'ProductInfo', visible: false }
+    ]
+  };
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    (useLoaderData as any).mockReturnValue({ layout: mockLayout });
+    (useSubmit as any).mockReturnValue(vi.fn());
+    (useActionData as any).mockReturnValue(null);
+  });
+
+  it('renders plugin list from layout', () => {
+    render(<MemoryRouter><PDPManager /></MemoryRouter>);
+    expect(screen.getByText('ImageGallery')).toBeInTheDocument();
+    expect(screen.getByText('ProductInfo')).toBeInTheDocument();
+  });
+
+  it('toggles visibility when checkbox is clicked', () => {
+    render(<MemoryRouter><PDPManager /></MemoryRouter>);
+    const checkboxes = screen.getAllByRole('checkbox');
+    expect(checkboxes[0]).toBeChecked();
+    expect(checkboxes[1]).not.toBeChecked();
+
+    fireEvent.click(checkboxes[1]);
+    expect(checkboxes[1]).toBeChecked();
+  });
+});
