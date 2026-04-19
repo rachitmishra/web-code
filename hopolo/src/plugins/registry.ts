@@ -20,6 +20,14 @@ export interface RegisteredPlugin {
 
 const registry: Record<string, RegisteredPlugin> = {};
 
+export const registerPlugin = (
+  id: string,
+  component: PluginComponent,
+  metadata?: PluginMetadata
+) => {
+  registry[id] = { component, metadata };
+};
+
 // Register initial PDP plugins
 registerPlugin('ImageGallery', ImageGalleryPlugin, {
   id: 'ImageGallery',
@@ -44,17 +52,6 @@ registerPlugin('RelatedProducts', RelatedProductsPlugin, {
   name: 'Related Products',
   description: 'Displays a grid of related products.'
 });
-
-/**
- * Registers a plugin in the global registry.
- */
-export const registerPlugin = (
-  id: string,
-  component: PluginComponent,
-  metadata?: PluginMetadata
-) => {
-  registry[id] = { component, metadata };
-};
 
 /**
  * Retrieves a plugin component by its ID.
