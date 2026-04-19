@@ -44,7 +44,7 @@
     - [ ] Implement a list of active plugins with visibility toggles and "edit settings" modals.
 - [x] Task: Implement Drag & Drop Reordering (6894a3e) (Implemented as manual Move Up/Down buttons)
     - [ ] Integrate a DND library (e.g., `dnd-kit` or simple array moves) to reorder the layout.
-- [ ] Task: Implement Save functionality
+- [x] Task: Implement Save functionality (077ccb1)
     - [ ] Hook up the "Save Changes" button to the persistence service.
 - [ ] Task: Conductor - User Manual Verification 'Phase 5: Admin Layout Manager' (Protocol in workflow.md)
 
