@@ -39,7 +39,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 4: Dynamic PDP Rendering' (Protocol in workflow.md) (e25b0df)
 
 ## Phase 5: Admin Layout Manager
-- [ ] Task: Build Plugin Configuration UI
+- [x] Task: Build Plugin Configuration UI (9576879)
     - [ ] Create `src/pages/Admin/PDPManager.tsx`.
     - [ ] Implement a list of active plugins with visibility toggles and "edit settings" modals.
 - [ ] Task: Implement Drag & Drop Reordering
