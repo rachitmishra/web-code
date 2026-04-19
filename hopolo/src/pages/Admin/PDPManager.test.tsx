@@ -59,4 +59,21 @@ describe('PDPManager', () => {
     // Updated order
     expect(getPluginTypes()).toEqual(['ProductInfo', 'ImageGallery']);
   });
+
+  it('calls submit with layout when save button is clicked', async () => {
+    const submit = vi.fn();
+    (useSubmit as any).mockReturnValue(submit);
+    
+    render(<MemoryRouter><PDPManager /></MemoryRouter>);
+    
+    const saveBtn = screen.getByRole('button', { name: /Save Layout/i });
+    fireEvent.click(saveBtn);
+
+    expect(submit).toHaveBeenCalledWith(
+      expect.objectContaining({
+        layout: expect.stringContaining('"type":"ImageGallery"')
+      }),
+      expect.anything()
+    );
+  });
 });
