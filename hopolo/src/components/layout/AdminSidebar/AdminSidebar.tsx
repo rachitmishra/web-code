@@ -1,5 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { 
+  Package, 
+  Store, 
+  Megaphone, 
+  Palette, 
+  Layout,
+  BarChart3, 
+  Mail, 
+  History, 
+  Leaf,
+} from 'lucide-react';
 import styles from './AdminSidebar.module.css';
 
 interface AdminSidebarProps {
@@ -9,12 +20,15 @@ interface AdminSidebarProps {
 }
 
 const navItems = [
-  { path: '/admin/orders', label: 'ORDERS', icon: 'shopping_cart' },
-  { path: '/admin/inventory', label: 'INVENTORY', icon: 'inventory_2' },
-  { path: '/admin/storefront', label: 'STOREFRONT', icon: 'search_gear' },
-  { path: '/admin/analytics', label: 'DASHBOARD', icon: 'grid_view' },
-  { path: '/admin/invitations', label: 'ACCESS_LOGS', icon: 'terminal' },
-  { path: '/admin/email-logs', label: 'EMAIL_LOGS', icon: 'history' },
+  { path: '/admin/orders', label: 'Orders', icon: <Package size={20} /> },
+  { path: '/admin/inventory', label: 'Inventory', icon: <Store size={20} /> },
+  { path: '/admin/marketing', label: 'Marketing', icon: <Megaphone size={20} /> },
+  { path: '/admin/storefront', label: 'Storefront', icon: <Palette size={20} /> },
+  { path: '/admin/pdp', label: 'PDP Layout', icon: <Layout size={20} /> },
+  { path: '/admin/analytics', label: 'Analytics', icon: <BarChart3 size={20} /> },
+  { path: '/admin/invitations', label: 'Invitations', icon: <Mail size={20} /> },
+  { path: '/admin/email-logs', label: 'Email Logs', icon: <History size={20} /> },
+  { path: '/admin/seed', label: 'Seed Data', icon: <Leaf size={20} /> },
 ];
 
 const AdminSidebar: React.FC<AdminSidebarProps> = ({ isCollapsed, onToggle, onItemClick }) => {
