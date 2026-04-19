@@ -42,7 +42,7 @@
 - [x] Task: Build Plugin Configuration UI (9576879)
     - [ ] Create `src/pages/Admin/PDPManager.tsx`.
     - [ ] Implement a list of active plugins with visibility toggles and "edit settings" modals.
-- [ ] Task: Implement Drag & Drop Reordering
+- [x] Task: Implement Drag & Drop Reordering (6894a3e) (Implemented as manual Move Up/Down buttons)
     - [ ] Integrate a DND library (e.g., `dnd-kit` or simple array moves) to reorder the layout.
 - [ ] Task: Implement Save functionality
     - [ ] Hook up the "Save Changes" button to the persistence service.
