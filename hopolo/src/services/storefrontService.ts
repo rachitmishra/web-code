@@ -18,6 +18,7 @@ export interface StorefrontSettings {
   heroImage: string;
   heroCtaText: string;
   reviews: CustomerReview[];
+  homeLayout?: HomeLayout;
 }
 
 export const DEFAULT_SETTINGS: StorefrontSettings = {
@@ -47,6 +48,15 @@ export const DEFAULT_SETTINGS: StorefrontSettings = {
       text: "The emoji-based review system is so fun and easy!",
     },
   ],
+  homeLayout: {
+    plugins: [
+      { id: 'home-promo', type: 'PromoBanner', visible: false },
+      { id: 'home-hero', type: 'CinematicHero', visible: true },
+      { id: 'home-best-sellers', type: 'BestSellers', visible: true },
+      { id: 'home-grid', type: 'ProductGridSection', visible: true },
+      { id: 'home-reviews', type: 'ReviewSection', visible: true },
+    ]
+  }
 };
 
 const SETTINGS_DOC_ID = 'storefront';
@@ -105,6 +115,19 @@ export interface PDPPluginConfig {
 export interface PDPLayout {
   plugins: PDPPluginConfig[];
 }
+
+export interface HomePluginConfig {
+  id: string;
+  type: string;
+  visible: boolean;
+  settings?: Record<string, any>;
+}
+
+export interface HomeLayout {
+  plugins: HomePluginConfig[];
+}
+
+export const DEFAULT_HOME_LAYOUT: HomeLayout = DEFAULT_SETTINGS.homeLayout!;
 
 export const DEFAULT_PDP_LAYOUT: PDPLayout = {
   plugins: [
