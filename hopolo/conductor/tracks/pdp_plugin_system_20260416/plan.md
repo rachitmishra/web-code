@@ -38,7 +38,7 @@
     - [ ] Create a `PluginRenderer` component that takes a layout config and renders components from the registry.
 - [x] Task: Conductor - User Manual Verification 'Phase 4: Dynamic PDP Rendering' (Protocol in workflow.md) (e25b0df)
 
-## Phase 5: Admin Layout Manager
+## Phase 5: Admin Layout Manager [checkpoint: aa7c19d]
 - [x] Task: Build Plugin Configuration UI (9576879)
     - [ ] Create `src/pages/Admin/PDPManager.tsx`.
     - [ ] Implement a list of active plugins with visibility toggles and "edit settings" modals.
@@ -46,7 +46,7 @@
     - [ ] Integrate a DND library (e.g., `dnd-kit` or simple array moves) to reorder the layout.
 - [x] Task: Implement Save functionality (077ccb1)
     - [ ] Hook up the "Save Changes" button to the persistence service.
-- [ ] Task: Conductor - User Manual Verification 'Phase 5: Admin Layout Manager' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 5: Admin Layout Manager' (Protocol in workflow.md) (aa7c19d)
 
 ## Phase 6: Final Verification & Polish
 - [ ] Task: End-to-End Testing
