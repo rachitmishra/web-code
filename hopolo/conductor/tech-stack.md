@@ -22,4 +22,5 @@
 - **Styling Engine:** CSS Modules
 - **Icons:** Lucide React
 - **Design System:** Custom CSS-variable based system (No Tailwind CSS)
+- **Extensibility:** Plugin-based architecture for dynamic page rendering (Registry + Renderer)
 - **Testing:** Vitest + React Testing Library

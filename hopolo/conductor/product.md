@@ -29,7 +29,9 @@ The Hopolo Admin Panel provides specialized tools for boutique owners to manage 
 
 - **📦 Inventory Management:** Add new products, track stock across variants (sizes/colors), and manage media assets for the storefront.
 - **📊 Analytics Dashboard:** Monitor business performance with real-time sales metrics (Revenue, AOV, Conversion) and interactive trend charts.
-- **🛍️ Storefront Configuration:** A "No-Code" interface to update the Cinematic Hero, toggle global promo banners, manage reviews, and enable maintenance mode.
+- 🛍️ Storefront Configuration: A "No-Code" interface to manage the Cinematic Hero, global promo banners, and maintenance mode.
+- 🧩 Modular Layout Manager: A dedicated interface for customizing page layouts (initially for PDP) using a plugin-based system, allowing for reordering and toggling of individual components.
+
 - **🎫 Invitation System:** Securely onboard new staff (Admin, Manager, Editor) using phone-based authentication and single-use invite codes.
 - **🧾 Order Management:** Hub for fulfillment including real-time order tracking, Shadowfax logistics integration, and processing refunds via Razorpay.
 - **🏷️ Marketing & Promo Codes:** Create and manage discount codes (percentage or fixed) with purchase constraints and expiration dates.
