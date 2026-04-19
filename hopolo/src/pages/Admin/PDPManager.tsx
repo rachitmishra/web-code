@@ -5,6 +5,7 @@ import { fetchPDPLayout, updatePDPLayout } from '../../services/storefrontServic
 import { requireRole } from '../../lib/auth.server';
 import Button from '../../components/ui/Button/Button';
 import Card from '../../components/ui/Card/Card';
+import { ArrowUp, ArrowDown } from 'lucide-react';
 import styles from './PDPManager.module.css';
 
 export async function loader({ request }: { request: Request }) {
@@ -53,6 +54,16 @@ const PDPManager: React.FC = () => {
     setLayout({ ...layout, plugins: newPlugins });
   };
 
+  const handleMove = (index: number, direction: 'up' | 'down') => {
+    const newPlugins = [...layout.plugins];
+    const targetIndex = direction === 'up' ? index - 1 : index + 1;
+    
+    if (targetIndex < 0 || targetIndex >= newPlugins.length) return;
+    
+    [newPlugins[index], newPlugins[targetIndex]] = [newPlugins[targetIndex], newPlugins[index]];
+    setLayout({ ...layout, plugins: newPlugins });
+  };
+
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
     setSaving(true);
@@ -77,6 +88,26 @@ const PDPManager: React.FC = () => {
                   <span className={styles.pluginId}>ID: {plugin.id}</span>
                 </div>
                 <div className={styles.pluginActions}>
+                  <div className={styles.reorderButtons}>
+                    <button
+                      type="button"
+                      onClick={() => handleMove(index, 'up')}
+                      disabled={index === 0}
+                      title="Move Up"
+                      className={styles.iconBtn}
+                    >
+                      <ArrowUp size={16} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleMove(index, 'down')}
+                      disabled={index === layout.plugins.length - 1}
+                      title="Move Down"
+                      className={styles.iconBtn}
+                    >
+                      <ArrowDown size={16} />
+                    </button>
+                  </div>
                   <div className={styles.toggleField}>
                     <input
                       id={`visible-${plugin.id}`}

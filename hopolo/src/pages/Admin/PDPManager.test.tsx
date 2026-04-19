@@ -44,4 +44,19 @@ describe('PDPManager', () => {
     fireEvent.click(checkboxes[1]);
     expect(checkboxes[1]).toBeChecked();
   });
+
+  it('reorders plugins when move buttons are clicked', () => {
+    render(<MemoryRouter><PDPManager /></MemoryRouter>);
+    
+    // Initial order
+    const getPluginTypes = () => screen.getAllByText(/ImageGallery|ProductInfo/).map(el => el.textContent);
+    expect(getPluginTypes()).toEqual(['ImageGallery', 'ProductInfo']);
+
+    const moveDownBtns = screen.getAllByTitle(/Move Down/i);
+    // Click the first one (which should be enabled)
+    fireEvent.click(moveDownBtns[0]);
+
+    // Updated order
+    expect(getPluginTypes()).toEqual(['ProductInfo', 'ImageGallery']);
+  });
 });
