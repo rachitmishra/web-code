@@ -31,12 +31,12 @@
     - [ ] Create `fetchPDPLayout` and `updatePDPLayout` in `src/services/storefrontService.server.ts`.
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Configuration Persistence (Firestore)' (Protocol in workflow.md) (34c7810)
 
-## Phase 4: Dynamic PDP Rendering
+## Phase 4: Dynamic PDP Rendering [checkpoint: e25b0df]
 - [x] Task: Update PDP Route to Load Configuration (b9475c3)
     - [ ] Modify PDP loader to fetch the layout config from Firestore.
 - [x] Task: Implement Dynamic Plugin Renderer (88bade4)
     - [ ] Create a `PluginRenderer` component that takes a layout config and renders components from the registry.
-- [ ] Task: Conductor - User Manual Verification 'Phase 4: Dynamic PDP Rendering' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 4: Dynamic PDP Rendering' (Protocol in workflow.md) (e25b0df)
 
 ## Phase 5: Admin Layout Manager
 - [ ] Task: Build Plugin Configuration UI
