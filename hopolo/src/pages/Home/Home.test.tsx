@@ -3,16 +3,32 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import Home from './Home';
 import * as productService from '../../services/productService';
+import * as productServiceServer from '../../services/productService.server';
 import * as storefrontService from '../../services/storefrontService';
+import * as storefrontServiceServer from '../../services/storefrontService.server';
 import { useSEO } from '../../hooks/useSEO';
+import { useLoaderData, useSubmit, useActionData, useNavigate } from 'react-router-dom';
+
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual('react-router-dom');
+  return {
+    ...actual,
+    useLoaderData: vi.fn(),
+    useSubmit: vi.fn(),
+    useActionData: vi.fn(),
+    useNavigate: vi.fn(() => vi.fn()),
+  };
+});
 
 vi.mock('../../services/productService');
+vi.mock('../../services/productService.server');
 vi.mock('../../services/storefrontService');
+vi.mock('../../services/storefrontService.server');
 vi.mock('../../hooks/useSEO');
 
 const mockProducts: productService.Product[] = [
-  { id: '1', name: 'Product 1', price: 10, category: 'cat1' },
-  { id: '2', name: 'Product 2', price: 20, category: 'cat2' },
+  { id: '1', name: 'Product 1', price: 10, category: 'cat1', title: 'Product 1' },
+  { id: '2', name: 'Product 2', price: 20, category: 'cat2', title: 'Product 2' },
 ];
 
 const mockCategories: productService.Category[] = [
@@ -22,7 +38,7 @@ const mockCategories: productService.Category[] = [
 ];
 
 const mockBestSellers: productService.Product[] = [
-  { id: 'bs1', name: 'Best Seller Product', price: 50, category: 'cat1' },
+  { id: 'bs1', name: 'Best Seller Product', price: 50, category: 'cat1', title: 'Best Seller Product' },
 ];
 
 const mockSettings: storefrontService.StorefrontSettings = {
@@ -41,12 +57,24 @@ const mockSettings: storefrontService.StorefrontSettings = {
 };
 
 describe('Home Page', () => {
+  const submit = vi.fn();
+  const navigate = vi.fn();
+
   beforeEach(() => {
     vi.clearAllMocks();
-    (productService.fetchProducts as any).mockResolvedValue(mockProducts);
-    (productService.fetchCategories as any).mockResolvedValue(mockCategories);
-    (productService.fetchBestSellers as any).mockResolvedValue(mockBestSellers);
-    (storefrontService.getStorefrontSettings as any).mockResolvedValue(mockSettings);
+    (useLoaderData as any).mockReturnValue({
+      products: mockProducts,
+      categories: mockCategories,
+      bestSellers: mockBestSellers,
+      settings: mockSettings
+    });
+    (useSubmit as any).mockReturnValue(submit);
+    (useActionData as any).mockReturnValue(null);
+    (useNavigate as any).mockReturnValue(navigate);
+    (productServiceServer.fetchProducts as any).mockResolvedValue(mockProducts);
+    (productServiceServer.fetchCategories as any).mockResolvedValue(mockCategories);
+    (productServiceServer.fetchBestSellers as any).mockResolvedValue(mockBestSellers);
+    (storefrontServiceServer.getStorefrontSettings as any).mockResolvedValue(mockSettings);
   });
 
   it('should render products and categories on load', async () => {

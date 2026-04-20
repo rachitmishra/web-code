@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { fetchPDPLayout, updatePDPLayout } from './storefrontService.server';
+import { fetchPDPLayout, updatePDPLayout, getStorefrontSettings, updateStorefrontSettings } from './storefrontService.server';
 import { adminDb } from '../lib/firebase-admin.server';
 
 vi.mock('../lib/firebase-admin.server', () => ({
@@ -17,6 +17,39 @@ vi.mock('../lib/firebase-admin.server', () => ({
 describe('storefrontService.server', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  it('getStorefrontSettings should return data if document exists', async () => {
+    const mockSettings = {
+      heroTitle: 'Custom Title'
+    };
+
+    (adminDb.get as any).mockResolvedValue({
+      exists: true,
+      data: () => mockSettings,
+    });
+
+    const settings = await getStorefrontSettings();
+
+    expect(adminDb.collection).toHaveBeenCalledWith('settings');
+    expect(adminDb.doc).toHaveBeenCalledWith('storefront');
+    expect(settings.heroTitle).toBe('Custom Title');
+  });
+
+  it('getStorefrontSettings should return default if document does not exist', async () => {
+    (adminDb.get as any).mockResolvedValue({
+      exists: false,
+    });
+
+    const settings = await getStorefrontSettings();
+    expect(settings.heroTitle).toBe('Hopolo Boutique');
+  });
+
+  it('updateStorefrontSettings should call set with merge', async () => {
+    const newSettings = { heroTitle: 'New Title' };
+    await updateStorefrontSettings(newSettings);
+
+    expect(adminDb.set).toHaveBeenCalledWith(newSettings, { merge: true });
   });
 
   it('fetchPDPLayout should return data if document exists', async () => {
