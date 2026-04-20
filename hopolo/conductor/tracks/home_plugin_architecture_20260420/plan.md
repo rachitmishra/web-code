@@ -14,7 +14,7 @@
 - [x] Task: Implement `PromoBannerPlugin` (f7806f2)
     - [ ] Create `src/plugins/home/PromoBanner/`
     - [ ] Implement component logic using `HomeContext`.
-- [ ] Task: Implement `CinematicHeroPlugin`
+- [x] Task: Implement `CinematicHeroPlugin` (b0fde8b)
     - [ ] Extract logic from existing `CinematicHero` component if necessary or wrap it.
     - [ ] Create `src/plugins/home/CinematicHero/`
 - [ ] Task: Implement `BestSellersPlugin`
