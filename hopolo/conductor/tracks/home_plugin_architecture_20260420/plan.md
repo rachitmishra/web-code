@@ -20,7 +20,7 @@
 - [x] Task: Implement `BestSellersPlugin` (9a17a4f)
     - [ ] Create `src/plugins/home/BestSellers/`
     - [ ] Use `bestSellers` and `handleAddToCart` from context.
-- [ ] Task: Implement `ProductGridSectionPlugin`
+- [x] Task: Implement `ProductGridSectionPlugin` (06381a0)
     - [ ] Create `src/plugins/home/ProductGridSection/`
     - [ ] Handle category tabs and product grid filtering logic.
 - [ ] Task: Implement `ReviewSectionPlugin`
