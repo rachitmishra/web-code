@@ -23,7 +23,7 @@
 - [x] Task: Implement `ProductGridSectionPlugin` (06381a0)
     - [ ] Create `src/plugins/home/ProductGridSection/`
     - [ ] Handle category tabs and product grid filtering logic.
-- [ ] Task: Implement `ReviewSectionPlugin`
+- [x] Task: Implement `ReviewSectionPlugin` (05e3a01)
     - [ ] Create `src/plugins/home/ReviewSection/`
     - [ ] Use `settings.reviews` from context.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Home Plugin Implementation' (Protocol in workflow.md)
