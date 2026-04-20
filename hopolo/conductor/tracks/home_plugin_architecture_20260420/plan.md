@@ -1,14 +1,14 @@
 # Implementation Plan: Home Page Plugin Architecture
 
-## Phase 1: Foundation & Types
+## Phase 1: Foundation & Types [checkpoint: 414e9cf]
 - [x] Task: Define Home Layout interfaces and types in `src/services/storefrontService.ts` (1308cd4)
-    - [ ] Add `HomePluginConfig` and `HomeLayout` interfaces.
-    - [ ] Update `StorefrontSettings` to include `homeLayout`.
-    - [ ] Provide `DEFAULT_HOME_LAYOUT`.
+    - [x] Add `HomePluginConfig` and `HomeLayout` interfaces.
+    - [x] Update `StorefrontSettings` to include `homeLayout`.
+    - [x] Provide `DEFAULT_HOME_LAYOUT`.
 - [x] Task: Create `HomeContext` for data sharing between Home plugins (5fe4003)
-    - [ ] Define `HomeContextState` interface.
-    - [ ] Create `HomeContext.tsx` in `src/pages/Home/Context.tsx`.
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Foundation & Types' (Protocol in workflow.md)
+    - [x] Define `HomeContextState` interface.
+    - [x] Create `HomeContext.tsx` in `src/pages/Home/Context.tsx`.
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Foundation & Types' (Protocol in workflow.md)
 
 ## Phase 2: Home Plugin Implementation
 - [ ] Task: Implement `PromoBannerPlugin`
