@@ -10,23 +10,23 @@
     - [x] Create `HomeContext.tsx` in `src/pages/Home/Context.tsx`.
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Foundation & Types' (Protocol in workflow.md)
 
-## Phase 2: Home Plugin Implementation
+## Phase 2: Home Plugin Implementation [checkpoint: 21b5098]
 - [x] Task: Implement `PromoBannerPlugin` (f7806f2)
-    - [ ] Create `src/plugins/home/PromoBanner/`
-    - [ ] Implement component logic using `HomeContext`.
+    - [x] Create `src/plugins/home/PromoBanner/`
+    - [x] Implement component logic using `HomeContext`.
 - [x] Task: Implement `CinematicHeroPlugin` (b0fde8b)
-    - [ ] Extract logic from existing `CinematicHero` component if necessary or wrap it.
-    - [ ] Create `src/plugins/home/CinematicHero/`
+    - [x] Extract logic from existing `CinematicHero` component if necessary or wrap it.
+    - [x] Create `src/plugins/home/CinematicHero/`
 - [x] Task: Implement `BestSellersPlugin` (9a17a4f)
-    - [ ] Create `src/plugins/home/BestSellers/`
-    - [ ] Use `bestSellers` and `handleAddToCart` from context.
+    - [x] Create `src/plugins/home/BestSellers/`
+    - [x] Use `bestSellers` and `handleAddToCart` from context.
 - [x] Task: Implement `ProductGridSectionPlugin` (06381a0)
-    - [ ] Create `src/plugins/home/ProductGridSection/`
-    - [ ] Handle category tabs and product grid filtering logic.
+    - [x] Create `src/plugins/home/ProductGridSection/`
+    - [x] Handle category tabs and product grid filtering logic.
 - [x] Task: Implement `ReviewSectionPlugin` (05e3a01)
-    - [ ] Create `src/plugins/home/ReviewSection/`
-    - [ ] Use `settings.reviews` from context.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Home Plugin Implementation' (Protocol in workflow.md)
+    - [x] Create `src/plugins/home/ReviewSection/`
+    - [x] Use `settings.reviews` from context.
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Home Plugin Implementation' (Protocol in workflow.md)
 
 ## Phase 3: Registry & Renderer Updates
 - [ ] Task: Register new home plugins in `src/plugins/registry.ts`
