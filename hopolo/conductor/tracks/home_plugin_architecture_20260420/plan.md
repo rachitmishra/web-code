@@ -11,7 +11,7 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Foundation & Types' (Protocol in workflow.md)
 
 ## Phase 2: Home Plugin Implementation
-- [ ] Task: Implement `PromoBannerPlugin`
+- [x] Task: Implement `PromoBannerPlugin` (f7806f2)
     - [ ] Create `src/plugins/home/PromoBanner/`
     - [ ] Implement component logic using `HomeContext`.
 - [ ] Task: Implement `CinematicHeroPlugin`
