@@ -17,7 +17,7 @@
 - [x] Task: Implement `CinematicHeroPlugin` (b0fde8b)
     - [ ] Extract logic from existing `CinematicHero` component if necessary or wrap it.
     - [ ] Create `src/plugins/home/CinematicHero/`
-- [ ] Task: Implement `BestSellersPlugin`
+- [x] Task: Implement `BestSellersPlugin` (9a17a4f)
     - [ ] Create `src/plugins/home/BestSellers/`
     - [ ] Use `bestSellers` and `handleAddToCart` from context.
 - [ ] Task: Implement `ProductGridSectionPlugin`
