@@ -29,15 +29,15 @@
   }
 
   .btn--primary {
-    background: var(--primary);
-    color: var(--on-primary);
+    background: var(--brand-action);
+    color: #ffffff;
     padding: 0.75rem 1.5rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--card-shadow);
+    border: var(--card-border);
   }
   .btn--primary:hover {
-    background: var(--primary-dark);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    background: var(--brand-action-light);
+    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.06);
   }
 
   .btn--gold {
@@ -49,42 +49,40 @@
   }
 
   .btn--surface {
-    background: var(--btn-surface-bg);
-    color: var(--btn-surface-text);
-    padding: 1rem;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--neutral-200);
+    background: var(--surface-card);
+    color: var(--text-main);
+    padding: var(--spacing-2);
+    box-shadow: var(--card-shadow);
+    border: var(--card-border);
   }
   .btn--surface:hover {
-    border-color: var(--neutral-300);
-    background: var(--neutral-50);
+    background: var(--bg-primary);
   }
 
   .btn--danger {
-    background: var(--btn-danger-bg);
-    color: var(--btn-danger-text);
+    background: var(--danger);
+    color: #ffffff;
     padding: 0.75rem 1rem;
   }
 
   .btn--neutral {
-    background: var(--neutral-100);
-    color: var(--muted-text);
+    background: var(--brand-action-light);
+    color: #ffffff;
     padding: 0.75rem 1rem;
-    border: 1px solid var(--neutral-200);
+    border: var(--card-border);
   }
   .btn--neutral:hover {
-    background: var(--neutral-200);
-    color: var(--text-title);
+    background: var(--brand-action);
   }
 
   .btn--outline {
     background: transparent;
-    color: var(--primary);
-    border: 1px solid var(--primary);
+    color: var(--brand-action);
+    border: 1px solid var(--brand-action);
     padding: 0.75rem 1.5rem;
   }
   .btn--outline:hover {
-    background: var(--primary);
+    background: var(--brand-action);
     color: white;
   }
 
@@ -93,7 +91,7 @@
   }
 
   .btn--icon {
-    color: var(--btn-icon-bg);
+    color: var(--text-muted);
     background: transparent;
     display: inline-flex;
     align-items: center;
@@ -102,12 +100,12 @@
     border-radius: 0.5rem;
     border: none;
     box-shadow: none;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, color 0.2s;
   }
 
   .btn--icon:hover {
-    color: var(--primary);
-    background-color: var(--neutral-100);
+    color: var(--brand-action);
+    background-color: rgba(0, 0, 0, 0.04);
   }
 
   .btn-inner {
@@ -120,49 +118,43 @@
     gap: 0.75rem;
     font-weight: 800;
     font-size: 1.125rem;
-    color: var(--cta-text);
+    color: inherit;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-family: "Bowlby One", sans-serif;
   }
 
-  /* Legacy helper class for non-button tags */
-  .icon-btn {
-    @extend .btn.icon-btn;
-  }
-
   .next-btn {
     inline-size: 100%;
-    background: var(--primary);
-    color: var(--on-primary);
-    border-radius: 0.75rem;
+    background: var(--brand-action);
+    color: #ffffff;
+    border-radius: var(--card-radius);
     font-weight: 700;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--card-shadow);
     display: flex;
     justify-content: space-between;
     align-items: center;
     transition: all 0.2s;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: var(--card-border);
   }
   .next-btn:hover {
-    background: var(--primary-dark);
+    background: var(--brand-action-light);
     transform: translateY(-1px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   }
   .next-btn:active {
-    transform: scale(0.98);
+    transform: translateY(0);
   }
   .next-btn .btn-inner {
     justify-content: space-between;
     width: 100%;
-    color: var(--on-primary);
+    color: #ffffff;
   }
 
   .retry-btn {
-    background: var(--btn-danger-bg);
-    color: var(--btn-danger-text);
+    background: var(--danger);
+    color: #ffffff;
     padding: 1rem 2.5rem;
-    border-radius: 0.75rem;
+    border-radius: var(--card-radius);
     font-weight: 700;
     font-size: 1rem;
     box-shadow: 0 4px 6px -1px rgba(225, 29, 72, 0.3);
@@ -170,36 +162,41 @@
   }
   .retry-btn:hover {
     background: var(--danger);
+    opacity: 0.9;
   }
 
   .home-btn:not(.btn) {
-    background: var(--btn-surface-bg);
-    color: var(--primary);
+    background: var(--surface-card);
+    color: var(--brand-action);
     inline-size: 100%;
     padding: 1rem;
-    border-radius: 0.75rem;
+    border-radius: var(--card-radius);
     font-weight: 700;
     font-size: 1rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--card-shadow);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    transition: transform 0.1s;
-    border: 1px solid var(--neutral-200);
+    transition: transform 0.2s, background-color 0.2s;
+    border: var(--card-border);
+  }
+  .home-btn:not(.btn):hover {
+    background: var(--bg-primary);
+    transform: translateY(-1px);
   }
   .home-btn:not(.btn):active {
-    transform: scale(0.95);
+    transform: translateY(0);
   }
 
   .start-drill-btn {
     position: relative;
     inline-size: 100%;
     overflow: hidden;
-    border-radius: 0.75rem;
+    border-radius: var(--card-radius);
     background: linear-gradient(135deg, var(--accent-yellow), var(--accent-yellow-next));
     box-shadow: 0 10px 15px -3px rgba(217, 119, 6, 0.2);
-    margin-bottom: 1rem;
+    margin-bottom: var(--spacing-2);
     transition: transform 0.2s, box-shadow 0.2s;
     border: 1px solid rgba(255,255,255,0.2);
   }
