@@ -6,7 +6,7 @@
     - [x] Define the global "Responsive Spring" timing variable: `--spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);` and update default transitions to use it.
     - [x] Update existing tests to reflect the new color expectations.
     - [x] Verify `styles/variables.css` in the browser to ensure the contrast is pleasant and text is highly legible.
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: "Warm Paper" Foundation & The Spring (Token Migration)' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: "Warm Paper" Foundation & The Spring (Token Migration)' (Protocol in workflow.md)
 
 ## Phase 2: A Unified Modal System (Structural Consistency)
 - [ ] Task: Create Universal Overlays and Animations
