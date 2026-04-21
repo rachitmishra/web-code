@@ -17,10 +17,10 @@
     - [x] Update/Create CSS for the Interactive Card (`border-radius`, border, `box-shadow`).
     - [x] Update component logic if class names change.
     - [x] Ensure all existing tests pass with structure changes.
-- [ ] Task: Button State Styles
-    - [ ] Update CSS for standard buttons to include the new `:hover` and `:active` transitions.
-    - [ ] Update CSS to enforce the Negative Space Rule (minimum 1.5rem margin).
-    - [ ] Run existing tests and update if needed.
+- [x] Task: Button State Styles (296a740)
+    - [x] Update CSS for standard buttons to include the new `:hover` and `:active` transitions.
+    - [x] Update CSS to enforce the Negative Space Rule (minimum 1.5rem margin).
+    - [x] Run existing tests and update if needed.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Component Blueprints Implementation' (Protocol in workflow.md)
 
 ## Phase 3: Prioritized Components Refactoring
