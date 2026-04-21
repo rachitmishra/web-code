@@ -11,7 +11,7 @@
     - [x] Create utility classes or base element styles for standard visual weighting (e.g., `font-weight: 700` for Kannada, `font-weight: 400`, `opacity: 0.6` for English).
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Design Token Manifest and CSS Architecture' (Protocol in workflow.md)
 
-## Phase 2: Component Blueprints Implementation
+## Phase 2: Component Blueprints Implementation [checkpoint: 9d6c34c]
 - [x] Task: Content Container & Interactive Card Styles (5e62aa4)
     - [x] Update CSS files for the Content Container (max-width, margin auto).
     - [x] Update/Create CSS for the Interactive Card (`border-radius`, border, `box-shadow`).
