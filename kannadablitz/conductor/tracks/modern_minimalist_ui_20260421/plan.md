@@ -5,10 +5,10 @@
     - [x] Write tests verifying that critical CSS variables exist in the DOM (e.g., in a central theme test file).
     - [x] Update `src/styles/variables.css` with the new semantic palette, spacing scale, and typography scale.
     - [x] Ensure `index.css` or `App.css` properly imports and applies these globally.
-- [ ] Task: Update Base and Utilities CSS
-    - [ ] Write/update tests for global typography elements (`H1` to `Small Label`).
-    - [ ] Update typography styles (`font-main`, `letter-spacing` for target words).
-    - [ ] Create utility classes or base element styles for standard visual weighting (e.g., `font-weight: 700` for Kannada, `font-weight: 400`, `opacity: 0.6` for English).
+- [x] Task: Update Base and Utilities CSS (c516578)
+    - [x] Write/update tests for global typography elements (`H1` to `Small Label`).
+    - [x] Update typography styles (`font-main`, `letter-spacing` for target words).
+    - [x] Create utility classes or base element styles for standard visual weighting (e.g., `font-weight: 700` for Kannada, `font-weight: 400`, `opacity: 0.6` for English).
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Design Token Manifest and CSS Architecture' (Protocol in workflow.md)
 
 ## Phase 2: Component Blueprints Implementation
