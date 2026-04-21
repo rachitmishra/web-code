@@ -16,7 +16,7 @@
     - [x] Update existing tests verifying utility class structures.
 - [x] Task: Conductor - User Manual Verification 'Phase 2: A Unified Modal System (Structural Consistency)' (Protocol in workflow.md)
 
-## Phase 3: Component Migration (Refining the UX)
+## Phase 3: Component Migration (Refining the UX) [checkpoint: eccef29]
 - [x] Task: Refactor Disjointed Modals (d3d10a8)
     - [x] Update `src/components/BadgeShareModal.tsx` and its CSS (if any) to use `.glass-overlay` and `.modal-container` `.animate-modal`.
     - [x] Update `src/components/SettingsModal.tsx` to use the universal classes and ensure padding/headers match.
