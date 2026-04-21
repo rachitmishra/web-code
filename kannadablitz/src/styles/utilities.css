@@ -1,4 +1,50 @@
 @layer utilities {
+  /* Visual Weighting Directives */
+  .kannada-text {
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--text-main);
+  }
+
+  .english-text {
+    font-weight: var(--font-weight-regular);
+    color: var(--text-muted);
+    opacity: 0.6;
+  }
+
+  /* Component Blueprints - Structural CSS */
+  .container {
+    max-inline-size: var(--container-max-width);
+    margin-inline: auto;
+    padding-inline: var(--spacing-2);
+    inline-size: 100%;
+  }
+
+  .card {
+    background: var(--surface-card);
+    border-radius: var(--card-radius);
+    border: var(--card-border);
+    box-shadow: var(--card-shadow);
+    padding: var(--spacing-3); /* Negative Space Rule */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.06);
+  }
+
+  .card:active {
+    transform: translateY(-1px);
+  }
+
+  /* Spacing Utilities (Modernized) */
+  .m-3 { margin: var(--spacing-3); }
+  .p-3 { padding: var(--spacing-3); }
+  .mt-3 { margin-block-start: var(--spacing-3); }
+  .mb-3 { margin-block-end: var(--spacing-3); }
+  
+  /* Transitional Logic */
   .header-card,
   .levels-container,
   .badges-panel,
@@ -10,32 +56,14 @@
   .extension-card,
   .level-btn,
   .option-btn {
-    transition: background-color 160ms ease, border-color 160ms ease,
-      color 160ms ease, box-shadow 160ms ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease,
+      color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   }
 
   .font-script {
     font-family: "Brush Script MT", cursive;
   }
-  .text-accent-yellow {
-    color: var(--accent-yellow-next);
-  }
-  .text-accent-pink {
-    color: var(--accent-pink);
-  }
-  .text-green {
-    color: var(--accent-green);
-  }
-  .rotate-180 {
-    transform: rotate(180deg);
-  }
-  .shrink-0 {
-    flex-shrink: 0;
-  }
-  .w-full {
-    inline-size: 100%;
-  }
-  .mt-6 {
-    margin-top: 1.5rem;
-  }
+  .rotate-180 { transform: rotate(180deg); }
+  .shrink-0 { flex-shrink: 0; }
+  .w-full { inline-size: 100%; }
 }
