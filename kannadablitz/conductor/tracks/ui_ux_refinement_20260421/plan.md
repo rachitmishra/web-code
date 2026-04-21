@@ -9,11 +9,11 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: "Warm Paper" Foundation & The Spring (Token Migration)' (Protocol in workflow.md)
 
 ## Phase 2: A Unified Modal System (Structural Consistency)
-- [ ] Task: Create Universal Overlays and Animations
-    - [ ] Add `.glass-overlay` to `src/styles/utilities.css` utilizing `backdrop-filter: blur(8px)` and a subtle dark tint.
-    - [ ] Add `.modal-container` to `src/styles/utilities.css` referencing `.card` blueprints but ensuring maximum width and safe-area margins.
-    - [ ] Create `@keyframes modalSlideUp` and attach it to a `.animate-modal` utility class utilizing the new `--spring` timing.
-    - [ ] Update existing tests verifying utility class structures.
+- [x] Task: Create Universal Overlays and Animations (a855e13)
+    - [x] Add `.glass-overlay` to `src/styles/utilities.css` utilizing `backdrop-filter: blur(8px)` and a subtle dark tint.
+    - [x] Add `.modal-container` to `src/styles/utilities.css` referencing `.card` blueprints but ensuring maximum width and safe-area margins.
+    - [x] Create `@keyframes modalSlideUp` and attach it to a `.animate-modal` utility class utilizing the new `--spring` timing.
+    - [x] Update existing tests verifying utility class structures.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: A Unified Modal System (Structural Consistency)' (Protocol in workflow.md)
 
 ## Phase 3: Component Migration (Refining the UX)
