@@ -38,9 +38,9 @@ export default function ClickableSentence({ text, vocab }: ClickableSentenceProp
                         className="interactive-word"
                         onClick={() => setSelectedWord(match)}
                         style={{ 
-                            borderBottom: '2px dashed var(--primary)', 
+                            borderBottom: '2px dashed var(--brand-action)', 
                             cursor: 'pointer',
-                            color: 'var(--primary-dark)' 
+                            color: 'var(--brand-action)' 
                         }}
                     >
                         {part}
@@ -53,15 +53,18 @@ export default function ClickableSentence({ text, vocab }: ClickableSentenceProp
 
       {selectedWord && (
           <div className="habit-nudge-overlay" onClick={() => setSelectedWord(null)}>
-            <div className="habit-nudge-modal" onClick={e => e.stopPropagation()}>
+            <div className="habit-nudge-modal card" onClick={e => e.stopPropagation()}>
                 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                    <h3 style={{margin: 0, color: 'var(--primary)'}}>{selectedWord.english}</h3>
+                    <h3 style={{margin: 0, color: 'var(--brand-action)'}}>{selectedWord.english}</h3>
                      <button onClick={() => setSelectedWord(null)} className="btn--icon"><X /></button>
                 </div>
-                <div style={{fontSize: '2rem', fontWeight: 900, margin: '1rem 0', color: 'var(--text-title)'}}>
+                <div 
+                  className="kannada-text"
+                  style={{fontSize: '2.5rem', margin: 'var(--spacing-3) 0', color: 'var(--text-main)'}}
+                >
                     {selectedWord.kannada}
                 </div>
-                <div style={{color: 'var(--muted-text)', fontStyle: 'italic', fontSize: '1.2rem'}}>
+                <div style={{color: 'var(--text-muted)', fontStyle: 'italic', fontSize: '1.1rem'}}>
                     {selectedWord.phonetic}
                 </div>
             </div>
