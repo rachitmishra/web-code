@@ -23,7 +23,7 @@
     - [x] Run existing tests and update if needed.
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Component Blueprints Implementation' (Protocol in workflow.md)
 
-## Phase 3: Prioritized Components Refactoring
+## Phase 3: Prioritized Components Refactoring [checkpoint: 4853a31]
 - [x] Task: Refactor Dashboard & Header (c73dfbc)
     - [x] Update Dashboard components to use the new tokens and blueprints.
     - [x] Update Header components to use the new tokens and blueprints.
