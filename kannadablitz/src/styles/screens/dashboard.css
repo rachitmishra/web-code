@@ -4,22 +4,22 @@
      ========================================= */
   .dashboard-container {
     inline-size: 100%;
-    max-inline-size: var(--max-w-mobile);
+    max-inline-size: var(--container-max-width);
     margin: 0 auto;
-    padding-inline: 1.5rem;
+    padding-inline: var(--spacing-3); /* Negative Space Rule */
   }
 
   /* Header Card */
   .header-card {
-    background: var(--surface-bg);
-    padding: 1.5rem;
-    border-radius: 1.5rem;
-    color: var(--surface-text);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    background: var(--surface-card);
+    padding: var(--spacing-3);
+    border-radius: var(--card-radius);
+    color: var(--text-main);
+    box-shadow: var(--card-shadow);
     position: relative;
     overflow: hidden;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--neutral-200);
+    margin-bottom: var(--spacing-3);
+    border: var(--card-border);
   }
   .header-blob {
     display: none; /* Removed for cleaner look */
@@ -58,10 +58,10 @@
   }
   .stat-box {
     flex: 1;
-    background: var(--neutral-50);
-    padding: 0.75rem 1rem;
-    border-radius: 0.75rem;
-    border: 1px solid var(--neutral-200);
+    background: var(--bg-primary); /* Slate 50 */
+    padding: var(--spacing-2) var(--spacing-2);
+    border-radius: var(--card-radius);
+    border: var(--card-border);
   }
   .stat-content {
     display: flex;

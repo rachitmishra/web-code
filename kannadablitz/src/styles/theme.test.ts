@@ -49,4 +49,12 @@ describe('Base and Utilities CSS (File Check)', () => {
     expect(utilitiesContent).toContain('.kannada-text');
     expect(utilitiesContent).toContain('.english-text');
   });
+
+  it('should have the structural blueprints for card and container', () => {
+    expect(utilitiesContent).toContain('.container');
+    expect(utilitiesContent).toContain('max-inline-size: var(--container-max-width)');
+    expect(utilitiesContent).toContain('.card');
+    expect(utilitiesContent).toContain('border-radius: var(--card-radius)');
+    expect(utilitiesContent).toContain('box-shadow: var(--card-shadow)');
+  });
 });
