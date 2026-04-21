@@ -1,11 +1,11 @@
 # Implementation Plan: Calm & Focused UI/UX Refinement
 
 ## Phase 1: "Warm Paper" Foundation & The Spring (Token Migration)
-- [ ] Task: Update the Global CSS Manifest
-    - [ ] Update `src/styles/variables.css` with the "Warm Paper" palette (`#fafaf9` base, `#1c1917` main text, warmer gray/taupe accents).
-    - [ ] Define the global "Responsive Spring" timing variable: `--spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);` and update default transitions to use it.
-    - [ ] Update existing tests to reflect the new color expectations.
-    - [ ] Verify `styles/variables.css` in the browser to ensure the contrast is pleasant and text is highly legible.
+- [x] Task: Update the Global CSS Manifest (12d0a31)
+    - [x] Update `src/styles/variables.css` with the "Warm Paper" palette (`#fafaf9` base, `#1c1917` main text, warmer gray/taupe accents).
+    - [x] Define the global "Responsive Spring" timing variable: `--spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);` and update default transitions to use it.
+    - [x] Update existing tests to reflect the new color expectations.
+    - [x] Verify `styles/variables.css` in the browser to ensure the contrast is pleasant and text is highly legible.
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: "Warm Paper" Foundation & The Spring (Token Migration)' (Protocol in workflow.md)
 
 ## Phase 2: A Unified Modal System (Structural Consistency)
