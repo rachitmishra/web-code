@@ -129,7 +129,7 @@ export default function Scenarios({ state, actions, onOpenSettings }: ScenariosP
                   handleAnswer(opt);
                 }}
                 disabled={feedback !== null}
-                className={`option-btn 
+                className={`option-btn kannada-text
                   ${selectedIdx === idx && opt.correct ? "opt-correct" : ""}
                   ${
                     feedback && !opt.correct && feedback.type === "error"

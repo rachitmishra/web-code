@@ -72,12 +72,12 @@ export default function Flashcards({ state, actions }: FlashcardsProps) {
         <div className={`card-3d-wrapper ${isFlipped ? "flipped" : ""}`}>
           <div className="card-face card-front">
             <span className="card-label">Kannada</span>
-            <h2 className="card-main-text">{card.kannada}</h2>
+            <h2 className="card-main-text kannada-text">{card.kannada}</h2>
             <p className="card-sub-text">{card.phonetic}</p>
           </div>
           <div className="card-face card-back">
             <span className="card-label label-accent">Meaning</span>
-            <h2 className="card-main-text">{card.english}</h2>
+            <h2 className="card-main-text english-text">{card.english}</h2>
           </div>
         </div>
         <p className="tap-hint">Tap card to flip</p>
