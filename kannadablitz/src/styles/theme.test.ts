@@ -13,6 +13,16 @@ describe('Theme Design Tokens (File Check)', () => {
     expect(varsContent).toContain('--brand-action');
   });
 
+  it('should have the Warm Paper palette values', () => {
+    expect(varsContent).toContain('#fafaf9'); // Warm Paper base
+    expect(varsContent).toContain('#1c1917'); // Charcoal text
+  });
+
+  it('should have the new responsive spring timing', () => {
+    expect(varsContent).toContain('--spring');
+    expect(varsContent).toContain('cubic-bezier(0.175, 0.885, 0.32, 1.275)');
+  });
+
   it('should have the new typography variables defined', () => {
     expect(varsContent).toContain('--font-main');
     expect(varsContent).toContain('--letter-spacing-tight');
@@ -39,7 +49,6 @@ describe('Base and Utilities CSS (File Check)', () => {
   const utilitiesContent = fs.readFileSync(utilitiesPath, 'utf-8');
 
   it('should have the updated typography scale in base.css', () => {
-    // We'll check for H1 to Small Label (though they might not be there yet)
     expect(baseContent).toContain('h1');
     expect(baseContent).toContain('h2');
     expect(baseContent).toContain('.text-small');

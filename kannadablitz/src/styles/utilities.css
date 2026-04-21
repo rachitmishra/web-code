@@ -26,12 +26,12 @@
     border: var(--card-border);
     box-shadow: var(--card-shadow);
     padding: var(--spacing-3); /* Negative Space Rule */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform var(--transition-main), box-shadow var(--transition-main);
   }
 
   .card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 12px 20px -5px rgba(28, 25, 23, 0.08);
   }
 
   .card:active {
@@ -56,8 +56,8 @@
   .extension-card,
   .level-btn,
   .option-btn {
-    transition: background-color 0.2s ease, border-color 0.2s ease,
-      color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast),
+      color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
   }
 
   .font-script {

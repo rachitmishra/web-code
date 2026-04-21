@@ -25,7 +25,7 @@
     padding-block-start: env(safe-area-inset-top, 0px);
     padding-block-end: env(safe-area-inset-bottom, 0px);
     padding-inline: env(safe-area-inset-left, 0px) env(safe-area-inset-right, 0px);
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
   }
 
   /* Typography Scale - Focus on "Cognitive Ease" */
