@@ -9,7 +9,7 @@
     - [x] Write/update tests for global typography elements (`H1` to `Small Label`).
     - [x] Update typography styles (`font-main`, `letter-spacing` for target words).
     - [x] Create utility classes or base element styles for standard visual weighting (e.g., `font-weight: 700` for Kannada, `font-weight: 400`, `opacity: 0.6` for English).
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Design Token Manifest and CSS Architecture' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Design Token Manifest and CSS Architecture' (Protocol in workflow.md)
 
 ## Phase 2: Component Blueprints Implementation
 - [ ] Task: Content Container & Interactive Card Styles
