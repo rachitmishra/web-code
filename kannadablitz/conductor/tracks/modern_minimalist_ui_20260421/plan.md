@@ -28,10 +28,10 @@
     - [x] Update Dashboard components to use the new tokens and blueprints.
     - [x] Update Header components to use the new tokens and blueprints.
     - [x] Run/update tests for Dashboard and Header components to verify correct class application.
-- [ ] Task: Refactor Flashcards & Scenarios
-    - [ ] Update Flashcard components (Interactive Card blueprint, visual weighting).
-    - [ ] Update Scenario components.
-    - [ ] Run/update tests for these core learning interfaces.
+- [x] Task: Refactor Flashcards & Scenarios (ff150c7)
+    - [x] Update Flashcard components (Interactive Card blueprint, visual weighting).
+    - [x] Update Scenario components.
+    - [x] Run/update tests for these core learning interfaces.
 - [ ] Task: Refactor Social Panel
     - [ ] Update Social Panel components with new tokens and spacing.
     - [ ] Run/update tests for Social Panel.
