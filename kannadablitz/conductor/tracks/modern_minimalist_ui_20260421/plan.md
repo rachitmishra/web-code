@@ -1,10 +1,10 @@
 # Implementation Plan: Modern Minimalist UI Refactor
 
 ## Phase 1: Design Token Manifest and CSS Architecture
-- [ ] Task: Update Global CSS Variables
-    - [ ] Write tests verifying that critical CSS variables exist in the DOM (e.g., in a central theme test file).
-    - [ ] Update `src/styles/variables.css` with the new semantic palette, spacing scale, and typography scale.
-    - [ ] Ensure `index.css` or `App.css` properly imports and applies these globally.
+- [x] Task: Update Global CSS Variables (6e20430)
+    - [x] Write tests verifying that critical CSS variables exist in the DOM (e.g., in a central theme test file).
+    - [x] Update `src/styles/variables.css` with the new semantic palette, spacing scale, and typography scale.
+    - [x] Ensure `index.css` or `App.css` properly imports and applies these globally.
 - [ ] Task: Update Base and Utilities CSS
     - [ ] Write/update tests for global typography elements (`H1` to `Small Label`).
     - [ ] Update typography styles (`font-main`, `letter-spacing` for target words).
