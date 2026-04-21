@@ -23,7 +23,7 @@
     - [x] Update `src/components/ClickableSentence.tsx`'s "habit nudge modal" (the word detail popup) to use the universal classes.
     - [x] Update `src/screens/Dashboard.tsx`'s "habit nudge" modal to use the universal classes.
     - [x] Run/update all associated component tests to verify structure changes.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Component Migration (Refining the UX)' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Component Migration (Refining the UX)' (Protocol in workflow.md)
 
 ## Phase 4: Micro-Interactions Polish
 - [ ] Task: Refine Interactions
