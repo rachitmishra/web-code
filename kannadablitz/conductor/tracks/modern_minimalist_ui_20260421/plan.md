@@ -32,9 +32,9 @@
     - [x] Update Flashcard components (Interactive Card blueprint, visual weighting).
     - [x] Update Scenario components.
     - [x] Run/update tests for these core learning interfaces.
-- [ ] Task: Refactor Social Panel
-    - [ ] Update Social Panel components with new tokens and spacing.
-    - [ ] Run/update tests for Social Panel.
+- [x] Task: Refactor Social Panel (6305392)
+    - [x] Update Social Panel components with new tokens and spacing.
+    - [x] Run/update tests for Social Panel.
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Prioritized Components Refactoring' (Protocol in workflow.md)
 
 ## Phase 4: 'Zen Mode' Implementation
