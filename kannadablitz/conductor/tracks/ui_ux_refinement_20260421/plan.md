@@ -17,12 +17,12 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: A Unified Modal System (Structural Consistency)' (Protocol in workflow.md)
 
 ## Phase 3: Component Migration (Refining the UX)
-- [ ] Task: Refactor Disjointed Modals
-    - [ ] Update `src/components/BadgeShareModal.tsx` and its CSS (if any) to use `.glass-overlay` and `.modal-container` `.animate-modal`.
-    - [ ] Update `src/components/SettingsModal.tsx` to use the universal classes and ensure padding/headers match.
-    - [ ] Update `src/components/ClickableSentence.tsx`'s "habit nudge modal" (the word detail popup) to use the universal classes.
-    - [ ] Update `src/screens/Dashboard.tsx`'s "habit nudge" modal to use the universal classes.
-    - [ ] Run/update all associated component tests to verify structure changes.
+- [x] Task: Refactor Disjointed Modals (d3d10a8)
+    - [x] Update `src/components/BadgeShareModal.tsx` and its CSS (if any) to use `.glass-overlay` and `.modal-container` `.animate-modal`.
+    - [x] Update `src/components/SettingsModal.tsx` to use the universal classes and ensure padding/headers match.
+    - [x] Update `src/components/ClickableSentence.tsx`'s "habit nudge modal" (the word detail popup) to use the universal classes.
+    - [x] Update `src/screens/Dashboard.tsx`'s "habit nudge" modal to use the universal classes.
+    - [x] Run/update all associated component tests to verify structure changes.
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Component Migration (Refining the UX)' (Protocol in workflow.md)
 
 ## Phase 4: Micro-Interactions Polish
