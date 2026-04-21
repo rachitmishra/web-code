@@ -388,6 +388,8 @@ const useGameLogic = () => {
     window.location.reload();
   }, []);
 
+  const isZenMode = view === "flashcards" || view === "scenarios";
+
   return {
     state: {
       currentDay,
@@ -410,6 +412,7 @@ const useGameLogic = () => {
       supportedLanguages,
       lastPlayedDate,
       feedbackDuration,
+      isZenMode,
     },
     actions: {
       setView,

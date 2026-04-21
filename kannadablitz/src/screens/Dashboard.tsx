@@ -24,6 +24,7 @@ interface DashboardProps {
     lastPlayedDate: string | null;
     userName: string;
     userEmoji: string;
+    isZenMode: boolean;
   };
   actions: {
     startDay: (dayIndex: number) => void;
@@ -49,6 +50,7 @@ export default function Dashboard({ state, actions, onOpenSettings }: DashboardP
     lastPlayedDate,
     userName,
     userEmoji,
+    isZenMode,
   } = state;
   const {
     startDay,
@@ -161,6 +163,7 @@ export default function Dashboard({ state, actions, onOpenSettings }: DashboardP
         resetGame={resetGame}
         showLanguageSelector={true}
         onOpenSettings={onOpenSettings}
+        isZenMode={isZenMode}
       />
       <div className="header-card">
         <div className="header-blob"></div>
@@ -229,12 +232,12 @@ export default function Dashboard({ state, actions, onOpenSettings }: DashboardP
                     }}
                     style={{ 
                         cursor: 'pointer', 
-                        border: '1px solid color-mix(in srgb, var(--accent-yellow) 30%, transparent)', 
-                        background: 'var(--surface-bg)',
+                        border: '1px solid color-mix(in srgb, var(--brand-accent) 30%, transparent)', 
+                        background: 'var(--surface-card)',
                         flexShrink: 0
                     }} 
                 >
-                    <Trophy size={14} className="badge-icon" /> {badge}
+                    <Trophy size={14} className="badge-icon" style={{ color: 'var(--brand-accent)' }} /> {badge}
                 </button>
                 ))
             )}
@@ -264,10 +267,10 @@ export default function Dashboard({ state, actions, onOpenSettings }: DashboardP
                     style={{ justifyContent: 'space-between' }}
                 >
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                        <Book size={18} style={{ color: 'var(--primary)' }} /> 
+                        <Book size={18} style={{ color: 'var(--brand-action)' }} /> 
                         Review All Words
                     </span>
-                    <span style={{ fontSize: '0.8rem', color: 'var(--muted-text)' }}>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
                         {completedDays.length} Days Completed
                     </span>
                 </Button>
@@ -282,16 +285,17 @@ export default function Dashboard({ state, actions, onOpenSettings }: DashboardP
         {challengeDuration === 30 && renderWeek(5, "Final Stretch: Mastery")}
 
         {challengeDuration === 7 && (
-          <div className="extension-card">
+          <div className="extension-card" style={{ background: 'var(--brand-action)', color: '#ffffff' }}>
             <div className="extension-content">
-              <h3 className="extension-title">Want More?</h3>
-              <p className="extension-description">
+              <h3 className="extension-title" style={{ color: '#ffffff' }}>Want More?</h3>
+              <p className="extension-description" style={{ color: 'rgba(255,255,255,0.7)' }}>
                 Unlock the full 30-Day Masterclass with Weeks 2, 3, and 4.
               </p>
               <Button
                 onClick={extendChallenge}
                 className="extension-btn"
                 variant="primary"
+                style={{ background: '#ffffff', color: 'var(--brand-action)' }}
               >
                 <Calendar size={18} /> Unlock 30 Days
               </Button>
@@ -315,7 +319,7 @@ export default function Dashboard({ state, actions, onOpenSettings }: DashboardP
 
       {showHabitNudge && (
         <div className="habit-nudge-overlay">
-          <div className="habit-nudge-modal">
+          <div className="habit-nudge-modal card">
             <h2 className="habit-nudge-title">Wait! Come back tomorrow?</h2>
             <p className="habit-nudge-text">
               Building a habit is better than binge-learning. Your brain needs rest to absorb new words.

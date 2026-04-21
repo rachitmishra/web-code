@@ -18,6 +18,7 @@ interface HeaderProps {
   resetGame: () => void;
   showLanguageSelector?: boolean;
   onOpenSettings?: () => void;
+  isZenMode?: boolean;
 }
 
 export default function Header({
@@ -32,6 +33,7 @@ export default function Header({
   resetGame,
   showLanguageSelector = false,
   onOpenSettings,
+  isZenMode = false,
 }: HeaderProps) {
   const { requestPermission, deactivateNotifications, isEnabled } = useNotifications();
   const isOnline = useOnlineStatus();
@@ -50,7 +52,7 @@ export default function Header({
   };
 
   return (
-    <div className="fc-header" data-variant={variant}>
+    <div className={`fc-header ${isZenMode ? 'zen-mode' : ''}`} data-variant={variant}>
       <div className="fc-left">
         {onBack && (
           <Button

@@ -12,6 +12,7 @@ interface FlashcardsProps {
     theme: "light" | "dark";
     currentLanguage: SupportedLanguage;
     LEARNING_DATA: LearningData[];
+    isZenMode: boolean;
   };
   actions: {
     setIsFlipped: (isFlipped: boolean) => void;
@@ -32,6 +33,7 @@ export default function Flashcards({ state, actions }: FlashcardsProps) {
     currentLanguage,
     LEARNING_DATA,
     currentDay,
+    isZenMode,
   } = state;
   const {
     setIsFlipped,
@@ -66,6 +68,7 @@ export default function Flashcards({ state, actions }: FlashcardsProps) {
         currentLanguage={currentLanguage}
         setCurrentLanguage={setCurrentLanguage}
         resetGame={resetGame}
+        isZenMode={isZenMode}
       />
 
       <div className="card-container" onClick={() => setIsFlipped(!isFlipped)}>

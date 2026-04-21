@@ -7,7 +7,19 @@
     padding: var(--spacing-2) 0;
     align-items: center;
     justify-content: space-between;
-    transition: opacity 0.3s ease; /* For Zen Mode later */
+    transition: opacity 0.3s ease, filter 0.3s ease;
+  }
+
+  .fc-header.zen-mode {
+    opacity: 0.3;
+    filter: grayscale(0.5);
+    pointer-events: none; /* Disable interaction in Zen Mode */
+  }
+
+  .fc-header.zen-mode:hover {
+    opacity: 0.8;
+    filter: none;
+    pointer-events: auto;
   }
 
   .fc-left,

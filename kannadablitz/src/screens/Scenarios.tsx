@@ -17,6 +17,7 @@ interface ScenariosProps {
     theme: "light" | "dark";
     currentLanguage: SupportedLanguage;
     LEARNING_DATA: LearningData[];
+    isZenMode: boolean;
   };
   actions: {
     startDrill: () => void;
@@ -44,6 +45,7 @@ export default function Scenarios({ state, actions, onOpenSettings }: ScenariosP
     theme,
     currentLanguage,
     LEARNING_DATA,
+    isZenMode,
   } = state;
   const {
     handleAnswer,
@@ -90,6 +92,7 @@ export default function Scenarios({ state, actions, onOpenSettings }: ScenariosP
         setCurrentLanguage={setCurrentLanguage}
         resetGame={resetGame}
         onOpenSettings={onOpenSettings}
+        isZenMode={isZenMode}
       />
 
       <div className="sc-header">
