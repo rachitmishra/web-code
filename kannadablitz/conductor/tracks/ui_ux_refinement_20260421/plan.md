@@ -8,7 +8,7 @@
     - [x] Verify `styles/variables.css` in the browser to ensure the contrast is pleasant and text is highly legible.
 - [x] Task: Conductor - User Manual Verification 'Phase 1: "Warm Paper" Foundation & The Spring (Token Migration)' (Protocol in workflow.md)
 
-## Phase 2: A Unified Modal System (Structural Consistency)
+## Phase 2: A Unified Modal System (Structural Consistency) [checkpoint: d92798d]
 - [x] Task: Create Universal Overlays and Animations (a855e13)
     - [x] Add `.glass-overlay` to `src/styles/utilities.css` utilizing `backdrop-filter: blur(8px)` and a subtle dark tint.
     - [x] Add `.modal-container` to `src/styles/utilities.css` referencing `.card` blueprints but ensuring maximum width and safe-area margins.
