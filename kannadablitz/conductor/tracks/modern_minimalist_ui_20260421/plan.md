@@ -38,9 +38,9 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Prioritized Components Refactoring' (Protocol in workflow.md)
 
 ## Phase 4: 'Zen Mode' Implementation
-- [ ] Task: Implement Zen Mode Logic
-    - [ ] Write failing test for Zen Mode contextual trigger (e.g., when Flashcard/Scenario mounts, Header/Nav gets dimmed class).
-    - [ ] Update global state or context to track "learning mode" active state.
-    - [ ] Implement CSS classes for dimming/hiding non-essential UI.
-    - [ ] Update Header/Dashboard components to react to the "learning mode" state.
+- [x] Task: Implement Zen Mode Logic (26eeb12)
+    - [x] Write failing test for Zen Mode contextual trigger (e.g., when Flashcard/Scenario mounts, Header/Nav gets dimmed class).
+    - [x] Update global state or context to track "learning mode" active state.
+    - [x] Implement CSS classes for dimming/hiding non-essential UI.
+    - [x] Update Header/Dashboard components to react to the "learning mode" state.
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: 'Zen Mode' Implementation' (Protocol in workflow.md)
