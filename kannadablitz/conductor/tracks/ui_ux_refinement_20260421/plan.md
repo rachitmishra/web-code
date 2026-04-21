@@ -1,6 +1,6 @@
 # Implementation Plan: Calm & Focused UI/UX Refinement
 
-## Phase 1: "Warm Paper" Foundation & The Spring (Token Migration)
+## Phase 1: "Warm Paper" Foundation & The Spring (Token Migration) [checkpoint: c5dbb6a]
 - [x] Task: Update the Global CSS Manifest (12d0a31)
     - [x] Update `src/styles/variables.css` with the "Warm Paper" palette (`#fafaf9` base, `#1c1917` main text, warmer gray/taupe accents).
     - [x] Define the global "Responsive Spring" timing variable: `--spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);` and update default transitions to use it.
