@@ -25,7 +25,7 @@
     - [x] Run/update all associated component tests to verify structure changes.
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Component Migration (Refining the UX)' (Protocol in workflow.md)
 
-## Phase 4: Micro-Interactions Polish
+## Phase 4: Micro-Interactions Polish [checkpoint: 7a286ed]
 - [x] Task: Refine Interactions (0e60753)
     - [x] Audit `src/styles/components/buttons.css` to ensure button transitions use the `--spring` timing.
     - [x] Audit `src/styles/components/social.css` (e.g., the `.community-content.collapsed` transition) to ensure smooth unfolding.
