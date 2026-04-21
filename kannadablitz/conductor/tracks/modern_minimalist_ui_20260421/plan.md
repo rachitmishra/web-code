@@ -37,7 +37,7 @@
     - [x] Run/update tests for Social Panel.
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Prioritized Components Refactoring' (Protocol in workflow.md)
 
-## Phase 4: 'Zen Mode' Implementation
+## Phase 4: 'Zen Mode' Implementation [checkpoint: 462179a]
 - [x] Task: Implement Zen Mode Logic (26eeb12)
     - [x] Write failing test for Zen Mode contextual trigger (e.g., when Flashcard/Scenario mounts, Header/Nav gets dimmed class).
     - [x] Update global state or context to track "learning mode" active state.
