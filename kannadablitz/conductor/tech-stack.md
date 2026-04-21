@@ -2,7 +2,7 @@
 
 - **Programming Language:** TypeScript
 - **Frontend Framework:** React (built with Vite)
-- **Styling:** Custom CSS
+- **Styling:** Custom CSS with a Semantic Design Token System (standard CSS variables)
 - **Backend/Services:** Firebase (Hosting, Authentication, Firestore, Cloud Functions)
 - **Key Libraries:** 
     - `canvas-confetti`: For celebration effects.

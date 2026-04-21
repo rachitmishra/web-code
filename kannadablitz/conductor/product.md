@@ -11,6 +11,8 @@ A React + TypeScript application built with Vite for learning Kannada.
 - **Daily Challenges:** A 7-day or 30-day challenge structure to build a habit.
 - **Interactive Scenarios:** Practice real-life conversations (e.g., auto driver, market).
 - **Gamification:** Hearts system, streaks, and badges to motivate users.
+- **Modern Minimalist UI:** Refined interface focusing on 'Cognitive Ease' with a semantic design token system.
+- **Zen Mode:** Contextual UI dimming during active learning phases to maximize focus.
 - **Flashcards:** Vocabulary practice with flip cards.
 - **Progress Tracking:** Dashboard to visualize daily progress and unlocked achievements.
 - **Offline Support:** Full PWA support allowing for offline gameplay and automatic progress synchronization when back online.
