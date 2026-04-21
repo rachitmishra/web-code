@@ -14,7 +14,7 @@
     - [x] Add `.modal-container` to `src/styles/utilities.css` referencing `.card` blueprints but ensuring maximum width and safe-area margins.
     - [x] Create `@keyframes modalSlideUp` and attach it to a `.animate-modal` utility class utilizing the new `--spring` timing.
     - [x] Update existing tests verifying utility class structures.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: A Unified Modal System (Structural Consistency)' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: A Unified Modal System (Structural Consistency)' (Protocol in workflow.md)
 
 ## Phase 3: Component Migration (Refining the UX)
 - [ ] Task: Refactor Disjointed Modals

@@ -1,4 +1,5 @@
-const functions = require("firebase-functions");
+const { onDocumentUpdated } = require("firebase-functions/v2/firestore");
+const { onSchedule } = require("firebase-functions/v2/scheduler");
 const admin = require("firebase-admin");
 admin.initializeApp();
 
@@ -6,11 +7,9 @@ admin.initializeApp();
  * Triggered when a user document is updated.
  * Checks for changes in the 'nudges' field and sends a notification.
  */
-exports.sendNudgeNotification = functions.firestore
-  .document("users/{userId}")
-  .onUpdate(async (change, context) => {
-    const newData = change.after.data();
-    const previousData = change.before.data();
+exports.sendNudgeNotificationV2 = onDocumentUpdated("users/{userId}", async (event) => {
+    const newData = event.data.after.data();
+    const previousData = event.data.before.data();
 
     // Check if nudges field exists and has changed
     if (!newData.nudges || JSON.stringify(newData.nudges) === JSON.stringify(previousData.nudges)) {
@@ -28,7 +27,7 @@ exports.sendNudgeNotification = functions.firestore
 
     const fcmTokens = newData.fcmTokens;
     if (!fcmTokens || fcmTokens.length === 0) {
-        console.log("No FCM tokens for user", context.params.userId);
+        console.log("No FCM tokens for user", event.params.userId);
         return null;
     }
 
@@ -48,16 +47,16 @@ exports.sendNudgeNotification = functions.firestore
     }));
 
     // Send notifications
-    const promises = notifications.map(payload => admin.messaging().sendMulticast(payload));
+    const promises = notifications.map(payload => admin.messaging().sendEachForMulticast(payload));
     return Promise.all(promises);
-  });
+});
 
 /**
  * Scheduled Daily Reminder.
  * Runs every day at 09:00 UTC.
  * Sends a reminder to users who haven't played today.
  */
-exports.scheduledDailyReminder = functions.pubsub.schedule('every day 09:00').onRun(async (context) => {
+exports.scheduledDailyReminderV2 = onSchedule('every day 09:00', async (event) => {
     const snapshot = await admin.firestore().collection("users").get();
     
     const promises = [];
@@ -71,9 +70,9 @@ exports.scheduledDailyReminder = functions.pubsub.schedule('every day 09:00').on
         let playedToday = false;
         if (data.lastPlayedDate) {
             const lastPlayed = new Date(data.lastPlayedDate);
-            playedToday = lastPlayed.getDate() === today.getDate() && 
-                          lastPlayed.getMonth() === today.getMonth() &&
-                          lastPlayed.getFullYear() === today.getFullYear();
+            playedToday = lastPlayed.getUTCDate() === today.getUTCDate() && 
+                          lastPlayed.getUTCMonth() === today.getUTCMonth() &&
+                          lastPlayed.getUTCFullYear() === today.getUTCFullYear();
         }
         
         if (!playedToday) {
@@ -84,7 +83,7 @@ exports.scheduledDailyReminder = functions.pubsub.schedule('every day 09:00').on
                 },
                 tokens: data.fcmTokens
             };
-            promises.push(admin.messaging().sendMulticast(message));
+            promises.push(admin.messaging().sendEachForMulticast(message));
         }
     });
     
