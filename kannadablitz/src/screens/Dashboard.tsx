@@ -318,8 +318,8 @@ export default function Dashboard({ state, actions, onOpenSettings }: DashboardP
       </div>
 
       {showHabitNudge && (
-        <div className="habit-nudge-overlay">
-          <div className="habit-nudge-modal card">
+        <div className="glass-overlay">
+          <div className="modal-container animate-modal">
             <h2 className="habit-nudge-title">Wait! Come back tomorrow?</h2>
             <p className="habit-nudge-text">
               Building a habit is better than binge-learning. Your brain needs rest to absorb new words.

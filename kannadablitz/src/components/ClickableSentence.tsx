@@ -52,8 +52,8 @@ export default function ClickableSentence({ text, vocab }: ClickableSentenceProp
       </p>
 
       {selectedWord && (
-          <div className="habit-nudge-overlay" onClick={() => setSelectedWord(null)}>
-            <div className="habit-nudge-modal card" onClick={e => e.stopPropagation()}>
+          <div className="glass-overlay" onClick={() => setSelectedWord(null)}>
+            <div className="modal-container animate-modal" onClick={e => e.stopPropagation()}>
                 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                     <h3 style={{margin: 0, color: 'var(--brand-action)'}}>{selectedWord.english}</h3>
                      <button onClick={() => setSelectedWord(null)} className="btn--icon"><X /></button>
@@ -64,7 +64,7 @@ export default function ClickableSentence({ text, vocab }: ClickableSentenceProp
                 >
                     {selectedWord.kannada}
                 </div>
-                <div style={{color: 'var(--text-muted)', fontStyle: 'italic', fontSize: '1.1rem'}}>
+                <div className="text-small" style={{fontStyle: 'italic', fontSize: '1.1rem'}}>
                     {selectedWord.phonetic}
                 </div>
             </div>

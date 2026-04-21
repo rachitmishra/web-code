@@ -17,8 +17,8 @@ export default function SettingsModal({
   if (!isOpen) return null;
 
   return (
-    <div className="habit-nudge-overlay" onClick={onClose}>
-      <div className="habit-nudge-modal" onClick={(e) => e.stopPropagation()}>
+    <div className="glass-overlay" onClick={onClose}>
+      <div className="modal-container animate-modal" onClick={(e) => e.stopPropagation()}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}>
             <h2 className="habit-nudge-title" style={{ margin: 0 }}>Settings</h2>
             <button onClick={onClose} className="btn--icon">
@@ -27,10 +27,10 @@ export default function SettingsModal({
         </div>
 
         <div style={{ textAlign: "left" }}>
-          <label style={{ display: "block", fontWeight: 700, marginBottom: "0.5rem", color: "var(--text-title)" }}>
+          <label style={{ display: "block", fontWeight: 700, marginBottom: "0.5rem", color: "var(--text-main)" }}>
             Feedback Speed
           </label>
-          <p style={{ fontSize: "0.875rem", color: "var(--muted-text)", marginBottom: "1rem" }}>
+          <p className="text-small" style={{ marginBottom: "1rem" }}>
             How long to show the result before moving to the next question.
           </p>
           

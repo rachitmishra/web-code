@@ -51,8 +51,8 @@ export default function BadgeShareModal({ isOpen, onClose, badgeName, userName, 
   };
 
   return (
-    <div className="habit-nudge-overlay" onClick={onClose}>
-        <div className="habit-nudge-modal" onClick={e => e.stopPropagation()} style={{maxWidth: '450px', width: '90%', padding: '1rem'}}>
+    <div className="glass-overlay" onClick={onClose}>
+        <div className="modal-container animate-modal" onClick={e => e.stopPropagation()}>
             <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '0.5rem'}}>
                 <button onClick={onClose} className="btn--icon"><X /></button>
             </div>
@@ -60,16 +60,12 @@ export default function BadgeShareModal({ isOpen, onClose, badgeName, userName, 
             <h2 className="habit-nudge-title" style={{marginBottom: '1rem'}}>Share Achievement</h2>
 
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.5rem', overflow: 'hidden' }}>
-                {/* 
-                   We render the card here. On mobile 400px might be too wide.
-                   We can use CSS transform to scale it down for preview if needed.
-                */}
-                <div style={{ transform: 'scale(0.7)', transformOrigin: 'top center', height: '350px', width: '400px', display: 'flex', justifyContent: 'center' }}>
+                <div style={{ transform: 'scale(0.8)', transformOrigin: 'top center', height: '380px', width: '100%', display: 'flex', justifyContent: 'center' }}>
                      <BadgeShareCard ref={cardRef} userName={userName} emoji={emoji} badgeName={badgeName} />
                 </div>
             </div>
 
-            <div style={{marginTop: '0rem'}}>
+            <div style={{marginTop: '0.5rem'}}>
                  <Button onClick={handleShare} fullWidth disabled={isSharing}>
                     {isSharing ? 'Generating...' : (typeof navigator.share === 'function' ? <><Share2 /> Share Badge</> : <><Save /> Download Image</>)}
                  </Button>
