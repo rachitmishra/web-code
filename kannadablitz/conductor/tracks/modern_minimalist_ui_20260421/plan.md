@@ -35,7 +35,7 @@
 - [x] Task: Refactor Social Panel (6305392)
     - [x] Update Social Panel components with new tokens and spacing.
     - [x] Run/update tests for Social Panel.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Prioritized Components Refactoring' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Prioritized Components Refactoring' (Protocol in workflow.md)
 
 ## Phase 4: 'Zen Mode' Implementation
 - [ ] Task: Implement Zen Mode Logic
