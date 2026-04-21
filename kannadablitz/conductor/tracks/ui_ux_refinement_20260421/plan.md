@@ -26,8 +26,8 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Component Migration (Refining the UX)' (Protocol in workflow.md)
 
 ## Phase 4: Micro-Interactions Polish
-- [ ] Task: Refine Interactions
-    - [ ] Audit `src/styles/components/buttons.css` to ensure button transitions use the `--spring` timing.
-    - [ ] Audit `src/styles/components/social.css` (e.g., the `.community-content.collapsed` transition) to ensure smooth unfolding.
-    - [ ] Ensure `FeedbackToast` slides up with the exact same `--spring` timing as the modals.
+- [x] Task: Refine Interactions (0e60753)
+    - [x] Audit `src/styles/components/buttons.css` to ensure button transitions use the `--spring` timing.
+    - [x] Audit `src/styles/components/social.css` (e.g., the `.community-content.collapsed` transition) to ensure smooth unfolding.
+    - [x] Ensure `FeedbackToast` slides up with the exact same `--spring` timing as the modals.
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Micro-Interactions Polish' (Protocol in workflow.md)
