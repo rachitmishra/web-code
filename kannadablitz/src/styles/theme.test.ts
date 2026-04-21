@@ -66,4 +66,12 @@ describe('Base and Utilities CSS (File Check)', () => {
     expect(utilitiesContent).toContain('border-radius: var(--card-radius)');
     expect(utilitiesContent).toContain('box-shadow: var(--card-shadow)');
   });
+
+  it('should have unified modal utility classes', () => {
+    expect(utilitiesContent).toContain('.glass-overlay');
+    expect(utilitiesContent).toContain('backdrop-filter: blur(8px)');
+    expect(utilitiesContent).toContain('.modal-container');
+    expect(utilitiesContent).toContain('.animate-modal');
+    expect(utilitiesContent).toContain('@keyframes modalSlideUp');
+  });
 });

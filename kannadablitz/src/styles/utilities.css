@@ -66,4 +66,46 @@
   .rotate-180 { transform: rotate(180deg); }
   .shrink-0 { flex-shrink: 0; }
   .w-full { inline-size: 100%; }
+
+  /* Unified Modal System */
+  .glass-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(28, 25, 23, 0.4); /* Subtle dark tint */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-3);
+    z-index: 1000;
+  }
+
+  .modal-container {
+    background: var(--surface-card);
+    border-radius: var(--card-radius);
+    border: var(--card-border);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    max-inline-size: 450px;
+    inline-size: 100%;
+    padding: var(--spacing-4);
+    position: relative;
+    max-block-size: 90vh;
+    overflow-y: auto;
+  }
+
+  .animate-modal {
+    animation: modalSlideUp 0.4s var(--spring) forwards;
+  }
+
+  @keyframes modalSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
 }
