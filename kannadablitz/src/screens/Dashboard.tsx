@@ -110,7 +110,7 @@ export default function Dashboard({ state, actions, onOpenSettings }: DashboardP
         }`}
       >
         <div className="week-header">
-          <h3 className="level-heading">{title}</h3>
+          <h2 className="level-heading" style={{ margin: 0 }}>{title}</h2>
           {isWeekComplete && !isWeekLocked && (
             <span className="weekly-medal-badge">
               Week {weekNum} Medal{" "}
@@ -165,9 +165,9 @@ export default function Dashboard({ state, actions, onOpenSettings }: DashboardP
       <div className="header-card">
         <div className="header-blob"></div>
         <h1 className="header-title">
-          Kannada<span className="text-accent-yellow">Blitz</span>
+          Kannada<span className="text-accent-yellow" style={{ color: 'var(--brand-accent)' }}>Blitz</span>
         </h1>
-        <p className="header-subtitle">{challengeDuration} Day Challenge</p>
+        <p className="header-subtitle text-small">{challengeDuration} Day Challenge</p>
 
         <div className="stats-row">
           <div className="stat-box">

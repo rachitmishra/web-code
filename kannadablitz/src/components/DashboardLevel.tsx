@@ -70,13 +70,15 @@ const DashboardLevel = ({
             )}
           </div>
           <div className="level-info">
-            <h4
+            <h3
               className={`day-title ${isCompleted ? "day-meta-completed" : ""}`}
+              style={{ margin: 0, fontSize: '1.1rem' }}
             >
               {day.title}
-            </h4>
+            </h3>
             <p
-              className={`day-meta ${isCompleted ? "day-meta-completed" : ""}`}
+              className={`day-meta text-small ${isCompleted ? "day-meta-completed" : ""}`}
+              style={{ margin: 0 }}
             >
               {subText}
             </p>
