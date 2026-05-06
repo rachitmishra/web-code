@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { registerPlugin, getPlugin, getRegistry } from './registry';
+import { registerPlugin, getPlugin, getRegistry, getRegisteredPluginIds } from './registry';
 import React from 'react';
 
 const MockPlugin: React.FC<any> = ({ data }) => React.createElement('div', null, data);
@@ -22,5 +22,11 @@ describe('Plugin Registry', () => {
     const registry = getRegistry();
     expect(registry['plugin-a']).toBe(MockPlugin);
     expect(registry['plugin-b']).toBe(MockPlugin);
+  });
+
+  it('should return all registered plugin IDs', () => {
+    const ids = getRegisteredPluginIds();
+    expect(ids).toContain('ImageGallery');
+    expect(ids).toContain('ProductInfo');
   });
 });
