@@ -54,6 +54,15 @@ const mockSettings: storefrontService.StorefrontSettings = {
   reviews: [
     { name: 'Alice', emoji: '🌟', text: 'Dynamic Review!' },
   ],
+  homeLayout: {
+    plugins: [
+      { id: '1', type: 'PromoBanner', visible: true },
+      { id: '2', type: 'CinematicHero', visible: true },
+      { id: '3', type: 'BestSellers', visible: true },
+      { id: '4', type: 'ProductGridSection', visible: true },
+      { id: '5', type: 'ReviewSection', visible: true },
+    ]
+  }
 };
 
 describe('Home Page', () => {

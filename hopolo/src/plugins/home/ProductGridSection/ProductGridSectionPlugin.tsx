@@ -14,7 +14,7 @@ const ProductGridSectionPlugin: React.FC = () => {
   }, [products, activeCategoryId]);
 
   return (
-    <section className={styles.section}>
+    <section id="product-grid-section" className={styles.section}>
       <CategoryTabs
         categories={categories}
         activeCategoryId={activeCategoryId}

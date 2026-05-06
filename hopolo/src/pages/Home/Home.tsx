@@ -1,16 +1,14 @@
-import React, { useState, useMemo, useRef } from "react";
+import React, { useState, useMemo } from "react";
 import { useNavigate, useLoaderData, useSubmit, useActionData } from "react-router-dom";
-import CinematicHero from '../../components/ui/Hero/CinematicHero';
-import CategoryTabs from '../../components/ui/CategoryTabs/CategoryTabs';
-import ProductCard from '../../components/ui/ProductCard/ProductCard';
-import BestSellers from '../../components/ui/BestSellers/BestSellers';
 import { type Product, type Category } from '../../services/productService';
 import { fetchProducts, fetchCategories, fetchBestSellers } from '../../services/productService.server';
-import { type StorefrontSettings, DEFAULT_SETTINGS } from '../../services/storefrontService';
+import { type StorefrontSettings, DEFAULT_SETTINGS, DEFAULT_HOME_LAYOUT } from '../../services/storefrontService';
 import { getStorefrontSettings } from '../../services/storefrontService.server';
 import { addToCart } from '../../services/cartService.server';
 import { getSessionIdFromRequest } from '../../lib/session';
 import { useSEO } from '../../hooks/useSEO';
+import { HomeProvider } from './Context';
+import PluginRenderer from '../../plugins/PluginRenderer';
 import styles from './Home.module.css';
 
 export async function loader() {
@@ -82,7 +80,6 @@ const Home: React.FC = () => {
   
   const navigate = useNavigate();
   const submit = useSubmit();
-  const productSectionRef = useRef<HTMLElement>(null);
 
   const seoTitle = activeCategoryId === 'all' 
     ? settings.heroTitle || 'Hopolo Boutique' 
@@ -111,26 +108,30 @@ const Home: React.FC = () => {
     );
   };
 
-  const filteredProducts = useMemo(() => {
-    if (activeCategoryId === "all") return products;
-    return products.filter((p) => p.category === activeCategoryId);
-  }, [products, activeCategoryId]);
-
   const scrollToProducts = () => {
-    productSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('product-grid-section')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  return (
-    <div className={styles.container}>
-      <CinematicHero
-        title={settings.heroTitle}
-        subtitle={settings.heroSubtitle}
-        backgroundImage={settings.heroImage}
-        ctaText={settings.heroCtaText}
-        onCtaClick={scrollToProducts}
-      />
+  const layout = settings.homeLayout || DEFAULT_HOME_LAYOUT;
 
-      <section ref={productSectionRef} className={styles.productSection}>
+  return (
+    <HomeProvider
+      settings={settings}
+      products={products}
+      categories={categories}
+      bestSellers={bestSellers}
+      actions={{
+        handleAddToCart,
+        handleCategoryChange,
+        navigate,
+        scrollToProducts
+      }}
+      state={{
+        activeCategoryId,
+        isGridChanging
+      }}
+    >
+      <div className={styles.container}>
         {actionData?.error && (
           <div 
             style={{ 
@@ -140,68 +141,16 @@ const Home: React.FC = () => {
               borderRadius: 'var(--radius-md)', 
               marginBottom: '2rem',
               textAlign: 'center',
-              border: '1px solid var(--color-danger)'
+              border: '1px solid var(--color-danger)',
+              zIndex: 10
             }}
           >
             {actionData.error}
           </div>
         )}
-        {bestSellers.length > 0 && (
-          <BestSellers 
-            products={bestSellers} 
-            onAddToCart={handleAddToCart}
-          />
-        )}
-
-        <CategoryTabs
-          categories={categories}
-          activeCategoryId={activeCategoryId}
-          onSelectCategory={handleCategoryChange}
-        />
-
-        <div className={`${styles.grid} ${isGridChanging ? styles.gridChanging : ''}`}>
-          {filteredProducts.map((product, index) => (
-            <div key={product.id} className={styles.productCardEntry} style={{ animationDelay: `${index * 0.05}s` }}>
-              <ProductCard
-                product={product}
-                onAddToCart={handleAddToCart}
-                onClick={(id) => navigate(`/product/${id}`)}
-              />
-            </div>
-          ))}
-        </div>
-
-        {filteredProducts.length === 0 && (
-          <div
-            style={{
-              textAlign: "center",
-              padding: "var(--spacing-8)",
-              color: "var(--color-text-muted)",
-            }}
-          >
-            No products found in this category.
-          </div>
-        )}
-      </section>
-
-      <section className={styles.reviewSection}>
-        <h2 className={styles.reviewSectionTitle}>
-          Loved by Customers
-        </h2>
-        <div className={styles.reviewGrid}>
-          {(settings.reviews || []).map((rev, i) => (
-            <div key={i} className={styles.reviewCard}>
-              <div className={styles.reviewerName}>
-                {rev.name} {rev.emoji}
-              </div>
-              <p className={styles.reviewText}>
-                "{rev.text}"
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-    </div>
+        <PluginRenderer layout={layout} />
+      </div>
+    </HomeProvider>
   );
 };
 
