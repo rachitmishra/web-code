@@ -41,4 +41,31 @@ describe('PluginRenderer', () => {
     render(React.createElement(PluginRenderer, { layout, pluginProps: { val: 'Hello' } }));
     expect(screen.getByText('Hello')).toBeInTheDocument();
   });
+
+  it('works without pluginProps', () => {
+    const MockNoProps: React.FC = () => React.createElement('div', null, 'No Props');
+    registerPlugin('NoPropPlugin', MockNoProps);
+
+    const layout = {
+      plugins: [
+        { id: '1', type: 'NoPropPlugin', visible: true }
+      ]
+    };
+
+    render(React.createElement(PluginRenderer, { layout }));
+    expect(screen.getByText('No Props')).toBeInTheDocument();
+  });
+
+  it('warns when plugin type is not found', () => {
+    const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const layout = {
+      plugins: [
+        { id: '1', type: 'UnknownPlugin', visible: true }
+      ]
+    };
+
+    render(React.createElement(PluginRenderer, { layout }));
+    expect(consoleSpy).toHaveBeenCalledWith('Plugin type "UnknownPlugin" not found in registry.');
+    consoleSpy.mockRestore();
+  });
 });
