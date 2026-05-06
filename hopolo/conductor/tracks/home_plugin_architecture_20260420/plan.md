@@ -35,10 +35,10 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Registry & Renderer Updates' (Protocol in workflow.md) (1da339c)
 
 ## Phase 4: Home Page Refactor
-- [ ] Task: Refactor `src/pages/Home.tsx` to use the new architecture
-    - [ ] Wrap content in `HomeProvider`.
-    - [ ] Use `PluginRenderer` for the entire page body.
-    - [ ] Simplify loader and action logic to only provide data.
+- [x] Task: Refactor `src/pages/Home.tsx` to use the new architecture (5a46c99)
+    - [x] Wrap content in `HomeProvider`.
+    - [x] Use `PluginRenderer` for the entire page body.
+    - [x] Simplify loader and action logic to only provide data.
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Home Page Refactor' (Protocol in workflow.md)
 
 ## Phase 5: Verification & Cleanup
