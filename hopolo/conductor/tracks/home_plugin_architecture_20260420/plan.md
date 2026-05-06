@@ -29,9 +29,9 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Home Plugin Implementation' (Protocol in workflow.md)
 
 ## Phase 3: Registry & Renderer Updates
-- [ ] Task: Register new home plugins in `src/plugins/registry.ts`
-- [ ] Task: Update `PluginRenderer` to be context-aware
-    - [ ] Ensure it can handle plugins that don't rely solely on direct props.
+- [x] Task: Register new home plugins in `src/plugins/registry.ts` (3098713)
+- [x] Task: Update `PluginRenderer` to be context-aware (5add4ed)
+    - [x] Ensure it can handle plugins that don't rely solely on direct props.
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Registry & Renderer Updates' (Protocol in workflow.md)
 
 ## Phase 4: Home Page Refactor
