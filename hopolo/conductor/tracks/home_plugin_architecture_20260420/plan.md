@@ -34,12 +34,12 @@
     - [x] Ensure it can handle plugins that don't rely solely on direct props.
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Registry & Renderer Updates' (Protocol in workflow.md) (1da339c)
 
-## Phase 4: Home Page Refactor
+## Phase 4: Home Page Refactor [checkpoint: ad164a1]
 - [x] Task: Refactor `src/pages/Home.tsx` to use the new architecture (5a46c99)
     - [x] Wrap content in `HomeProvider`.
     - [x] Use `PluginRenderer` for the entire page body.
     - [x] Simplify loader and action logic to only provide data.
-- [ ] Task: Conductor - User Manual Verification 'Phase 4: Home Page Refactor' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 4: Home Page Refactor' (Protocol in workflow.md) (ad164a1)
 
 ## Phase 5: Verification & Cleanup
 - [ ] Task: Update existing Home page integration tests
