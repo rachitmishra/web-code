@@ -14,5 +14,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: move homescreen to the plugin architecture similar to pdp**
+- [x] **Track: move homescreen to the plugin architecture similar to pdp**
 *Link: [./tracks/home_plugin_architecture_20260420/](./tracks/home_plugin_architecture_20260420/)*
