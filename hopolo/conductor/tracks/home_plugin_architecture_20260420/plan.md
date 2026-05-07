@@ -42,6 +42,6 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 4: Home Page Refactor' (Protocol in workflow.md) (ad164a1)
 
 ## Phase 5: Verification & Cleanup
-- [ ] Task: Update existing Home page integration tests
-- [ ] Task: Verify mobile responsiveness for all new home plugins
+- [x] Task: Update existing Home page integration tests (07353e6)
+- [x] Task: Verify mobile responsiveness for all new home plugins (07353e6)
 - [ ] Task: Conductor - User Manual Verification 'Phase 5: Verification & Cleanup' (Protocol in workflow.md)
