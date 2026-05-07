@@ -11,8 +11,3 @@ This file tracks all major tracks for the project. Each track has its own detail
   *Link: [./conductor/tracks/admin_sidebar_20260304/](./conductor/tracks/admin_sidebar_20260304/)*
 - [x] Track: Admin Panel UI Polish & Consistency
   *Link: [./conductor/tracks/admin_ui_polish_20260304/](./conductor/tracks/admin_ui_polish_20260304/)*
-
----
-
-- [x] **Track: move homescreen to the plugin architecture similar to pdp**
-*Link: [./tracks/home_plugin_architecture_20260420/](./tracks/home_plugin_architecture_20260420/)*
