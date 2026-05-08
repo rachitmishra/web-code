@@ -1,25 +1,26 @@
 :root {
-  /* Color Palette - HYPVZN Streetwear Aesthetic */
-  --color-primary: #000000;
-  --color-primary-hover: #1a1a1a;
-  --color-primary-light: rgba(0, 0, 0, 0.05);
-  --color-secondary: #ffffff;
-  --color-background: #ffffff;
-  --color-bg-alt: #f5f5f5;
-  --color-surface: #ffffff;
-  --color-text: #000000;
-  --color-text-muted: #666666;
-  --color-danger: #ff0000;
+  /* Color Palette - Ethos Archetype (Technical Luxury) */
+  --color-primary: #ffffff;
+  --color-primary-hover: #e2e2e2;
+  --color-primary-light: rgba(255, 255, 255, 0.1);
+  --color-secondary: #8a2be2; /* Electric Violet */
+  --color-background: #000000; /* Deepest Black */
+  --color-bg-alt: #1a1a1a; /* Tier 2 Black */
+  --color-surface: #1a1a1a;
+  --color-surface-container: #262626;
+  --color-text: #ffffff;
+  --color-text-muted: #8e9192;
+  --color-danger: #ff4d4d;
   --color-success: #00ff00;
-  --color-border: #000000;
-  --color-border-hover: #333333;
+  --color-border: #ffffff; /* High contrast white borders */
+  --color-border-hover: #8a2be2;
 
   /* Typography */
-  --font-family-sans: 'Space Grotesk', sans-serif;
-  --font-family-display: 'Syne', sans-serif;
-  --font-family-logo: 'Bangers', system-ui;
+  --font-family-sans: 'Inter', sans-serif;
+  --font-family-display: 'Space Grotesk', sans-serif;
+  --font-family-logo: 'Space Grotesk', sans-serif;
   
-  /* Spacing */
+  /* Spacing - 4px unit */
   --spacing-1: 0.25rem; /* 4px */
   --spacing-2: 0.5rem;  /* 8px */
   --spacing-3: 0.75rem; /* 12px */
@@ -29,14 +30,15 @@
   --spacing-8: 2rem;    /* 32px */
   --spacing-10: 2.5rem; /* 40px */
   --spacing-12: 3rem;   /* 48px */
+  --spacing-unit: 4px;
 
   --header-height: 72px;
 
-  /* Borders & Shadows - Streetwear often uses sharp corners */
+  /* Borders & Shadows - Brutalist: Sharp corners, no shadows */
   --radius-sm: 0px;
   --radius-md: 0px;
   --radius-lg: 0px;
-  --radius-full: 9999px;
+  --radius-full: 0px; /* Overridden to 0px for Ethos Archetype */
 
   --shadow-sm: none;
   --shadow-md: none;
