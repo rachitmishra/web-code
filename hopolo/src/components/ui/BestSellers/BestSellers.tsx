@@ -18,7 +18,10 @@ const BestSellers: React.FC<BestSellersProps> = ({ products, onAddToCart }) => {
 
   return (
     <section className={styles.section}>
-      <h2 className={styles.title}>Best Sellers</h2>
+      <div className={styles.header}>
+        <div className={styles.indicator} />
+        <h2 className={styles.title}>Top Performers</h2>
+      </div>
       <div className={styles.grid}>
         {products.map((product) => (
           <ProductCard
