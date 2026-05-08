@@ -24,6 +24,7 @@ const CinematicHero: React.FC<CinematicHeroProps> = ({
     >
       <div className={styles.overlay} />
       <div className={styles.content}>
+        <span className={styles.systemTag}>SYSTEM_CORE_READY</span>
         <h1 className={styles.title}>{title}</h1>
         {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
         <Button
@@ -33,6 +34,14 @@ const CinematicHero: React.FC<CinematicHeroProps> = ({
         >
           {ctaText}
         </Button>
+      </div>
+
+      <div className={styles.metadataLeft}>
+        [ LAT: 35.6895° N ] [ LONG: 139.6917° E ]
+      </div>
+      <div className={styles.metadataRight}>
+        <div className={styles.divider} />
+        <span className={styles.scrollTag}>SCROLL_FOR_INTEL</span>
       </div>
     </section>
   );
