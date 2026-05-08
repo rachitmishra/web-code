@@ -62,13 +62,70 @@ body {
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-family: var(--font-family-display);
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: -0.04em;
   line-height: 1;
 }
 
+h1 { font-size: 5rem; } /* 80px */
+h2 { font-size: 3rem; } /* 48px */
+h3 { font-size: 1.5rem; letter-spacing: 0.05em; } /* 24px */
+
+.label-caps {
+  font-family: var(--font-family-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  line-height: 1;
+}
+
+.mono-technical {
+  font-family: var(--font-family-display);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.body-lg {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
 button {
   cursor: pointer;
   font-family: inherit;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Zero-radius enforcement for common elements */
+input, select, textarea, button, .card, .container {
+  border-radius: 0 !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
 }
