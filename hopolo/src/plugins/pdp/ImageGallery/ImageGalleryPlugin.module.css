@@ -1,21 +1,28 @@
 .gallery {
   position: sticky;
-  top: var(--header-height);
+  top: 100px;
+  border: 1px solid var(--color-border);
 }
 
 .mainImage {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
-  background-color: var(--color-bg-alt);
+  background-color: var(--color-background);
+  filter: grayscale(1) contrast(1.1);
+  mix-blend-mode: lighten;
+  display: block;
 }
 
 .placeholder {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #eee;
+  background: var(--color-bg-alt);
   color: var(--color-text-muted);
+  font-family: var(--font-family-display);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
