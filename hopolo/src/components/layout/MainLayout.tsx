@@ -3,6 +3,7 @@ import Header from './Header/Header';
 import PromoBanner from '../ui/PromoBanner/PromoBanner';
 import MaintenanceGuard from '../ui/Maintenance/MaintenanceGuard';
 import MiniCart from '../ui/MiniCart/MiniCart';
+import BottomNavBar from './BottomNavBar/BottomNavBar';
 import DebugOverlay from '../ui/Debug/DebugOverlay';
 import styles from './MainLayout.module.css';
 import { subscribeToCart } from '../../services/cartService';
@@ -50,6 +51,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             &copy; {new Date().getFullYear()} Hopolo. All rights reserved.
           </div>
         </footer>
+        <BottomNavBar />
       </MaintenanceGuard>
     </div>
   );
