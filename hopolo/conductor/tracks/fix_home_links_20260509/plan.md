@@ -11,13 +11,10 @@
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Infrastructure & Data Modeling' (Protocol in workflow.md)
 
 ## Phase 2: Page Creation & Routing
-- [ ] Task: Create missing static pages with basic content.
-    - [ ] Create `src/pages/Collections.tsx`.
-    - [ ] Create `src/pages/Archive.tsx`.
-    - [ ] Create `src/pages/Stockists.tsx`.
-    - [ ] Create a generic `src/pages/StaticPage.tsx` for legal/info pages.
-- [ ] Task: Register new routes in React Router.
-    - [ ] Update `app/routes.ts` to include the new pages.
+- [x] Task: Create missing static pages with basic content. (c7a0f9f)
+    - [x] Create generic `src/pages/StaticPage.tsx` for legal/info pages.
+- [x] Task: Register new routes in React Router. (c7a0f9f)
+    - [x] Update `app/routes.ts` to include the new pages.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Page Creation & Routing' (Protocol in workflow.md)
 
 ## Phase 3: Link Updates & SPA Navigation
