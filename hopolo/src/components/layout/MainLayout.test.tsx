@@ -1,44 +1,35 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { RouterProvider, createMemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router';
 import MainLayout from './MainLayout';
 import * as storefrontService from '../../services/storefrontService';
 
-vi.mock('../../services/storefrontService', () => ({
-  subscribeToStorefrontSettings: vi.fn(),
-}));
-
-vi.mock('../../services/profileService', () => ({
-  getUserProfile: vi.fn()
-}));
-
-vi.mock('react-router-dom', async () => {
-  const actual = await vi.importActual('react-router-dom');
+vi.mock('react-router', async () => {
+  const actual = await vi.importActual('react-router');
   return {
     ...actual,
-    useRouteLoaderData: () => ({ serverUser: null, role: null, storefrontSettings: { isMaintenanceMode: false } }),
+    useRouteLoaderData: vi.fn(() => ({
+      settings: { isMaintenanceMode: false },
+      role: 'user'
+    })),
     useLocation: () => ({ pathname: '/' }),
+    useNavigate: () => vi.fn(),
+    useFetcher: () => ({
+      submit: vi.fn(),
+      data: null,
+      state: 'idle',
+    }),
   };
 });
 
 vi.mock('../../lib/firebase', () => ({
-  auth: {},
+  auth: { currentUser: null, onAuthStateChanged: vi.fn(() => vi.fn()) },
   db: {}
-}));
-vi.mock('firebase/auth', () => ({
-  onAuthStateChanged: vi.fn((auth, cb) => {
-    cb(null); 
-    return () => {};
-  })
 }));
 
 describe('MainLayout', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    (storefrontService.subscribeToStorefrontSettings as any).mockImplementation((cb: any) => {
-      cb({ isMaintenanceMode: false });
-      return () => {};
-    });
   });
 
   const renderComponent = () => {

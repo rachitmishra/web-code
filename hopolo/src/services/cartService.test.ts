@@ -42,7 +42,7 @@ describe('cartService', () => {
 
     expect(doc).toHaveBeenCalled();
     expect(setDoc).toHaveBeenCalledWith(expect.anything(), {
-      items: [{ product: mockProduct, quantity: 2, selectedSize: undefined, selectedColor: undefined }]
+      items: [{ product: mockProduct, quantity: 2 }]
     }, { merge: true });
   });
 

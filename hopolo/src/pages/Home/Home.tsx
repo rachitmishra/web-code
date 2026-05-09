@@ -1,11 +1,11 @@
 import React, { useState, useMemo } from "react";
-import { useNavigate, useLoaderData, useSubmit, useActionData } from "react-router-dom";
+import { useNavigate, useLoaderData, useSubmit, useActionData } from "react-router";
 import { type Product, type Category } from '../../services/productService';
 import { fetchProducts, fetchCategories, fetchBestSellers } from '../../services/productService.server';
 import { type StorefrontSettings, DEFAULT_SETTINGS, DEFAULT_HOME_LAYOUT } from '../../services/storefrontService';
 import { getStorefrontSettings } from '../../services/storefrontService.server';
 import { addToCart } from '../../services/cartService.server';
-import { getSessionIdFromRequest } from '../../lib/session';
+import { getSessionIdFromRequest, SESSION_COOKIE_NAME } from '../../lib/session';
 import { useSEO } from '../../hooks/useSEO';
 import { HomeProvider } from './Context';
 import PluginRenderer from '../../plugins/PluginRenderer';
@@ -43,13 +43,26 @@ export async function loader() {
 }
 
 export async function action({ request }: { request: Request }) {
-  const sessionId = getSessionIdFromRequest(request);
+  console.log("[Home Action] Received request");
+  let sessionId = getSessionIdFromRequest(request);
   const formData = await request.formData();
   const intent = formData.get("intent");
+  
+  // Robust session handling: if missing, try to get from somewhere else or generate
+  if (!sessionId) {
+    console.warn("[Home Action] Session ID missing from request cookies. Attempting fallback.");
+    // In a real app, we might check a header or similar. 
+    // For now, let's generate a temporary one so it doesn't throw, 
+    // but ideally the root loader should have ensured it exists.
+    sessionId = "temp-" + Math.random().toString(36).substring(7);
+  }
+  
+  console.log(`[Home Action] Intent: ${intent}, SessionID: ${sessionId}`);
 
   if (intent === "add-to-cart") {
     const productJson = formData.get("product") as string;
     if (!productJson) {
+      console.warn("[Home Action] Product data missing");
       return { success: false, error: "Product data missing" };
     }
     try {
@@ -57,9 +70,23 @@ export async function action({ request }: { request: Request }) {
       if (!product || !product.id) {
         throw new Error("Invalid product data");
       }
+      console.log(`[Home Action] Adding product to cart: ${product.name}`);
       await addToCart(sessionId, product, 1);
-      return { success: true };
+      console.log("[Home Action] Product added successfully");
+      
+      const headers = new Headers();
+      if (sessionId.startsWith("temp-")) {
+        headers.append("Set-Cookie", `${SESSION_COOKIE_NAME}=${sessionId}; Path=/; Max-Age=${60 * 60 * 24 * 5}; SameSite=Lax`);
+      }
+      
+      return new Response(JSON.stringify({ success: true }), {
+        headers: {
+          ...Object.fromEntries(headers.entries()),
+          "Content-Type": "application/json"
+        }
+      });
     } catch (err: any) {
+      console.error("[Home Action] Add to Cart Error:", err.message);
       return { success: false, error: err.message };
     }
   }

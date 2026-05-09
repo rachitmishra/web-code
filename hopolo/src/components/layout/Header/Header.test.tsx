@@ -1,11 +1,26 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { RouterProvider, createMemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Routes, Route } from 'react-router';
 import Header from './Header';
 import * as cartService from '../../../services/cartService';
 import { auth } from '../../../lib/firebase';
 
 vi.mock('../../../services/cartService');
+
+// Mock react-router hooks
+vi.mock('react-router', async () => {
+  const actual = await vi.importActual('react-router');
+  return {
+    ...actual,
+    useFetcher: () => ({
+      submit: vi.fn(),
+      data: null,
+      state: 'idle',
+    }),
+    // We don't mock useLocation and useNavigate here because we want to use the ones from MemoryRouter in tests
+  };
+});
+
 vi.mock('../../../lib/firebase', () => {
   const auth = {
     currentUser: null,

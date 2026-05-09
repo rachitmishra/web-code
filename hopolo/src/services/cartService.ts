@@ -1,4 +1,4 @@
-import { onSnapshot, doc, getDoc, setDoc, updateDoc, type Unsubscribe } from 'firebase/firestore';
+import { onSnapshot, doc, getDoc, setDoc, type Unsubscribe } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { getSessionId } from '../lib/session';
 import type { Product } from './productService';
@@ -30,77 +30,82 @@ export const subscribeToCart = (callback: (items: CartItem[]) => void): Unsubscr
   });
 };
 
-export const getCartItems = async (): Promise<CartItem[]> => {
-  const docSnap = await getDoc(getCartRef());
-  if (docSnap.exists()) {
-    const data = docSnap.data() as Cart;
-    return data.items || [];
-  }
-  return [];
-};
-
-export const addToCart = async (
-  product: Product,
-  quantity: number,
-  selectedSize?: string,
-  selectedColor?: string
-) => {
+/**
+ * Adds a product to the cart (client-side).
+ */
+export const addToCart = async (product: Product, quantity: number, options?: { size?: string; color?: string }) => {
   const cartRef = getCartRef();
-  const items = await getCartItems();
+  const cartDoc = await getDoc(cartRef);
+  let items: CartItem[] = [];
 
-  const existingItemIndex = items.findIndex(
-    item => item.product.id === product.id &&
-            item.selectedSize === selectedSize &&
-            item.selectedColor === selectedColor
-  );
+  if (cartDoc.exists()) {
+    items = (cartDoc.data() as Cart).items || [];
+  }
+
+  const existingItemIndex = items.findIndex((item) => {
+    const isSameProduct = item.product.id === product.id;
+    const isSameSize = item.selectedSize === options?.size;
+    const isSameColor = item.selectedColor === options?.color;
+    return isSameProduct && isSameSize && isSameColor;
+  });
 
   if (existingItemIndex > -1) {
     items[existingItemIndex].quantity += quantity;
   } else {
-    items.push({ product, quantity, selectedSize, selectedColor });
+    items.push({ 
+      product, 
+      quantity,
+      ...(options?.size && { selectedSize: options.size }),
+      ...(options?.color && { selectedColor: options.color })
+    });
   }
 
   await setDoc(cartRef, { items }, { merge: true });
 };
 
-export const updateCartItemQuantity = async (
-  productId: string,
-  quantity: number,
-  selectedSize?: string,
-  selectedColor?: string
-) => {
+/**
+ * Removes a product from the cart (client-side).
+ */
+export const removeFromCart = async (productId: string, options?: { size?: string; color?: string }) => {
   const cartRef = getCartRef();
-  const items = await getCartItems();
+  const cartDoc = await getDoc(cartRef);
 
-  const updatedItems = items.map(item => {
-    if (item.product.id === productId &&
-        item.selectedSize === selectedSize &&
-        item.selectedColor === selectedColor) {
-      return { ...item, quantity };
-    }
-    return item;
-  });
-
-  await updateDoc(cartRef, { items: updatedItems });
+  if (cartDoc.exists()) {
+    const items = (cartDoc.data() as Cart).items.filter((item) => {
+      const isSameProduct = item.product.id === productId;
+      const isSameSize = !options?.size || item.selectedSize === options.size;
+      const isSameColor = !options?.color || item.selectedColor === options.color;
+      return !(isSameProduct && isSameSize && isSameColor);
+    });
+    await setDoc(cartRef, { items }, { merge: true });
+  }
 };
 
-export const removeFromCart = async (
-  productId: string,
-  selectedSize?: string,
-  selectedColor?: string
-) => {
+/**
+ * Updates the quantity of an item in the cart (client-side).
+ */
+export const updateQuantity = async (productId: string, quantity: number, options?: { size?: string; color?: string }) => {
   const cartRef = getCartRef();
-  const items = await getCartItems();
+  const cartDoc = await getDoc(cartRef);
 
-  const updatedItems = items.filter(
-    item => !(item.product.id === productId &&
-              item.selectedSize === selectedSize &&
-              item.selectedColor === selectedColor)
-  );
-
-  await updateDoc(cartRef, { items: updatedItems });
+  if (cartDoc.exists()) {
+    const items = (cartDoc.data() as Cart).items.map((item) => {
+      const isSameProduct = item.product.id === productId;
+      const isSameSize = !options?.size || item.selectedSize === options.size;
+      const isSameColor = !options?.color || item.selectedColor === options.color;
+      
+      if (isSameProduct && isSameSize && isSameColor) {
+        return { ...item, quantity };
+      }
+      return item;
+    });
+    await setDoc(cartRef, { items }, { merge: true });
+  }
 };
 
+/**
+ * Clears the cart (client-side).
+ */
 export const clearCart = async () => {
   const cartRef = getCartRef();
   await setDoc(cartRef, { items: [] });

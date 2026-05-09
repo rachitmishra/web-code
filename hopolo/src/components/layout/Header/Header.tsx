@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router';
 import styles from './Header.module.css';
 import { subscribeToCart, type CartItem } from '../../../services/cartService';
 import { auth } from '../../../lib/firebase';
@@ -74,33 +74,41 @@ const Header: React.FC<HeaderProps> = ({ onOpenCart }) => {
   return (
     <>
       <header className={`${styles.header} ${isHome && !isScrolled ? styles.transparent : ''} ${isScrolled ? styles.scrolled : ''}`}>
-        <Link to="/" className={styles.brand}>
-          HYPVZN
-        </Link>
+        <div className={styles.left}>
+          <Link to="/" className={styles.brand}>
+            HYPVZN
+          </Link>
+          
+          <nav className={styles.nav}>
+            <Link to="/" className={`${styles.navLink} ${isHome ? styles.active : ''}`}>COLLECTIONS</Link>
+          </nav>
+        </div>
         
-        <div className={styles.actions}>
-          {user ? (
-            <>
-              <Link to="/profile" className={styles.link}>Account</Link>
-              <button onClick={handleSignOut} className={styles.linkButton}>Sign Out</button>
-            </>
-          ) : (
-            !isLoginPage && (
-              <button 
-                onClick={() => setIsLoginOpen(true)} 
-                className={styles.linkButton}
-              >
-                Sign In
-              </button>
-            )
-          )}
+        <div className={styles.right}>
+          <div className={styles.actions}>
+            {user ? (
+              <>
+                <Link to="/profile" className={styles.linkButton}>Account</Link>
+                <button onClick={handleSignOut} className={styles.linkButton}>Sign Out</button>
+              </>
+            ) : (
+              !isLoginPage && (
+                <button 
+                  onClick={() => setIsLoginOpen(true)} 
+                  className={styles.linkButton}
+                >
+                  Sign In
+                </button>
+              )
+            )}
 
-          {!isAdminPage && (
-            <button className={styles.cartButton} onClick={onOpenCart} aria-label="Shopping Cart">
-              <ShoppingBag size={20} />
-              {itemCount > 0 && <span className={styles.badge}>{itemCount}</span>}
-            </button>
-          )}
+            {!isAdminPage && (
+              <button className={styles.cartButton} onClick={onOpenCart} aria-label="Shopping Cart">
+                <ShoppingBag size={20} />
+                {itemCount > 0 && <span className={styles.badge}>{itemCount}</span>}
+              </button>
+            )}
+          </div>
         </div>
       </header>
 
