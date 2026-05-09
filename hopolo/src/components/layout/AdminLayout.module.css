@@ -1,7 +1,7 @@
 .adminLayout {
   display: flex;
   min-height: calc(100vh - var(--header-height));
-  background-color: var(--admin-bg-color, var(--color-bg));
+  background-color: var(--admin-bg-color, var(--color-background));
   transition: background-color 0.5s ease;
   position: relative;
   overflow: hidden;
