@@ -141,7 +141,10 @@ const Cart: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Shopping Cart</h1>
+      <div className={styles.header}>
+        <h1 className={styles.title}>YOUR BAG</h1>
+        <span className={styles.itemCount}>{items.length} ITEMS REGISTERED</span>
+      </div>
 
       <div className={styles.cartGrid}>
         <div className={styles.items}>
@@ -149,34 +152,24 @@ const Cart: React.FC = () => {
             <div key={`${item.product.id}-${index}`} className={styles.item}>
               <div className={styles.itemImage}>
                 {item.product.image ? (
-                  <img src={item.product.image} alt={item.product.name} />
+                  <img src={item.product.image} alt={item.product.name} className={styles.grayscale} />
                 ) : (
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      height: "100%",
-                      background: "#eee",
-                    }}
-                  >
-                    🛍️
+                  <div className={styles.placeholder}>
+                    [IMAGE_NOT_FOUND]
                   </div>
                 )}
               </div>
 
               <div className={styles.itemDetails}>
                 <div className={styles.itemName}>{item.product.name}</div>
-                {item.selectedSize && (
-                  <div style={{ fontSize: "0.8rem", color: "#666" }}>
-                    Size: {item.selectedSize}
-                  </div>
-                )}
-                {item.selectedColor && (
-                  <div style={{ fontSize: "0.8rem", color: "#666" }}>
-                    Color: {item.selectedColor}
-                  </div>
-                )}
+                <div className={styles.itemMeta}>
+                  {item.selectedSize && (
+                    <span>SIZE: {item.selectedSize}</span>
+                  )}
+                  {item.selectedColor && (
+                    <span>COLOR: {item.selectedColor}</span>
+                  )}
+                </div>
                 <div className={styles.itemPrice}>
                   ${item.product.price.toFixed(2)}
                 </div>
@@ -192,75 +185,84 @@ const Cart: React.FC = () => {
                   onClick={() => handleRemove(item)}
                   aria-label="Remove item"
                 >
-                  Remove
+                  REMOVE
                 </button>
               </div>
             </div>
           ))}
         </div>
 
-        <Card className={styles.summary}>
-          <h2>Order Summary</h2>
-          <div className={styles.summaryRow}>
-            <span>Subtotal</span>
-            <span>${subtotal.toFixed(2)}</span>
-          </div>
-          <div className={styles.summaryRow}>
-            <span>Shipping</span>
-            <span>${shipping.toFixed(2)}</span>
-          </div>
+        <aside className={styles.sidebar}>
+          <div className={styles.summary}>
+            <h3 className={styles.summaryTitle}>ORDER SUMMARY [SYSTEM_LOG]</h3>
+            <div className={styles.summaryRows}>
+              <div className={styles.summaryRow}>
+                <span>SUBTOTAL</span>
+                <span>${subtotal.toFixed(2)}</span>
+              </div>
+              <div className={styles.summaryRow}>
+                <span>SHIPPING (STANDARD)</span>
+                <span>${shipping.toFixed(2)}</span>
+              </div>
 
-          {discount > 0 && (
-            <div className={`${styles.summaryRow} ${styles.discountRow}`}>
-              <span>Discount ({appliedCode})</span>
-              <span>-${discount.toFixed(2)}</span>
+              {discount > 0 && (
+                <div className={`${styles.summaryRow} ${styles.discountRow}`}>
+                  <span>DISCOUNT ({appliedCode})</span>
+                  <span>-${discount.toFixed(2)}</span>
+                </div>
+              )}
             </div>
-          )}
 
-          <div className={`${styles.summaryRow} ${styles.totalRow}`}>
-            <span>Total</span>
-            <span>${total.toFixed(2)}</span>
+            <div className={styles.totalSection}>
+              <div className={`${styles.summaryRow} ${styles.totalRow}`}>
+                <span className={styles.totalLabel}>TOTAL</span>
+                <span className={styles.totalValue}>${total.toFixed(2)}</span>
+              </div>
+            </div>
+
+            <Link to="/checkout" state={{ discount, appliedCode }}>
+              <Button 
+                variant="primary"
+                className={styles.checkoutButton}
+              >
+                PROCEED TO CHECKOUT
+              </Button>
+            </Link>
+
+            <div className={styles.technicalNotices}>
+              <div className={styles.notice}>
+                [ SECURE TECHNICAL CHECKOUT ]
+              </div>
+              <div className={styles.notice}>
+                [ SHIPS IN 48 HOURS ]
+              </div>
+            </div>
           </div>
 
           <div className={styles.promoSection}>
-            <div style={{ fontSize: "0.9rem", fontWeight: 500 }}>
-              Promo Code
-            </div>
+            <p className={styles.promoLabel}>PROMO_CODE</p>
             <div className={styles.promoInputGroup}>
               <input
                 className={styles.promoInput}
-                placeholder="Enter code"
+                placeholder="ENTER_CODE"
                 value={promoCode}
                 onChange={(e) => setPromoCode(e.target.value)}
               />
-              <Button
-                variant="outline"
-                style={{ padding: "8px 12px" }}
+              <button
+                className={styles.promoBtn}
                 onClick={handleApplyPromo}
-                loading={loadingPromo}
+                disabled={loadingPromo}
               >
-                Apply
-              </Button>
+                APPLY
+              </button>
             </div>
             {promoError && (
-              <div
-                style={{
-                  color: "var(--color-danger)",
-                  fontSize: "0.8rem",
-                  marginTop: "4px",
-                }}
-              >
+              <div className={styles.errorText}>
                 {promoError}
               </div>
             )}
           </div>
-
-          <Link to="/checkout" state={{ discount, appliedCode }}>
-            <Button style={{ marginTop: "var(--spacing-4)", width: "100%" }}>
-              Proceed to Checkout
-            </Button>
-          </Link>
-        </Card>
+        </aside>
       </div>
     </div>
   );
