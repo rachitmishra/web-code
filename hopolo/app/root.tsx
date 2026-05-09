@@ -21,8 +21,11 @@ import { signOutUser } from "../src/services/authService";
 
 import { getSessionIdFromRequest, SESSION_COOKIE_NAME } from "../src/lib/session";
 import { v4 as uuidv4 } from 'uuid';
+import { handleRedirects } from "../src/lib/redirects.server";
 
 export async function loader({ request }: { request: Request }) {
+  await handleRedirects(request);
+  
   const user = await getAuthenticatedUser(request);
   const existingSessionId = getSessionIdFromRequest(request);
   
