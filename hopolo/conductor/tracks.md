@@ -18,5 +18,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: Fix all the links on the home screen.**
+- [x] **Track: Fix all the links on the home screen.**
 *Link: [./tracks/fix_home_links_20260509/](./tracks/fix_home_links_20260509/)*
