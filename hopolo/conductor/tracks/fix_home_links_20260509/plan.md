@@ -8,28 +8,28 @@
 - [x] Task: Implement server-side redirects for broken links. (aa8a1bf)
     - [x] Create `src/lib/redirects.server.ts` to handle legacy or broken paths.
     - [x] Configure redirects to point to new routes.
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Infrastructure & Data Modeling' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Infrastructure & Data Modeling' (Protocol in workflow.md) (3954c65)
 
 ## Phase 2: Page Creation & Routing
 - [x] Task: Create missing static pages with basic content. (c7a0f9f)
     - [x] Create generic `src/pages/StaticPage.tsx` for legal/info pages.
 - [x] Task: Register new routes in React Router. (c7a0f9f)
     - [x] Update `app/routes.ts` to include the new pages.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Page Creation & Routing' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Page Creation & Routing' (Protocol in workflow.md) (3954c65)
 
 ## Phase 3: Link Updates & SPA Navigation
-- [ ] Task: Update Header links to use `Link` component.
-    - [ ] Modify `src/components/layout/Header/Header.tsx`.
-- [ ] Task: Update Product Card links to use `navigate()`.
-    - [ ] Modify `src/components/ui/ProductCard/ProductCard.tsx`.
-- [ ] Task: Update Footer links to use `Link` component.
-    - [ ] Modify `src/components/layout/MainLayout.tsx` (where Footer is currently located).
-- [ ] Task: Update CTA buttons to use appropriate navigation methods.
-    - [ ] Update `CinematicHero.tsx` and other plugins.
-- [ ] Task: Implement smooth scroll for anchor links.
-    - [ ] Add a utility for smooth scrolling.
-    - [ ] Apply to any on-page section links.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Link Updates & SPA Navigation' (Protocol in workflow.md)
+- [x] Task: Update Header links to use `Link` component. (aa8a1bf)
+    - [x] Modify `src/components/layout/Header/Header.tsx`.
+- [x] Task: Update Product Card links to use `navigate()`. (aa8a1bf)
+    - [x] Modify `src/components/ui/ProductCard/ProductCard.tsx`.
+- [x] Task: Update Footer links to use `Link` component. (aa8a1bf)
+    - [x] Modify `src/components/layout/MainLayout.tsx` (where Footer is currently located).
+- [x] Task: Update CTA buttons to use appropriate navigation methods. (aa8a1bf)
+    - [x] Update `CinematicHero.tsx` and other plugins.
+- [x] Task: Implement smooth scroll for anchor links. (aa8a1bf)
+    - [x] Add a utility for smooth scrolling in `src/lib/scroll.ts`.
+    - [x] Apply to any on-page section links.
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Link Updates & SPA Navigation' (Protocol in workflow.md) (3954c65)
 
 ## Phase 4: Admin Panel Integration
 - [ ] Task: Create Admin UI for managing page content.
