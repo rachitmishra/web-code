@@ -37,10 +37,10 @@
     - [x] Add a new section in Admin sidebar.
 - [x] Task: Implement save functionality for page content. (aab1b44)
     - [x] Add `updatePageContent` in `storefrontService.server.ts`.
-- [ ] Task: Conductor - User Manual Verification 'Phase 4: Admin Panel Integration' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 4: Admin Panel Integration' (Protocol in workflow.md) (aab1b44)
 
 ## Phase 5: Styling & Polish
-- [ ] Task: Refine link styles (hover, active, focus).
-    - [ ] Update `index.css` or component-specific CSS modules.
-    - [ ] Ensure alignment with "Ethos Archetype" (0px radius, 1px borders).
-- [ ] Task: Conductor - User Manual Verification 'Phase 5: Styling & Polish' (Protocol in workflow.md)
+- [x] Task: Refine link styles (hover, active, focus). (75cde03)
+    - [x] Update `index.css` or component-specific CSS modules.
+    - [x] Ensure alignment with "Ethos Archetype" (0px radius, 1px borders).
+- [x] Task: Conductor - User Manual Verification 'Phase 5: Styling & Polish' (Protocol in workflow.md) (75cde03)
