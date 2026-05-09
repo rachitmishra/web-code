@@ -1,15 +1,15 @@
 # Product Guidelines: Hopolo
 
 ## Visual Identity
-- **Aesthetic:** "Minimalist yet Playful". Clean, airy layouts with ample white space and thin typography, accented by vibrant colors and prominent emojis to add warmth and character.
-- **Goal:** Balance the professionalism of a trusted commerce platform with the approachability of a boutique brand.
+- **Aesthetic:** "Technical Luxury / Archival Brutalist". High-contrast monochromatic layouts with strict grid lines, 0px corners, and Space Grotesk typography. High-flash grayscale photography with technical metadata overlays.
+- **Goal:** Create a feeling of precision engineering and archival permanence.
 
 ## Tone of Voice
-- **Primary Tone:** Professional & Trustworthy. Clear, concise, and reassuring language that builds confidence in the transaction and security.
-- **Secondary Tone:** Friendly & Approachable. Warm, conversational phrasing (e.g., "We've got your order!") to make the experience feel personal and human.
-- **Usage:** Use the professional tone for critical transaction details (payment, shipping) and the friendly tone for greetings, confirmations, and success messages.
+- **Primary Tone:** Clinical & Precise. Language should be objective and technical (e.g., "TRANSACTION_SUCCESSFUL" instead of "Order Confirmed").
+- **Secondary Tone:** Archival & Authoritative. Use terminology from logistics and data logging (e.g., "REGISTERED_ITEMS", "LOGISTICS_DATA").
+- **Usage:** All interface copy must be in uppercase where appropriate to maintain the brutalist aesthetic.
 
 ## Design Principles
-- **Clarity First:** Prioritize clear product presentation and straightforward navigation.
-- **Delightful Details:** Use emojis and subtle animations to reward user interactions (e.g., adding to cart, leaving a review).
+- **Brutalist Efficiency:** Prioritize information density and strict grid alignment over "delightful" distractions.
+- **Archival Integrity:** Every screen should feel like a technical manifest or a secure data log.
 - **Mobile Optimization:** Ensure all flows, especially checkout and cart management, are seamless on mobile devices.

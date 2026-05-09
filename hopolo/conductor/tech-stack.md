@@ -21,6 +21,6 @@
 ## UI & Styling
 - **Styling Engine:** CSS Modules
 - **Icons:** Lucide React
-- **Design System:** Custom CSS-variable based system (No Tailwind CSS)
+- **Design System:** Ethos Archetype (Custom CSS-variable system)
 - **Extensibility:** Plugin-based architecture for dynamic page rendering (Registry + Renderer), supporting modular layouts for Home and PDP.
 - **Testing:** Vitest + React Testing Library

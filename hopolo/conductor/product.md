@@ -2,7 +2,7 @@
 
 ## Initial Concept
 Build a production-ready commerce app that supports:
-Clean storefront (homepage, PDP, cart)
+High-impact archival storefront (Ethos Archetype)
 Real-time cart using Firebase (Firestore)
 Razorpay checkout
 Order confirmation flow
@@ -11,11 +11,11 @@ Admin order + refund + shipping operations
 Email notifications (order placed + delivery feedback)
 
 ## Target Audience
-- **Individual Creators & Boutiques:** Small business owners who need a polished, visually appealing storefront that supports unique brand expression (e.g., emoji-friendly interfaces) without the complexity of enterprise tools.
+- **Technical Luxury Brands:** High-end archival and technical apparel brands that require a brutalist, logistics-first storefront to match their precision-engineered products.
 
 ## Core Goals
 - **Frictionless Shopping Experience:** Deliver an "instant" feel with real-time cart syncing and seamless interactions to minimize friction and reduce cart abandonment.
-- **Brand-First Design:** Enable a unique, emoji-centric feedback loop and clean aesthetic that helps small boutiques stand out.
+- **Technical Brutalism:** Enforce a strict "Ethos Archetype" visual language: sharp corners, high-contrast monochrome, and technical metadata overlays.
 
 ## Key Features
 - **Real-Time Cart:** Instant sync across devices and tabs using Firebase Firestore.
