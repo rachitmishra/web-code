@@ -2,12 +2,12 @@
 
 ## Phase 1: Infrastructure & Data Modeling
 - [x] Task: Extend Storefront Settings schema to support configurable page content. (ce1a2ba)
-    - [ ] Update `StorefrontSettings` interface in `src/services/storefrontService.ts`.
-    - [ ] Add `pageContent` field (map of route to content).
-    - [ ] Update `DEFAULT_SETTINGS`.
-- [ ] Task: Implement server-side redirects for broken links.
-    - [ ] Create `app/routes/redirects.ts` to handle legacy or broken paths.
-    - [ ] Configure redirects to point to new routes.
+    - [x] Update `StorefrontSettings` interface in `src/services/storefrontService.ts`.
+    - [x] Add `pageContent` field (map of route to content).
+    - [x] Update `DEFAULT_SETTINGS`.
+- [x] Task: Implement server-side redirects for broken links. (aa8a1bf)
+    - [x] Create `src/lib/redirects.server.ts` to handle legacy or broken paths.
+    - [x] Configure redirects to point to new routes.
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Infrastructure & Data Modeling' (Protocol in workflow.md)
 
 ## Phase 2: Page Creation & Routing
