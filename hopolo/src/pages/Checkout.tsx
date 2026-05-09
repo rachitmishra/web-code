@@ -152,146 +152,158 @@ const Checkout: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <h1>Checkout</h1>
-
       <div className={styles.checkoutGrid}>
-        <div className={styles.forms}>
-          <Card>
-            <h2>Shipping Address</h2>
-            <div className={styles.addressList}>
-              {addresses.map((addr, index) => (
-                <div
-                  key={index}
-                  className={`${styles.addressCard} ${
-                    selectedAddressIndex === index ? styles.selectedAddress : ""
-                  }`}
-                  onClick={() => {
-                    setSelectedAddressIndex(index);
-                    setIsAddingNew(false);
-                  }}
-                >
-                  <div>{addr.street}</div>
-                  <div>
-                    {addr.city}, {addr.state} {addr.zip}
+        <section className={styles.logistics}>
+          <div className={styles.header}>
+            <h1 className={styles.title}>SHIPPING_INFO</h1>
+            <p className={styles.stepIndicator}>STEP 01/03: LOGISTICS REGISTRATION</p>
+          </div>
+
+          <div className={styles.forms}>
+            <div className={styles.section}>
+              <h2 className={styles.sectionTitle}>[ SELECT_ADDRESS ]</h2>
+              <div className={styles.addressList}>
+                {addresses.map((addr, index) => (
+                  <div
+                    key={index}
+                    className={`${styles.addressCard} ${
+                      selectedAddressIndex === index ? styles.selectedAddress : ""
+                    }`}
+                    onClick={() => {
+                      setSelectedAddressIndex(index);
+                      setIsAddingNew(false);
+                    }}
+                  >
+                    <div>{addr.street}</div>
+                    <div>
+                      {addr.city}, {addr.state} {addr.zip}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
 
-              <Button variant="outline" onClick={() => { setIsAddingNew(true); setSelectedAddressIndex(-1); }}>
-                + Add New Address
-              </Button>
-            </div>
-
-            {isAddingNew && (
-              <div className={styles.newAddressForm}>
-                <h3>New Address</h3>
-                <Input
-                  label="Street Address"
-                  value={newAddress.street}
-                  onChange={(e) =>
-                    setNewAddress({ ...newAddress, street: e.target.value })
-                  }
-                  required
-                />
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: "var(--spacing-4)",
-                  }}
+                <button 
+                  className={styles.addAddressBtn} 
+                  onClick={() => { setIsAddingNew(true); setSelectedAddressIndex(-1); }}
                 >
+                  + REGISTER_NEW_LOCATION
+                </button>
+              </div>
+
+              {isAddingNew && (
+                <div className={styles.newAddressForm}>
+                  <h3 className={styles.formTitle}>NEW_DATA_ENTRY</h3>
                   <Input
-                    label="City"
-                    value={newAddress.city}
+                    label="Street Address"
+                    value={newAddress.street}
                     onChange={(e) =>
-                      setNewAddress({ ...newAddress, city: e.target.value })
+                      setNewAddress({ ...newAddress, street: e.target.value })
                     }
                     required
                   />
-                  <Input
-                    label="State"
-                    value={newAddress.state || ""}
-                    onChange={(e) =>
-                      setNewAddress({ ...newAddress, state: e.target.value })
-                    }
-                  />
-                </div>
-                <Input
-                  label="ZIP Code"
-                  value={newAddress.zip || ""}
-                  onChange={(e) =>
-                    setNewAddress({ ...newAddress, zip: e.target.value })
-                  }
-                  required
-                />
-              </div>
-            )}
-          </Card>
-        </div>
-
-        <Card className={styles.summary}>
-          <h2>Order Summary</h2>
-          <div className={styles.items}>
-            {items.map((item, i) => (
-              <div key={`${item.product.id}-${i}`} className={styles.item}>
-                <div className={styles.itemImage}>
-                  {item.product.image ? (
-                    <img src={item.product.image} alt={item.product.name} />
-                  ) : (
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        height: "100%",
-                        background: "#eee",
-                      }}
-                    >
-                      🛍️
-                    </div>
-                  )}
-                </div>
-                <div className={styles.itemInfo}>
-                  <div className={styles.itemName}>{item.product.name}</div>
-                  <div className={styles.itemPrice}>
-                    {item.quantity} x ${item.product.price.toFixed(2)}
+                  <div className={styles.row}>
+                    <Input
+                      label="City"
+                      value={newAddress.city}
+                      onChange={(e) =>
+                        setNewAddress({ ...newAddress, city: e.target.value })
+                      }
+                      required
+                    />
+                    <Input
+                      label="ZIP Code"
+                      value={newAddress.zip || ""}
+                      onChange={(e) =>
+                        setNewAddress({ ...newAddress, zip: e.target.value })
+                      }
+                      required
+                    />
                   </div>
                 </div>
+              )}
+            </div>
+          </div>
+
+          <div className={styles.formActions}>
+            <Button
+              variant="primary"
+              className={styles.paymentButton}
+              onClick={handlePayment}
+              loading={loading}
+              disabled={items.length === 0}
+            >
+              CONTINUE TO PAYMENT
+            </Button>
+            {actionData?.error && (
+              <div className={styles.errorText}>
+                {actionData.error}
               </div>
-            ))}
+            )}
           </div>
+        </section>
 
-          <div className={styles.totals}>
-            <div className={styles.row}>
-              <span>Subtotal</span>
-              <span>${subtotal.toFixed(2)}</span>
+        <aside className={styles.sidebar}>
+          <div className={styles.summary}>
+            <div className={styles.summaryHeader}>
+              <h2 className={styles.summaryTitle}>ORDER_SUMMARY</h2>
+              <span className={styles.itemsCount}>[{items.length} ITEMS]</span>
             </div>
-            <div className={styles.row}>
-              <span>Shipping</span>
-              <span>${shipping.toFixed(2)}</span>
+
+            <div className={styles.items}>
+              {items.map((item, i) => (
+                <div key={`${item.product.id}-${i}`} className={styles.item}>
+                  <div className={styles.itemImage}>
+                    {item.product.image ? (
+                      <img src={item.product.image} alt={item.product.name} className={styles.grayscale} />
+                    ) : (
+                      <div className={styles.placeholder}>[NO_IMG]</div>
+                    )}
+                  </div>
+                  <div className={styles.itemInfo}>
+                    <div className={styles.itemName}>{item.product.name}</div>
+                    <div className={styles.itemMeta}>
+                      QTY: {item.quantity.toString().padStart(2, '0')}
+                    </div>
+                    <div className={styles.itemPrice}>
+                      ${(item.product.price * item.quantity).toFixed(2)}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div className={`${styles.row} ${styles.totalRow}`}>
-              <span>Total</span>
-              <span>${total.toFixed(2)}</span>
+
+            <div className={styles.totals}>
+              <div className={styles.row}>
+                <span>SUBTOTAL</span>
+                <span>${subtotal.toFixed(2)}</span>
+              </div>
+              <div className={styles.row}>
+                <span>SHIPPING_PRIORITY</span>
+                <span className={styles.highlight}>COMPLIMENTARY</span>
+              </div>
+              <div className={styles.row}>
+                <span>ESTIMATED_TAX</span>
+                <span>$0.00</span>
+              </div>
+              
+              <div className={styles.totalRow}>
+                <span>TOTAL</span>
+                <span className={styles.totalValue}>${total.toFixed(2)}</span>
+              </div>
+            </div>
+
+            <div className={styles.logisticsContext}>
+              <div className={styles.contextHeader}>
+                [ LOGISTICS_DATA ]
+              </div>
+              <div className={styles.contextGrid}>
+                <span>ETA:</span>
+                <span className={styles.right}>72H_EXPRESS</span>
+                <span>LOCATION:</span>
+                <span className={styles.right}>GLOBAL_HUB_CENTRAL</span>
+              </div>
             </div>
           </div>
-
-          <Button
-            variant="primary"
-            style={{ marginTop: "var(--spacing-4)" }}
-            onClick={handlePayment}
-            loading={loading}
-            disabled={items.length === 0}
-          >
-            Pay Now
-          </Button>
-          
-          {actionData?.error && (
-            <div style={{ color: 'var(--color-danger)', fontSize: '0.875rem', marginTop: 'var(--spacing-2)' }}>
-              {actionData.error}
-            </div>
-          )}
-        </Card>
+        </aside>
       </div>
     </div>
   );
