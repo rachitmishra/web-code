@@ -22,6 +22,8 @@ const LoginDialog: React.FC<LoginDialogProps> = ({ isOpen, onClose }) => {
   const actionData = fetcher.data as { success: boolean, role: string, error?: string } | undefined;
   const { addDebugError } = useDebug();
 
+  const location = useLocation();
+
   useEffect(() => {
     if (!isOpen) {
       // Reset state when dialog closes
@@ -33,31 +35,15 @@ const LoginDialog: React.FC<LoginDialogProps> = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   useEffect(() => {
-    // We check for actionData which is set after the fetcher submission to /login
-    if (actionData && typeof actionData === 'object') {
-      if (actionData.success === true) {
-        // Success!
-        const role = actionData.role;
-        
-        // 1. Dismiss the dialog first
-        onClose();
-        
-        // 2. Redirect based on role
-        if (role === 'admin') {
-          console.log('[LoginDialog] Admin detected, redirecting to admin panel...');
-          navigate('/admin', { replace: true });
-        } else {
-          console.log('[LoginDialog] Standard user detected, redirecting to profile...');
-          navigate('/profile', { replace: true });
-        }
-      } else if (actionData.success === false) {
-        const errMsg = actionData.error || 'Server error during login';
-        setError(errMsg);
-        addDebugError(errMsg, 'LoginAction');
-        setLoading(false);
-      }
+    // Note: Success redirects are now handled server-side in the action.
+    // We only handle errors here.
+    if (actionData && actionData.success === false) {
+      const errMsg = actionData.error || 'Server error during login';
+      setError(errMsg);
+      addDebugError(errMsg, 'LoginAction');
+      setLoading(false);
     }
-  }, [actionData, addDebugError, onClose, navigate]);
+  }, [actionData, addDebugError]);
 
   const handlePhoneSubmit = async (phoneNumber: string) => {
     setLoading(true);
@@ -90,8 +76,11 @@ const LoginDialog: React.FC<LoginDialogProps> = ({ isOpen, onClose }) => {
       const idToken = await userCredential.user.getIdToken();
       console.log('[LoginDialog] OTP verified, submitting to server action...');
       
-      // Use fetcher to submit without navigation
-      fetcher.submit({ idToken, uid: userCredential.user.uid }, { method: "post", action: "/login" });
+      // Use fetcher to submit without navigation. Pass current location for redirect.
+      fetcher.submit(
+        { idToken, uid: userCredential.user.uid, from: location.pathname }, 
+        { method: "post", action: "/login" }
+      );
     } catch (err: any) {
       console.error('[LoginDialog] OTP Verification Error:', err);
       let errMsg = 'Invalid code. Please try again.';

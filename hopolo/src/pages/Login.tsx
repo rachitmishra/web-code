@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation, useSubmit, useActionData } from 'react-router-dom';
+import { useNavigate, useLocation, useSubmit, useActionData, redirect } from 'react-router-dom';
 import PhoneSignIn from '../components/ui/Auth/PhoneSignIn';
 import OtpVerification from '../components/ui/Auth/OtpVerification';
 import { signInWithPhone, verifyOtp } from '../services/authService';
@@ -15,6 +15,7 @@ export async function action({ request }: { request: Request }) {
   const formData = await request.formData();
   const idToken = formData.get("idToken") as string;
   const uid = formData.get("uid") as string;
+  const from = formData.get("from") as string;
 
   if (!idToken || !uid) {
     return new Response(JSON.stringify({ success: false, error: "Missing required authentication data" }), {
@@ -31,10 +32,19 @@ export async function action({ request }: { request: Request }) {
     const profile = await getSecureProfile(uid);
     const role = profile?.role || 'user';
 
-    return new Response(JSON.stringify({ success: true, role }), {
+    // 3. Determine redirect target
+    let target = from || (role === 'admin' ? '/admin' : '/profile');
+    
+    // Safety check: only redirect to internal paths
+    if (target.startsWith('http') || !target.startsWith('/')) {
+      target = role === 'admin' ? '/admin' : '/profile';
+    }
+
+    console.log(`[Login Action] Success. Role: ${role}, Redirecting to: ${target}`);
+
+    return redirect(target, {
       headers: {
         "Set-Cookie": cookie,
-        "Content-Type": "application/json",
       },
     });
   } catch (error: any) {
@@ -55,10 +65,10 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const submit = useSubmit();
-  const actionData = useActionData() as { success: boolean, role: string, error?: string };
+  const actionData = useActionData() as { success: boolean, error?: string };
   
   const searchParams = new URLSearchParams(location.search);
-  const from = searchParams.get("from") || (location.state as any)?.from?.pathname || '/';
+  const from = searchParams.get("from") || (location.state as any)?.from?.pathname;
 
   // Force loading to false on mount to prevent stuck state
   useEffect(() => {
@@ -66,27 +76,15 @@ const Login: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (actionData && typeof actionData === 'object') {
-      if (actionData.success === true) {
-        // Success! Role-based redirection
-        const role = actionData.role;
-        console.log(`[LoginPage] Login success! Role: ${role}`);
-
-        if (role === 'admin') {
-          navigate('/admin', { replace: true });
-        } else {
-          // Default to /profile for normal users if no specific 'from' path is provided
-          const target = from === '/' ? '/profile' : from;
-          navigate(target, { replace: true });
-        }
-      } else if (actionData.success === false) {
-        if (actionData.error) {
-          setError(actionData.error);
-        }
-        setLoading(false);
+    // Note: Success redirects are now handled server-side in the action.
+    // We only handle errors here.
+    if (actionData && actionData.success === false) {
+      if (actionData.error) {
+        setError(actionData.error);
       }
+      setLoading(false);
     }
-  }, [actionData, navigate, from]);
+  }, [actionData]);
 
   const handlePhoneSubmit = async (phoneNumber: string) => {
     setLoading(true);
@@ -121,8 +119,8 @@ const Login: React.FC = () => {
       const idToken = await userCredential.user.getIdToken();
       console.log('[LoginPage] OTP verified, submitting to server action...');
       
-      // Send token to server to set secure cookie
-      submit({ idToken, uid: userCredential.user.uid }, { method: "post" });
+      // Send token to server to set secure cookie. Pass 'from' for redirect.
+      submit({ idToken, uid: userCredential.user.uid, from: from || '' }, { method: "post" });
     } catch (err: any) {
       console.error('[LoginPage] OTP Verification Error:', err);
       let errMsg = 'Invalid code. Please try again.';

@@ -7,19 +7,15 @@ interface AdminRouteProps {
 
 const AdminRoute: React.FC<AdminRouteProps> = ({ children }) => {
   const rootData = useRouteLoaderData('root') as { serverUser: any, role: string } | undefined;
-  const location = useLocation();
 
-  const isAdmin = rootData?.role === 'admin';
-  const isLoading = !rootData && !isAdmin; // Basic heuristic
-
-  // Note: loader in AdminLayout already handles server-side check.
-  // This client-side check is for UX and avoiding flashes.
+  // We rely on the AdminLayout loader for security redirects.
+  // This component simply ensures we don't render children if data is still loading
+  // or if the user is not an admin (as a fallback).
   
-  if (!rootData) return null; // Wait for root loader
+  if (!rootData) return null;
 
-  if (!isAdmin) {
-    return <Navigate to="/" state={{ from: location }} replace />;
-  }
+  const isAdmin = rootData.role === 'admin';
+  if (!isAdmin) return null;
 
   return <>{children}</>;
 };

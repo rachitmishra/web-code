@@ -37,9 +37,8 @@ describe('Login Action', () => {
 
     const response = await action({ request });
     expect(response).toBeInstanceOf(Response);
-    
-    const data = await response.json();
-    expect(data).toEqual({ success: true, role: 'admin' });
+    expect(response.status).toBe(302);
+    expect(response.headers.get('Location')).toBe('/admin');
     expect(response.headers.get('Set-Cookie')).toBe('hypvzn_session=session-cookie; Path=/;');
   });
 
