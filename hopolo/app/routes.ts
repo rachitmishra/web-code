@@ -35,6 +35,7 @@ export default [
     route("analytics", "../src/pages/Admin/Analytics.tsx"),
     route("invitations", "../src/pages/Admin/Invitations.tsx"),
     route("storefront", "../src/pages/Admin/Storefront.tsx"),
+    route("pages", "../src/pages/Admin/PageManager.tsx"),
     route("pdp", "../src/pages/Admin/PDPManager.tsx"),
     route("upload", "../src/pages/Admin/Upload.tsx"),
   ]),

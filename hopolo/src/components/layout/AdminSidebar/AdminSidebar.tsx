@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router';
 import { 
   Package, 
   Store, 
@@ -24,6 +24,7 @@ const navItems = [
   { path: '/admin/inventory', label: 'Inventory', icon: <Store size={20} /> },
   { path: '/admin/marketing', label: 'Marketing', icon: <Megaphone size={20} /> },
   { path: '/admin/storefront', label: 'Storefront', icon: <Palette size={20} /> },
+  { path: '/admin/pages', label: 'Static Pages', icon: <Layout size={20} /> },
   { path: '/admin/pdp', label: 'PDP Layout', icon: <Layout size={20} /> },
   { path: '/admin/analytics', label: 'Analytics', icon: <BarChart3 size={20} /> },
   { path: '/admin/invitations', label: 'Invitations', icon: <Mail size={20} /> },
