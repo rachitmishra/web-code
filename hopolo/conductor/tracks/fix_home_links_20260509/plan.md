@@ -1,7 +1,7 @@
 # Implementation Plan: Fix Home Screen Links
 
 ## Phase 1: Infrastructure & Data Modeling
-- [ ] Task: Extend Storefront Settings schema to support configurable page content.
+- [x] Task: Extend Storefront Settings schema to support configurable page content. (ce1a2ba)
     - [ ] Update `StorefrontSettings` interface in `src/services/storefrontService.ts`.
     - [ ] Add `pageContent` field (map of route to content).
     - [ ] Update `DEFAULT_SETTINGS`.
