@@ -30,6 +30,7 @@ The HYPVZN Admin Panel provides specialized tools for boutique owners to manage 
 - **📦 Inventory Management:** Add new products, track stock across variants (sizes/colors), and manage media assets for the storefront.
 - **📊 Analytics Dashboard:** Monitor business performance with real-time sales metrics (Revenue, AOV, Conversion) and interactive trend charts.
 - 🛍️ Storefront Configuration: A "No-Code" interface to manage the Cinematic Hero, global promo banners, and maintenance mode.
+- 📄 Static Page Manager: A dedicated tool to create and manage the content of static pages like Archive, Stockists, and Legal pages.
 - 🧩 Modular Layout Manager: A dedicated interface for customizing page layouts (initially for PDP, now expanded to Home) using a plugin-based system, allowing for reordering and toggling of individual components.
 
 - **🎫 Invitation System:** Securely onboard new staff (Admin, Manager, Editor) using phone-based authentication and single-use invite codes.
