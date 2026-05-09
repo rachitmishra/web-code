@@ -14,6 +14,12 @@ export default [
   route("shipping", "../src/pages/Static/InfoPages.tsx", { id: "shipping" }),
   route("contact", "../src/pages/Static/InfoPages.tsx", { id: "contact" }),
   
+  // New Dynamic Static Pages
+  route("archive", "../src/pages/StaticPage.tsx"),
+  route("stockists", "../src/pages/StaticPage.tsx"),
+  route("legal/privacy", "../src/pages/StaticPage.tsx"),
+  route("legal/terms", "../src/pages/StaticPage.tsx"),
+  
   route("profile", "../src/pages/Profile.tsx"),
   route("maintenance", "../src/pages/Static/Maintenance.tsx"),
   
