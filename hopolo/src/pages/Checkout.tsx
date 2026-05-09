@@ -102,7 +102,7 @@ const Checkout: React.FC = () => {
       key: import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_test_placeholder",
       amount: Math.round(total * 100),
       currency: "USD",
-      name: "Hopolo",
+      name: "HYPVZN",
       description: "Order Payment",
       handler: function (response: any) {
         console.log("Payment Success:", response);

@@ -1,7 +1,7 @@
 # Implementation Plan: Ethos Archetype (Full Dark Overhaul)
 
 ## Objective
-Overhaul the Hopolo application to match the "Ethos Archetype" design system from Stitch, characterized by a dark, Brutalist aesthetic ("Technical Luxury").
+Overhaul the HYPVZN application to match the "Ethos Archetype" design system from Stitch, characterized by a dark, Brutalist aesthetic ("Technical Luxury").
 
 ## Scope & Impact
 - **Global CSS (`src/index.css`)**: Update color variables to the dark palette (`#131313` background, `#FFFFFF` text) and typography (Space Grotesk & Inter).

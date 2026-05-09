@@ -44,7 +44,7 @@ describe('Admin Routing Integration', () => {
     
     // Check for sidebar content
     await waitFor(() => {
-      expect(screen.getByText(/hopolo admin/i)).toBeInTheDocument();
+      expect(screen.getByText(/hypvzn admin/i)).toBeInTheDocument();
     });
   });
 
@@ -52,7 +52,7 @@ describe('Admin Routing Integration', () => {
     renderRoute('/admin/inventory');
     
     await waitFor(() => {
-      expect(screen.getByText(/hopolo admin/i)).toBeInTheDocument();
+      expect(screen.getByText(/hypvzn admin/i)).toBeInTheDocument();
     });
   });
 });

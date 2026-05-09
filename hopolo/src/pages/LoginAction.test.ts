@@ -22,7 +22,7 @@ describe('Login Action', () => {
     });
 
     vi.mocked(authServer.createSessionCookie).mockResolvedValue({
-      cookie: 'hopolo_session=session-cookie; Path=/;',
+      cookie: 'hypvzn_session=session-cookie; Path=/;',
       expires: 1000,
     });
 
@@ -40,7 +40,7 @@ describe('Login Action', () => {
     
     const data = await response.json();
     expect(data).toEqual({ success: true, role: 'admin' });
-    expect(response.headers.get('Set-Cookie')).toBe('hopolo_session=session-cookie; Path=/;');
+    expect(response.headers.get('Set-Cookie')).toBe('hypvzn_session=session-cookie; Path=/;');
   });
 
   it('should return error if getSecureProfile fails', async () => {
@@ -54,7 +54,7 @@ describe('Login Action', () => {
     });
 
     vi.mocked(authServer.createSessionCookie).mockResolvedValue({
-      cookie: 'hopolo_session=session-cookie; Path=/;',
+      cookie: 'hypvzn_session=session-cookie; Path=/;',
       expires: 1000,
     });
 

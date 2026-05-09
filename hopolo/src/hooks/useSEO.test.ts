@@ -14,7 +14,7 @@ describe('useSEO Hook', () => {
 
   it('should update document title', () => {
     renderHook(() => useSEO({ title: 'New Title' }));
-    expect(document.title).toBe('New Title | Hopolo');
+    expect(document.title).toBe('New Title | HYPVZN');
   });
 
   it('should set description meta tag', () => {
@@ -31,7 +31,7 @@ describe('useSEO Hook', () => {
       image: 'https://example.com/img.jpg' 
     }));
     
-    expect(document.querySelector('meta[property="og:title"]')?.getAttribute('content')).toBe('OG Title | Hopolo');
+    expect(document.querySelector('meta[property="og:title"]')?.getAttribute('content')).toBe('OG Title | HYPVZN');
     expect(document.querySelector('meta[property="og:type"]')?.getAttribute('content')).toBe('product');
     expect(document.querySelector('meta[property="og:image"]')?.getAttribute('content')).toBe('https://example.com/img.jpg');
   });

@@ -42,7 +42,7 @@ describe('storefrontService.server', () => {
     });
 
     const settings = await getStorefrontSettings();
-    expect(settings.heroTitle).toBe('Hopolo Boutique');
+    expect(settings.heroTitle).toBe('HYPVZN Boutique');
   });
 
   it('updateStorefrontSettings should call set with merge', async () => {

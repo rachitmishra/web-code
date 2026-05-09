@@ -1,6 +1,6 @@
-# Hopolo: Future Feature Ideas
+# HYPVZN: Future Feature Ideas
 
-This document tracks potential features and enhancements for the Hopolo D2C platform.
+This document tracks potential features and enhancements for the HYPVZN D2C platform.
 
 ## Implement Soon
 - **Advanced Analytics & Reporting:** Visual charts, top products, and customer insights for admins. (In Progress - May 2026)

@@ -50,7 +50,7 @@ describe("emailService", () => {
     const result = await sendEmail(params);
 
     expect(mockSend).toHaveBeenCalledWith({
-      from: "Hopolo <onboarding@resend.dev>",
+      from: "HYPVZN <onboarding@resend.dev>",
       to: params.to,
       subject: params.subject,
       html: params.html,

@@ -1,7 +1,7 @@
 # Ethos Archetype (Full Dark Overhaul)
 
 ## 1. Context & Goals
-The goal is to apply the "Ethos Archetype" design system from Stitch to the entire Hopolo application, replacing the current light theme with a brutalist, dark-mode aesthetic.
+The goal is to apply the "Ethos Archetype" design system from Stitch to the entire HYPVZN application, replacing the current light theme with a brutalist, dark-mode aesthetic.
 
 ## 2. Requirements
 - The application background must be `#131313`.

@@ -42,7 +42,7 @@ const mockSettings: storefrontService.StorefrontSettings = {
   bannerLink: '/promo',
   bannerVisible: true,
   isMaintenanceMode: false,
-  heroTitle: 'Welcome to Hopolo',
+  heroTitle: 'Welcome to HYPVZN',
   heroSubtitle: 'The best products',
   heroImage: 'https://example.com/hero.jpg',
   heroCtaText: 'Shop Now',

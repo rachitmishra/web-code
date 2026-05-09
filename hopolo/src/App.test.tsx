@@ -73,7 +73,7 @@ const mockCategories: any[] = [
 ];
 
 const mockSettings = {
-  heroTitle: 'Hopolo Boutique',
+  heroTitle: 'HYPVZN Boutique',
   heroSubtitle: 'Discover unique products',
   heroImage: '',
   heroCtaText: 'Shop Now',
@@ -133,7 +133,7 @@ describe('App Routing Integration', () => {
   it('should render home page', async () => {
     renderApp('/');
     await waitFor(() => {
-      expect(screen.getByText(/hopolo boutique/i)).toBeInTheDocument();
+      expect(screen.getByText(/hypvzn boutique/i)).toBeInTheDocument();
     });
   });
 

@@ -34,11 +34,31 @@ describe('AdminLayout Component', () => {
     renderLayout();
     
     // By default on desktop it should be expanded
-    expect(screen.getByText(/KINETIC_BRUTAL/i)).toBeInTheDocument();
+    expect(screen.getByText(/hypvzn admin/i)).toBeInTheDocument();
     expect(screen.getByTestId('child-content')).toBeInTheDocument();
   });
 
-  it('should render hamburger menu on mobile (or render main layout regardless)', () => {
+  it('should toggle the sidebar when clicked', async () => {
+    // Set desktop width
+    Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: 1024 });
+    window.dispatchEvent(new Event('resize'));
+
+    renderLayout();
+    
+    const toggleBtn = screen.getByRole('button', { name: /toggle sidebar/i });
+    
+    // Collapse
+    fireEvent.click(toggleBtn);
+    await vi.waitFor(() => {
+      expect(screen.queryByText(/hypvzn admin/i)).not.toBeInTheDocument();
+    });
+    
+    // Expand
+    fireEvent.click(toggleBtn);
+    expect(await screen.findByText(/hypvzn admin/i)).toBeInTheDocument();
+  });
+
+  it('should render hamburger menu on mobile', () => {
     // Mock window.innerWidth
     const originalWidth = window.innerWidth;
     Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: 500 });

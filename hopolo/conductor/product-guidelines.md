@@ -1,4 +1,4 @@
-# Product Guidelines: Hopolo
+# Product Guidelines: HYPVZN
 
 ## Visual Identity
 - **Aesthetic:** "Technical Luxury / Archival Brutalist". High-contrast monochromatic layouts with strict grid lines, 0px corners, and Space Grotesk typography. High-flash grayscale photography with technical metadata overlays.

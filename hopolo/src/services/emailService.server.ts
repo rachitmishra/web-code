@@ -19,7 +19,7 @@ export const sendEmail = async (params: EmailParams) => {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Hopolo <onboarding@resend.dev>',
+      from: 'HYPVZN <onboarding@resend.dev>',
       to: params.to,
       subject: params.subject,
       html: params.html,

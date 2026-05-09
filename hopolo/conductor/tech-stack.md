@@ -1,4 +1,4 @@
-# Technology Stack: Hopolo
+# Technology Stack: HYPVZN
 
 ## Core Development
 - **Language:** TypeScript

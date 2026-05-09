@@ -81,7 +81,7 @@ export const createOrder = async (
       });
       await sendEmail({
         to: orderData.userEmail,
-        subject: "Order Confirmed - Hopolo",
+        subject: "Order Confirmed - HYPVZN",
         html,
       });
     } catch (error) {

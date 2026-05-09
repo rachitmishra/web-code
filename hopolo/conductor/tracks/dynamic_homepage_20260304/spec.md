@@ -1,7 +1,7 @@
 # Specification: Fully Dynamic Homepage Configuration
 
 ## Overview
-Currently, several key elements of the Hopolo homepage are hardcoded in `Home.tsx` (Cinematic Hero image, title, subtitle, CTA) or `BestSellers.tsx` (static reviews). This track aims to move these configurations into a central Firestore-backed settings document (`settings/storefront`) and provide an admin interface to manage them.
+Currently, several key elements of the HYPVZN homepage are hardcoded in `Home.tsx` (Cinematic Hero image, title, subtitle, CTA) or `BestSellers.tsx` (static reviews). This track aims to move these configurations into a central Firestore-backed settings document (`settings/storefront`) and provide an admin interface to manage them.
 
 ## Goals
 - Move Hero section content (title, subtitle, image, CTA) to Firestore.

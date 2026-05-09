@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-export const SESSION_COOKIE_NAME = 'hopolo_cart_id';
+export const SESSION_COOKIE_NAME = 'hypvzn_cart_id';
 
 export const getSessionId = (): string => {
   if (typeof window === 'undefined') return '';
@@ -10,11 +10,11 @@ export const getSessionId = (): string => {
   if (cookieMatch) return cookieMatch[2];
 
   // Fallback to localStorage for backward compatibility or persistence
-  let sessionId = localStorage.getItem('hopolo_session_id');
+  let sessionId = localStorage.getItem('hypvzn_session_id');
   
   if (!sessionId) {
     sessionId = uuidv4();
-    localStorage.setItem('hopolo_session_id', sessionId);
+    localStorage.setItem('hypvzn_session_id', sessionId);
   }
 
   // Set/Refresh cookie (5 days)

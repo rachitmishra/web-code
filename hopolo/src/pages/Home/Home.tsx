@@ -82,8 +82,8 @@ const Home: React.FC = () => {
   const submit = useSubmit();
 
   const seoTitle = activeCategoryId === 'all' 
-    ? settings.heroTitle || 'Hopolo Boutique' 
-    : `${activeCategoryId.charAt(0).toUpperCase() + activeCategoryId.slice(1)} | ${settings.heroTitle || 'Hopolo Boutique'}`;
+    ? settings.heroTitle || 'HYPVZN Boutique' 
+    : `${activeCategoryId.charAt(0).toUpperCase() + activeCategoryId.slice(1)} | ${settings.heroTitle || 'HYPVZN Boutique'}`;
 
   useSEO({
     title: seoTitle,

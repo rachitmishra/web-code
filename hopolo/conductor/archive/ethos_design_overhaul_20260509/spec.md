@@ -1,7 +1,7 @@
 # Track Specification: Ethos Design Overhaul
 
 ## Overview
-This track involves a comprehensive visual overhaul of the Hopolo storefront to align with the "Ethos Archetype" design system generated in Stitch. The update will transform the current aesthetic into a "Technical Luxury" style, characterized by a monochromatic palette, brutalist layouts, sharp edges, and high-impact typography.
+This track involves a comprehensive visual overhaul of the HYPVZN storefront to align with the "Ethos Archetype" design system generated in Stitch. The update will transform the current aesthetic into a "Technical Luxury" style, characterized by a monochromatic palette, brutalist layouts, sharp edges, and high-impact typography.
 
 ## Goals
 -   Implement the "Ethos Archetype" design system across the core storefront pages.

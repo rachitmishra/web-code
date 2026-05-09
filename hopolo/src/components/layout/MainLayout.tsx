@@ -48,7 +48,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             <Link to="/contact">Contact Us</Link>
           </div>
           <div className={styles.copyright}>
-            &copy; {new Date().getFullYear()} Hopolo. All rights reserved.
+            &copy; {new Date().getFullYear()} HYPVZN. All rights reserved.
           </div>
         </footer>
         <BottomNavBar />

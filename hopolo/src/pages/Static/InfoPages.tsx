@@ -10,7 +10,7 @@ const InfoPages: React.FC = () => {
       case '/about':
         return {
           title: 'About Us',
-          content: 'Hopolo is a minimalist boutique focused on unique, high-quality products. We believe in playful design and professional service.'
+          content: 'HYPVZN is a minimalist boutique focused on unique, high-quality products. We believe in playful design and professional service.'
         };
       case '/shipping':
         return {
@@ -20,7 +20,7 @@ const InfoPages: React.FC = () => {
       case '/contact':
         return {
           title: 'Contact Us',
-          content: 'Have questions? Reach out to us at support@hopolo.com or follow us on social media.'
+          content: 'Have questions? Reach out to us at support@hypvzn.com or follow us on social media.'
         };
       default:
         return { title: 'Information', content: 'Page not found.' };

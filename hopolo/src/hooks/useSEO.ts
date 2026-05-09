@@ -9,7 +9,7 @@ export interface SEOProps {
 
 export const useSEO = ({ title, description, ogType, image }: SEOProps) => {
   useEffect(() => {
-    const siteName = 'Hopolo';
+    const siteName = 'HYPVZN';
     const fullTitle = `${title} | ${siteName}`;
     
     // Update Title

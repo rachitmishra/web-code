@@ -1,7 +1,7 @@
 # Specification: Admin Panel UI Polish & Consistency
 
 ## Overview
-The goal of this track is to elevate the visual quality and consistency of the entire Hopolo Admin Panel. This involves integrating professional icons, ensuring all routes are functional, refining custom CSS for UI elements (buttons, inputs, cards), and heavily prioritizing a mobile-first design approach for administrative workflows.
+The goal of this track is to elevate the visual quality and consistency of the entire HYPVZN Admin Panel. This involves integrating professional icons, ensuring all routes are functional, refining custom CSS for UI elements (buttons, inputs, cards), and heavily prioritizing a mobile-first design approach for administrative workflows.
 
 ## Goals
 -   **Iconography:** Integrate `lucide-react` (or similar lightweight SVG library) to replace emojis and inconsistent icons across the admin interface.

@@ -1,4 +1,4 @@
-# Product Guide: Hopolo
+# Product Guide: HYPVZN
 
 ## Initial Concept
 Build a production-ready commerce app that supports:
@@ -25,7 +25,7 @@ Email notifications (order placed + delivery feedback)
 - **Communication:** Automated email notifications for order confirmation and delivery feedback.
 
 ## Admin Panel Features
-The Hopolo Admin Panel provides specialized tools for boutique owners to manage operations seamlessly:
+The HYPVZN Admin Panel provides specialized tools for boutique owners to manage operations seamlessly:
 
 - **📦 Inventory Management:** Add new products, track stock across variants (sizes/colors), and manage media assets for the storefront.
 - **📊 Analytics Dashboard:** Monitor business performance with real-time sales metrics (Revenue, AOV, Conversion) and interactive trend charts.

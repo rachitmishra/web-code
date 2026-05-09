@@ -5,7 +5,7 @@ const Maintenance: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <div className={styles.logo}>Hopolo</div>
+        <div className={styles.logo}>HYPVZN</div>
         <div className={styles.emoji}>✨</div>
         <h1 className={styles.title}>We'll Be Back Soon</h1>
         <p className={styles.message}>
@@ -13,7 +13,7 @@ const Maintenance: React.FC = () => {
           Please check back shortly!
         </p>
         <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>
-          &copy; {new Date().getFullYear()} Hopolo. All rights reserved.
+          &copy; {new Date().getFullYear()} HYPVZN. All rights reserved.
         </p>
       </div>
     </div>

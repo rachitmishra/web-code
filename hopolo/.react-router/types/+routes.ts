@@ -83,6 +83,9 @@ type Pages = {
   "/admin/storefront": {
     params: {};
   };
+  "/admin/pdp": {
+    params: {};
+  };
   "/admin/upload": {
     params: {};
   };
@@ -91,10 +94,10 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/product/:id" | "/cart" | "/login" | "/logout" | "/checkout" | "/checkout/success/:orderId" | "/about" | "/shipping" | "/contact" | "/profile" | "/maintenance" | "/admin" | "/admin/orders" | "/admin/orders/:id" | "/admin/email-logs" | "/admin/inventory" | "/admin/marketing" | "/admin/seed" | "/admin/analytics" | "/admin/invitations" | "/admin/storefront" | "/admin/upload";
+    page: "/" | "/product/:id" | "/cart" | "/login" | "/logout" | "/checkout" | "/checkout/success/:orderId" | "/about" | "/shipping" | "/contact" | "/profile" | "/maintenance" | "/admin" | "/admin/orders" | "/admin/orders/:id" | "/admin/email-logs" | "/admin/inventory" | "/admin/marketing" | "/admin/seed" | "/admin/analytics" | "/admin/invitations" | "/admin/storefront" | "/admin/pdp" | "/admin/upload";
   };
-  "../src/pages/Home.tsx": {
-    id: "../src/pages/Home";
+  "../src/pages/Home/index.ts": {
+    id: "../src/pages/Home/index";
     page: "/";
   };
   "../src/pages/ProductDetail.tsx": {
@@ -141,7 +144,7 @@ type RouteFiles = {
   };
   "../src/components/layout/AdminLayout.tsx": {
     id: "../src/components/layout/AdminLayout";
-    page: "/admin" | "/admin/orders" | "/admin/orders/:id" | "/admin/email-logs" | "/admin/inventory" | "/admin/marketing" | "/admin/seed" | "/admin/analytics" | "/admin/invitations" | "/admin/storefront" | "/admin/upload";
+    page: "/admin" | "/admin/orders" | "/admin/orders/:id" | "/admin/email-logs" | "/admin/inventory" | "/admin/marketing" | "/admin/seed" | "/admin/analytics" | "/admin/invitations" | "/admin/storefront" | "/admin/pdp" | "/admin/upload";
   };
   "../src/pages/Admin/Orders.tsx": {
     id: "admin-index";
@@ -182,6 +185,10 @@ type RouteFiles = {
     id: "../src/pages/Admin/Storefront";
     page: "/admin/storefront";
   };
+  "../src/pages/Admin/PDPManager.tsx": {
+    id: "../src/pages/Admin/PDPManager";
+    page: "/admin/pdp";
+  };
   "../src/pages/Admin/Upload.tsx": {
     id: "../src/pages/Admin/Upload";
     page: "/admin/upload";
@@ -190,7 +197,7 @@ type RouteFiles = {
 
 type RouteModules = {
   "root": typeof import("./app/root.tsx");
-  "../src/pages/Home": unknown;
+  "../src/pages/Home/index": unknown;
   "../src/pages/ProductDetail": unknown;
   "../src/pages/Cart": unknown;
   "../src/pages/Login": unknown;
@@ -213,5 +220,6 @@ type RouteModules = {
   "../src/pages/Admin/Analytics": unknown;
   "../src/pages/Admin/Invitations": unknown;
   "../src/pages/Admin/Storefront": unknown;
+  "../src/pages/Admin/PDPManager": unknown;
   "../src/pages/Admin/Upload": unknown;
 };

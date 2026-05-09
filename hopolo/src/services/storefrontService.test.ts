@@ -4,7 +4,7 @@ import { DEFAULT_SETTINGS } from './storefrontService';
 describe('storefrontService', () => {
   it('should have DEFAULT_SETTINGS defined', () => {
     expect(DEFAULT_SETTINGS).toBeDefined();
-    expect(DEFAULT_SETTINGS.heroTitle).toBe('Hopolo Boutique');
+    expect(DEFAULT_SETTINGS.heroTitle).toBe('HYPVZN Boutique');
   });
 
   it('DEFAULT_SETTINGS should include initial reviews', () => {

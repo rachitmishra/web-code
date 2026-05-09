@@ -74,8 +74,8 @@ const Header: React.FC<HeaderProps> = ({ onOpenCart }) => {
   return (
     <>
       <header className={`${styles.header} ${isHome && !isScrolled ? styles.transparent : ''} ${isScrolled ? styles.scrolled : ''}`}>
-        <Link to="/" className={styles.logo}>
-          Hopolo
+        <Link to="/" className={styles.brand}>
+          HYPVZN
         </Link>
         
         <div className={styles.actions}>

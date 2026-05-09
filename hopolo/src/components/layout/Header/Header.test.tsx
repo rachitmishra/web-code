@@ -38,7 +38,7 @@ describe('Header', () => {
   it('should render the logo and cart icon', () => {
     (cartService.subscribeToCart as any).mockReturnValue(vi.fn());
     renderHeader();
-    expect(screen.getByText(/hopolo/i)).toBeInTheDocument();
+    expect(screen.getByText(/hypvzn/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/shopping cart/i)).toBeInTheDocument();
   });
 

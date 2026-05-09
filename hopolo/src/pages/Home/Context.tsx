@@ -1,4 +1,4 @@
-import React, { createContext, useContext, ReactNode } from 'react';
+import React, { createContext, useContext, type ReactNode } from 'react';
 import { type Product, type Category } from '../../services/productService';
 import { type StorefrontSettings } from '../../services/storefrontService';
 

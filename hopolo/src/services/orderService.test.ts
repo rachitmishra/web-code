@@ -62,7 +62,7 @@ describe('orderService', () => {
     
     expect(sendEmail).toHaveBeenCalledWith({
       to: 'test@example.com',
-      subject: 'Order Confirmed - Hopolo',
+      subject: 'Order Confirmed - HYPVZN',
       html: '<html>Confirmation HTML</html>',
     });
   });

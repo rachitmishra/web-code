@@ -22,12 +22,12 @@ export interface StorefrontSettings {
 }
 
 export const DEFAULT_SETTINGS: StorefrontSettings = {
-  bannerText: "Welcome to Hopolo!",
+  bannerText: "Welcome to HYPVZN!",
   bannerColor: "#5D3FD3",
   bannerLink: "",
   bannerVisible: false,
   isMaintenanceMode: false,
-  heroTitle: "Hopolo Boutique",
+  heroTitle: "HYPVZN Boutique",
   heroSubtitle: "Discover unique products curated just for you. Minimalist design, playful details.",
   heroImage: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1920&q=80&fm=webp",
   heroCtaText: "Shop the Collection",

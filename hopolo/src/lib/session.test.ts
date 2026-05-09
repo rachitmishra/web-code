@@ -23,12 +23,12 @@ describe('session utility', () => {
     expect(sessionId).toBeDefined();
     expect(typeof sessionId).toBe('string');
     expect(sessionId.length).toBeGreaterThan(0);
-    expect(localStorage.setItem).toHaveBeenCalledWith('hopolo_session_id', sessionId);
+    expect(localStorage.setItem).toHaveBeenCalledWith('hypvzn_session_id', sessionId);
   });
 
   it('should return the existing session ID if it exists in localStorage', () => {
     const existingId = 'existing-uuid-123';
-    mockStorage['hopolo_session_id'] = existingId;
+    mockStorage['hypvzn_session_id'] = existingId;
     
     const sessionId = getSessionId();
     expect(sessionId).toBe(existingId);

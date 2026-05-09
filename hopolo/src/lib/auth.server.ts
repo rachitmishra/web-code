@@ -1,6 +1,6 @@
 import { adminAuth } from './firebase-admin.server';
 
-const SESSION_COOKIE_NAME = 'hopolo_session';
+const SESSION_COOKIE_NAME = 'hypvzn_session';
 const FIVE_DAYS_IN_MS = 60 * 60 * 24 * 5 * 1000;
 
 /**

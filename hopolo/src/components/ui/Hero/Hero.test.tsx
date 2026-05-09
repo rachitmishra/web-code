@@ -4,8 +4,8 @@ import Hero from './Hero';
 
 describe('Hero', () => {
   it('should render the title and subtitle', () => {
-    render(<Hero title="Welcome to Hopolo" subtitle="Your favorite boutique shop" />);
-    expect(screen.getByText(/welcome to hopolo/i)).toBeInTheDocument();
+    render(<Hero title="Welcome to HYPVZN" subtitle="Your favorite boutique shop" />);
+    expect(screen.getByText(/welcome to hypvzn/i)).toBeInTheDocument();
     expect(screen.getByText(/your favorite boutique shop/i)).toBeInTheDocument();
   });
 
