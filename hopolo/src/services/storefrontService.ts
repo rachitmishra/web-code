@@ -19,43 +19,63 @@ export interface StorefrontSettings {
   heroCtaText: string;
   reviews: CustomerReview[];
   homeLayout?: HomeLayout;
+  pageContent?: Record<string, { title: string, content: string }>;
 }
 
 export const DEFAULT_SETTINGS: StorefrontSettings = {
-  bannerText: "Welcome to HYPVZN!",
-  bannerColor: "#5D3FD3",
+  bannerText: "FW24_SYSTEM_READY",
+  bannerColor: "#8A2BE2",
   bannerLink: "",
   bannerVisible: false,
   isMaintenanceMode: false,
-  heroTitle: "HYPVZN Boutique",
-  heroSubtitle: "Discover unique products curated just for you. Minimalist design, playful details.",
-  heroImage: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1920&q=80&fm=webp",
-  heroCtaText: "Shop the Collection",
+  heroTitle: "Architectural Performance Gear",
+  heroSubtitle: "ENGINEERED FOR PRECISION",
+  heroImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuB50EBRSPpl-CftZG-FtF8YsG2xHbpyV7Z76PoZ5TUKls3voy1a0PcS7MB0lPQk_SR246tjuSyTSWwQA_keXlM-RZRNp950efuqX2HEkGevYnt7sTr3Yo7Q3DqCbl2I_EVXx5yYu8segE0N656Dxw3FQMMXEAZp2WbBPQrd2-Da2csOleVJ-hDNUnEjzzm59oHLqgP_WhpuE9I8WYnkT0zSRMsNI07paYknXh7BSEs-rbkbcFybbfQTMUclUrOPKzIAlqQyKNQw0w",
+  heroCtaText: "ENTER ARCHIVE",
   reviews: [
     {
-      name: "Sarah L.",
-      emoji: "😊",
-      text: "Amazing quality and fast delivery. Highly recommended!",
+      name: "SARAH L.",
+      emoji: "SYSTEM_OK",
+      text: "AMAZING QUALITY AND FAST DELIVERY. HIGHLY RECOMMENDED.",
     },
     {
-      name: "Marcus T.",
-      emoji: "😊",
-      text: "Minimalist design that fits perfectly in my home.",
+      name: "MARCUS T.",
+      emoji: "SYSTEM_OK",
+      text: "MINIMALIST DESIGN THAT FITS PERFECTLY IN MY HOME.",
     },
     {
-      name: "Elena G.",
-      emoji: "😊",
-      text: "The emoji-based review system is so fun and easy!",
+      name: "ELENA G.",
+      emoji: "SYSTEM_OK",
+      text: "THE EMOJI-BASED REVIEW SYSTEM IS SO FUN AND EASY.",
     },
   ],
   homeLayout: {
     plugins: [
       { id: 'home-promo', type: 'PromoBanner', visible: false },
       { id: 'home-hero', type: 'CinematicHero', visible: true },
+      { id: 'home-featured-collection', type: 'FeaturedCollection', visible: true },
+      { id: 'home-curated-essentials', type: 'CuratedEssentials', visible: true },
       { id: 'home-best-sellers', type: 'BestSellers', visible: true },
-      { id: 'home-grid', type: 'ProductGridSection', visible: true },
-      { id: 'home-reviews', type: 'ReviewSection', visible: true },
+      { id: 'home-newsletter', type: 'Newsletter', visible: true },
     ]
+  },
+  pageContent: {
+    '/archive': {
+      title: 'Archive',
+      content: 'Archival pieces from past seasons. Technical garments engineered for durability.'
+    },
+    '/stockists': {
+      title: 'Stockists',
+      content: 'Global distribution partners and boutique locations.'
+    },
+    '/legal/privacy': {
+      title: 'Privacy Policy',
+      content: 'Information regarding data collection and processing protocols.'
+    },
+    '/legal/terms': {
+      title: 'Terms of Use',
+      content: 'Terms and conditions for accessing the HYPVZN system.'
+    }
   }
 };
 
