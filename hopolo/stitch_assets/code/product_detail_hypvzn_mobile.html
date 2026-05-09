@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#353535",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-secondary": "#480081",
+                    "on-tertiary": "#303030",
+                    "surface-bright": "#393939",
+                    "surface-container-highest": "#353535",
+                    "on-primary-container": "#636565",
+                    "background": "#131313",
+                    "on-primary": "#2f3131",
+                    "error-container": "#93000a",
+                    "secondary": "#dcb8ff",
+                    "on-secondary-fixed-variant": "#6700b5",
+                    "inverse-primary": "#5d5f5f",
+                    "on-secondary-fixed": "#2c0051",
+                    "inverse-on-surface": "#313030",
+                    "inverse-surface": "#e5e2e1",
+                    "primary-fixed": "#e2e2e2",
+                    "on-surface": "#e5e2e1",
+                    "on-primary-fixed": "#1a1c1c",
+                    "outline": "#8e9192",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "surface-container-high": "#2a2a2a",
+                    "primary-fixed-dim": "#c6c6c7",
+                    "on-error": "#690005",
+                    "surface-container-low": "#1c1b1b",
+                    "on-surface-variant": "#c4c7c8",
+                    "secondary-container": "#7701d0",
+                    "primary-container": "#e2e2e2",
+                    "surface-container": "#20201f",
+                    "tertiary-container": "#e2e2e2",
+                    "secondary-fixed": "#efdbff",
+                    "tertiary-fixed": "#e2e2e2",
+                    "on-primary-fixed-variant": "#454747",
+                    "secondary-fixed-dim": "#dcb8ff",
+                    "surface": "#131313",
+                    "on-background": "#e5e2e1",
+                    "surface-dim": "#131313",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-container": "#dcb7ff",
+                    "tertiary": "#ffffff",
+                    "on-tertiary-container": "#646464",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "surface-tint": "#c6c6c7",
+                    "primary": "#ffffff",
+                    "error": "#ffb4ab",
+                    "outline-variant": "#444748"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin": "64px",
+                    "stack-lg": "120px",
+                    "stack-md": "64px",
+                    "gutter": "24px",
+                    "container-max": "1440px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-xl": ["Space Grotesk"],
+                    "body-lg": ["Inter"],
+                    "mono-technical": ["Space Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                    "headline-xl": ["80px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                    "mono-technical": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            cursor: crosshair;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md selection:bg-secondary selection:text-on-secondary">
+<!-- TopAppBar Component -->
+<header class="fixed top-0 w-full z-50 bg-background dark:bg-background border-b border-outline dark:border-outline-variant flex justify-between items-center px-4 md:px-margin h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="cursor-crosshair hover:opacity-70 transition-opacity text-primary dark:text-primary">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+<div class="font-headline-md text-headline-md tracking-tighter text-primary dark:text-primary">HYPVZN</div>
+<div class="flex items-center gap-4">
+<button class="cursor-crosshair hover:opacity-70 transition-opacity text-primary dark:text-primary">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</header>
+<main class="pt-16 pb-24 md:pb-0">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row min-h-screen">
+<!-- Product Image Gallery (Mobile Scroll, Desktop Sticky) -->
+<section class="w-full md:w-3/5 border-r border-outline-variant relative">
+<div class="flex flex-col">
+<div class="aspect-[3/4] w-full border-b border-outline-variant bg-surface-container-lowest overflow-hidden">
+<img class="w-full h-full object-cover mix-blend-lighten contrast-125" data-alt="A high-contrast, professional flash-lit photography shot of a technical oversized black t-shirt against a pitch-black industrial background. The lighting is harsh and direct, creating deep shadows and sharp highlights that reveal the heavy 300GSM fabric texture. The aesthetic is avant-garde and minimalist, emphasizing the architectural silhouette of the garment within a luxury streetwear context. Cold, clinical, and high-fashion editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG4Dv_zZACqg58lwlcFIFYZ2bz_sLZxFEG28jj4rZvStB5YKF9q0YbFHpuznQ51SST4kqaKjYAHHpKJAPxu0c5hRRQXcO3rbqu5GSmCtFFwMSqYlkrsE7ncEWWE-q2dMYxmn7uQxjQnHjuUjCWEhkJw5Dxy-3r3FQmgbIF18GAmVZ7kMVWCMRH5E_mXoE3aLYTvoHLLFYiL09slplOgbbyS2V_YAU9ffrMYaSddUrzGDyL0zoRMQw418ULZxqY-3UY1h0yjhqbaA"/>
+</div>
+<div class="grid grid-cols-2">
+<div class="aspect-[1/1] border-r border-b border-outline-variant">
+<img class="w-full h-full object-cover grayscale" data-alt="Extreme close-up shot of the technical stitching and ribbed neckline of a premium black cotton tee. The flash photography style highlights the intricate fiber weave and the deep charcoal tones of the high-quality GOTS cotton. The lighting creates a brutalist, industrial atmosphere with sharp micro-shadows on the textile surface. Professional fashion archive style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0u5_6HHEUHJscSju3H9uWul4p2FLAK1DwjsziQpXp79Xt1mbjdhfUU-bEgkDwnvuJ42sTm1TpCcYRcHCZ4WAmF5zHbKNDehQzWyOx4SPUd5YRsNYeAgofDOULSnuHPTKEFd4bJS-znjU2QPtyZZZ1l4X197Fu-DhIdAPHRpPJ9gMeksK6D7v40b1_hig2F-0cyBF45JoPGnebaMNSi4ZARGRMDFnrhWRsQ3nN_flbptcyiXId19BqKZ67GxhK8rzs4F_v4thdVg"/>
+</div>
+<div class="aspect-[1/1] border-b border-outline-variant">
+<img class="w-full h-full object-cover grayscale brightness-75" data-alt="Low angle view of a model wearing a heavy technical tee, standing in a minimalist concrete environment. The lighting is cold and clinical, casting long shadows that emphasize the boxy fit and architectural shoulders. The overall mood is futuristic and authoritative, aligning with a luxury technical streetwear brand identity. High-key contrast and sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD1qAYDGBEfWmJ3Mif0TJPf9VgR5nc1d4wwU_iqiRDZv-EgIs9MQ5yA_jp9Exh--3Wkf3CKM4moO_5cfvl65W2U-ybN9lKw-a-FrKYyXtc29tTD4EiSbRCIz52-2LnVwsFbptUkwRkvvei22b5ZRQA09-3Hfjp0oaAbZS1NuwUEOTZhX3DOw-RL3TNUC14UdAqV6lL-0PK72aoqaH1Rg96hoHWTAXf9CFaIuoZdGe88XXNhI8wiUqZPmJStoy93jBiz4O6KvqZ3w"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Info (Fixed on Desktop) -->
+<section class="w-full md:w-2/5 p-6 md:p-12 flex flex-col gap-8 sticky top-16 h-fit">
+<div class="flex flex-col gap-2">
+<span class="font-mono-technical text-mono-technical text-outline uppercase tracking-widest">Archive Series / SS24</span>
+<h1 class="font-headline-lg text-headline-lg uppercase">Core Tech Tee</h1>
+<p class="font-headline-md text-headline-md text-primary">$120.00</p>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant">Select Size</span>
+<span class="font-mono-technical text-mono-technical text-outline border-b border-outline cursor-crosshair">Size Guide</span>
+</div>
+<div class="grid grid-cols-5 border border-outline-variant">
+<button class="py-4 border-r border-outline-variant font-mono-technical hover:bg-white hover:text-black transition-colors cursor-crosshair">XS</button>
+<button class="py-4 border-r border-outline-variant font-mono-technical hover:bg-white hover:text-black transition-colors cursor-crosshair">S</button>
+<button class="py-4 border-r border-outline-variant font-mono-technical bg-white text-black cursor-crosshair">M</button>
+<button class="py-4 border-r border-outline-variant font-mono-technical hover:bg-white hover:text-black transition-colors cursor-crosshair">L</button>
+<button class="py-4 font-mono-technical hover:bg-white hover:text-black transition-colors cursor-crosshair">XL</button>
+</div>
+</div>
+<button class="w-full py-6 bg-secondary text-on-secondary font-headline-md uppercase tracking-tighter hover:opacity-90 transition-opacity cursor-crosshair flex justify-center items-center gap-2">
+                    Add to Bag
+                    <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Accordion Sections -->
+<div class="flex flex-col border-t border-outline-variant">
+<details class="group border-b border-outline-variant overflow-hidden" open="">
+<summary class="flex justify-between items-center py-6 cursor-crosshair list-none uppercase font-label-caps">
+                            Technical Specs
+                            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="pb-8 font-mono-technical text-on-surface-variant flex flex-col gap-4">
+<div class="flex justify-between border-b border-outline-variant/30 pb-2">
+<span>Fabric</span>
+<span class="text-primary">300GSM Heavyweight Cotton</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant/30 pb-2">
+<span>Origin</span>
+<span class="text-primary">100% GOTS Certified</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant/30 pb-2">
+<span>Fit</span>
+<span class="text-primary">Oversized / Boxy Silhouette</span>
+</div>
+<div class="flex justify-between">
+<span>ID</span>
+<span class="text-primary">HV-SS24-0012</span>
+</div>
+</div>
+</details>
+<details class="group border-b border-outline-variant">
+<summary class="flex justify-between items-center py-6 cursor-crosshair list-none uppercase font-label-caps">
+                            Shipping &amp; Returns
+                            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="pb-8 font-body-md text-on-surface-variant">
+<p>Complimentary express shipping on orders over $300. 14-day archival return policy applies to all non-sale items.</p>
+</div>
+</details>
+</div>
+<!-- Product Story -->
+<div class="mt-4 flex flex-col gap-4">
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                        Engineered for the urban vanguard. The Core Tech Tee features a high-density weave that maintains its architectural form even after multiple cycles. Refined drop-shoulder construction and a reinforced neckline define the HYPVZN silhouette.
+                    </p>
+</div>
+</section>
+</div>
+<!-- Technical Cross-Section / Bento Highlight -->
+<section class="border-t border-outline-variant px-4 md:px-margin py-stack-lg">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="col-span-1 md:col-span-2 border border-outline-variant p-10 flex flex-col justify-between aspect-[16/9] md:aspect-auto">
+<div class="flex flex-col gap-4">
+<span class="font-mono-technical text-mono-technical text-secondary">[ CONSTRUCTION ]</span>
+<h2 class="font-headline-lg text-headline-lg uppercase">Structural Integrity</h2>
+<p class="font-body-lg text-on-surface-variant max-w-lg">Double-needle coverstitch seams throughout. The garment is pre-shrunk and reactive dyed for long-lasting color saturation and minimal distortion.</p>
+</div>
+<div class="mt-8">
+<span class="font-mono-technical text-mono-technical border border-outline-variant px-4 py-1">CERTIFIED ORGANIC</span>
+</div>
+</div>
+<div class="border border-outline-variant aspect-square overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover grayscale contrast-125" data-alt="A technical flat-lay of black fabric swatches stacked in a geometric arrangement. The lighting is sharp, top-down flash, casting crisp shadows that define the edges of the material layers. The composition is clinical and minimalist, emphasizing the raw material quality of a luxury streetwear brand. Monochrome palette with extreme blacks and stark whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhSGVpxLI2L0mP5-uFYpRwC7LnSAq6iVdPzFsIdgPQ8hLdy73OBxlOdAjhbxpPP_B4gP37beSwDhPJ9eNFdfVNwwyPCM0S0_ZSHXOhyb13qmrzZ7-eYSXguvCRAHmrF11xNKK70I8ZmudLMXAAOj_u317DKg57eZ0ytp1FRed4JYhkkaWUtQ6ROIc1AM5KRxfpsYWz8CJh9UGDhxMqHWA33quLp0eZn4a44j2LJbCJzXf5yX3FG_pZ5GNiotyzx3YnM7sdRy3UIg"/>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline dark:border-outline-variant w-full">
+<div class="flex flex-col gap-stack-md px-margin py-stack-lg w-full max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+<div class="font-headline-lg text-headline-lg text-primary tracking-tighter">HYPVZN</div>
+<div class="flex flex-wrap gap-8 font-mono-technical text-mono-technical">
+<a class="text-on-surface-variant hover:text-primary transition-colors cursor-crosshair" href="#">TERMS</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors cursor-crosshair" href="#">PRIVACY</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors cursor-crosshair" href="#">TECHNICAL SUPPORT</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors cursor-crosshair" href="#">INSTAGRAM</a>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center border-t border-outline-variant pt-8">
+<p class="font-mono-technical text-on-surface-variant">©2024 HYPVZN ARCHIVE</p>
+<div class="flex gap-2 mt-4 md:mt-0">
+<span class="w-8 h-8 border border-outline-variant flex items-center justify-center font-mono-technical text-[10px]">EN</span>
+<span class="w-8 h-8 border border-outline-variant flex items-center justify-center font-mono-technical text-[10px]">USD</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar Component (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-4 px-margin bg-background/80 dark:bg-background/80 backdrop-blur-xl border-t border-outline dark:border-outline-variant z-50">
+<button class="text-outline dark:text-outline-variant hover:text-primary dark:hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+</button>
+<button class="text-outline dark:text-outline-variant hover:text-primary dark:hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="text-primary dark:text-primary scale-110 active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="shopping_cart" data-weight="fill">shopping_cart</span>
+</button>
+<button class="text-outline dark:text-outline-variant hover:text-primary dark:hover:text-primary transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</nav>
+</body></html>

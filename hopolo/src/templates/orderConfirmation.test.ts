@@ -19,12 +19,12 @@ describe('orderConfirmation Template', () => {
 
     const html = generateOrderConfirmationHtml(mockOrder);
 
-    expect(html).toContain('Order Confirmed');
+    expect(html).toContain('RECEIPT_CONFIRMED');
     expect(html).toContain('o123');
-    expect(html).toContain('Product A');
-    expect(html).toContain('x 2');
-    expect(html).toContain('Product B');
-    expect(html).toContain('₹250');
+    expect(html).toContain('PRODUCT A');
+    expect(html).toContain('QTY: 02');
+    expect(html).toContain('PRODUCT B');
+    expect(html).toContain('$250.00');
     expect(html).toContain('123 Test St');
     expect(html).toContain('Demo City');
   });

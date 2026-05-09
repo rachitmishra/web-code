@@ -117,7 +117,10 @@ const ProductDetail: React.FC = () => {
     }
   }, [actionData]);
 
-  const handleAddToCart = (p: Product = product!, q: number = quantity) => {
+  const handleAddToCart = (pOrEvent?: Product | React.MouseEvent, q: number = quantity) => {
+    // If it's a click event from ProductInfoPlugin, use the main product
+    const p = (pOrEvent && 'id' in pOrEvent) ? pOrEvent : product!;
+    
     if (!p) return;
     
     if (p.sizes && p.sizes.length > 0 && !selectedSize) {

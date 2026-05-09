@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            cursor: crosshair;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for technical look */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #131313; }
+        ::-webkit-scrollbar-thumb { background: #444748; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#353535",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary": "#480081",
+                        "on-tertiary": "#303030",
+                        "surface-bright": "#393939",
+                        "surface-container-highest": "#353535",
+                        "on-primary-container": "#636565",
+                        "background": "#131313",
+                        "on-primary": "#2f3131",
+                        "error-container": "#93000a",
+                        "secondary": "#dcb8ff",
+                        "on-secondary-fixed-variant": "#6700b5",
+                        "inverse-primary": "#5d5f5f",
+                        "on-secondary-fixed": "#2c0051",
+                        "inverse-on-surface": "#313030",
+                        "inverse-surface": "#e5e2e1",
+                        "primary-fixed": "#e2e2e2",
+                        "on-surface": "#e5e2e1",
+                        "on-primary-fixed": "#1a1c1c",
+                        "outline": "#8e9192",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "surface-container-high": "#2a2a2a",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-error": "#690005",
+                        "surface-container-low": "#1c1b1b",
+                        "on-surface-variant": "#c4c7c8",
+                        "secondary-container": "#7701d0",
+                        "primary-container": "#e2e2e2",
+                        "surface-container": "#20201f",
+                        "tertiary-container": "#e2e2e2",
+                        "secondary-fixed": "#efdbff",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-primary-fixed-variant": "#454747",
+                        "secondary-fixed-dim": "#dcb8ff",
+                        "surface": "#131313",
+                        "on-background": "#e5e2e1",
+                        "surface-dim": "#131313",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#dcb7ff",
+                        "tertiary": "#ffffff",
+                        "on-tertiary-container": "#646464",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "surface-tint": "#c6c6c7",
+                        "primary": "#ffffff",
+                        "error": "#ffb4ab",
+                        "outline-variant": "#444748"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin": "64px",
+                        "stack-lg": "120px",
+                        "stack-md": "64px",
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-xl": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "mono-technical": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                        "headline-xl": ["80px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                        "mono-technical": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-background selection:bg-primary selection:text-background">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background border-b border-outline-variant flex justify-between items-center px-6 md:px-margin h-16">
+<div class="flex items-center cursor-crosshair hover:opacity-70 transition-opacity text-primary">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</div>
+<div class="font-headline-md text-headline-md tracking-tighter text-primary">HYPVZN</div>
+<div class="flex items-center cursor-crosshair hover:opacity-70 transition-opacity text-primary">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</div>
+</header>
+<main class="pt-24 pb-stack-lg">
+<!-- Hero Confirmation Section -->
+<section class="px-6 md:px-margin max-w-container-max mx-auto mb-stack-md">
+<div class="border-l border-primary pl-6 py-4 mb-12">
+<p class="font-label-caps text-label-caps text-outline mb-2">SYSTEM.ORDER_FINALIZED</p>
+<h1 class="font-headline-xl text-headline-xl uppercase break-words leading-none">TRANSACTION SUCCESSFUL</h1>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter border-t border-outline-variant pt-8">
+<!-- Order Technical Data -->
+<div class="md:col-span-4 space-y-8">
+<div>
+<p class="font-label-caps text-label-caps text-outline mb-2">IDENTIFICATION NO.</p>
+<p class="font-mono-technical text-mono-technical text-primary text-xl tracking-widest">HP-2940-X10-0924</p>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-outline mb-2">ESTIMATED ARRIVAL</p>
+<p class="font-mono-technical text-mono-technical text-primary text-xl">OCTOBER 14 — OCTOBER 18, 2024</p>
+</div>
+</div>
+<!-- Transaction Summary -->
+<div class="md:col-span-8 border-l border-outline-variant pl-0 md:pl-8 mt-8 md:mt-0">
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-end border-b border-outline-variant pb-2">
+<span class="font-label-caps text-label-caps">SHIP_TO</span>
+<span class="font-body-md text-right">J. ARCHER<br/>1240 TECH BOULEVARD, LV-426<br/>METROPOLIS, 90210</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="font-label-caps text-label-caps">METHOD</span>
+<span class="font-body-md uppercase">Express Technical Freight</span>
+</div>
+<div class="flex justify-between items-center pt-4">
+<span class="font-label-caps text-label-caps">TOTAL_DEBIT</span>
+<span class="font-headline-md text-headline-md">$1,240.00 USD</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Snapshot (Bento Style) -->
+<section class="px-6 md:px-margin max-w-container-max mx-auto mb-stack-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-outline-variant border border-outline-variant">
+<div class="bg-background p-8 flex flex-col justify-between aspect-square md:aspect-video overflow-hidden group">
+<img class="object-cover w-full h-full grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" data-alt="A high-contrast, professional fashion photograph of a minimalist technical jacket in stark white, set against a deep black void. The lighting is cinematic and sharp, highlighting the architectural silhouette and complex fabric textures. The aesthetic is cold, futuristic, and luxurious, emphasizing structural precision and premium avant-garde streetwear vibes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZtLlg3tg3MBgkiFLY87IrkMMBA3mCyKxbiWjy77LP_33YxGgpejOdeBVYQdLb4DQp4uIZPwre4CEYnq4Mj93HIGYHNJV06C2XkyjOkG4OHXl4DYdCF8-Z58cq6ilzJdrbJTjTaDu0CoORh53A3O-d9u183PwkSyjQAXY8Evz29P9-PUkh--gZZ2s8N-DuDsyBwF-yjekrO_e41HvQHZalI9oqrWHgjoDRpxruhwlTWnLZ8TWQby4kDdwT1v9FevwxKw1uf1yXEg"/>
+</div>
+<div class="bg-surface-container-low p-8 flex flex-col justify-center">
+<p class="font-label-caps text-label-caps text-outline mb-4">ITEM_CONFIRMED</p>
+<h3 class="font-headline-lg text-headline-lg mb-2">NEO-SHELL 01</h3>
+<p class="font-mono-technical text-mono-technical text-outline uppercase mb-8">SKU: HYP-VZN-SHL-WHT</p>
+<div class="flex gap-4">
+<button class="px-6 py-3 border border-primary font-label-caps text-label-caps hover:bg-primary hover:text-background transition-colors w-full text-center">TRACK SHIPMENT</button>
+</div>
+</div>
+</div>
+</section>
+<!-- HYPVZN Ethos Section -->
+<section class="bg-surface-container-lowest border-y border-outline-variant py-stack-md px-6 md:px-margin overflow-hidden">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-5 mb-12 md:mb-0">
+<h2 class="font-headline-lg text-headline-lg mb-6 leading-none">THE HYPVZN ETHOS</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+                        Our archives represent a commitment to architectural durability and technical precision. Every garment is an experiment in material science, designed for the hyper-urban environment where function dictates form.
+                    </p>
+<div class="space-y-4">
+<div class="flex items-center gap-4 text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="token">token</span>
+<span class="font-mono-technical text-mono-technical uppercase tracking-widest">Sustainability through Longevity</span>
+</div>
+<div class="flex items-center gap-4 text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="precision_manufacturing">precision_manufacturing</span>
+<span class="font-mono-technical text-mono-technical uppercase tracking-widest">Robotic Precision Stitching</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-7">
+<div class="relative aspect-video border border-outline-variant">
+<img class="w-full h-full object-cover grayscale brightness-75" data-alt="A close-up technical macro shot of futuristic electronic circuitry and high-end carbon fiber textures inside a laboratory setting. The image is dominated by deep blacks and cool grays with sharp, bright highlights that emphasize the industrial precision and luxury craftsmanship of the tech. The mood is scientific, sterile, and hyper-modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ96XkWDuyi5mXYUjg_8tVGC_MOgikkIy4xXOwWbtmzShsp1yf-zv1KXsKWDOTqQU_Isl7H4xgp7q4HOA6qkZfc2P5tiru9MBRG2xxvECc9Y0f7lKUXqsqlTwoNam4s6Pd18uGS_up52hsIMAMfCFKB39Pat9C2684N9TMHu7Mpu58IcXWzmfVrYBc4OhN3Aa4Gus5K0SqEIimsHVuUuHYzPs6wginM9ylXtHFXQ-ARkTIqPGxhk6pOWeScyXLPXLHmqkdld86Fg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+<div class="absolute bottom-4 right-4 font-mono-technical text-[10px] text-outline opacity-50 uppercase">DATA_STREAM_0924_ACTIVE</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Back to Exploration -->
+<section class="px-6 md:px-margin py-stack-md flex justify-center">
+<a class="group inline-flex items-center gap-4 border border-outline-variant px-12 py-6 hover:border-primary transition-colors cursor-crosshair" href="#">
+<span class="font-label-caps text-label-caps group-hover:translate-x-1 transition-transform">CONTINUE TO ARCHIVE</span>
+<span class="material-symbols-outlined group-hover:translate-x-2 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant pt-stack-md pb-24 md:pb-stack-md">
+<div class="max-w-container-max mx-auto px-6 md:px-margin flex flex-col md:flex-row justify-between gap-12">
+<div class="space-y-8">
+<div class="font-headline-lg text-headline-lg tracking-tighter">HYPVZN</div>
+<p class="font-mono-technical text-mono-technical text-on-surface-variant max-w-xs uppercase">
+                    Architectural apparel for the hyper-urban nomad. Designed in the void.
+                </p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="flex flex-col gap-4">
+<p class="font-label-caps text-label-caps text-outline">LEGAL</p>
+<a class="font-mono-technical text-mono-technical hover:text-primary transition-colors" href="#">TERMS</a>
+<a class="font-mono-technical text-mono-technical hover:text-primary transition-colors" href="#">PRIVACY</a>
+</div>
+<div class="flex flex-col gap-4">
+<p class="font-label-caps text-label-caps text-outline">SUPPORT</p>
+<a class="font-mono-technical text-mono-technical hover:text-primary transition-colors" href="#">TECHNICAL SUPPORT</a>
+</div>
+<div class="flex flex-col gap-4">
+<p class="font-label-caps text-label-caps text-outline">SOCIAL</p>
+<a class="font-mono-technical text-mono-technical hover:text-primary transition-colors" href="#">INSTAGRAM</a>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-6 md:px-margin mt-16 pt-8 border-t border-outline-variant flex justify-between items-center">
+<span class="font-mono-technical text-mono-technical text-on-surface-variant">©2024 HYPVZN ARCHIVE</span>
+<span class="font-mono-technical text-mono-technical text-outline">VER. 2.4.0_STABLE</span>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-background/80 backdrop-blur-xl border-t border-outline-variant flex justify-around items-center py-4 px-6 z-50">
+<a class="text-outline hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+</a>
+<a class="text-outline hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</a>
+<a class="text-outline hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</a>
+<a class="text-primary scale-110" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</a>
+</nav>
+</body></html>

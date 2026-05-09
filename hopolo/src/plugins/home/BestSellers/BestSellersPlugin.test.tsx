@@ -33,7 +33,7 @@ describe('BestSellersPlugin', () => {
   it('should render best sellers from context', () => {
     render(<BestSellersPlugin />, { wrapper });
     
-    expect(screen.getByText('Best Sellers')).toBeInTheDocument();
+    expect(screen.getByText('Top Performers')).toBeInTheDocument();
     expect(screen.getByText(/Best Seller 1/i)).toBeInTheDocument();
     expect(screen.getByText(/Best Seller 2/i)).toBeInTheDocument();
   });

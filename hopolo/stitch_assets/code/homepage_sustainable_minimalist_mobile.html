@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&amp;family=Noto+Serif:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#f8ffed",
+                    "tertiary": "#5d5c57",
+                    "secondary-fixed": "#f4dfcb",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-container": "#f0eded",
+                    "surface": "#fcf9f8",
+                    "on-secondary-fixed": "#241a0e",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#1b1c1c",
+                    "tertiary-container": "#76756f",
+                    "surface-container-low": "#f6f3f2",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#e5e2db",
+                    "on-secondary-container": "#716252",
+                    "outline-variant": "#c5c8bd",
+                    "inverse-primary": "#bcccae",
+                    "surface-container-highest": "#e4e2e1",
+                    "surface-tint": "#54634a",
+                    "secondary": "#6b5c4c",
+                    "surface-bright": "#fcf9f8",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#dcd9d9",
+                    "tertiary-fixed-dim": "#c9c6c0",
+                    "outline": "#75786f",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#fdffdd",
+                    "primary-fixed": "#d8e8c8",
+                    "primary-fixed-dim": "#bcccae",
+                    "inverse-on-surface": "#f3f0f0",
+                    "on-surface": "#1b1c1c",
+                    "surface-variant": "#e4e2e1",
+                    "inverse-surface": "#303030",
+                    "on-surface-variant": "#444840",
+                    "secondary-fixed-dim": "#d7c3b0",
+                    "primary-container": "#6a795f",
+                    "primary": "#526048",
+                    "on-primary-fixed": "#131f0b",
+                    "on-tertiary-fixed": "#1c1c18",
+                    "on-tertiary-fixed-variant": "#474742",
+                    "secondary-container": "#f4dfcb",
+                    "on-secondary-fixed-variant": "#524436",
+                    "surface-container-high": "#eae7e7",
+                    "on-primary-fixed-variant": "#3d4b34",
+                    "background": "#fcf9f8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "unit": "8px",
+                    "section-gap": "80px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "margin-desktop": "48px"
+            },
+            "fontFamily": {
+                    "headline-display": ["Noto Serif"],
+                    "body-md": ["Manrope"],
+                    "headline-lg": ["Noto Serif"],
+                    "label-md": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "headline-md": ["Noto Serif"],
+                    "label-sm": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-display": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.03em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fcf9f8;
+            color: #1b1c1c;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface w-full top-0 sticky z-40">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 max-w-container-max mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim cursor-pointer transition-opacity active:opacity-70" data-icon="menu">menu</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim tracking-[0.1em]">Artisan Studio</h1>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim cursor-pointer transition-opacity active:opacity-70" data-icon="shopping_bag">shopping_bag</span>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative h-[707px] flex items-end overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Artisan Studio Hero" class="w-full h-full object-cover" data-alt="A serene outdoor scene featuring a model wearing minimalist, sustainable linen apparel in soft earthy tones. They are sitting on a weathered wooden bench surrounded by tall, sun-drenched wild grasses under a soft, diffused morning light. The color palette is composed of sage green, warm sand, and off-white, reflecting a mindful and organic aesthetic. The atmosphere is peaceful, quiet, and deeply connected to nature." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-0nUpaECQrtzz06F3Mee_g8gWun6P3qtF_xMasTrLIU92M97bD3bBuGCwrRV33RxwDy3owzD0I9fTIZy9b43jMv50MDLCSEhbJhRiYBB1iov72k6x2yp_JFS7-JYXVCr9GJVLK6QZp2V7iVhWXDgSr_XUkn3eag0cKtDuk4R4VUTQ0MqekjkRr6_unNQ60BGn8eBZPrjpUcJBY_sJ4FYpCkss-__ld3JA690M0nV4gE_X8wcw7HRnURsOQ_xq44Ce5rJX6H9YwA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 px-margin-mobile pb-12 w-full">
+<div class="max-w-md">
+<span class="font-label-md text-label-md text-on-primary-container bg-primary-container px-3 py-1 rounded-full inline-block mb-4">New Collection</span>
+<h2 class="font-headline-display text-headline-display text-surface mb-6">Breathing with the Earth.</h2>
+<button class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors duration-300">
+                        Explore Essentials
+                    </button>
+</div>
+</div>
+</section>
+<!-- Earth-First Essentials -->
+<section class="py-section-gap px-margin-mobile">
+<div class="text-center mb-12">
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-2">Earth-First Essentials</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs mx-auto">Consciously crafted pieces designed for longevity and environmental harmony.</p>
+</div>
+<div class="grid grid-cols-1 gap-gutter">
+<!-- Category: Tees -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[4/5] rounded-xl overflow-hidden mb-4 bg-surface-container-low shadow-sm">
+<img alt="Sustainable Tees" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A stack of perfectly folded organic cotton t-shirts in various muted natural shades like ivory, charcoal, and moss green. The shirts rest on a clean, light-colored wooden surface in a minimalist studio setting with soft side-lighting that highlights the high-quality fabric texture. The overall feel is tactile, clean, and honest, emphasizing the material quality over complex design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnE0ZBUS6Xu1UBULEoCC44UJ23hV4immZieNTNOYoDcQRN6n2qZdmMGnF6lLICfeJSkRTH_zyQTLYbe67klP7vSrwdj0BTXgyWhlUba1brIpztat2Tj7AER1KslyvykriRI8fTbpG0SnEmLT1hzg5Y1pSZW_QwGodWEkw67k7-PEEHDfTW7IkYItAEkOXlHKfigsGxlPRIZrSKsBUkGeGI32Z9ytFti1kc_KpzIK9SKpzkEWji3tSjobNc1BOkACuxj1c21kGPzQ"/>
+<div class="absolute bottom-4 left-4">
+<span class="bg-surface/90 backdrop-blur-md px-4 py-2 rounded-lg font-label-md text-label-md text-on-surface">Organic Tees</span>
+</div>
+</div>
+</div>
+<!-- Category: Accessories -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[4/5] rounded-xl overflow-hidden mb-4 bg-surface-container-low shadow-sm">
+<img alt="Sustainable Accessories" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A collection of minimalist accessories made from recycled materials, including a simple canvas tote and a small cork wallet, arranged artfully on a large, flat river stone. The background is a soft, out-of-focus natural garden scene with dappled sunlight. The visual style is editorial and serene, focusing on the intersection of modern functional design and raw natural elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmw1Lx--MfJN6vEcBVYp2VGhFYADm7bwMg74pkwCACsqj8gfO3ETPHP2kiTwXHbtXPeyPMPUKUz8dQKrJaPtMipfvGl3SGgbuV8B8FB6yaIKUl_7wLhYW-rrb1NEW3vtSRvmvEMsc4MmuOjZ9ZUppEldodeTG6OCE8Oqt1HCkyi2VBEzFbIOW05jV6huWVpGb-nqXJHKzoDLyXS3y_NN2opjXjBsWGHAGZITn4IatZ1giDpiT_hR_OX-mcMeyqKdL3eNwY5Dvx6A"/>
+<div class="absolute bottom-4 left-4">
+<span class="bg-surface/90 backdrop-blur-md px-4 py-2 rounded-lg font-label-md text-label-md text-on-surface">Mindful Extras</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Mission -->
+<section class="bg-surface-container-low py-section-gap px-margin-mobile relative overflow-hidden">
+<div class="relative z-10 max-w-container-max mx-auto">
+<div class="flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-6" data-icon="eco" style="font-variation-settings: 'FILL' 1;">eco</span>
+<h3 class="font-headline-lg text-headline-lg text-primary mb-6">Our Mission</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md leading-relaxed">
+                        We believe clothing should be as enduring as the earth it comes from. Every fiber is sourced with intention, ensuring fair wages and a regenerative footprint.
+                    </p>
+<div class="mt-10 h-px w-24 bg-outline-variant"></div>
+<p class="mt-8 font-label-md text-label-md text-secondary tracking-widest uppercase">Ethically Made in Portugal</p>
+</div>
+</div>
+<!-- Decorative circle -->
+<div class="absolute -right-20 -bottom-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+</section>
+<!-- Featured Materials (Bento-lite) -->
+<section class="py-section-gap px-margin-mobile">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-8">Honest Materials</h3>
+<div class="flex flex-wrap gap-3">
+<div class="bg-secondary-fixed text-on-secondary-fixed px-4 py-2 rounded-full font-label-sm text-label-sm">Organic Cotton</div>
+<div class="bg-secondary-fixed text-on-secondary-fixed px-4 py-2 rounded-full font-label-sm text-label-sm">Recycled Hemp</div>
+<div class="bg-secondary-fixed text-on-secondary-fixed px-4 py-2 rounded-full font-label-sm text-label-sm">Deadstock Linen</div>
+<div class="bg-secondary-fixed text-on-secondary-fixed px-4 py-2 rounded-full font-label-sm text-label-sm">Plant-Based Dyes</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-highest w-full py-section-gap">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col gap-4">
+<h4 class="font-headline-sm text-headline-sm text-primary">Artisan Studio</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 Artisan Studio. Ethically Made.</p>
+</div>
+<div class="flex flex-col gap-3 mt-8 md:mt-0">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer">Sustainability Practices</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer">Shipping &amp; Returns</a>
+</div>
+<div class="flex flex-col gap-3 mt-4 md:mt-0">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer">Newsletter Signup</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer">Contact Us</a>
+</div>
+<div class="mt-8 lg:mt-0">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors" data-icon="share">share</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors" data-icon="mail">mail</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

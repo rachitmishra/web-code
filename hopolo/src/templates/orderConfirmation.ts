@@ -12,7 +12,7 @@ export interface OrderDetails {
 export const generateOrderConfirmationHtml = (order: any): string => {
   const itemsHtml = order.items.map((item: any) => `
     <div style="padding: 16px 0; border-bottom: 1px solid #000000; display: flex; justify-content: space-between;">
-      <div style="text-transform: uppercase; font-weight: 700;">${item.product?.name || item.name}</div>
+      <div style="text-transform: uppercase; font-weight: 700;">${(item.product?.name || item.name).toUpperCase()}</div>
       <div style="color: #666666;">QTY: ${item.quantity.toString().padStart(2, '0')} — $${(item.product?.price || item.price) * item.quantity}</div>
     </div>
   `).join('');

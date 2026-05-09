@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Space+Grotesk:wght@600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            cursor: crosshair;
+        }
+        /* Custom scrollbar for technical aesthetic */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #131313; }
+        ::-webkit-scrollbar-thumb { background: #353535; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#353535",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary": "#480081",
+                        "on-tertiary": "#303030",
+                        "surface-bright": "#393939",
+                        "surface-container-highest": "#353535",
+                        "on-primary-container": "#636565",
+                        "background": "#131313",
+                        "on-primary": "#2f3131",
+                        "error-container": "#93000a",
+                        "secondary": "#dcb8ff",
+                        "on-secondary-fixed-variant": "#6700b5",
+                        "inverse-primary": "#5d5f5f",
+                        "on-secondary-fixed": "#2c0051",
+                        "inverse-on-surface": "#313030",
+                        "inverse-surface": "#e5e2e1",
+                        "primary-fixed": "#e2e2e2",
+                        "on-surface": "#e5e2e1",
+                        "on-primary-fixed": "#1a1c1c",
+                        "outline": "#8e9192",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "surface-container-high": "#2a2a2a",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-error": "#690005",
+                        "surface-container-low": "#1c1b1b",
+                        "on-surface-variant": "#c4c7c8",
+                        "secondary-container": "#7701d0",
+                        "primary-container": "#e2e2e2",
+                        "surface-container": "#20201f",
+                        "tertiary-container": "#e2e2e2",
+                        "secondary-fixed": "#efdbff",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-primary-fixed-variant": "#454747",
+                        "secondary-fixed-dim": "#dcb8ff",
+                        "surface": "#131313",
+                        "on-background": "#e5e2e1",
+                        "surface-dim": "#131313",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#dcb7ff",
+                        "tertiary": "#ffffff",
+                        "on-tertiary-container": "#646464",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "surface-tint": "#c6c6c7",
+                        "primary": "#ffffff",
+                        "error": "#ffb4ab",
+                        "outline-variant": "#444748"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin": "64px",
+                        "stack-lg": "120px",
+                        "stack-md": "64px",
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-xl": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "mono-technical": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                        "headline-xl": ["80px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                        "mono-technical": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background dark:bg-background border-b border-outline dark:border-outline-variant flex justify-between items-center px-4 md:px-margin h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-crosshair hover:opacity-70 transition-opacity">menu</span>
+</div>
+<div class="font-headline-md text-headline-md tracking-tighter text-primary dark:text-primary">HYPVZN</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-crosshair hover:opacity-70 transition-opacity">shopping_bag</span>
+</div>
+</header>
+<main class="pt-24 pb-stack-lg px-4 md:px-margin max-w-container-max mx-auto">
+<!-- Multi-Step Indicator -->
+<nav class="mb-stack-md">
+<div class="flex justify-between items-center w-full border-b border-outline-variant pb-4">
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-primary">01 / SHIPPING</span>
+<div class="h-1 w-full bg-primary"></div>
+</div>
+<div class="flex flex-col gap-2 opacity-30">
+<span class="font-label-caps text-label-caps text-on-surface-variant">02 / PAYMENT</span>
+<div class="h-1 w-full bg-outline-variant"></div>
+</div>
+<div class="flex flex-col gap-2 opacity-30">
+<span class="font-label-caps text-label-caps text-on-surface-variant">03 / REVIEW</span>
+<div class="h-1 w-full bg-outline-variant"></div>
+</div>
+</div>
+</nav>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Order Summary (Mobile Top Priority) -->
+<aside class="lg:col-span-4 order-1 lg:order-2 space-y-gutter">
+<div class="border border-outline p-6 bg-surface-container-lowest">
+<h2 class="font-headline-md text-headline-md mb-6 tracking-tight">ORDER_SUMMARY</h2>
+<div class="space-y-6">
+<!-- Product Item -->
+<div class="flex gap-4 pb-6 border-b border-outline-variant">
+<div class="w-20 h-24 bg-surface-variant flex-shrink-0">
+<img class="w-full h-full object-cover grayscale" data-alt="A studio shot of a high-tech obsidian black technical jacket with metallic hardware, displayed against a dark charcoal background. The lighting is harsh and dramatic, creating sharp highlights on the waterproof fabric textures. The aesthetic is cold, architectural, and avant-garde streetwear. Minimalist composition with a focus on structural silhouettes and premium material details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNUqMni_33QDI27CYu4U-sFPsj9A3zQw5t9rPUhVKpfhTo0MkSxhbhYkbN0Q8w0BqXDSSYzbca-xnHBKqCznb2RgjykIgeYG3PAJ26gpjfk9eGIennM2VeGD0urqIeJ7mLNj4hmVO5Sgm9PtbwKFH-M_u08Q9Q_4_bGrZgXYr8XuIEMGP677YlX54hbnIdN4FXQviI-5nHpCokRnZ87lyNRxl-oA-Yv2-ZeCU0NJzr__5tCouMLGdtsj7-rV1J3xoCnw-CSvmp6w"/>
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">OUTERWEAR</p>
+<h3 class="font-mono-technical text-mono-technical uppercase">ARCH-SHELL V.04</h3>
+</div>
+<p class="font-mono-technical text-mono-technical">$840.00</p>
+</div>
+</div>
+<!-- Product Item 2 -->
+<div class="flex gap-4 pb-6 border-b border-outline-variant">
+<div class="w-20 h-24 bg-surface-variant flex-shrink-0">
+<img class="w-full h-full object-cover grayscale" data-alt="Close up detail of a structured monochrome grey garment showing complex technical stitching and industrial zippers. The lighting is clinical and bright, emphasizing the architectural quality of the design. The mood is sophisticated, technical luxury, aligned with a futuristic brutalist aesthetic. Pure black and white tones dominate the frame." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEAS1qRTWWi9sb9oxfAv8PmdiQvZm4hldiRZx5D_JwbHsp6zgBXfkgu-LdMIZYJh4vxYwgzbLyBP69Svx9xp4BFtqW2Tb3s_3Uvo_VZVIh-395EJmVn94FhzPVCQEm_Cf1Y6sHAu-me7UpMIGWRNwy6oVnXdy9jCnnl7oDIqOgZ7yY_StgO-Tt22Kkv_8hfx_GrGad3VIgvH96_bChCy5YRN9mbAHUdzNe0XznUP7yw8uGyxz4hk8hrH8elmv-_FXPReQJjpRYMw"/>
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">ACCESSORY</p>
+<h3 class="font-mono-technical text-mono-technical uppercase">TACT-SLING UNIT</h3>
+</div>
+<p class="font-mono-technical text-mono-technical">$320.00</p>
+</div>
+</div>
+</div>
+<div class="mt-8 space-y-3">
+<div class="flex justify-between">
+<span class="font-mono-technical text-on-surface-variant uppercase">Subtotal</span>
+<span class="font-mono-technical">$1,160.00</span>
+</div>
+<div class="flex justify-between">
+<span class="font-mono-technical text-on-surface-variant uppercase">Shipping</span>
+<span class="font-mono-technical">Calculated at next step</span>
+</div>
+<div class="flex justify-between border-t border-outline-variant pt-4 mt-4">
+<span class="font-headline-md text-headline-md">TOTAL</span>
+<span class="font-headline-md text-headline-md">$1,160.00</span>
+</div>
+</div>
+</div>
+<!-- Technical Specs Box -->
+<div class="border border-outline p-6 bg-background">
+<p class="font-label-caps text-label-caps text-primary mb-4">LOGISTICS_DATA</p>
+<div class="font-mono-technical text-on-surface-variant space-y-2 opacity-60">
+<p>ID: HP-CHK-992-001</p>
+<p>LOC: CENTRAL_HUB_04</p>
+<p>ETA: 48-72_HOURS</p>
+</div>
+</div>
+</aside>
+<!-- Right Column: Shipping Info -->
+<section class="lg:col-span-8 order-2 lg:order-1 space-y-stack-md">
+<div class="space-y-gutter">
+<h1 class="font-headline-lg text-headline-lg tracking-tighter uppercase">SHIPPING_INFO</h1>
+<form class="space-y-10 max-w-2xl">
+<!-- Email Section -->
+<div class="group">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors">EMAIL_ADDRESS</label>
+<input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline focus:border-primary focus:ring-0 text-body-lg font-mono-technical placeholder:opacity-20 py-4 transition-all" placeholder="USER@IDENTITY.DOMAIN" type="email"/>
+</div>
+<!-- Name Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="group">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors">FIRST_NAME</label>
+<input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline focus:border-primary focus:ring-0 text-body-lg font-mono-technical placeholder:opacity-20 py-4 transition-all" placeholder="GIVEN" type="text"/>
+</div>
+<div class="group">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors">LAST_NAME</label>
+<input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline focus:border-primary focus:ring-0 text-body-lg font-mono-technical placeholder:opacity-20 py-4 transition-all" placeholder="SURNAME" type="text"/>
+</div>
+</div>
+<!-- Address Section -->
+<div class="group">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors">STREET_ADDRESS</label>
+<input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline focus:border-primary focus:ring-0 text-body-lg font-mono-technical placeholder:opacity-20 py-4 transition-all" placeholder="STREET, BUILDING, APARTMENT" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="group md:col-span-1">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors">POSTAL_CODE</label>
+<input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline focus:border-primary focus:ring-0 text-body-lg font-mono-technical placeholder:opacity-20 py-4 transition-all" placeholder="XXXXX" type="text"/>
+</div>
+<div class="group md:col-span-2">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors">CITY</label>
+<input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline focus:border-primary focus:ring-0 text-body-lg font-mono-technical placeholder:opacity-20 py-4 transition-all" placeholder="URBAN_CENTER" type="text"/>
+</div>
+</div>
+<!-- Phone Section -->
+<div class="group">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors">MOBILE_CONTACT</label>
+<input class="w-full bg-transparent border-t-0 border-x-0 border-b border-outline focus:border-primary focus:ring-0 text-body-lg font-mono-technical placeholder:opacity-20 py-4 transition-all" placeholder="+XX 000 000 000" type="tel"/>
+</div>
+<!-- Checkbox -->
+<div class="flex items-center gap-4 mt-8">
+<input class="w-5 h-5 bg-transparent border border-outline text-secondary-container focus:ring-0 rounded-none" id="save-info" type="checkbox"/>
+<label class="font-mono-technical text-mono-technical uppercase opacity-60 cursor-pointer" for="save-info">Save this identity for future transactions</label>
+</div>
+<!-- CTA Button -->
+<button class="w-full md:w-auto px-12 py-6 bg-secondary-container text-white font-label-caps text-label-caps tracking-widest hover:bg-white hover:text-black transition-all duration-300 border border-secondary-container uppercase">
+                            CONTINUE TO PAYMENT
+                        </button>
+</form>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline dark:border-outline-variant w-full mt-stack-lg">
+<div class="flex flex-col gap-stack-md px-4 md:px-margin py-stack-lg w-full max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start gap-stack-md">
+<div class="font-headline-lg text-headline-lg tracking-tighter">HYPVZN</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter w-full md:w-auto">
+<a class="font-mono-technical text-mono-technical text-on-surface-variant hover:text-primary transition-colors" href="#">TERMS</a>
+<a class="font-mono-technical text-mono-technical text-on-surface-variant hover:text-primary transition-colors" href="#">PRIVACY</a>
+<a class="font-mono-technical text-mono-technical text-on-surface-variant hover:text-primary transition-colors" href="#">TECHNICAL SUPPORT</a>
+<a class="font-mono-technical text-mono-technical text-on-surface-variant hover:text-primary transition-colors" href="#">INSTAGRAM</a>
+</div>
+</div>
+<div class="font-mono-technical text-mono-technical opacity-40">
+                ©2024 HYPVZN ARCHIVE
+            </div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-background/80 dark:bg-background/80 backdrop-blur-xl border-t border-outline dark:border-outline-variant flex justify-around items-center py-4 px-margin z-50">
+<span class="material-symbols-outlined text-outline dark:text-outline-variant hover:text-primary transition-colors cursor-crosshair">home</span>
+<span class="material-symbols-outlined text-outline dark:text-outline-variant hover:text-primary transition-colors cursor-crosshair">search</span>
+<span class="material-symbols-outlined text-primary dark:text-primary scale-110 cursor-crosshair">shopping_cart</span>
+<span class="material-symbols-outlined text-outline dark:text-outline-variant hover:text-primary transition-colors cursor-crosshair">person</span>
+</nav>
+</body></html>

@@ -16,7 +16,7 @@ describe('BestSellers Component', () => {
         <BestSellers products={mockProducts} />
       </MemoryRouter>
     );
-    expect(screen.getByText('Best Sellers')).toBeInTheDocument();
+    expect(screen.getByText('Top Performers')).toBeInTheDocument();
   });
 
   it('should render a list of products', () => {

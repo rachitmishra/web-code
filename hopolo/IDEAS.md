@@ -3,7 +3,7 @@
 This document tracks potential features and enhancements for the Hopolo D2C platform.
 
 ## Implement Soon
-- **Advanced Analytics & Reporting:** Visual charts, top products, and customer insights for admins. (Selected for next track)
+- **Advanced Analytics & Reporting:** Visual charts, top products, and customer insights for admins. (In Progress - May 2026)
 - **Wishlist & "Save for Later":** User engagement and abandonment reduction.
 - **Search & Filter Enhancement:** Text search, price ranges, and sorting.
 

@@ -1,14 +1,25 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import ProductDetail from './ProductDetail';
-import * as productService from '../services/productService';
 import * as cartService from '../services/cartService';
 import * as reviewService from '../services/reviewService';
 import { auth } from '../lib/firebase';
 import { useSEO } from '../hooks/useSEO';
+import { useLoaderData, useSubmit, useActionData } from 'react-router-dom';
+import { DEFAULT_PDP_LAYOUT } from '../services/storefrontService';
 
-vi.mock('../services/productService');
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual('react-router-dom');
+  return {
+    ...actual,
+    useLoaderData: vi.fn(),
+    useSubmit: vi.fn(),
+    useActionData: vi.fn(),
+    useNavigate: vi.fn(() => vi.fn()),
+  };
+});
+
 vi.mock('../services/cartService');
 vi.mock('../services/reviewService');
 vi.mock('../hooks/useSEO');
@@ -17,7 +28,7 @@ vi.mock('../lib/firebase', () => ({
   db: {},
 }));
 
-const mockProduct: productService.Product = {
+const mockProduct = {
   id: '1',
   name: 'Cool Product',
   price: 49.99,
@@ -28,46 +39,54 @@ const mockProduct: productService.Product = {
 };
 
 describe('ProductDetail Page', () => {
+  const submit = vi.fn();
+
   beforeEach(() => {
     vi.clearAllMocks();
-    (productService.fetchProducts as any).mockResolvedValue([mockProduct]);
-    (reviewService.fetchReviews as any).mockResolvedValue([]);
+    (useLoaderData as any).mockReturnValue({
+      product: mockProduct,
+      reviews: [],
+      relatedProducts: [],
+      layout: DEFAULT_PDP_LAYOUT
+    });
+    (useSubmit as any).mockReturnValue(submit);
+    (useActionData as any).mockReturnValue(null);
     (auth.currentUser as any) = { uid: 'u1', displayName: 'Alice' };
   });
 
   it('should render product details correctly', async () => {
     render(
-      <MemoryRouter initialEntries={['/product/1']}>
-        <Routes>
-          <Route path="/product/:id" element={<ProductDetail />} />
-        </Routes>
+      <MemoryRouter>
+        <ProductDetail />
       </MemoryRouter>
     );
 
-    await waitFor(() => {
-      expect(screen.getByRole('heading', { name: /cool product/i })).toBeInTheDocument();
-      expect(screen.getByText(/\$49.99/i)).toBeInTheDocument();
-      expect(screen.getByText(/4.5/i)).toBeInTheDocument();
-    });
+    expect(screen.getByRole('heading', { name: /cool product/i })).toBeInTheDocument();
+    expect(screen.getByText(/\$49.99/i)).toBeInTheDocument();
+    expect(screen.getByText(/4.5/i)).toBeInTheDocument();
   });
 
-  it('should call addToCart when add to cart button is clicked', async () => {
+  it('should call submit when add to cart button is clicked', async () => {
     render(
-      <MemoryRouter initialEntries={['/product/1']}>
-        <Routes>
-          <Route path="/product/:id" element={<ProductDetail />} />
-        </Routes>
+      <MemoryRouter>
+        <ProductDetail />
       </MemoryRouter>
     );
 
-    const addButton = await waitFor(() => screen.getByRole('button', { name: /add to cart/i }));
+    const addButton = screen.getByRole('button', { name: /add to cart/i });
     
     // Increment quantity to 2
     fireEvent.click(screen.getByLabelText(/increase quantity/i));
     
     fireEvent.click(addButton);
 
-    expect(cartService.addToCart).toHaveBeenCalledWith(mockProduct, 2, { size: undefined, color: undefined });
+    expect(submit).toHaveBeenCalledWith(
+      expect.objectContaining({ 
+        intent: 'add-to-cart',
+        quantity: '2'
+      }),
+      expect.anything()
+    );
   });
 
   it('should render rich product details like delivery and art info', async () => {
@@ -77,66 +96,61 @@ describe('ProductDetail Page', () => {
       priceDisclaimer: 'Taxes included',
       artDetails: { Artist: 'Jane Doe', Technique: 'Oil on Canvas' }
     };
-    (productService.fetchProducts as any).mockResolvedValue([richProduct]);
+    (useLoaderData as any).mockReturnValue({
+      product: richProduct,
+      reviews: [],
+      relatedProducts: [],
+      layout: DEFAULT_PDP_LAYOUT
+    });
 
     render(
-      <MemoryRouter initialEntries={['/product/1']}>
-        <Routes>
-          <Route path="/product/:id" element={<ProductDetail />} />
-        </Routes>
+      <MemoryRouter>
+        <ProductDetail />
       </MemoryRouter>
     );
 
-    await waitFor(() => {
-      expect(screen.getByText(/3-5 days/i)).toBeInTheDocument();
-      expect(screen.getByText(/Taxes included/i)).toBeInTheDocument();
-      expect(screen.getByText(/Jane Doe/i)).toBeInTheDocument();
-      expect(screen.getByText(/Oil on Canvas/i)).toBeInTheDocument();
-    });
+    expect(screen.getByText(/3-5 days/i)).toBeInTheDocument();
+    expect(screen.getByText(/Taxes included/i)).toBeInTheDocument();
+    expect(screen.getByText(/Jane Doe/i)).toBeInTheDocument();
+    expect(screen.getByText(/Oil on Canvas/i)).toBeInTheDocument();
   });
 
-  it('should fetch and display reviews on load', async () => {
+  it('should display reviews on load', async () => {
     const mockReviews = [
       { id: 'r1', rating: 3, comment: 'Amazing!', userName: 'Alice' },
       { id: 'r2', rating: 2, comment: 'Ok.', userName: 'Bob' },
     ];
-    (reviewService.fetchReviews as any).mockResolvedValue(mockReviews);
+    (useLoaderData as any).mockReturnValue({
+      product: mockProduct,
+      reviews: mockReviews,
+      relatedProducts: [],
+      layout: DEFAULT_PDP_LAYOUT
+    });
 
     render(
-      <MemoryRouter initialEntries={['/product/1']}>
-        <Routes>
-          <Route path="/product/:id" element={<ProductDetail />} />
-        </Routes>
+      <MemoryRouter>
+        <ProductDetail />
       </MemoryRouter>
     );
 
-    await waitFor(() => {
-      expect(reviewService.fetchReviews).toHaveBeenCalledWith('1');
-      expect(screen.getByText(/Alice/i)).toBeInTheDocument();
-      expect(screen.getByText(/Amazing!/i)).toBeInTheDocument();
-      expect(screen.getByText(/Bob/i)).toBeInTheDocument();
-      expect(screen.getByText(/Ok./i)).toBeInTheDocument();
-    });
+    expect(screen.getByText(/Alice/i)).toBeInTheDocument();
+    expect(screen.getByText(/Amazing!/i)).toBeInTheDocument();
+    expect(screen.getByText(/Bob/i)).toBeInTheDocument();
+    expect(screen.getByText(/Ok./i)).toBeInTheDocument();
   });
 
   it('should call useSEO with product details', async () => {
-    (productService.fetchProducts as any).mockResolvedValue([mockProduct]);
-    
     render(
-      <MemoryRouter initialEntries={['/product/1']}>
-        <Routes>
-          <Route path="/product/:id" element={<ProductDetail />} />
-        </Routes>
+      <MemoryRouter>
+        <ProductDetail />
       </MemoryRouter>
     );
 
-    await waitFor(() => {
-      expect(useSEO).toHaveBeenCalledWith(expect.objectContaining({
-        title: 'Cool Product',
-        description: 'A great product',
-        image: 'img.jpg'
-      }));
-    });
+    expect(useSEO).toHaveBeenCalledWith(expect.objectContaining({
+      title: 'Cool Product',
+      description: 'A great product',
+      image: 'img.jpg'
+    }));
   });
 
   it('should render variant selectors and allow selection', async () => {
@@ -145,17 +159,20 @@ describe('ProductDetail Page', () => {
       sizes: ['S', 'M'],
       colors: ['Red', 'Blue'],
     };
-    (productService.fetchProducts as any).mockResolvedValue([productWithVariants]);
+    (useLoaderData as any).mockReturnValue({
+      product: productWithVariants,
+      reviews: [],
+      relatedProducts: [],
+      layout: DEFAULT_PDP_LAYOUT
+    });
 
     render(
-      <MemoryRouter initialEntries={['/product/1']}>
-        <Routes>
-          <Route path="/product/:id" element={<ProductDetail />} />
-        </Routes>
+      <MemoryRouter>
+        <ProductDetail />
       </MemoryRouter>
     );
 
-    await waitFor(() => screen.getByText('Size'));
+    expect(screen.getByText('Size')).toBeInTheDocument();
     
     expect(screen.getByText('S')).toBeInTheDocument();
     expect(screen.getByText('M')).toBeInTheDocument();
@@ -170,10 +187,13 @@ describe('ProductDetail Page', () => {
     // Click Add to Cart
     fireEvent.click(screen.getByRole('button', { name: /add to cart/i }));
 
-    expect(cartService.addToCart).toHaveBeenCalledWith(
-      expect.objectContaining({ id: '1' }), 
-      1,
-      { size: 'M', color: 'Blue' }
+    expect(submit).toHaveBeenCalledWith(
+      expect.objectContaining({ 
+        intent: 'add-to-cart',
+        size: 'M',
+        color: 'Blue'
+      }),
+      expect.anything()
     );
   });
 });

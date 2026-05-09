@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#353535",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-secondary": "#480081",
+                    "on-tertiary": "#303030",
+                    "surface-bright": "#393939",
+                    "surface-container-highest": "#353535",
+                    "on-primary-container": "#636565",
+                    "background": "#131313",
+                    "on-primary": "#2f3131",
+                    "error-container": "#93000a",
+                    "secondary": "#dcb8ff",
+                    "on-secondary-fixed-variant": "#6700b5",
+                    "inverse-primary": "#5d5f5f",
+                    "on-secondary-fixed": "#2c0051",
+                    "inverse-on-surface": "#313030",
+                    "inverse-surface": "#e5e2e1",
+                    "primary-fixed": "#e2e2e2",
+                    "on-surface": "#e5e2e1",
+                    "on-primary-fixed": "#1a1c1c",
+                    "outline": "#8e9192",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "surface-container-high": "#2a2a2a",
+                    "primary-fixed-dim": "#c6c6c7",
+                    "on-error": "#690005",
+                    "surface-container-low": "#1c1b1b",
+                    "on-surface-variant": "#c4c7c8",
+                    "secondary-container": "#7701d0",
+                    "primary-container": "#e2e2e2",
+                    "surface-container": "#20201f",
+                    "tertiary-container": "#e2e2e2",
+                    "secondary-fixed": "#efdbff",
+                    "tertiary-fixed": "#e2e2e2",
+                    "on-primary-fixed-variant": "#454747",
+                    "secondary-fixed-dim": "#dcb8ff",
+                    "surface": "#131313",
+                    "on-background": "#e5e2e1",
+                    "surface-dim": "#131313",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-container": "#dcb7ff",
+                    "tertiary": "#ffffff",
+                    "on-tertiary-container": "#646464",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "on-tertiary-fixed": "#1b1b1b",
+                    "surface-tint": "#c6c6c7",
+                    "primary": "#ffffff",
+                    "error": "#ffb4ab",
+                    "outline-variant": "#444748"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "0px"
+            },
+            "spacing": {
+                    "margin": "64px",
+                    "stack-lg": "120px",
+                    "stack-md": "64px",
+                    "gutter": "24px",
+                    "container-max": "1440px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-xl": ["Space Grotesk"],
+                    "body-lg": ["Inter"],
+                    "mono-technical": ["Space Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                    "headline-xl": ["80px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                    "mono-technical": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #131313; cursor: crosshair; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .custom-scrollbar::-webkit-scrollbar { width: 2px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #131313; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #444748; }
+        .violet-accent { color: #7701d0; }
+        .border-technical { border: 1px solid #444748; }
+        .hover-invert:hover { background-color: #ffffff; color: #131313; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md custom-scrollbar">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background border-b border-outline-variant flex justify-between items-center px-margin h-16 w-full cursor-crosshair">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-crosshair">menu</span>
+</div>
+<h1 class="font-headline-md text-headline-md tracking-tighter text-primary">HYPVZN</h1>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-crosshair">shopping_bag</span>
+</div>
+</header>
+<main class="pt-16 pb-24 md:pb-0">
+<!-- Hero Section -->
+<section class="relative h-[795px] w-full flex items-center justify-center overflow-hidden border-b border-outline-variant">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover grayscale opacity-80" data-alt="A high-contrast cinematic shot of a model wearing technical avant-garde streetwear, standing in a brutalist concrete environment with dramatic overhead lighting. The color palette is strictly monochromatic, dominated by deep blacks and stark whites, with a single electric violet light source casting sharp shadows. The aesthetic is futuristic and architectural, emphasizing the rigid textures of the clothing and the industrial setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDZQ8S_7-C6-ftx63cb1qIxE2nMu72_6sB0zHmTDCF3iOqCWFPH0Aah-MMjzDRb2-S45TjYkmuO_tzo6tzYCfxEirN7w9nXukDVKQsButbqvUJ4zloe8Di5Q96DNr3vdDcnY8IFodTtdzkMtHINezqm_kRsoSpHLy7pnsM3rwP4tzxP1GI4kb-PwAlOOoeBPfoltXOG5oGystqIm4GrmHoc4ufMZKwIUIYkNQKtVTs3c7g6XhTNGmImA-89DWNHLV9PzwpXg4FNQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 text-center px-margin">
+<p class="font-label-caps text-label-caps tracking-[0.3em] mb-4 violet-accent">SYSTEM ARCHIVE V.01</p>
+<h2 class="font-headline-xl text-headline-xl text-primary mb-8">HYPVZN</h2>
+<button class="px-10 py-4 border border-primary text-primary font-label-caps hover-invert transition-all">
+                    ENTER ARCHIVE
+                </button>
+</div>
+</section>
+<!-- Collection 01 (Limited Drops) -->
+<section class="py-stack-lg px-margin max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-stack-md border-b border-outline-variant pb-8">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-primary uppercase">COLLECTION 01</h3>
+<p class="font-mono-technical text-mono-technical text-outline mt-2">TECHNICAL EXPLORATION / LIMITED QUANTITY</p>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant hidden md:block">01 // 05 RELEASE PHASE</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="border-technical relative group">
+<img class="w-full h-[600px] object-cover grayscale" data-alt="Technical luxury parka detail with modular straps and high-performance fabric textures. The shot is a close-up, focusing on the intricate craftsmanship and industrial hardware elements. The lighting is cold and clinical, highlighting the matte black finish of the garment against a dark, minimalist background with subtle violet reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLSAh4vEusHYyf70GOjxG3Ljx5mhO2-DQFG1NY1jg07eoJTTJeZ2MdKtcKqZdXo2pbcwZAzBSByiFsjQ0xDDCq9TzKcs5C4qJmiifU-CFyVntw0iz8K2Dqr2Wv-yKPFbAoMnz1hLFCL4gRQgx9a8VdsYMvY2v0VZI9eqH7eQ4Lp2Ld3BrBCtScusRFdg-biTxoynsdtHE0okY6QmRAZ8yUcJIzifTD67a4oCy7rS0wfyEZGgc3adCULVosQ0aHMMAMuSY-_Yh8yg"/>
+<div class="p-6 flex justify-between items-start">
+<div>
+<p class="font-label-caps text-label-caps violet-accent mb-1">OUTERWEAR</p>
+<h4 class="font-headline-md text-headline-md text-primary">STRATOS PARKA V1</h4>
+</div>
+<p class="font-mono-technical text-mono-technical text-primary">$840.00</p>
+</div>
+</div>
+<div class="border-technical relative group">
+<img class="w-full h-[600px] object-cover grayscale" data-alt="A model wearing technical utility trousers with multiple cargo pockets and adjustable straps. The shot is an asymmetrical composition in a brutalist urban setting with sharp shadows. The overall aesthetic is dark and sophisticated, featuring monochromatic tones and high-fashion editorial styling that emphasizes architectural silhouettes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBowGompmTCtZZozHMr5JvmRNWUougFjVJgkUyY2dsRuNr0MbkdJ1gCvGtfq1APyGKhOQwquWXUXOMWr5Cu3eSLXbEuTLfh7WWoRGKp_y2rJi2SOXd3tYKxWSM42h34FPidMb0HaEPWBVb6ruwMr7HKdyLzzEkQkxtRdmSLroIj7Ye8MtKYcQqQFZlSI894SGDwdzlNIRyaf5P04g-izOqKYmWvDc4RWuvMWTeAqwDgmEjNXSWtH8EDPW5iFJOB6kP8JA8vxoW8tw"/>
+<div class="p-6 flex justify-between items-start">
+<div>
+<p class="font-label-caps text-label-caps violet-accent mb-1">EQUIPMENT</p>
+<h4 class="font-headline-md text-headline-md text-primary">CARGO SHELL 01</h4>
+</div>
+<p class="font-mono-technical text-mono-technical text-primary">$420.00</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Curated Essentials (Asymmetric Grid) -->
+<section class="bg-surface-container-low border-y border-outline-variant py-stack-lg">
+<div class="px-margin max-w-container-max mx-auto">
+<h3 class="font-headline-lg text-headline-lg text-primary mb-stack-md">CURATED ESSENTIALS</h3>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-4 border-technical p-8 flex flex-col justify-between aspect-square md:aspect-auto">
+<p class="font-mono-technical text-mono-technical text-outline">[CORE_SYSTEM]</p>
+<div>
+<h4 class="font-headline-md text-headline-md text-primary mb-4">BASE LAYER TECH-TEE</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Laser-cut seams and moisture-wicking synthetic blend for optimal thermal regulation.</p>
+<a class="font-label-caps text-label-caps text-primary border-b border-primary pb-1 inline-block hover:violet-accent hover:border-secondary transition-colors" href="#">VIEW ITEM</a>
+</div>
+</div>
+<div class="md:col-span-8 border-technical">
+<img class="w-full h-[400px] object-cover grayscale" data-alt="Editorial product shot of a technical black t-shirt displayed on a minimalist industrial rack. The lighting is high-key and sharp, revealing the fine weave of the high-performance fabric. The composition is clean and centered, adhering to a strict brutalist design aesthetic with cold, monochromatic tones and electric violet accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk2-jtEi7-uYAOzHWktbAc3EebrxY2WPIPx7sdOqXOMfBx5Hqj-JqnGaTBeKupfqiRRC2mPtpa7BJLpYPNGtgEhNIymDCdjGMSSZLnrgksVXXHsG5HwtWzNmJpyC03qWMmANuQBH9hijS7QQ-2__r7RPpKcZiG--sWiP32rXJ-tnhf-AhmywzTNNjr7yIsSLcgq2LjVSGlsWAQeabUzAgJJdsTpI3T5gt7ohhJDBXBWG_BlTYrAKk0HXtx0S7jr9JBpz2qeJBAAg"/>
+</div>
+<div class="md:col-span-7 border-technical">
+<img class="w-full h-[400px] object-cover grayscale" data-alt="A close-up photograph of technical knitwear featuring geometric patterns and high-performance synthetic fibers. The lighting is side-lit to emphasize the texture and depth of the material. The image follows a technical luxury aesthetic, with a cool gray and black palette and a sharp focus on the architectural details of the garment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMuNoSYVf90KsjziUNDeYngA5q_QHKZI--_7gkPJ7wc9KWl3VwlVNlEeLq63xYHANG_seJbl79camjVvVDwvApMbKgAu3qaEpBRcu7g6Wzkuyse3xziB_oCfZ_40aNz6KcWNtA9J9rswbPZinQJwFApg_TxEkpggLIpDlP5F5cZ-XnF1fqUvZ3rhZC9qYLSvgJdjXc9sw1tw5ENFtIPCGsQTEOi75tqG21CLlgxYubIxlAtYtFPUIw_Z8Tvn6OavmHFek9AUvOfw"/>
+</div>
+<div class="md:col-span-5 border-technical p-8 flex flex-col justify-end">
+<h4 class="font-headline-md text-headline-md text-primary mb-4">MODULAR HEADWEAR</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Ripstop nylon construction with magnetic FIDLOCK closure systems.</p>
+<a class="font-label-caps text-label-caps text-primary border-b border-primary pb-1 inline-block" href="#">VIEW ARCHIVE</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Best Sellers (High Flash Grid) -->
+<section class="py-stack-lg px-margin max-w-container-max mx-auto">
+<div class="flex justify-between items-center mb-12">
+<h3 class="font-headline-lg text-headline-lg text-primary uppercase">BEST SELLERS</h3>
+<span class="font-mono-technical text-mono-technical text-outline">AUTO-REFRESH: ACTIVE</span>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Item 1 -->
+<div class="group cursor-crosshair">
+<div class="border-technical mb-4 overflow-hidden relative">
+<img class="w-full aspect-[4/5] object-cover grayscale group-hover:scale-105 transition-transform duration-500" data-alt="High-flash, raw studio photography of a sleek technical sneaker. The lighting is harsh and direct, creating deep shadows and bright highlights typical of avant-garde streetwear editorials. The shoe is deep black with reflective silver details, set against a stark white studio floor with minimal post-processing for an authentic industrial feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL19MJiXEzVCc69fmSsNiDvjPxBr8qc5h8W3-UnhyCwEt_6WV3-MP41gAwO1iR2ClmYEkWR-jm0j0EfguxTIfPjiu652D6AJ0a5PueptWPFVSK6Al7UM0zun7tYuRSIpt5VnDNoEs2QA7ZYH4WNcDOR7YuZ4xxm-MW0h-OKWf3sIw2aqOOyowxx6shfOjQ53pCqdyifvk6Bvjkf-73P63SrKjIXtEIR64lVbR2s5ahEGaqDWQfi1F3Q9eXJvAp3BfnOYWzmkRsDQ"/>
+<div class="absolute top-4 right-4 px-3 py-1 bg-background border border-technical font-mono-technical text-mono-technical">001</div>
+</div>
+<p class="font-label-caps text-label-caps text-primary">PHANTOM RUNNER</p>
+<p class="font-mono-technical text-mono-technical text-outline">$310.00</p>
+</div>
+<!-- Item 2 -->
+<div class="group cursor-crosshair">
+<div class="border-technical mb-4 overflow-hidden relative">
+<img class="w-full aspect-[4/5] object-cover grayscale group-hover:scale-105 transition-transform duration-500" data-alt="Technical watch with a minimalist digital display and a rugged black strap. The photograph uses a high-flash aesthetic, capturing every detail of the industrial components. The color palette is monochromatic with a slight electric violet glow from the screen, emphasizing the luxury technical nature of the product." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH_H9lqFgkvwsaHckb05mEpKXYKCsgaqXpDohkujuygrmWSefrh89fhGQddMLPMCE2fhJwWCCK1ccGpWqrWplerKXoShnmfdRvnqYrR_pJHeqw_c3Ry8fe-v_xLZFORF4T4kNJbczkc9suxcg292RZ9S26vUdad8XwfHDRrEhXL6pQgIau9LTaIN4ndUOkwbI4NcnDnVpDH6pFYpldR9q7_tp-CWOYMqh9_jKuPbJ3OtUnOLD0udA2Gq0dUP8rjeUEocxPGRE2EA"/>
+<div class="absolute top-4 right-4 px-3 py-1 bg-background border border-technical font-mono-technical text-mono-technical">002</div>
+</div>
+<p class="font-label-caps text-label-caps text-primary">CHRONO-CORE 01</p>
+<p class="font-mono-technical text-mono-technical text-outline">$560.00</p>
+</div>
+<!-- Item 3 -->
+<div class="group cursor-crosshair">
+<div class="border-technical mb-4 overflow-hidden relative">
+<img class="w-full aspect-[4/5] object-cover grayscale group-hover:scale-105 transition-transform duration-500" data-alt="A technical black hoodie with oversized drawstrings and integrated mask detail. The lighting is raw and direct, emphasizing the heavyweight fabric and architectural silhouette. The image is strictly monochromatic, with high-contrast shadows that create a dramatic, brutalist aesthetic in line with futuristic luxury streetwear brands." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwoZ01xFLNZO4PGMbuWEsIcIKUe-KSpu-meM-l8n3RRdg7vzTWAEnzwGWI5o4JB-UNSQpFRh8N4yLe86UhzuI7KrCT_7Q58BgZRH_4rvDRIDXjkOW_X0xkK4vVhs2XIAPDHjEyLVQeLbmR9ABoQ4MwSWDC5JO3CqQlbYZGDg7AXT3WNJYCxZk4pqvBA5iIOYmiPTZJ_RiX4cip0EuckMF2ajL2IMa3aB6VWCvvVg6nvTNzhd3nmDc4ITAxBw790RIxtQ6eUIP08A"/>
+<div class="absolute top-4 right-4 px-3 py-1 bg-background border border-technical font-mono-technical text-mono-technical">003</div>
+</div>
+<p class="font-label-caps text-label-caps text-primary">SCUDO HOODIE</p>
+<p class="font-mono-technical text-mono-technical text-outline">$225.00</p>
+</div>
+<!-- Item 4 -->
+<div class="group cursor-crosshair">
+<div class="border-technical mb-4 overflow-hidden relative">
+<img class="w-full aspect-[4/5] object-cover grayscale group-hover:scale-105 transition-transform duration-500" data-alt="Minimalist technical sling bag with waterproof zippers and tactical nylon webbing. Shot with a high-intensity flash in a dark industrial environment. The focus is sharp on the metallic buckles and textured fabric, with a monochromatic color scheme punctuated by subtle electric violet accents on the stitching." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRRxtyHdI9jrvXJJ6P_s7FGmS6VbeMPbQsqKUf_EoKEEcf7IA4I6Z4WmDW0xuszVGLl-Cxk-uWgQnCnAupu3ZSTHCaQsv1ClVccvw45P95ewWP3Zz0xNgsdgE-aJesWxQNmaHGEfFOSjVmIF_BAsPSIh5INi6a0NqwMnIcXAS1rUQuoSRILEjJwr9jCsu_uIOJ8PKagtNCF37AzgJ9S3BzyVQ5EbzyOQasd_EWMu0kf6jBlqWZY7F2MR1-JK993I_lS84_5UbwJQ"/>
+<div class="absolute top-4 right-4 px-3 py-1 bg-background border border-technical font-mono-technical text-mono-technical">004</div>
+</div>
+<p class="font-label-caps text-label-caps text-primary">TACTICAL SLING</p>
+<p class="font-mono-technical text-mono-technical text-outline">$185.00</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-outline-variant bg-surface-container-lowest">
+<div class="flex flex-col gap-stack-md px-margin py-stack-lg w-full max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md">
+<div class="flex flex-col gap-6">
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tighter">HYPVZN</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">DEFINING THE INTERSECTION OF ARCHITECTURAL FORM AND TECHNICAL UTILITY.</p>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="flex flex-col gap-4">
+<p class="font-label-caps text-label-caps text-primary">NAVIGATION</p>
+<a class="font-mono-technical text-mono-technical text-on-surface-variant hover:text-primary transition-colors" href="#">COLLECTIONS</a>
+<a class="font-mono-technical text-mono-technical text-on-surface-variant hover:text-primary transition-colors" href="#">ARCHIVE</a>
+<a class="font-mono-technical text-mono-technical text-on-surface-variant hover:text-primary transition-colors" href="#">STOCKISTS</a>
+</div>
+<div class="flex flex-col gap-4">
+<p class="font-label-caps text-label-caps text-primary">LEGAL</p>
+<a class="font-mono-technical text-mono-technical text-on-surface-variant hover:text-primary transition-colors uppercase" href="#">TERMS</a>
+<a class="font-mono-technical text-mono-technical text-on-surface-variant hover:text-primary transition-colors uppercase" href="#">PRIVACY</a>
+<a class="font-mono-technical text-mono-technical text-on-surface-variant hover:text-primary transition-colors uppercase" href="#">TECHNICAL SUPPORT</a>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<p class="font-label-caps text-label-caps text-primary">SOCIAL</p>
+<a class="font-mono-technical text-mono-technical text-on-surface-variant hover:text-primary transition-colors uppercase" href="#">INSTAGRAM</a>
+</div>
+</div>
+<div class="pt-12 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-mono-technical text-mono-technical text-on-surface-variant">©2024 HYPVZN ARCHIVE</p>
+<div class="flex gap-4">
+<div class="w-2 h-2 bg-secondary"></div>
+<div class="w-2 h-2 border border-outline"></div>
+<div class="w-2 h-2 border border-outline"></div>
+</div>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-4 px-margin bg-background/80 backdrop-blur-xl border-t border-outline-variant z-50">
+<div class="flex flex-col items-center gap-1 text-primary scale-110">
+<span class="material-symbols-outlined cursor-crosshair">home</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-outline-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined cursor-crosshair">search</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-outline-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined cursor-crosshair">shopping_cart</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-outline-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined cursor-crosshair">person</span>
+</div>
+</nav>
+</body></html>

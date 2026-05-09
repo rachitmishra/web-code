@@ -1,8 +1,0 @@
-{
-  "track_id": "pdp_plugin_system_20260416",
-  "type": "feature",
-  "status": "new",
-  "created_at": "2026-04-16T10:00:00Z",
-  "updated_at": "2026-04-16T10:00:00Z",
-  "description": "Transform the Product Detail Page (PDP) design into a plugin-based system where each component is manageable from the admin panel."
-}
