@@ -32,11 +32,11 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 3: Link Updates & SPA Navigation' (Protocol in workflow.md) (3954c65)
 
 ## Phase 4: Admin Panel Integration
-- [ ] Task: Create Admin UI for managing page content.
-    - [ ] Create `src/pages/Admin/PageManager.tsx`.
-    - [ ] Add a new section in Admin sidebar.
-- [ ] Task: Implement save functionality for page content.
-    - [ ] Add `updatePageContent` in `storefrontService.server.ts`.
+- [x] Task: Create Admin UI for managing page content. (aab1b44)
+    - [x] Create `src/pages/Admin/PageManager.tsx`.
+    - [x] Add a new section in Admin sidebar.
+- [x] Task: Implement save functionality for page content. (aab1b44)
+    - [x] Add `updatePageContent` in `storefrontService.server.ts`.
 - [ ] Task: Conductor - User Manual Verification 'Phase 4: Admin Panel Integration' (Protocol in workflow.md)
 
 ## Phase 5: Styling & Polish
