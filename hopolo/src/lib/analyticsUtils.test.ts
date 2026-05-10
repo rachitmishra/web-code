@@ -36,14 +36,31 @@ const mockOrders = [
     total: 100,
     items: [],
     status: 'refunded' // Should be ignored
+  },
+  {
+    id: '5',
+    createdAt: { toDate: () => new Date('2023-01-02T13:00:00') },
+    total: 50,
+    items: [],
+    status: 'failed' // Should be ignored
   }
 ];
 
 describe('Analytics Utilities', () => {
-  it('aggregateRevenuePerDay should group revenue by date', () => {
-    const result = aggregateRevenuePerDay(mockOrders);
+  it('aggregateRevenuePerDay should group revenue by date and include empty days', () => {
+    const result = aggregateRevenuePerDay(mockOrders, '2023-01-01', '2023-01-03');
     // 2023-01-01: 100 + 50 = 150
-    // 2023-01-02: 200 (refunded ignored)
+    // 2023-01-02: 200
+    // 2023-01-03: 0 (empty day)
+    expect(result).toEqual([
+      { date: '2023-01-01', revenue: 150 },
+      { date: '2023-01-02', revenue: 200 },
+      { date: '2023-01-03', revenue: 0 }
+    ]);
+  });
+
+  it('aggregateRevenuePerDay should work without date range', () => {
+    const result = aggregateRevenuePerDay(mockOrders);
     expect(result).toEqual([
       { date: '2023-01-01', revenue: 150 },
       { date: '2023-01-02', revenue: 200 }

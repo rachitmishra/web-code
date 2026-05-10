@@ -1,15 +1,31 @@
-export const aggregateRevenuePerDay = (orders: any[]) => {
+export const aggregateRevenuePerDay = (orders: any[], startDate?: string, endDate?: string) => {
   const revenueMap: Record<string, number> = {};
+
+  // Initialize with range if provided
+  if (startDate && endDate) {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const current = new Date(start);
+
+    while (current <= end) {
+      const dateStr = current.toISOString().split('T')[0];
+      revenueMap[dateStr] = 0;
+      current.setUTCDate(current.getUTCDate() + 1);
+    }
+  }
 
   orders.forEach(order => {
     if (order.status === 'refunded' || order.status === 'failed') return;
     
-    // date format YYYY-MM-DD
     const date = order.createdAt.toDate().toISOString().split('T')[0];
-    if (!revenueMap[date]) {
-      revenueMap[date] = 0;
+    
+    if (startDate && endDate) {
+      if (date >= startDate && date <= endDate) {
+        revenueMap[date] = (revenueMap[date] || 0) + order.total;
+      }
+    } else {
+      revenueMap[date] = (revenueMap[date] || 0) + order.total;
     }
-    revenueMap[date] += order.total;
   });
 
   return Object.entries(revenueMap)
