@@ -57,3 +57,10 @@ export const calculateCategoryShare = (orders: any[]) => {
     .map(([name, value]) => ({ name, value }))
     .sort((a, b) => b.value - a.value);
 };
+
+export const calculateGrowth = (current: number, previous: number): number => {
+  if (previous === 0) {
+    return current > 0 ? 100 : 0;
+  }
+  return ((current - previous) / previous) * 100;
+};

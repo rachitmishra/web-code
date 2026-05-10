@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { aggregateRevenuePerDay, calculateTopProducts, calculateCategoryShare } from './analyticsUtils';
+import { aggregateRevenuePerDay, calculateTopProducts, calculateCategoryShare, calculateGrowth } from './analyticsUtils';
 
 const mockOrders = [
   {
@@ -82,5 +82,21 @@ describe('Analytics Utilities', () => {
     
     expect(catA?.value).toBe(3);
     expect(catB?.value).toBe(5);
+  });
+
+  describe('calculateGrowth', () => {
+    it('should return percentage increase or decrease', () => {
+      expect(calculateGrowth(150, 100)).toBe(50);
+      expect(calculateGrowth(75, 100)).toBe(-25);
+    });
+
+    it('should handle zero previous period values', () => {
+      expect(calculateGrowth(100, 0)).toBe(100);
+      expect(calculateGrowth(0, 0)).toBe(0);
+    });
+
+    it('should handle equal values', () => {
+      expect(calculateGrowth(100, 100)).toBe(0);
+    });
   });
 });
