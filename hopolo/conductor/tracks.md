@@ -11,15 +11,9 @@ This file tracks all major tracks for the project. Each track has its own detail
   *Link: [./conductor/tracks/admin_sidebar_20260304/](./conductor/tracks/admin_sidebar_20260304/)*
 - [x] Track: Admin Panel UI Polish & Consistency
   *Link: [./conductor/tracks/admin_ui_polish_20260304/](./conductor/tracks/admin_ui_polish_20260304/)*
+- [ ] Track: Advanced Analytics & Reporting
+  *Link: [./conductor/tracks/analytics_reporting_20260508/](./conductor/tracks/analytics_reporting_20260508/)*
 - [x] Track: Ethos Archetype (Full Dark Overhaul)
   *Link: [./conductor/tracks/ethos_dark_theme_20260508/](./conductor/tracks/ethos_dark_theme_20260508/)*
-
----
-
-- [ ] **Track: Advanced Analytics & Reporting (External Integration)**
-*Link: [./tracks/external_analytics_20260510/](./tracks/external_analytics_20260510/)*
-
----
-
-- [x] **Track: End-to-End Order Flow & Cart Fixes**
-*Link: [./tracks/order_flow_fixes_20260510/](./tracks/order_flow_fixes_20260510/)*
+- [ ] Track: Advanced Analytics & Reporting (External Integration)
+  *Link: [./tracks/external_analytics_20260510/](./tracks/external_analytics_20260510/)*
