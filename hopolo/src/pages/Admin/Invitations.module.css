@@ -54,7 +54,8 @@
   border: 2px solid var(--color-border);
   font-family: var(--font-family-sans);
   font-size: 1rem;
-  background: #fff;
+  background: var(--color-surface);
+  color: var(--color-text);
   border-radius: 0;
   appearance: none;
 }

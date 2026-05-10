@@ -57,7 +57,8 @@
   padding: var(--spacing-3);
   border: 2px solid var(--color-border);
   font-family: var(--font-family-sans);
-  background: #fff;
+  background: var(--color-surface);
+  color: var(--color-text);
   border-radius: 0;
 }
 

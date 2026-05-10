@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet, useLocation, redirect } from 'react-router-dom';
+import { Outlet, useLocation, redirect } from 'react-router';
 import { Menu } from 'lucide-react';
 import AdminSidebar from './AdminSidebar/AdminSidebar';
 import styles from './AdminLayout.module.css';
-import { requireRole } from '../../lib/auth.server';
 import AdminRoute from '../ui/Auth/AdminRoute';
 
 export async function loader({ request }: { request: Request }) {
+  const { requireRole } = await import('../../lib/auth.server');
   const url = new URL(request.url);
   try {
     await requireRole(request, ['admin']);
@@ -61,7 +61,7 @@ const AdminLayout: React.FC = () => {
 
   return (
     <AdminRoute>
-      <div className={styles.adminLayout} style={{ '--admin-bg-color': currentTheme.color } as React.CSSProperties}>
+      <div className={styles.adminLayout}>
         {/* Background Illustration */}
         <div className={styles.bgIllustration} aria-hidden="true">
           {currentTheme.emoji}

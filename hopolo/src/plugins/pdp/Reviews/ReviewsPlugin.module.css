@@ -51,9 +51,10 @@
 
 .reviewItem {
   padding: var(--spacing-4);
-  background: #fff;
-  border-radius: var(--radius-md);
-  border: 1px solid #eee;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-radius: 0;
+  border: 1px solid var(--color-border);
 }
 
 .reviewHeader {

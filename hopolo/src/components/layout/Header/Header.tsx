@@ -7,6 +7,7 @@ import { onAuthStateChanged, type User } from 'firebase/auth';
 import { ShoppingBag } from 'lucide-react';
 import { signOutUser } from '../../../services/authService';
 import LoginDialog from '../../ui/Auth/LoginDialog';
+import PromoBanner from '../../ui/PromoBanner/PromoBanner';
 
 interface HeaderProps {
   onOpenCart: () => void;
@@ -73,44 +74,47 @@ const Header: React.FC<HeaderProps> = ({ onOpenCart }) => {
 
   return (
     <>
-      <header className={`${styles.header} ${isHome && !isScrolled ? styles.transparent : ''} ${isScrolled ? styles.scrolled : ''}`}>
-        <div className={styles.left}>
-          <Link to="/" className={styles.brand}>
-            HYPVZN
-          </Link>
-          
-          <nav className={styles.nav}>
-            <Link to="/" className={`${styles.navLink} ${isHome ? styles.active : ''}`}>COLLECTIONS</Link>
-          </nav>
-        </div>
-        
-        <div className={styles.right}>
-          <div className={styles.actions}>
-            {user ? (
-              <>
-                <Link to="/profile" className={styles.linkButton}>Account</Link>
-                <button onClick={handleSignOut} className={styles.linkButton}>Sign Out</button>
-              </>
-            ) : (
-              !isLoginPage && (
-                <button 
-                  onClick={() => setIsLoginOpen(true)} 
-                  className={styles.linkButton}
-                >
-                  Sign In
-                </button>
-              )
-            )}
-
-            {!isAdminPage && (
-              <button className={styles.cartButton} onClick={onOpenCart} aria-label="Shopping Cart">
-                <ShoppingBag size={20} />
-                {itemCount > 0 && <span className={styles.badge}>{itemCount}</span>}
-              </button>
-            )}
+      <div className={`${styles.headerWrapper} ${isHome && !isScrolled ? styles.transparent : ''} ${isScrolled ? styles.scrolled : ''}`}>
+        <PromoBanner />
+        <header className={`${styles.header} ${isHome && !isScrolled ? styles.transparentWrapper : ''}`}>
+          <div className={styles.left}>
+            <Link to="/" className={styles.brand}>
+              HYPVZN
+            </Link>
+            
+            <nav className={styles.nav}>
+              <Link to="/" className={`${styles.navLink} ${isHome ? styles.active : ''}`}>COLLECTIONS</Link>
+            </nav>
           </div>
-        </div>
-      </header>
+          
+          <div className={styles.right}>
+            <div className={styles.actions}>
+              {user ? (
+                <>
+                  <Link to="/profile" className={styles.linkButton}>Account</Link>
+                  <button onClick={handleSignOut} className={styles.linkButton}>Sign Out</button>
+                </>
+              ) : (
+                !isLoginPage && (
+                  <button 
+                    onClick={() => setIsLoginOpen(true)} 
+                    className={styles.linkButton}
+                  >
+                    Sign In
+                  </button>
+                )
+              )}
+
+              {!isAdminPage && (
+                <button className={styles.cartButton} onClick={onOpenCart} aria-label="Shopping Cart">
+                  <ShoppingBag size={20} />
+                  {itemCount > 0 && <span className={styles.badge}>{itemCount}</span>}
+                </button>
+              )}
+            </div>
+          </div>
+        </header>
+      </div>
 
       <LoginDialog 
         isOpen={isLoginOpen} 

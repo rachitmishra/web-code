@@ -32,7 +32,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     <div className={styles.container}>
       <DebugOverlay />
       <MaintenanceGuard>
-        <PromoBanner />
         <Header onOpenCart={() => setIsCartOpen(true)} />
         
         <main className={styles.main}>
