@@ -22,8 +22,8 @@ This plan outlines the steps to enhance the admin analytics dashboard with compa
 
 ## Phase 4: Reporting & Export
 - [x] Task 4.1: Create CSV export utility (`src/lib/csvUtils.ts`) (b47c32c)
-- [ ] Task 4.2: Add "Export Orders CSV" button to the dashboard
-- [ ] Task 4.3: Add "Export Product Performance CSV" button
+- [x] Task 4.2: Add "Export Orders CSV" button to the dashboard (bfd991d)
+- [x] Task 4.3: Add "Export Product Performance CSV" button (bfd991d)
 - [ ] Task 4.4: Final QA and polish of the entire Analytics suite
 
 ## Checkpoints
