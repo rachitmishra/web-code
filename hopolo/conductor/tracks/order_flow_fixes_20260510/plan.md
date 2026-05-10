@@ -1,11 +1,11 @@
 # Implementation Plan: End-to-End Order Flow & Cart Fixes
 
 ## Phase 1: Add to Cart & Quick View Modal
-- [x] Task: Fix Home & PDP Add to Cart
+- [x] Task: Fix Home & PDP Add to Cart (c65161f)
     - [x] Write Tests: Create failing tests for the "Add to Cart" actions on both Home and PDP components.
     - [x] Implement: Fix the server action/client fetcher logic to ensure items are successfully added to the Firestore cart.
     - [x] Refactor: Ensure the Mini-Cart automatically opens when an item is successfully added.
-- [x] Task: Implement Quick View Modal
+- [x] Task: Implement Quick View Modal (c65161f)
     - [x] Write Tests: Create tests for a new Quick View modal component that handles variant selection.
     - [x] Implement: Build the Quick View modal, adhering to the Ethos Archetype design system.
     - [x] Refactor: Integrate the modal into the Home screen product grid, triggering it when "Add to Cart" is clicked for multi-variant products.
