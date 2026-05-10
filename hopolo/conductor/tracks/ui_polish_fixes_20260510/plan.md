@@ -1,7 +1,7 @@
 # Implementation Plan: UI Polish & Bug Fixes (Login, Banner, Theme)
 
 ## Phase 1: Login Routing & Header State
-- [x] Task: Update Login Logic
+- [x] Task: Update Login Logic (f25ecc4)
     - [x] Write Tests: Create failing tests for post-login routing behavior based on user role (admin vs standard).
     - [x] Implement: Update the login action/hook to fetch user role from Firestore and redirect to `/admin` if admin, else stay on home.
     - [x] Refactor: Ensure the global Header component correctly subscribes to auth state and displays logged-in UI elements.
