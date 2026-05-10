@@ -11,17 +11,17 @@
     - [x] Refactor: Integrate the modal into the Home screen product grid, triggering it when "Add to Cart" is clicked for multi-variant products.
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Add to Cart & Quick View Modal' (Protocol in workflow.md) (5aca53b)
 
-## Phase 2: Checkout & Payment Flow
+## Phase 2: Checkout & Payment Flow [checkpoint: 8941304]
 - [x] Task: Verify Checkout & Shipping (f55c4ea)
     - [x] Write Tests: Create tests ensuring the Cart component correctly passes data and navigates to the Checkout flow.
     - [x] Implement: Verify and fix any issues in the Checkout component regarding shipping address selection and form data persistence.
 - [x] Task: Verify Razorpay Integration (f55c4ea)
     - [x] Write Tests: Add tests for the payment service and Razorpay callback handling logic.
     - [x] Implement: Ensure the frontend correctly initializes the Razorpay script and handles success/error callbacks, updating the backend order status appropriately.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Checkout & Payment Flow' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Checkout & Payment Flow' (Protocol in workflow.md) (8941304)
 
 ## Phase 3: Post-Order & Notifications
-- [ ] Task: Fix Success Screen & Emails
+- [~] Task: Fix Success Screen & Emails
     - [ ] Write Tests: Test the Success screen rendering logic and the email dispatch service.
     - [ ] Implement: Verify the Success screen loads correctly with the finalized order details.
     - [ ] Implement: Ensure the backend triggers the email confirmation service upon successful payment verification.
