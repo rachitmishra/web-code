@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { aggregateRevenuePerDay, calculateTopProducts, calculateCategoryShare, calculateGrowth } from './analyticsUtils';
+import { aggregateRevenuePerDay, calculateTopProducts, calculateCategoryShare, calculateGrowth, calculateCustomerMetrics } from './analyticsUtils';
 
 const mockOrders = [
   {
@@ -97,6 +97,60 @@ describe('Analytics Utilities', () => {
 
     it('should handle equal values', () => {
       expect(calculateGrowth(100, 100)).toBe(0);
+    });
+  });
+
+  describe('calculateCustomerMetrics', () => {
+    const orders = [
+      { id: '1', userId: 'u1', userEmail: 'u1@test.com', total: 100, status: 'paid' },
+      { id: '2', userId: 'u2', userEmail: 'u2@test.com', total: 50, status: 'paid' },
+      { id: '3', userId: 'u1', userEmail: 'u1@test.com', total: 200, status: 'paid' },
+      { id: '4', userId: 'u3', userEmail: 'u3@test.com', total: 150, status: 'refunded' }, // ignored
+      { id: '5', userId: 'u2', userEmail: 'u2@test.com', total: 100, status: 'paid' },
+    ];
+
+    it('should calculate new and returning customers correctly', () => {
+      // Valid orders: 1, 2, 3, 5
+      // u1: 2 (Returning)
+      // u2: 2 (Returning)
+      // Add a new user
+      const moreOrders = [
+        ...orders,
+        { id: '6', userId: 'u4', userEmail: 'u4@test.com', total: 80, status: 'paid' },
+      ];
+      
+      const metrics = calculateCustomerMetrics(moreOrders);
+      // Valid orders: 1, 2, 3, 5, 6
+      // u1: 2 (Returning)
+      // u2: 2 (Returning)
+      // u4: 1 (New)
+      
+      expect(metrics.newCustomers).toBe(1);
+      expect(metrics.returningCustomers).toBe(2);
+    });
+
+    it('should calculate top customers by total spend', () => {
+      const moreOrders = [
+        ...orders,
+        { id: '6', userId: 'u4', userEmail: 'u4@test.com', total: 80, status: 'paid' },
+      ];
+      const metrics = calculateCustomerMetrics(moreOrders);
+      
+      // u1: 100 + 200 = 300
+      // u2: 50 + 100 = 150
+      // u4: 80
+      
+      expect(metrics.topCustomers[0]).toEqual({ id: 'u1', email: 'u1@test.com', totalSpend: 300, orderCount: 2 });
+      expect(metrics.topCustomers[1]).toEqual({ id: 'u2', email: 'u2@test.com', totalSpend: 150, orderCount: 2 });
+      expect(metrics.topCustomers[2]).toEqual({ id: 'u4', email: 'u4@test.com', totalSpend: 80, orderCount: 1 });
+    });
+
+    it('should handle anonymous users or missing emails', () => {
+      const anonOrders = [
+        { id: '1', total: 100, status: 'paid' }, // No userId, no email
+      ];
+      const metrics = calculateCustomerMetrics(anonOrders);
+      expect(metrics.topCustomers[0]).toEqual({ id: 'anonymous', email: 'N/A', totalSpend: 100, orderCount: 1 });
     });
   });
 });

@@ -64,3 +64,35 @@ export const calculateGrowth = (current: number, previous: number): number => {
   }
   return ((current - previous) / previous) * 100;
 };
+
+export const calculateCustomerMetrics = (orders: any[]) => {
+  const customerMap: Record<string, { id: string, email: string, totalSpend: number, orderCount: number }> = {};
+
+  orders.forEach(order => {
+    if (order.status === 'refunded' || order.status === 'failed') return;
+
+    const userId = order.userId || 'anonymous';
+    const userEmail = order.userEmail || 'N/A';
+
+    if (!customerMap[userId]) {
+      customerMap[userId] = { id: userId, email: userEmail, totalSpend: 0, orderCount: 0 };
+    }
+
+    customerMap[userId].totalSpend += order.total;
+    customerMap[userId].orderCount += 1;
+  });
+
+  const customers = Object.values(customerMap);
+  const newCustomers = customers.filter(c => c.orderCount === 1).length;
+  const returningCustomers = customers.filter(c => c.orderCount > 1).length;
+
+  const topCustomers = [...customers]
+    .sort((a, b) => b.totalSpend - a.totalSpend)
+    .slice(0, 10);
+
+  return {
+    newCustomers,
+    returningCustomers,
+    topCustomers
+  };
+};
