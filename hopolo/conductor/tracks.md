@@ -17,3 +17,8 @@ This file tracks all major tracks for the project. Each track has its own detail
   *Link: [./conductor/tracks/ethos_dark_theme_20260508/](./conductor/tracks/ethos_dark_theme_20260508/)*
 - [ ] Track: Advanced Analytics & Reporting (External Integration)
   *Link: [./tracks/external_analytics_20260510/](./tracks/external_analytics_20260510/)*
+
+---
+
+- [ ] **Track: Fix Add to Cart Behavior**
+*Link: [./tracks/fix_add_to_cart_20260511/](./tracks/fix_add_to_cart_20260511/)*
