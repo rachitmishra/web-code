@@ -2,7 +2,7 @@
 
 This plan outlines the steps to enhance the admin analytics dashboard with comparative metrics, customer insights, and reporting capabilities.
 
-## Phase 1: Core Analytics Enhancements (Logic)
+## Phase 1: Core Analytics Enhancements (Logic) [checkpoint: aeb615c]
 - [x] Task 1.1: Enhance `analyticsUtils.ts` with `calculateGrowth` function (cff86f0)
 - [x] Task 1.2: Implement `calculateCustomerMetrics` in `analyticsUtils.ts` (New vs Returning, Top Customers) (67b9ac8)
 - [x] Task 1.3: Update `aggregateRevenuePerDay` to handle arbitrary date ranges and empty days (2c55ff2)
