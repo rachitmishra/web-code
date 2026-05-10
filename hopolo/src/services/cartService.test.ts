@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { addToCart, subscribeToCart, clearCart } from './cartService';
 import { setDoc, onSnapshot, getDoc, doc } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
 
 // Mock firebase/firestore
 vi.mock('firebase/firestore', async () => {
@@ -18,6 +19,16 @@ vi.mock('firebase/firestore', async () => {
 // Mock lib/firebase
 vi.mock('../lib/firebase', () => ({
   db: {},
+  auth: { currentUser: null },
+}));
+
+// Mock firebase/auth
+vi.mock('firebase/auth', () => ({
+  onAuthStateChanged: vi.fn((_auth, cb) => {
+    cb(null);
+    return vi.fn();
+  }),
+  signInAnonymously: vi.fn(() => Promise.resolve({ user: { uid: 'guest-uid' } })),
 }));
 
 // Mock lib/session
@@ -28,6 +39,11 @@ vi.mock('../lib/session', () => ({
 describe('cartService', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
   });
 
   it('addToCart should call setDoc with the new product', async () => {
@@ -41,9 +57,10 @@ describe('cartService', () => {
     await addToCart(mockProduct as any, 2);
 
     expect(doc).toHaveBeenCalled();
-    expect(setDoc).toHaveBeenCalledWith(expect.anything(), {
-      items: [{ product: mockProduct, quantity: 2 }]
-    }, { merge: true });
+    expect(setDoc).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({
+      items: [{ product: mockProduct, quantity: 2 }],
+      ownerId: 'test-session-id'
+    }), { merge: true });
   });
 
   it('addToCart should support product variants (size/color)', async () => {
@@ -53,14 +70,15 @@ describe('cartService', () => {
 
     await addToCart(mockProduct as any, 1, 'M', 'Blue');
 
-    expect(setDoc).toHaveBeenCalledWith(expect.anything(), {
+    expect(setDoc).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({
       items: [{ 
         product: mockProduct, 
         quantity: 1, 
         selectedSize: 'M', 
         selectedColor: 'Blue' 
-      }]
-    }, { merge: true });
+      }],
+      ownerId: 'test-session-id'
+    }), { merge: true });
   });
 
   it('subscribeToCart should call onSnapshot and trigger callback', () => {
@@ -69,9 +87,16 @@ describe('cartService', () => {
     (onSnapshot as any).mockReturnValue(mockUnsubscribe);
 
     const unsubscribe = subscribeToCart(callback);
+    
+    // Trigger onAuthStateChanged callback
+    const authCb = (onAuthStateChanged as any).mock.calls[0][1];
+    authCb({ uid: 'test-user-id' });
+
+    // Run timers for the 500ms delay
+    vi.runAllTimers();
 
     expect(onSnapshot).toHaveBeenCalled();
-    expect(unsubscribe).toBe(mockUnsubscribe);
+    expect(typeof unsubscribe).toBe('function');
     
     // Simulate snapshot update
     const mockItems = [{ product: { id: 'p1' }, quantity: 1 }];

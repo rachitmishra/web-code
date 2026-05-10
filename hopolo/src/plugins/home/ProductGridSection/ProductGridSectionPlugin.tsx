@@ -6,7 +6,7 @@ import styles from './ProductGridSectionPlugin.module.css';
 
 const ProductGridSectionPlugin: React.FC = () => {
   const { products, categories, actions, state } = useHomeContext();
-  const { activeCategoryId, isGridChanging } = state;
+  const { activeCategoryId, isGridChanging, addingProductId, successProductId } = state;
 
   const filteredProducts = useMemo(() => {
     if (activeCategoryId === "all") return products;
@@ -32,6 +32,8 @@ const ProductGridSectionPlugin: React.FC = () => {
               product={product}
               onAddToCart={actions.handleAddToCart}
               onClick={(id) => actions.navigate(`/product/${id}`)}
+              loading={addingProductId === product.id}
+              success={successProductId === product.id}
             />
           </div>
         ))}

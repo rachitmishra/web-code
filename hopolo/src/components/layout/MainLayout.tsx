@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Header from './Header/Header';
 import PromoBanner from '../ui/PromoBanner/PromoBanner';
 import MaintenanceGuard from '../ui/Maintenance/MaintenanceGuard';
 import MiniCart from '../ui/MiniCart/MiniCart';
+import Toast from '../ui/Toast/Toast';
 import BottomNavBar from './BottomNavBar/BottomNavBar';
 import DebugOverlay from '../ui/Debug/DebugOverlay';
 import styles from './MainLayout.module.css';
@@ -15,18 +16,25 @@ interface MainLayoutProps {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [prevItemCount, setPrevItemCount] = useState(0);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const prevItemCount = useRef(0);
+  const isFirstRun = useRef(true);
 
   useEffect(() => {
     const unsubscribe = subscribeToCart((items) => {
       const currentCount = items.reduce((acc, item) => acc + item.quantity, 0);
-      if (currentCount > prevItemCount) {
+      
+      // Only open if items increased AND it's not the first load
+      if (!isFirstRun.current && currentCount > prevItemCount.current) {
         setIsCartOpen(true);
+        setToastMessage("Product added to cart successfully");
       }
-      setPrevItemCount(currentCount);
+      
+      prevItemCount.current = currentCount;
+      isFirstRun.current = false;
     });
     return () => unsubscribe();
-  }, [prevItemCount]);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -39,6 +47,13 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         </main>
 
         <MiniCart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+
+        {toastMessage && (
+          <Toast 
+            message={toastMessage} 
+            onClose={() => setToastMessage(null)} 
+          />
+        )}
 
         <footer className={styles.footer}>
           <div className={styles.footerTop}>

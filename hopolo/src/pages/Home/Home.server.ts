@@ -1,16 +1,23 @@
 import { fetchProducts, fetchCategories, fetchBestSellers } from '../../services/productService.server';
 import { getStorefrontSettings } from '../../services/storefrontService.server';
-import { addToCart } from '../../services/cartService.server';
+import { addToCart, getOrCreateCart } from '../../services/cartService.server';
 import { DEFAULT_SETTINGS } from '../../services/storefrontService';
 import { getSessionIdFromRequest, SESSION_COOKIE_NAME } from '../../lib/session';
+import { getAuthenticatedUser } from '../../lib/auth.server';
 
-export async function loader() {
+export async function loader({ request }: { request: Request }) {
   try {
-    const [fProducts, fCategories, fBestSellers, fSettings] = await Promise.all([
+    const user = await getAuthenticatedUser(request);
+    const sessionId = user?.uid || getSessionIdFromRequest(request);
+    
+    console.log(`[Home Loader] Session: ${sessionId}, Authenticated: ${!!user}`);
+
+    const [fProducts, fCategories, fBestSellers, fSettings, _cart] = await Promise.all([
       fetchProducts(),
       fetchCategories(),
       fetchBestSellers(),
-      getStorefrontSettings()
+      getStorefrontSettings(),
+      sessionId ? getOrCreateCart(sessionId) : Promise.resolve([])
     ]);
 
     const fetchedCats = fCategories || [];
@@ -37,16 +44,18 @@ export async function loader() {
 
 export async function action({ request }: { request: Request }) {
   console.log("[Home Action] Received request");
-  let sessionId = getSessionIdFromRequest(request);
   const formData = await request.formData();
   const intent = formData.get("intent");
+  const user = await getAuthenticatedUser(request);
+  const formDataSessionId = formData.get("sessionId") as string;
+  let sessionId = user?.uid || formDataSessionId || getSessionIdFromRequest(request);
   
   if (!sessionId) {
-    console.warn("[Home Action] Session ID missing from request cookies. Attempting fallback.");
+    console.warn("[Home Action] Session ID missing. Attempting fallback.");
     sessionId = "temp-" + Math.random().toString(36).substring(7);
   }
   
-  console.log(`[Home Action] Intent: ${intent}, SessionID: ${sessionId}`);
+  console.log(`[Home Action] Intent: ${intent}, SessionID: ${sessionId}, Authenticated: ${!!user}`);
 
   if (intent === "add-to-cart") {
     const productJson = formData.get("product") as string;
@@ -68,7 +77,8 @@ export async function action({ request }: { request: Request }) {
       console.log("[Home Action] Product added successfully");
       
       const headers = new Headers();
-      if (sessionId.startsWith("temp-")) {
+      // Set cookie if missing or if it should be the UID now
+      if (sessionId.startsWith("temp-") || (user && getSessionIdFromRequest(request) !== user.uid)) {
         headers.append("Set-Cookie", `${SESSION_COOKIE_NAME}=${sessionId}; Path=/; Max-Age=${60 * 60 * 24 * 5}; SameSite=Lax`);
       }
       

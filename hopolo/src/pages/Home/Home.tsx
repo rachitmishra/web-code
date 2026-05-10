@@ -6,6 +6,7 @@ import { useSEO } from '../../hooks/useSEO';
 import { HomeProvider } from './Context';
 import PluginRenderer from '../../plugins/PluginRenderer';
 import QuickViewModal from '../../components/ui/QuickView/QuickViewModal';
+import { getSessionId } from '../../lib/session';
 import styles from './Home.module.css';
 
 // Re-export server-side functions from the server-only module
@@ -24,6 +25,10 @@ const Home: React.FC = () => {
   const [activeCategoryId, setActiveCategoryId] = useState('all');
   const [isGridChanging, setIsGridChanging] = useState(false);
   
+  // Cart Feedback State
+  const [addingProductId, setAddingProductId] = useState<string | null>(null);
+  const [successProductId, setSuccessProductId] = useState<string | null>(null);
+  
   // Quick View State
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
@@ -40,6 +45,19 @@ const Home: React.FC = () => {
     description: settings.heroSubtitle || 'Discover unique products curated just for you. Minimalist design, playful details.',
     ogType: 'website'
   });
+
+  useEffect(() => {
+    if (actionData?.success) {
+      if (addingProductId) {
+        const id = addingProductId;
+        setAddingProductId(null);
+        setSuccessProductId(id);
+        setTimeout(() => setSuccessProductId(null), 2000);
+      }
+    } else if (actionData?.error) {
+      setAddingProductId(null);
+    }
+  }, [actionData, addingProductId]);
 
   const handleCategoryChange = (id: string) => {
     if (id === activeCategoryId) return;
@@ -61,13 +79,15 @@ const Home: React.FC = () => {
       return;
     }
 
+    setAddingProductId(product.id);
     submit(
       { 
         intent: "add-to-cart", 
         product: JSON.stringify(product),
         quantity: quantity.toString(),
         size: size || "",
-        color: color || ""
+        color: color || "",
+        sessionId: getSessionId()
       },
       { method: "post" }
     );
@@ -86,14 +106,16 @@ const Home: React.FC = () => {
       categories={categories}
       bestSellers={bestSellers}
       actions={{
-        handleAddToCart: (p) => handleAddToCart(p),
+        handleAddToCart: (p, q, s, c) => handleAddToCart(p, q, s, c),
         handleCategoryChange,
         navigate,
         scrollToProducts
       }}
       state={{
         activeCategoryId,
-        isGridChanging
+        isGridChanging,
+        addingProductId,
+        successProductId
       }}
     >
       <div className={styles.container}>

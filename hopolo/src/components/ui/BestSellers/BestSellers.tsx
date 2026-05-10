@@ -2,14 +2,21 @@ import React from 'react';
 import ProductCard from '../ProductCard/ProductCard';
 import type { Product } from '../../../services/productService';
 import styles from './BestSellers.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 interface BestSellersProps {
   products: Product[];
   onAddToCart?: (product: Product) => void;
+  addingProductId?: string | null;
+  successProductId?: string | null;
 }
 
-const BestSellers: React.FC<BestSellersProps> = ({ products, onAddToCart }) => {
+const BestSellers: React.FC<BestSellersProps> = ({ 
+  products, 
+  onAddToCart,
+  addingProductId,
+  successProductId
+}) => {
   const navigate = useNavigate();
 
   if (!products || products.length === 0) {
@@ -29,6 +36,8 @@ const BestSellers: React.FC<BestSellersProps> = ({ products, onAddToCart }) => {
             product={product}
             onAddToCart={onAddToCart}
             onClick={(id) => navigate(`/product/${id}`)}
+            loading={addingProductId === product.id}
+            success={successProductId === product.id}
           />
         ))}
       </div>

@@ -16,6 +16,8 @@ export interface HomeContextState {
   state: {
     activeCategoryId: string;
     isGridChanging: boolean;
+    addingProductId: string | null;
+    successProductId: string | null;
   };
 }
 
@@ -46,7 +48,12 @@ export const HomeProvider: React.FC<HomeProviderProps> = ({
   categories,
   bestSellers,
   actions,
-  state = { activeCategoryId: 'all', isGridChanging: false }
+  state = { 
+    activeCategoryId: 'all', 
+    isGridChanging: false,
+    addingProductId: null,
+    successProductId: null
+  }
 }) => {
   const value: HomeContextState = {
     settings,

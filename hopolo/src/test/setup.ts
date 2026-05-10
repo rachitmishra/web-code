@@ -48,6 +48,7 @@ vi.mock('firebase/auth', () => {
       return vi.fn();
     }),
     signInWithPhoneNumber: vi.fn(),
+    signInAnonymously: vi.fn(() => Promise.resolve({ user: { uid: 'guest-uid', isAnonymous: true } })),
     RecaptchaVerifier: vi.fn(),
     signOut: vi.fn(),
   };

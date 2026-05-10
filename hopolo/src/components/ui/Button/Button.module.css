@@ -58,3 +58,13 @@
   border-color: var(--color-primary);
   color: var(--color-primary);
 }
+
+.success {
+  background-color: var(--color-success, #00C853);
+  color: white;
+  border-color: var(--color-success, #00C853);
+}
+
+.success:disabled {
+  opacity: 1;
+}

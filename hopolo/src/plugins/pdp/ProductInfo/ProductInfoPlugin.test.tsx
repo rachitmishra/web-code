@@ -39,4 +39,28 @@ describe('ProductInfoPlugin', () => {
     fireEvent.click(btn);
     expect(onAddToCart).toHaveBeenCalled();
   });
+
+  it('shows loading state when adding is true', () => {
+    render(React.createElement(ProductInfoPlugin, { 
+      product: mockProduct,
+      quantity: 1,
+      setQuantity: vi.fn(),
+      onAddToCart: vi.fn(),
+      adding: true
+    }));
+
+    expect(screen.getByText('Loading...')).toBeInTheDocument();
+  });
+
+  it('shows success state when success is true', () => {
+    render(React.createElement(ProductInfoPlugin, { 
+      product: mockProduct,
+      quantity: 1,
+      setQuantity: vi.fn(),
+      onAddToCart: vi.fn(),
+      success: true
+    }));
+
+    expect(screen.getByText('Added!')).toBeInTheDocument();
+  });
 });

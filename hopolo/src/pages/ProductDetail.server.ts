@@ -1,7 +1,7 @@
 import { fetchProductById, fetchProducts } from '../services/productService.server';
 import { fetchReviews, addReview } from '../services/reviewService.server';
 import { fetchPDPLayout } from '../services/storefrontService.server';
-import { addToCart } from '../services/cartService.server';
+import { addToCart, getOrCreateCart } from '../services/cartService.server';
 import { getAuthenticatedUser } from '../lib/auth.server';
 import { getSessionIdFromRequest } from '../lib/session';
 
@@ -10,12 +10,15 @@ export async function loader({ params, request }: { params: any, request: Reques
   if (!id) throw new Response("Product ID required", { status: 400 });
 
   try {
-    const [product, reviews, allProducts, layout, user] = await Promise.all([
+    const user = await getAuthenticatedUser(request);
+    const sessionId = user?.uid || getSessionIdFromRequest(request);
+
+    const [product, reviews, allProducts, layout, _cart] = await Promise.all([
       fetchProductById(id),
       fetchReviews(id),
       fetchProducts(),
       fetchPDPLayout(),
-      getAuthenticatedUser(request)
+      sessionId ? getOrCreateCart(sessionId) : Promise.resolve([])
     ]);
 
     if (!product) throw new Response("Product not found", { status: 404 });
@@ -35,9 +38,11 @@ export async function action({ request, params }: { request: Request, params: an
   const { id: productId } = params;
   const formData = await request.formData();
   const intent = formData.get("intent");
+  const user = await getAuthenticatedUser(request);
+  const formDataSessionId = formData.get("sessionId") as string;
+  let sessionId = user?.uid || formDataSessionId || getSessionIdFromRequest(request);
 
   if (intent === "add-review") {
-    const user = await getAuthenticatedUser(request);
     if (!user) throw new Response("Unauthorized", { status: 401 });
     
     const rating = parseInt(formData.get("rating") as string, 10);
@@ -55,8 +60,6 @@ export async function action({ request, params }: { request: Request, params: an
   }
 
   if (intent === "add-to-cart") {
-    let sessionId = getSessionIdFromRequest(request);
-    
     if (!sessionId) {
       sessionId = "temp-" + Math.random().toString(36).substring(7);
     }
@@ -71,7 +74,8 @@ export async function action({ request, params }: { request: Request, params: an
       await addToCart(sessionId, product, quantity, { size, color });
       
       const headers = new Headers();
-      if (sessionId.startsWith("temp-")) {
+      // Set cookie if missing or if it should be the UID now
+      if (sessionId.startsWith("temp-") || (user && getSessionIdFromRequest(request) !== user.uid)) {
         const { SESSION_COOKIE_NAME } = await import('../lib/session');
         headers.append("Set-Cookie", `${SESSION_COOKIE_NAME}=${sessionId}; Path=/; Max-Age=${60 * 60 * 24 * 5}; SameSite=Lax`);
       }

@@ -25,6 +25,7 @@ interface ProductInfoPluginProps {
   setSelectedColor?: (c: string) => void;
   onAddToCart: () => void;
   adding?: boolean;
+  success?: boolean;
 }
 
 const ProductInfoPlugin: React.FC<ProductInfoPluginProps> = ({
@@ -36,7 +37,8 @@ const ProductInfoPlugin: React.FC<ProductInfoPluginProps> = ({
   selectedColor,
   setSelectedColor,
   onAddToCart,
-  adding
+  adding,
+  success
 }) => {
   return (
     <div className={styles.details}>
@@ -132,6 +134,7 @@ const ProductInfoPlugin: React.FC<ProductInfoPluginProps> = ({
             className={styles.addToCartButton}
             onClick={onAddToCart}
             loading={adding}
+            success={success}
           >
             Add to Cart
           </Button>

@@ -8,12 +8,16 @@ interface ProductCardProps {
   product: Product;
   onAddToCart?: (product: Product) => void;
   onClick?: (productId: string) => void;
+  loading?: boolean;
+  success?: boolean;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
   product,
   onAddToCart,
   onClick,
+  loading = false,
+  success = false,
 }) => {
   return (
     <Card
@@ -61,6 +65,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
           e.stopPropagation();
           onAddToCart?.(product);
         }}
+        loading={loading}
+        success={success}
       >
         Add to Cart
       </Button>

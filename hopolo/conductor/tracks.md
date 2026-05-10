@@ -20,5 +20,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: Fix Add to Cart Behavior**
+- [x] **Track: Fix Add to Cart Behavior**
 *Link: [./tracks/fix_add_to_cart_20260511/](./tracks/fix_add_to_cart_20260511/)*
