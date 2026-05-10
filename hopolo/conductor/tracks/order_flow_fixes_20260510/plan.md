@@ -20,9 +20,9 @@
     - [x] Implement: Ensure the frontend correctly initializes the Razorpay script and handles success/error callbacks, updating the backend order status appropriately.
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Checkout & Payment Flow' (Protocol in workflow.md) (8941304)
 
-## Phase 3: Post-Order & Notifications
-- [~] Task: Fix Success Screen & Emails
-    - [ ] Write Tests: Test the Success screen rendering logic and the email dispatch service.
-    - [ ] Implement: Verify the Success screen loads correctly with the finalized order details.
-    - [ ] Implement: Ensure the backend triggers the email confirmation service upon successful payment verification.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Post-Order & Notifications' (Protocol in workflow.md)
+## Phase 3: Post-Order & Notifications [checkpoint: 71752e5]
+- [x] Task: Fix Success Screen & Emails (71752e5)
+    - [x] Write Tests: Test the Success screen rendering logic and the email dispatch service.
+    - [x] Implement: Verify the Success screen loads correctly with the finalized order details.
+    - [x] Implement: Ensure the backend triggers the email confirmation service upon successful payment verification.
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Post-Order & Notifications' (Protocol in workflow.md) (71752e5)
