@@ -21,5 +21,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: End-to-End Order Flow & Cart Fixes**
+- [x] **Track: End-to-End Order Flow & Cart Fixes**
 *Link: [./tracks/order_flow_fixes_20260510/](./tracks/order_flow_fixes_20260510/)*
