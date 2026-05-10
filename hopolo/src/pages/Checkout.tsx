@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useLoaderData, useSubmit, useActionData, useNavigate } from "react-router-dom";
+import { useLoaderData, useSubmit, useActionData, useNavigate, useLocation } from "react-router";
 import Card from "../components/ui/Card/Card";
 import Button from "../components/ui/Button/Button";
 import Input from "../components/ui/Input/Input";
 import styles from "./Checkout.module.css";
 import { type CartItem } from "../services/cartService";
-import { getCart, clearCart } from "../services/cartService.server";
-import { getSecureProfile } from "../services/profileService.server";
-import { createOrder } from "../services/orderService.server";
 import { type Address } from "../services/profileService";
-import { auth } from "../lib/firebase";
-import { getAuthenticatedUser } from "../lib/auth.server";
-import { getSessionIdFromRequest } from "../lib/session";
 import { loadRazorpayScript } from "../services/paymentService";
 
 declare global {
@@ -20,44 +14,17 @@ declare global {
   }
 }
 
-export async function loader({ request }: { request: Request }) {
-  const sessionId = getSessionIdFromRequest(request);
-  const user = await getAuthenticatedUser(request);
-  
-  const [items, profile] = await Promise.all([
-    getCart(sessionId),
-    user ? getSecureProfile(user.uid) : Promise.resolve(null)
-  ]);
-
-  return { items, addresses: profile?.addresses || [], user };
-}
-
-export async function action({ request }: { request: Request }) {
-  const sessionId = getSessionIdFromRequest(request);
-  const user = await getAuthenticatedUser(request);
-  const formData = await request.formData();
-  const intent = formData.get("intent");
-
-  if (intent === "create-order") {
-    const orderDataJson = formData.get("orderData") as string;
-    try {
-      const orderData = JSON.parse(orderDataJson);
-      const orderId = await createOrder(orderData);
-      await clearCart(sessionId);
-      return { success: true, orderId };
-    } catch (err: any) {
-      return { success: false, error: err.message };
-    }
-  }
-
-  return null;
-}
+// Re-export loader and action from server-only module
+export { loader, action } from './Checkout.server';
 
 const Checkout: React.FC = () => {
   const { items, addresses, user } = useLoaderData() as { items: CartItem[], addresses: Address[], user: any };
   const actionData = useActionData() as { success: boolean, orderId?: string, error?: string };
   const submit = useSubmit();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const { discount = 0, appliedCode = "" } = (location.state as { discount?: number, appliedCode?: string }) || {};
 
   const [selectedAddressIndex, setSelectedAddressIndex] = useState<number>(addresses.length > 0 ? 0 : -1);
   const [newAddress, setNewAddress] = useState<Address>({
@@ -80,7 +47,7 @@ const Checkout: React.FC = () => {
     0
   );
   const shipping = 5.99;
-  const total = subtotal + shipping;
+  const total = Math.max(0, subtotal + shipping - discount);
 
   const handlePayment = async () => {
     const finalAddress = isAddingNew ? newAddress : addresses[selectedAddressIndex];
@@ -99,7 +66,7 @@ const Checkout: React.FC = () => {
     }
 
     const options = {
-      key: import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_test_placeholder",
+      key: (import.meta.env?.VITE_RAZORPAY_KEY_ID || (typeof process !== 'undefined' ? process.env.VITE_RAZORPAY_KEY_ID : undefined)) || "rzp_test_placeholder",
       amount: Math.round(total * 100),
       currency: "USD",
       name: "HYPVZN",
@@ -141,9 +108,10 @@ const Checkout: React.FC = () => {
     return (
       <div className={styles.container}>
         <Card style={{ textAlign: 'center', padding: 'var(--spacing-12)' }}>
-          <h2>Your cart is empty</h2>
-          <Button onClick={() => navigate('/')} style={{ marginTop: 'var(--spacing-4)' }}>
-            Return to Shop
+          <h2>Your bag is empty</h2>
+          <p>Please add some items to your bag before checking out.</p>
+          <Button onClick={() => navigate("/")} style={{ marginTop: '2rem' }}>
+            Go Shopping
           </Button>
         </Card>
       </div>
@@ -152,157 +120,130 @@ const Checkout: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.checkoutGrid}>
-        <section className={styles.logistics}>
-          <div className={styles.header}>
-            <h1 className={styles.title}>SHIPPING_INFO</h1>
-            <p className={styles.stepIndicator}>STEP 01/03: LOGISTICS REGISTRATION</p>
-          </div>
-
-          <div className={styles.forms}>
-            <div className={styles.section}>
-              <h2 className={styles.sectionTitle}>[ SELECT_ADDRESS ]</h2>
+      <h1>Checkout</h1>
+      
+      <div className={styles.grid}>
+        <div className={styles.main}>
+          <section className={styles.section}>
+            <h3>Shipping Address</h3>
+            
+            {addresses.length > 0 && !isAddingNew && (
               <div className={styles.addressList}>
-                {addresses.map((addr, index) => (
-                  <div
-                    key={index}
-                    className={`${styles.addressCard} ${
-                      selectedAddressIndex === index ? styles.selectedAddress : ""
-                    }`}
-                    onClick={() => {
-                      setSelectedAddressIndex(index);
-                      setIsAddingNew(false);
-                    }}
+                {addresses.map((addr, idx) => (
+                  <div 
+                    key={idx} 
+                    className={`${styles.addressCard} ${selectedAddressIndex === idx ? styles.selected : ''}`}
+                    onClick={() => setSelectedAddressIndex(idx)}
                   >
-                    <div>{addr.street}</div>
-                    <div>
-                      {addr.city}, {addr.state} {addr.zip}
-                    </div>
+                    <p>{addr.street}</p>
+                    <p>{addr.city}, {addr.state} {addr.zip}</p>
                   </div>
                 ))}
-
-                <button 
-                  className={styles.addAddressBtn} 
-                  onClick={() => { setIsAddingNew(true); setSelectedAddressIndex(-1); }}
+                <Button 
+                  variant="outline" 
+                  onClick={() => setIsAddingNew(true)}
+                  style={{ marginTop: '1rem' }}
                 >
-                  + REGISTER_NEW_LOCATION
-                </button>
-              </div>
-
-              {isAddingNew && (
-                <div className={styles.newAddressForm}>
-                  <h3 className={styles.formTitle}>NEW_DATA_ENTRY</h3>
-                  <Input
-                    label="Street Address"
-                    value={newAddress.street}
-                    onChange={(e) =>
-                      setNewAddress({ ...newAddress, street: e.target.value })
-                    }
-                    required
-                  />
-                  <div className={styles.row}>
-                    <Input
-                      label="City"
-                      value={newAddress.city}
-                      onChange={(e) =>
-                        setNewAddress({ ...newAddress, city: e.target.value })
-                      }
-                      required
-                    />
-                    <Input
-                      label="ZIP Code"
-                      value={newAddress.zip || ""}
-                      onChange={(e) =>
-                        setNewAddress({ ...newAddress, zip: e.target.value })
-                      }
-                      required
-                    />
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-
-          <div className={styles.formActions}>
-            <Button
-              variant="primary"
-              className={styles.paymentButton}
-              onClick={handlePayment}
-              loading={loading}
-              disabled={items.length === 0}
-            >
-              CONTINUE TO PAYMENT
-            </Button>
-            {actionData?.error && (
-              <div className={styles.errorText}>
-                {actionData.error}
+                  Add New Address
+                </Button>
               </div>
             )}
-          </div>
-        </section>
 
-        <aside className={styles.sidebar}>
-          <div className={styles.summary}>
-            <div className={styles.summaryHeader}>
-              <h2 className={styles.summaryTitle}>ORDER_SUMMARY</h2>
-              <span className={styles.itemsCount}>[{items.length} ITEMS]</span>
-            </div>
+            {(isAddingNew || addresses.length === 0) && (
+              <div className={styles.newAddressForm}>
+                <Input
+                  label="Street Address"
+                  value={newAddress.street}
+                  onChange={(e) => setNewAddress({ ...newAddress, street: e.target.value })}
+                  required
+                />
+                <div className={styles.formRow}>
+                  <Input
+                    label="City"
+                    value={newAddress.city}
+                    onChange={(e) => setNewAddress({ ...newAddress, city: e.target.value })}
+                    required
+                  />
+                  <Input
+                    label="State"
+                    value={newAddress.state}
+                    onChange={(e) => setNewAddress({ ...newAddress, state: e.target.value })}
+                    required
+                  />
+                  <Input
+                    label="Zip Code"
+                    value={newAddress.zip}
+                    onChange={(e) => setNewAddress({ ...newAddress, zip: e.target.value })}
+                    required
+                  />
+                </div>
+                {addresses.length > 0 && (
+                  <Button variant="outline" onClick={() => setIsAddingNew(false)}>
+                    Use Saved Address
+                  </Button>
+                )}
+              </div>
+            )}
+          </section>
 
-            <div className={styles.items}>
-              {items.map((item, i) => (
-                <div key={`${item.product.id}-${i}`} className={styles.item}>
-                  <div className={styles.itemImage}>
-                    {item.product.image ? (
-                      <img src={item.product.image} alt={item.product.name} className={styles.grayscale} />
-                    ) : (
-                      <div className={styles.placeholder}>[NO_IMG]</div>
-                    )}
-                  </div>
+          <section className={styles.section}>
+            <h3>Review Items</h3>
+            <div className={styles.itemList}>
+              {items.map((item, idx) => (
+                <div key={idx} className={styles.item}>
+                  <img src={item.product.image} alt={item.product.name} className={styles.itemImage} />
                   <div className={styles.itemInfo}>
-                    <div className={styles.itemName}>{item.product.name}</div>
-                    <div className={styles.itemMeta}>
-                      QTY: {item.quantity.toString().padStart(2, '0')}
-                    </div>
-                    <div className={styles.itemPrice}>
-                      ${(item.product.price * item.quantity).toFixed(2)}
-                    </div>
+                    <p className={styles.itemName}>{item.product.name}</p>
+                    <p className={styles.itemMeta}>
+                      {item.selectedSize && `Size: ${item.selectedSize}`}
+                      {item.selectedColor && ` | Color: ${item.selectedColor}`}
+                    </p>
+                    <p className={styles.itemPrice}>Qty: {item.quantity} x ${item.product.price.toFixed(2)}</p>
                   </div>
                 </div>
               ))}
             </div>
+          </section>
+        </div>
 
-            <div className={styles.totals}>
-              <div className={styles.row}>
-                <span>SUBTOTAL</span>
-                <span>${subtotal.toFixed(2)}</span>
-              </div>
-              <div className={styles.row}>
-                <span>SHIPPING_PRIORITY</span>
-                <span className={styles.highlight}>COMPLIMENTARY</span>
-              </div>
-              <div className={styles.row}>
-                <span>ESTIMATED_TAX</span>
-                <span>$0.00</span>
-              </div>
-              
-              <div className={styles.totalRow}>
-                <span>TOTAL</span>
-                <span className={styles.totalValue}>${total.toFixed(2)}</span>
-              </div>
+        <aside className={styles.sidebar}>
+          <Card className={styles.summaryCard}>
+            <h3>Order Summary</h3>
+            <div className={styles.summaryRow}>
+              <span>Subtotal</span>
+              <span>${subtotal.toFixed(2)}</span>
+            </div>
+            <div className={styles.summaryRow}>
+              <span>Shipping</span>
+              <span>${shipping.toFixed(2)}</span>
             </div>
 
-            <div className={styles.logisticsContext}>
-              <div className={styles.contextHeader}>
-                [ LOGISTICS_DATA ]
+            {discount > 0 && (
+              <div className={styles.summaryRow} style={{ color: 'var(--color-secondary)' }}>
+                <span>Discount ({appliedCode})</span>
+                <span>-${discount.toFixed(2)}</span>
               </div>
-              <div className={styles.contextGrid}>
-                <span>ETA:</span>
-                <span className={styles.right}>72H_EXPRESS</span>
-                <span>LOCATION:</span>
-                <span className={styles.right}>GLOBAL_HUB_CENTRAL</span>
-              </div>
+            )}
+            
+            <hr />
+            <div className={`${styles.summaryRow} ${styles.totalRow}`}>
+              <span>Total</span>
+              <span>${total.toFixed(2)}</span>
             </div>
-          </div>
+            
+            <Button 
+              className={styles.payButton} 
+              onClick={handlePayment}
+              loading={loading}
+              disabled={items.length === 0}
+            >
+              Pay Now
+            </Button>
+
+            <p className={styles.secureNote}>
+              🔒 Secure payment powered by Razorpay
+            </p>
+          </Card>
         </aside>
       </div>
     </div>

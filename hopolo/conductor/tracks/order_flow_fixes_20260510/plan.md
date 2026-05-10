@@ -12,12 +12,12 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Add to Cart & Quick View Modal' (Protocol in workflow.md) (5aca53b)
 
 ## Phase 2: Checkout & Payment Flow
-- [ ] Task: Verify Checkout & Shipping
-    - [ ] Write Tests: Create tests ensuring the Cart component correctly passes data and navigates to the Checkout flow.
-    - [ ] Implement: Verify and fix any issues in the Checkout component regarding shipping address selection and form data persistence.
-- [ ] Task: Verify Razorpay Integration
-    - [ ] Write Tests: Add tests for the payment service and Razorpay callback handling logic.
-    - [ ] Implement: Ensure the frontend correctly initializes the Razorpay script and handles success/error callbacks, updating the backend order status appropriately.
+- [x] Task: Verify Checkout & Shipping (f55c4ea)
+    - [x] Write Tests: Create tests ensuring the Cart component correctly passes data and navigates to the Checkout flow.
+    - [x] Implement: Verify and fix any issues in the Checkout component regarding shipping address selection and form data persistence.
+- [x] Task: Verify Razorpay Integration (f55c4ea)
+    - [x] Write Tests: Add tests for the payment service and Razorpay callback handling logic.
+    - [x] Implement: Ensure the frontend correctly initializes the Razorpay script and handles success/error callbacks, updating the backend order status appropriately.
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Checkout & Payment Flow' (Protocol in workflow.md)
 
 ## Phase 3: Post-Order & Notifications
