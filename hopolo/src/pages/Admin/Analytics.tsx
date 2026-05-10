@@ -1,62 +1,98 @@
 import React, { useState, useMemo } from "react";
 import { useLoaderData, useNavigate } from "react-router";
-import { fetchAllOrders } from "../../services/orderService.server";
 import { type Order } from "../../services/orderService";
-import { requireRole } from "../../lib/auth.server";
 import {
   aggregateRevenuePerDay,
   calculateTopProducts,
   calculateCategoryShare,
+  calculateGrowth,
 } from "../../lib/analyticsUtils";
 import Card from "../../components/ui/Card/Card";
 import Button from "../../components/ui/Button/Button";
+import StatCard from "../../components/ui/StatCard/StatCard";
 import RevenueAreaChart from "../../components/ui/Charts/RevenueAreaChart";
 import TopProductsBarChart from "../../components/ui/Charts/TopProductsBarChart";
 import CategoryDonutChart from "../../components/ui/Charts/CategoryDonutChart";
 import styles from "./Analytics.module.css";
 
-type TimeRange = "today" | "7d" | "30d";
+export { loader } from './Analytics.server';
 
-export async function loader({ request }: { request: Request }) {
-  await requireRole(request, ['admin']);
-  const orders = await fetchAllOrders();
-  return { orders };
-}
+type TimeRange = "today" | "7d" | "30d";
 
 const Analytics: React.FC = () => {
   const { orders } = useLoaderData() as { orders: Order[] };
   const [timeRange, setTimeRange] = useState<TimeRange>("7d");
   const navigate = useNavigate();
 
-  // Filter orders based on time range
-  const filteredOrders = useMemo(() => {
-    const now = new Date();
-    const cutoff = new Date();
-
-    if (timeRange === "today") {
-      cutoff.setHours(0, 0, 0, 0);
-    } else if (timeRange === "7d") {
-      cutoff.setDate(now.getDate() - 7);
-    } else if (timeRange === "30d") {
-      cutoff.setDate(now.getDate() - 30);
-    }
-
+  // Helper to filter by range
+  const filterOrders = (start: Date, end: Date) => {
     return orders.filter((o) => {
       const orderDate = o.createdAt?.toDate ? o.createdAt.toDate() : new Date();
-      return orderDate >= cutoff && o.status !== "refunded" && o.status !== "failed";
+      return orderDate >= start && orderDate <= end && o.status !== "refunded" && o.status !== "failed";
     });
+  };
+
+  // Get current and previous period orders
+  const { currentOrders, previousOrders, dateRange } = useMemo(() => {
+    const now = new Date();
+    const currentStart = new Date();
+    const prevStart = new Date();
+    const prevEnd = new Date();
+
+    if (timeRange === "today") {
+      currentStart.setHours(0, 0, 0, 0);
+      prevStart.setDate(now.getDate() - 1);
+      prevStart.setHours(0, 0, 0, 0);
+      prevEnd.setDate(now.getDate() - 1);
+      prevEnd.setHours(23, 59, 59, 999);
+    } else if (timeRange === "7d") {
+      currentStart.setDate(now.getDate() - 7);
+      prevStart.setDate(now.getDate() - 14);
+      prevEnd.setDate(now.getDate() - 7);
+    } else if (timeRange === "30d") {
+      currentStart.setDate(now.getDate() - 30);
+      prevStart.setDate(now.getDate() - 60);
+      prevEnd.setDate(now.getDate() - 30);
+    }
+
+    return {
+      currentOrders: filterOrders(currentStart, now),
+      previousOrders: filterOrders(prevStart, prevEnd),
+      dateRange: { start: currentStart, end: now }
+    };
   }, [orders, timeRange]);
 
   // Calculations
-  const revenueData = useMemo(() => aggregateRevenuePerDay(filteredOrders), [filteredOrders]);
-  const topProducts = useMemo(() => calculateTopProducts(filteredOrders), [filteredOrders]);
-  const categoryShare = useMemo(() => calculateCategoryShare(filteredOrders), [filteredOrders]);
+  const revenueData = useMemo(() => {
+    return aggregateRevenuePerDay(
+      currentOrders, 
+      dateRange.start.toISOString().split('T')[0], 
+      dateRange.end.toISOString().split('T')[0]
+    );
+  }, [currentOrders, dateRange]);
 
-  const totalRevenue = filteredOrders.reduce((sum, o) => sum + o.total, 0);
-  const totalItems = filteredOrders.reduce(
-    (sum, o) => sum + o.items.reduce((s, i) => s + i.quantity, 0),
-    0
-  );
+  const topProducts = useMemo(() => calculateTopProducts(currentOrders), [currentOrders]);
+  const categoryShare = useMemo(() => calculateCategoryShare(currentOrders), [currentOrders]);
+
+  const currentStats = useMemo(() => {
+    const revenue = currentOrders.reduce((sum, o) => sum + o.total, 0);
+    const ordersCount = currentOrders.length;
+    const aov = ordersCount > 0 ? revenue / ordersCount : 0;
+    return { revenue, ordersCount, aov };
+  }, [currentOrders]);
+
+  const previousStats = useMemo(() => {
+    const revenue = previousOrders.reduce((sum, o) => sum + o.total, 0);
+    const ordersCount = previousOrders.length;
+    const aov = ordersCount > 0 ? revenue / ordersCount : 0;
+    return { revenue, ordersCount, aov };
+  }, [previousOrders]);
+
+  const growth = {
+    revenue: calculateGrowth(currentStats.revenue, previousStats.revenue),
+    orders: calculateGrowth(currentStats.ordersCount, previousStats.ordersCount),
+    aov: calculateGrowth(currentStats.aov, previousStats.aov)
+  };
 
   return (
     <div className={styles.container}>
@@ -77,18 +113,21 @@ const Analytics: React.FC = () => {
       </div>
 
       <div className={styles.summaryGrid}>
-        <Card>
-          <div className={styles.statLabel}>Revenue ({timeRange})</div>
-          <div className={styles.statValue}>${totalRevenue.toFixed(2)}</div>
-        </Card>
-        <Card>
-          <div className={styles.statLabel}>Items Sold</div>
-          <div className={styles.statValue}>{totalItems}</div>
-        </Card>
-        <Card>
-          <div className={styles.statLabel}>Total Orders</div>
-          <div className={styles.statValue}>{filteredOrders.length}</div>
-        </Card>
+        <StatCard 
+          label="Revenue" 
+          value={`$${currentStats.revenue.toFixed(2)}`} 
+          growth={growth.revenue}
+        />
+        <StatCard 
+          label="Total Orders" 
+          value={currentStats.ordersCount} 
+          growth={growth.orders}
+        />
+        <StatCard 
+          label="Avg Order Value" 
+          value={`$${currentStats.aov.toFixed(2)}`} 
+          growth={growth.aov}
+        />
       </div>
 
       <div className={styles.chartsGrid}>
@@ -118,3 +157,4 @@ const Analytics: React.FC = () => {
 };
 
 export default Analytics;
+
