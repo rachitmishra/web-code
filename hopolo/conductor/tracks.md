@@ -18,5 +18,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: UI Polish & Bug Fixes (Login, Banner, Theme)**
+- [x] **Track: UI Polish & Bug Fixes (Login, Banner, Theme)**
 *Link: [./tracks/ui_polish_fixes_20260510/](./tracks/ui_polish_fixes_20260510/)*
