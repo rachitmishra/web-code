@@ -9,7 +9,7 @@ This plan outlines the steps to enhance the admin analytics dashboard with compa
 - [x] Task 1.4: Add unit tests for new utility functions (2c55ff2)
 
 ## Phase 2: UI Components & Comparative Metrics
-- [ ] Task 2.1: Create `StatCard` component with growth/decline indicators
+- [x] Task 2.1: Create `StatCard` component with growth/decline indicators (9bc1eba)
 - [ ] Task 2.2: Implement previous period calculation logic in `Analytics.tsx`
 - [ ] Task 2.3: Update `Analytics.tsx` to display comparative stats (Revenue, Orders, AOV)
 - [ ] Task 2.4: Verify responsiveness of new metric cards on mobile
