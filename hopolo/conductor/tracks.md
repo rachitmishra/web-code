@@ -15,8 +15,3 @@ This file tracks all major tracks for the project. Each track has its own detail
   *Link: [./conductor/tracks/analytics_reporting_20260508/](./conductor/tracks/analytics_reporting_20260508/)*
 - [x] Track: Ethos Archetype (Full Dark Overhaul)
   *Link: [./conductor/tracks/ethos_dark_theme_20260508/](./conductor/tracks/ethos_dark_theme_20260508/)*
-
----
-
-- [x] **Track: UI Polish & Bug Fixes (Login, Banner, Theme)**
-*Link: [./tracks/ui_polish_fixes_20260510/](./tracks/ui_polish_fixes_20260510/)*
