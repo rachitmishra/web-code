@@ -18,11 +18,17 @@ import styles from "./Analytics.module.css";
 
 export { loader } from './Analytics.server';
 
-type TimeRange = "today" | "7d" | "30d";
+type TimeRange = "today" | "7d" | "30d" | "custom";
 
 const Analytics: React.FC = () => {
   const { orders } = useLoaderData() as { orders: Order[] };
   const [timeRange, setTimeRange] = useState<TimeRange>("7d");
+  const [customStart, setCustomStart] = useState<string>(() => {
+    const d = new Date();
+    d.setDate(d.getDate() - 7);
+    return d.toISOString().split('T')[0];
+  });
+  const [customEnd, setCustomEnd] = useState<string>(() => new Date().toISOString().split('T')[0]);
   const navigate = useNavigate();
 
   // Helper to filter by range
@@ -54,6 +60,16 @@ const Analytics: React.FC = () => {
       currentStart.setDate(now.getDate() - 30);
       prevStart.setDate(now.getDate() - 60);
       prevEnd.setDate(now.getDate() - 30);
+    } else if (timeRange === "custom") {
+      const s = new Date(customStart);
+      const e = new Date(customEnd);
+      e.setHours(23, 59, 59, 999);
+      currentStart.setTime(s.getTime());
+      now.setTime(e.getTime());
+      
+      const diff = e.getTime() - s.getTime();
+      prevEnd.setTime(s.getTime() - 1);
+      prevStart.setTime(prevEnd.getTime() - diff);
     }
 
     return {
@@ -61,7 +77,7 @@ const Analytics: React.FC = () => {
       previousOrders: filterOrders(prevStart, prevEnd),
       dateRange: { start: currentStart, end: now }
     };
-  }, [orders, timeRange]);
+  }, [orders, timeRange, customStart, customEnd]);
 
   // Calculations
   const revenueData = useMemo(() => {
@@ -101,18 +117,43 @@ const Analytics: React.FC = () => {
       <div className={styles.header}>
         <h1>Analytics</h1>
         <div className={styles.controls}>
-          {(["today", "7d", "30d"] as TimeRange[]).map((range) => (
+          {(["today", "7d", "30d", "custom"] as TimeRange[]).map((range) => (
             <Button
               key={range}
               variant={timeRange === range ? "primary" : "outline"}
               onClick={() => setTimeRange(range)}
               style={{ padding: "4px 12px", fontSize: "0.75rem" }}
             >
-              {range === "today" ? "Today" : range === "7d" ? "7 Days" : "30 Days"}
+              {range === "today" ? "Today" : range === "7d" ? "7 Days" : range === "30d" ? "30 Days" : "Custom"}
             </Button>
           ))}
         </div>
       </div>
+
+      {timeRange === 'custom' && (
+        <Card className={styles.customRangeCard}>
+          <div className={styles.customRangeInputs}>
+            <div className={styles.field}>
+              <label className={styles.label}>Start Date</label>
+              <input 
+                type="date" 
+                value={customStart} 
+                onChange={(e) => setCustomStart(e.target.value)}
+                className={styles.dateInput}
+              />
+            </div>
+            <div className={styles.field}>
+              <label className={styles.label}>End Date</label>
+              <input 
+                type="date" 
+                value={customEnd} 
+                onChange={(e) => setCustomEnd(e.target.value)}
+                className={styles.dateInput}
+              />
+            </div>
+          </div>
+        </Card>
+      )}
 
       <div className={styles.summaryGrid}>
         <StatCard 

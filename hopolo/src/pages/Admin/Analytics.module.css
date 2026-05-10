@@ -111,6 +111,40 @@
   font-size: 0.875rem;
 }
 
+.customRangeCard {
+  margin-bottom: var(--spacing-4);
+}
+
+.customRangeInputs {
+  display: flex;
+  gap: var(--spacing-6);
+  flex-wrap: wrap;
+}
+
+.dateInput {
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: var(--spacing-2) var(--spacing-4);
+  font-family: inherit;
+  font-size: 0.875rem;
+}
+
+.dateInput:focus {
+  border-color: var(--color-secondary);
+  outline: none;
+}
+
+.label {
+  display: block;
+  font-family: var(--font-family-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-2);
+  color: var(--color-text-muted);
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .header {
