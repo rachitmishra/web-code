@@ -28,10 +28,11 @@ Email notifications (order placed + delivery feedback)
 The HYPVZN Admin Panel provides specialized tools for boutique owners to manage operations seamlessly:
 
 - **📦 Inventory Management:** Add new products, track stock across variants (sizes/colors), and manage media assets for the storefront.
-- **📊 Analytics Dashboard:** Monitor business performance with real-time sales metrics (Revenue, AOV, Conversion) and interactive trend charts.
+- **📊 Advanced Analytics:** Monitor business performance with real-time sales metrics (Revenue, AOV, Orders) featuring comparative growth indicators, customer insights (new vs returning), and custom date range filtering.
 - 🛍️ Storefront Configuration: A "No-Code" interface to manage the Cinematic Hero, global promo banners, and maintenance mode.
 - 📄 Static Page Manager: A dedicated tool to create and manage the content of static pages like Archive, Stockists, and Legal pages.
 - 🧩 Modular Layout Manager: A dedicated interface for customizing page layouts (initially for PDP, now expanded to Home) using a plugin-based system, allowing for reordering and toggling of individual components.
+- **📥 Data Reporting:** Export critical business data, including order manifests and product performance metrics, directly to CSV for offline analysis.
 
 - **🎫 Invitation System:** Securely onboard new staff (Admin, Manager, Editor) using phone-based authentication and single-use invite codes.
 - **🧾 Order Management:** Hub for fulfillment including real-time order tracking, Shadowfax logistics integration, and processing refunds via Razorpay.
