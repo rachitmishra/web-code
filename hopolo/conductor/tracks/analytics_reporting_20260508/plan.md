@@ -15,10 +15,10 @@ This plan outlines the steps to enhance the admin analytics dashboard with compa
 - [x] Task 2.4: Verify responsiveness of new metric cards on mobile (eaaf3c5)
 
 ## Phase 3: Customer Insights & Advanced Filtering
-- [ ] Task 3.1: Add "Customers" section to the Analytics dashboard
-- [ ] Task 3.2: Implement "Top 10 Customers" data table
+- [x] Task 3.1: Add "Customers" section to the Analytics dashboard (dfe21b6)
+- [x] Task 3.2: Implement "Top 10 Customers" data table (dfe21b6)
 - [ ] Task 3.3: Implement Custom Date Range picker in the UI
-- [ ] Task 3.4: Add "New vs Returning" breakdown chart or indicator
+- [x] Task 3.4: Add "New vs Returning" breakdown chart or indicator (dfe21b6)
 
 ## Phase 4: Reporting & Export
 - [ ] Task 4.1: Create CSV export utility (`src/lib/csvUtils.ts`)
