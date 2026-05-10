@@ -14,7 +14,7 @@ This plan outlines the steps to enhance the admin analytics dashboard with compa
 - [x] Task 2.3: Update `Analytics.tsx` to display comparative stats (Revenue, Orders, AOV) (eaaf3c5)
 - [x] Task 2.4: Verify responsiveness of new metric cards on mobile (eaaf3c5)
 
-## Phase 3: Customer Insights & Advanced Filtering
+## Phase 3: Customer Insights & Advanced Filtering [checkpoint: 9385fe6]
 - [x] Task 3.1: Add "Customers" section to the Analytics dashboard (dfe21b6)
 - [x] Task 3.2: Implement "Top 10 Customers" data table (dfe21b6)
 - [x] Task 3.3: Implement Custom Date Range picker in the UI (7f1f4a1)
