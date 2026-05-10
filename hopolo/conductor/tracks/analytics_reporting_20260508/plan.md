@@ -17,7 +17,7 @@ This plan outlines the steps to enhance the admin analytics dashboard with compa
 ## Phase 3: Customer Insights & Advanced Filtering
 - [x] Task 3.1: Add "Customers" section to the Analytics dashboard (dfe21b6)
 - [x] Task 3.2: Implement "Top 10 Customers" data table (dfe21b6)
-- [ ] Task 3.3: Implement Custom Date Range picker in the UI
+- [x] Task 3.3: Implement Custom Date Range picker in the UI (7f1f4a1)
 - [x] Task 3.4: Add "New vs Returning" breakdown chart or indicator (dfe21b6)
 
 ## Phase 4: Reporting & Export
