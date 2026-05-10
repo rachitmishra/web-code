@@ -20,7 +20,7 @@ This plan outlines the steps to enhance the admin analytics dashboard with compa
 - [x] Task 3.3: Implement Custom Date Range picker in the UI (7f1f4a1)
 - [x] Task 3.4: Add "New vs Returning" breakdown chart or indicator (dfe21b6)
 
-## Phase 4: Reporting & Export
+## Phase 4: Reporting & Export [checkpoint: bbce145]
 - [x] Task 4.1: Create CSV export utility (`src/lib/csvUtils.ts`) (b47c32c)
 - [x] Task 4.2: Add "Export Orders CSV" button to the dashboard (bfd991d)
 - [x] Task 4.3: Add "Export Product Performance CSV" button (bfd991d)
