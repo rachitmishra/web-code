@@ -1,16 +1,16 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router';
 import Home from './Home';
 import * as productService from '../../services/productService';
 import * as productServiceServer from '../../services/productService.server';
 import * as storefrontService from '../../services/storefrontService';
 import * as storefrontServiceServer from '../../services/storefrontService.server';
 import { useSEO } from '../../hooks/useSEO';
-import { useLoaderData, useSubmit, useActionData, useNavigate } from 'react-router-dom';
+import { useLoaderData, useSubmit, useActionData, useNavigate } from 'react-router';
 
-vi.mock('react-router-dom', async () => {
-  const actual = await vi.importActual('react-router-dom');
+vi.mock('react-router', async () => {
+  const actual = await vi.importActual('react-router');
   return {
     ...actual,
     useLoaderData: vi.fn(),
@@ -151,5 +151,25 @@ describe('Home Page', () => {
       </MemoryRouter>
     );
     expect(useSEO).toHaveBeenCalled();
+  });
+
+  it('should call handleAddToCart when Add to Cart button is clicked', async () => {
+    render(
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => screen.getByText(/product 1/i));
+
+    const addToCartButtons = screen.getAllByRole('button', { name: /add to cart/i });
+    fireEvent.click(addToCartButtons[0]);
+
+    expect(submit).toHaveBeenCalledWith(
+      expect.objectContaining({
+        intent: 'add-to-cart',
+      }),
+      expect.anything()
+    );
   });
 });

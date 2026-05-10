@@ -1,97 +1,16 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { useNavigate, useLoaderData, useSubmit, useActionData } from "react-router";
 import { type Product, type Category } from '../../services/productService';
-import { fetchProducts, fetchCategories, fetchBestSellers } from '../../services/productService.server';
-import { type StorefrontSettings, DEFAULT_SETTINGS, DEFAULT_HOME_LAYOUT } from '../../services/storefrontService';
-import { getStorefrontSettings } from '../../services/storefrontService.server';
-import { addToCart } from '../../services/cartService.server';
-import { getSessionIdFromRequest, SESSION_COOKIE_NAME } from '../../lib/session';
+import { type StorefrontSettings, DEFAULT_HOME_LAYOUT } from '../../services/storefrontService';
 import { useSEO } from '../../hooks/useSEO';
 import { HomeProvider } from './Context';
 import PluginRenderer from '../../plugins/PluginRenderer';
+import QuickViewModal from '../../components/ui/QuickView/QuickViewModal';
 import styles from './Home.module.css';
 
-export async function loader() {
-  try {
-    const [fProducts, fCategories, fBestSellers, fSettings] = await Promise.all([
-      fetchProducts(),
-      fetchCategories(),
-      fetchBestSellers(),
-      getStorefrontSettings()
-    ]);
-
-    const fetchedCats = fCategories || [];
-    const categories = fetchedCats.find((c) => c.id === "all") 
-      ? fetchedCats 
-      : [{ id: "all", name: "All" }, ...fetchedCats];
-
-    return {
-      products: fProducts || [],
-      categories,
-      bestSellers: fBestSellers || [],
-      settings: fSettings || DEFAULT_SETTINGS
-    };
-  } catch (error) {
-    console.error("[Home Loader] Error loading data:", error);
-    return {
-      products: [],
-      categories: [{ id: "all", name: "All" }],
-      bestSellers: [],
-      settings: DEFAULT_SETTINGS
-    };
-  }
-}
-
-export async function action({ request }: { request: Request }) {
-  console.log("[Home Action] Received request");
-  let sessionId = getSessionIdFromRequest(request);
-  const formData = await request.formData();
-  const intent = formData.get("intent");
-  
-  // Robust session handling: if missing, try to get from somewhere else or generate
-  if (!sessionId) {
-    console.warn("[Home Action] Session ID missing from request cookies. Attempting fallback.");
-    // In a real app, we might check a header or similar. 
-    // For now, let's generate a temporary one so it doesn't throw, 
-    // but ideally the root loader should have ensured it exists.
-    sessionId = "temp-" + Math.random().toString(36).substring(7);
-  }
-  
-  console.log(`[Home Action] Intent: ${intent}, SessionID: ${sessionId}`);
-
-  if (intent === "add-to-cart") {
-    const productJson = formData.get("product") as string;
-    if (!productJson) {
-      console.warn("[Home Action] Product data missing");
-      return { success: false, error: "Product data missing" };
-    }
-    try {
-      const product = JSON.parse(productJson);
-      if (!product || !product.id) {
-        throw new Error("Invalid product data");
-      }
-      console.log(`[Home Action] Adding product to cart: ${product.name}`);
-      await addToCart(sessionId, product, 1);
-      console.log("[Home Action] Product added successfully");
-      
-      const headers = new Headers();
-      if (sessionId.startsWith("temp-")) {
-        headers.append("Set-Cookie", `${SESSION_COOKIE_NAME}=${sessionId}; Path=/; Max-Age=${60 * 60 * 24 * 5}; SameSite=Lax`);
-      }
-      
-      return new Response(JSON.stringify({ success: true }), {
-        headers: {
-          ...Object.fromEntries(headers.entries()),
-          "Content-Type": "application/json"
-        }
-      });
-    } catch (err: any) {
-      console.error("[Home Action] Add to Cart Error:", err.message);
-      return { success: false, error: err.message };
-    }
-  }
-  return null;
-}
+// Re-export server-side functions from the server-only module
+// React Router v7 will automatically remove these exports from the client bundle
+export { loader, action } from './Home.server';
 
 const Home: React.FC = () => {
   const { products, categories, bestSellers, settings } = useLoaderData() as {
@@ -104,6 +23,10 @@ const Home: React.FC = () => {
   const actionData = useActionData() as { success?: boolean; error?: string };
   const [activeCategoryId, setActiveCategoryId] = useState('all');
   const [isGridChanging, setIsGridChanging] = useState(false);
+  
+  // Quick View State
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
   
   const navigate = useNavigate();
   const submit = useSubmit();
@@ -128,9 +51,24 @@ const Home: React.FC = () => {
     }, 300);
   };
 
-  const handleAddToCart = (product: Product) => {
+  const handleAddToCart = (product: Product, quantity: number = 1, size?: string, color?: string) => {
+    // If product has variants and they are not selected, open Quick View
+    const hasVariants = (product.sizes && product.sizes.length > 0) || (product.colors && product.colors.length > 0);
+    
+    if (hasVariants && !size && !color) {
+      setSelectedProduct(product);
+      setIsQuickViewOpen(true);
+      return;
+    }
+
     submit(
-      { intent: "add-to-cart", product: JSON.stringify(product) },
+      { 
+        intent: "add-to-cart", 
+        product: JSON.stringify(product),
+        quantity: quantity.toString(),
+        size: size || "",
+        color: color || ""
+      },
       { method: "post" }
     );
   };
@@ -148,7 +86,7 @@ const Home: React.FC = () => {
       categories={categories}
       bestSellers={bestSellers}
       actions={{
-        handleAddToCart,
+        handleAddToCart: (p) => handleAddToCart(p),
         handleCategoryChange,
         navigate,
         scrollToProducts
@@ -176,6 +114,15 @@ const Home: React.FC = () => {
           </div>
         )}
         <PluginRenderer layout={layout} />
+
+        {selectedProduct && (
+          <QuickViewModal
+            product={selectedProduct}
+            isOpen={isQuickViewOpen}
+            onClose={() => setIsQuickViewOpen(false)}
+            onAddToCart={handleAddToCart}
+          />
+        )}
       </div>
     </HomeProvider>
   );
