@@ -6,7 +6,7 @@ This plan outlines the steps to enhance the admin analytics dashboard with compa
 - [x] Task 1.1: Enhance `analyticsUtils.ts` with `calculateGrowth` function (cff86f0)
 - [x] Task 1.2: Implement `calculateCustomerMetrics` in `analyticsUtils.ts` (New vs Returning, Top Customers) (67b9ac8)
 - [x] Task 1.3: Update `aggregateRevenuePerDay` to handle arbitrary date ranges and empty days (2c55ff2)
-- [ ] Task 1.4: Add unit tests for new utility functions
+- [x] Task 1.4: Add unit tests for new utility functions (2c55ff2)
 
 ## Phase 2: UI Components & Comparative Metrics
 - [ ] Task 2.1: Create `StatCard` component with growth/decline indicators
