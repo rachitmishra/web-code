@@ -6,6 +6,7 @@ import {
   calculateTopProducts,
   calculateCategoryShare,
   calculateGrowth,
+  calculateCustomerMetrics,
 } from "../../lib/analyticsUtils";
 import Card from "../../components/ui/Card/Card";
 import Button from "../../components/ui/Button/Button";
@@ -73,6 +74,7 @@ const Analytics: React.FC = () => {
 
   const topProducts = useMemo(() => calculateTopProducts(currentOrders), [currentOrders]);
   const categoryShare = useMemo(() => calculateCategoryShare(currentOrders), [currentOrders]);
+  const customerMetrics = useMemo(() => calculateCustomerMetrics(currentOrders), [currentOrders]);
 
   const currentStats = useMemo(() => {
     const revenue = currentOrders.reduce((sum, o) => sum + o.total, 0);
@@ -149,6 +151,44 @@ const Analytics: React.FC = () => {
           <h3>Category Distribution</h3>
           <div className={styles.chartContainer}>
             <CategoryDonutChart data={categoryShare} />
+          </div>
+        </Card>
+
+        <Card className={styles.fullWidth}>
+          <h3>Customer Insights</h3>
+          <div className={styles.customerGrid}>
+            <div className={styles.customerMetric}>
+              <div className={styles.statLabel}>New Customers</div>
+              <div className={styles.statValue}>{customerMetrics.newCustomers}</div>
+            </div>
+            <div className={styles.customerMetric}>
+              <div className={styles.statLabel}>Returning Customers</div>
+              <div className={styles.statValue}>{customerMetrics.returningCustomers}</div>
+            </div>
+          </div>
+        </Card>
+
+        <Card className={styles.fullWidth}>
+          <h3>Top Customers</h3>
+          <div className={styles.tableWrapper}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th className={styles.th}>Email</th>
+                  <th className={styles.th}>Total Spend</th>
+                  <th className={styles.th}>Order Count</th>
+                </tr>
+              </thead>
+              <tbody>
+                {customerMetrics.topCustomers.map((customer) => (
+                  <tr key={customer.id}>
+                    <td className={styles.td}>{customer.email}</td>
+                    <td className={styles.td}>${customer.totalSpend.toFixed(2)}</td>
+                    <td className={styles.td}>{customer.orderCount}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </Card>
       </div>

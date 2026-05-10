@@ -70,6 +70,47 @@
   width: 100%;
 }
 
+.customerGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-6);
+}
+
+.customerMetric {
+  text-align: center;
+  padding: var(--spacing-4);
+  border: 1px solid var(--color-border);
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  margin-top: var(--spacing-4);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.th, .td {
+  text-align: left;
+  padding: var(--spacing-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.th {
+  font-family: var(--font-family-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+}
+
+.td {
+  font-size: 0.875rem;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .header {
