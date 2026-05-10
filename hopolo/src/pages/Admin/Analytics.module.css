@@ -25,7 +25,16 @@
 
 .controls {
   display: flex;
+  gap: var(--spacing-4);
+  align-items: center;
+}
+
+.exportButtons {
+  display: flex;
   gap: var(--spacing-2);
+  margin-right: var(--spacing-4);
+  border-right: 1px solid var(--color-border);
+  padding-right: var(--spacing-4);
 }
 
 .summaryGrid {

@@ -14,6 +14,7 @@ import StatCard from "../../components/ui/StatCard/StatCard";
 import RevenueAreaChart from "../../components/ui/Charts/RevenueAreaChart";
 import TopProductsBarChart from "../../components/ui/Charts/TopProductsBarChart";
 import CategoryDonutChart from "../../components/ui/Charts/CategoryDonutChart";
+import { convertToCSV, downloadCSV } from "../../lib/csvUtils";
 import styles from "./Analytics.module.css";
 
 export { loader } from './Analytics.server';
@@ -105,19 +106,49 @@ const Analytics: React.FC = () => {
     const aov = ordersCount > 0 ? revenue / ordersCount : 0;
     return { revenue, ordersCount, aov };
   }, [previousOrders]);
+const growth = {
+  revenue: calculateGrowth(currentStats.revenue, previousStats.revenue),
+  orders: calculateGrowth(currentStats.ordersCount, previousStats.ordersCount),
+  aov: calculateGrowth(currentStats.aov, previousStats.aov)
+};
 
-  const growth = {
-    revenue: calculateGrowth(currentStats.revenue, previousStats.revenue),
-    orders: calculateGrowth(currentStats.ordersCount, previousStats.ordersCount),
-    aov: calculateGrowth(currentStats.aov, previousStats.aov)
-  };
+const handleExportOrders = () => {
+  const data = filteredOrders.map(o => ({
+    id: o.id,
+    userId: o.userId,
+    email: o.userEmail,
+    total: o.total,
+    status: o.status,
+    date: o.createdAt?.toDate ? o.createdAt.toDate().toISOString() : 'N/A'
+  }));
+  const csv = convertToCSV(data);
+  downloadCSV(csv, `orders_${timeRange}_${new Date().toISOString().split('T')[0]}.csv`);
+};
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <h1>Analytics</h1>
-        <div className={styles.controls}>
-          {(["today", "7d", "30d", "custom"] as TimeRange[]).map((range) => (
+const handleExportProducts = () => {
+  const data = topProducts.map(p => ({
+    name: p.name,
+    unitsSold: p.value
+  }));
+  const csv = convertToCSV(data);
+  downloadCSV(csv, `products_${timeRange}_${new Date().toISOString().split('T')[0]}.csv`);
+};
+
+return (
+  <div className={styles.container}>
+    <div className={styles.header}>
+      <h1>Analytics</h1>
+      <div className={styles.controls}>
+        <div className={styles.exportButtons}>
+          <Button variant="outline" onClick={handleExportOrders} style={{ padding: "4px 12px", fontSize: "0.75rem" }}>
+            Export Orders
+          </Button>
+          <Button variant="outline" onClick={handleExportProducts} style={{ padding: "4px 12px", fontSize: "0.75rem" }}>
+            Export Products
+          </Button>
+        </div>
+        {(["today", "7d", "30d", "custom"] as TimeRange[]).map((range) => (
+...
             <Button
               key={range}
               variant={timeRange === range ? "primary" : "outline"}
