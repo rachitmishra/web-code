@@ -18,3 +18,8 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 - [ ] **Track: Advanced Analytics & Reporting (External Integration)**
 *Link: [./tracks/external_analytics_20260510/](./tracks/external_analytics_20260510/)*
+
+---
+
+- [ ] **Track: End-to-End Order Flow & Cart Fixes**
+*Link: [./tracks/order_flow_fixes_20260510/](./tracks/order_flow_fixes_20260510/)*
