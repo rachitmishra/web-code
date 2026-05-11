@@ -1,32 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSubmit, useActionData, useLoaderData } from 'react-router';
 import { type StorefrontSettings, type CustomerReview, DEFAULT_SETTINGS } from '../../services/storefrontService';
-import { updateStorefrontSettings, getStorefrontSettings } from '../../services/storefrontService.server';
-import { requireRole } from '../../lib/auth.server';
 import Button from '../../components/ui/Button/Button';
 import Input from '../../components/ui/Input/Input';
 import Card from '../../components/ui/Card/Card';
 import styles from './Storefront.module.css';
 
-export async function loader({ request }: { request: Request }) {
-  await requireRole(request, ['admin']);
-  const settings = await getStorefrontSettings();
-  return { settings };
-}
-
-export async function action({ request }: { request: Request }) {
-  await requireRole(request, ['admin']);
-  const formData = await request.formData();
-  const settingsJson = formData.get("settings") as string;
-  
-  try {
-    const settings = JSON.parse(settingsJson);
-    await updateStorefrontSettings(settings);
-    return { success: true };
-  } catch (error: any) {
-    return { success: false, error: error.message };
-  }
-}
+// Re-export loader and action from server-only module
+export { loader, action } from './Storefront.server';
 
 const AdminStorefront: React.FC = () => {
   const { settings: initialSettings } = useLoaderData() as { settings: StorefrontSettings };

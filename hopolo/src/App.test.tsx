@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+<<<<<<< HEAD
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import * as productService from './services/productService';
@@ -7,13 +8,18 @@ import * as reviewService from './services/reviewService';
 import * as storefrontService from './services/storefrontService';
 import * as profileService from './services/profileService';
 import { MemoryRouter } from 'react-router-dom';
+=======
+import { render, screen, waitFor } from '@testing-library/react';
+import { MemoryRouter } from 'react-router';
+>>>>>>> 336d77c (feat(cart): implement local storage fallback and robust server-side sync)
 import { AppRoutes } from './App';
 import { auth } from './lib/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 import React from 'react';
 
-// Mock both react-router-dom and react-router as they are used across the app
-vi.mock('react-router-dom', async () => {
-  const actual = await vi.importActual('react-router-dom');
+// Mock react-router
+vi.mock('react-router', async () => {
+  const actual = await vi.importActual('react-router');
   return {
     ...actual,
     useLoaderData: vi.fn(),
@@ -30,17 +36,7 @@ vi.mock('react-router-dom', async () => {
   };
 });
 
-vi.mock('react-router', async () => {
-  const actual = await vi.importActual('react-router');
-  return {
-    ...actual,
-    useLoaderData: vi.fn(),
-    useActionData: vi.fn(),
-    useSubmit: vi.fn(),
-  };
-});
-
-import { useLoaderData, useRouteLoaderData } from 'react-router-dom';
+import { useLoaderData, useRouteLoaderData } from 'react-router';
 import * as reactRouter from 'react-router';
 
 vi.mock('./services/productService.server');
@@ -53,13 +49,17 @@ vi.mock('./services/reviewService.server');
 vi.mock('./services/storefrontService.server');
 vi.mock('./services/profileService.server');
 
+vi.mock('firebase/auth', () => ({
+  getAuth: vi.fn(() => ({ currentUser: { uid: 'user123' } })),
+  onAuthStateChanged: vi.fn((_auth, cb) => {
+    cb({ uid: 'user123' });
+    return vi.fn();
+  }),
+}));
+
 vi.mock('./lib/firebase', () => {
   const auth = {
     currentUser: { uid: 'user123' },
-    onAuthStateChanged: vi.fn((cb) => {
-      cb({ uid: 'user123' });
-      return vi.fn();
-    }),
   };
   return { auth, db: {} };
 });

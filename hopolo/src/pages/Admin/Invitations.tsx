@@ -1,30 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useSubmit, useActionData, useLoaderData } from 'react-router';
-import { createInvitation } from '../../services/profileService.server';
-import { requireRole } from '../../lib/auth.server';
+import { useSubmit, useActionData } from 'react-router';
 import Button from '../../components/ui/Button/Button';
 import Input from '../../components/ui/Input/Input';
 import Card from '../../components/ui/Card/Card';
 import styles from './Invitations.module.css';
 
-export async function loader({ request }: { request: Request }) {
-  await requireRole(request, ['admin']);
-  return null;
-}
-
-export async function action({ request }: { request: Request }) {
-  const { user } = await requireRole(request, ['admin']);
-  const formData = await request.formData();
-  const phoneNumber = formData.get("phoneNumber") as string;
-  const role = formData.get("role") as string;
-
-  try {
-    const result = await createInvitation(user.uid, phoneNumber, role);
-    return { success: true, inviteCode: result.inviteCode };
-  } catch (error: any) {
-    return { success: false, error: error.message };
-  }
-}
+// Re-export loader and action from server-only module
+export { loader, action } from './Invitations.server';
 
 const Invitations: React.FC = () => {
   const actionData = useActionData() as { success: boolean, inviteCode?: string, error?: string };

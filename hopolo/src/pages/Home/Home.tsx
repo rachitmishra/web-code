@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLoaderData, useSubmit, useActionData } from "react-router";
 import { type Product, type Category } from '../../services/productService';
 import { type StorefrontSettings, DEFAULT_HOME_LAYOUT } from '../../services/storefrontService';
@@ -69,7 +69,7 @@ const Home: React.FC = () => {
     }, 300);
   };
 
-  const handleAddToCart = (product: Product, quantity: number = 1, size?: string, color?: string) => {
+  const handleAddToCart = async (product: Product, quantity: number = 1, size?: string, color?: string) => {
     // If product has variants and they are not selected, open Quick View
     const hasVariants = (product.sizes && product.sizes.length > 0) || (product.colors && product.colors.length > 0);
     
@@ -80,6 +80,16 @@ const Home: React.FC = () => {
     }
 
     setAddingProductId(product.id);
+
+    // 1. Client-side update for immediate feedback & LocalStorage fallback
+    try {
+      const { addToCart } = await import('../../services/cartService');
+      await addToCart(product, quantity, { size, color });
+    } catch (err) {
+      console.warn("[Home] Client-side add-to-cart failed, relying on server action", err);
+    }
+
+    // 2. Server action for persistent state (standard Remix/React Router flow)
     submit(
       { 
         intent: "add-to-cart", 

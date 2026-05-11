@@ -1,32 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSubmit, useActionData, useLoaderData } from 'react-router';
 import { type StorefrontSettings, DEFAULT_SETTINGS } from '../../services/storefrontService';
-import { updateStorefrontSettings, getStorefrontSettings } from '../../services/storefrontService.server';
-import { requireRole } from '../../lib/auth.server';
 import Button from '../../components/ui/Button/Button';
 import Input from '../../components/ui/Input/Input';
 import Card from '../../components/ui/Card/Card';
 import styles from './Storefront.module.css';
 
-export async function loader({ request }: { request: Request }) {
-  await requireRole(request, ['admin']);
-  const settings = await getStorefrontSettings();
-  return { settings };
-}
-
-export async function action({ request }: { request: Request }) {
-  await requireRole(request, ['admin']);
-  const formData = await request.formData();
-  const settingsJson = formData.get("settings") as string;
-  
-  try {
-    const settings = JSON.parse(settingsJson);
-    await updateStorefrontSettings(settings);
-    return { success: true };
-  } catch (error: any) {
-    return { success: false, error: error.message };
-  }
-}
+// Re-export loader and action from server-only module
+export { loader, action } from './PageManager.server';
 
 const PageManager: React.FC = () => {
   const { settings: initialSettings } = useLoaderData() as { settings: StorefrontSettings };
@@ -90,7 +71,7 @@ const PageManager: React.FC = () => {
     setStatus(null);
     
     submit(
-      { settings: JSON.stringify(settings) },
+      { pageContent: JSON.stringify(settings.pageContent) },
       { method: 'post' }
     );
   };
@@ -129,15 +110,6 @@ const PageManager: React.FC = () => {
                   className={styles.textarea}
                   value={data.content}
                   onChange={(e) => handleUpdatePage(path, 'content', e.target.value)}
-                  style={{ 
-                    width: '100%', 
-                    minHeight: '200px', 
-                    backgroundColor: 'transparent', 
-                    color: 'var(--color-text)',
-                    border: '1px solid var(--color-border)',
-                    padding: '1rem',
-                    fontFamily: 'inherit'
-                  }}
                   required
                 />
               </div>

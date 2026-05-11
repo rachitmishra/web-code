@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useFetcher, useNavigate } from 'react-router-dom';
+import { useFetcher, useNavigate, useLocation } from 'react-router';
 import PhoneSignIn from './PhoneSignIn';
 import OtpVerification from './OtpVerification';
 import { signInWithPhone, verifyOtp } from '../../../services/authService';
@@ -19,10 +19,44 @@ const LoginDialog: React.FC<LoginDialogProps> = ({ isOpen, onClose }) => {
   
   const fetcher = useFetcher();
   const navigate = useNavigate();
-  const actionData = fetcher.data as { success: boolean, role: string, error?: string } | undefined;
+  const actionData = fetcher.data as { success: boolean, role: string, target?: string, error?: string } | undefined;
   const { addDebugError } = useDebug();
 
   const location = useLocation();
+
+  const [handledSuccess, setHandledSuccess] = useState(false);
+
+  useEffect(() => {
+    if (actionData && isOpen) {
+      console.log("[LoginDialog] Received actionData:", actionData);
+      if (actionData.success) {
+        if (handledSuccess) return;
+        setHandledSuccess(true);
+
+        const target = actionData.target || '/profile';
+        console.log(`[LoginDialog] Login success, navigating to: ${target}`);
+        
+        // Try SPA navigation
+        navigate(target, { replace: true });
+        
+        // Fallback: If still on same page after 500ms, force a hard redirect
+        const timeoutId = setTimeout(() => {
+          if (window.location.pathname !== target) {
+            console.warn("[LoginDialog] SPA navigation seems stuck, forcing hard redirect");
+            window.location.href = target;
+          }
+        }, 500);
+        
+        onClose();
+        return () => clearTimeout(timeoutId);
+      } else {
+        const errMsg = actionData.error || 'Server error during login';
+        setError(errMsg);
+        addDebugError(errMsg, 'LoginAction');
+        setLoading(false);
+      }
+    }
+  }, [actionData, navigate, onClose, addDebugError, isOpen, handledSuccess]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -31,19 +65,9 @@ const LoginDialog: React.FC<LoginDialogProps> = ({ isOpen, onClose }) => {
       setConfirmationResult(null);
       setLoading(false);
       setError('');
+      setHandledSuccess(false);
     }
   }, [isOpen]);
-
-  useEffect(() => {
-    // Note: Success redirects are now handled server-side in the action.
-    // We only handle errors here.
-    if (actionData && actionData.success === false) {
-      const errMsg = actionData.error || 'Server error during login';
-      setError(errMsg);
-      addDebugError(errMsg, 'LoginAction');
-      setLoading(false);
-    }
-  }, [actionData, addDebugError]);
 
   const handlePhoneSubmit = async (phoneNumber: string) => {
     setLoading(true);

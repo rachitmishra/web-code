@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import ProductGridSectionPlugin from './ProductGridSectionPlugin';
 import { HomeProvider } from '../../../pages/Home/Context';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router';
 import React from 'react';
 
 describe('ProductGridSectionPlugin', () => {

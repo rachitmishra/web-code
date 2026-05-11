@@ -1,55 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLoaderData, useSubmit, useActionData } from "react-router-dom";
+import { Link, useLoaderData, useSubmit, useActionData } from "react-router";
 import Button from "../components/ui/Button/Button";
 import Card from "../components/ui/Card/Card";
 import QuantitySelector from "../components/ui/QuantitySelector/QuantitySelector";
 import styles from "./Cart.module.css";
-import { type CartItem } from "../services/cartService";
-import { getCart, removeFromCart, updateQuantity } from "../services/cartService.server";
-import { validatePromoCode } from "../services/promoService.server";
-import { getSessionIdFromRequest } from "../lib/session";
+import { type CartItem, subscribeToCart } from "../services/cartService";
 
-export async function loader({ request }: { request: Request }) {
-  const sessionId = getSessionIdFromRequest(request);
-  const items = await getCart(sessionId);
-  return { items };
-}
-
-export async function action({ request }: { request: Request }) {
-  const sessionId = getSessionIdFromRequest(request);
-  const formData = await request.formData();
-  const intent = formData.get("intent");
-
-  if (intent === "remove") {
-    const productId = formData.get("productId") as string;
-    const size = formData.get("size") as string;
-    const color = formData.get("color") as string;
-    await removeFromCart(sessionId, productId, { size, color });
-    return { success: true };
-  }
-
-  if (intent === "update-quantity") {
-    const productId = formData.get("productId") as string;
-    const quantity = parseInt(formData.get("quantity") as string, 10);
-    const size = formData.get("size") as string;
-    const color = formData.get("color") as string;
-    await updateQuantity(sessionId, productId, quantity, { size, color });
-    return { success: true };
-  }
-
-  if (intent === "apply-promo") {
-    const code = formData.get("code") as string;
-    const subtotal = parseFloat(formData.get("subtotal") as string);
-    try {
-      const result = await validatePromoCode(code, subtotal);
-      return { success: true, promo: { code, ...result } };
-    } catch (err: any) {
-      return { success: false, error: err.message };
-    }
-  }
-
-  return null;
-}
+export { loader, action } from "./Cart.server";
 
 const Cart: React.FC = () => {
   const { items: initialItems } = useLoaderData() as { items: CartItem[] };
@@ -63,10 +20,11 @@ const Cart: React.FC = () => {
   const [promoError, setPromoError] = useState("");
   const [loadingPromo, setLoadingPromo] = useState(false);
 
-  // Sync items when loader data changes
+  // Real-time subscription to cart
   useEffect(() => {
-    setItems(initialItems);
-  }, [initialItems]);
+    const unsubscribe = subscribeToCart(setItems);
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     if (actionData) {
@@ -90,7 +48,16 @@ const Cart: React.FC = () => {
   const shipping = items.length > 0 ? 5.99 : 0;
   const total = Math.max(0, subtotal + shipping - discount);
 
-  const handleRemove = (item: CartItem) => {
+  const handleRemove = async (item: CartItem) => {
+    // 1. Immediate local feedback
+    try {
+      const { removeFromCart } = await import('../services/cartService');
+      await removeFromCart(item.product.id, { size: item.selectedSize, color: item.selectedColor });
+    } catch (err) {
+      console.warn("[Cart] Client-side remove failed", err);
+    }
+
+    // 2. Server action for persistent state
     submit(
       { 
         intent: "remove", 
@@ -102,7 +69,16 @@ const Cart: React.FC = () => {
     );
   };
 
-  const handleUpdateQuantity = (item: CartItem, q: number) => {
+  const handleUpdateQuantity = async (item: CartItem, q: number) => {
+    // 1. Immediate local feedback
+    try {
+      const { updateQuantity } = await import('../services/cartService');
+      await updateQuantity(item.product.id, q, { size: item.selectedSize, color: item.selectedColor });
+    } catch (err) {
+      console.warn("[Cart] Client-side update-quantity failed", err);
+    }
+
+    // 2. Server action for persistent state
     submit(
       { 
         intent: "update-quantity", 

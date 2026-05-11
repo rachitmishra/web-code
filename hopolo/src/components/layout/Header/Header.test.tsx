@@ -5,6 +5,8 @@ import Header from './Header';
 import * as cartService from '../../../services/cartService';
 import { auth } from '../../../lib/firebase';
 
+import { onAuthStateChanged } from 'firebase/auth';
+
 vi.mock('../../../services/cartService');
 
 // Mock react-router hooks
@@ -24,19 +26,23 @@ vi.mock('react-router', async () => {
 vi.mock('../../../lib/firebase', () => {
   const auth = {
     currentUser: null,
-    onAuthStateChanged: vi.fn((cb) => {
-      cb(null);
-      return vi.fn();
-    }),
   };
   return { auth, db: {} };
+});
+
+vi.mock('firebase/auth', async () => {
+  const actual = await vi.importActual('firebase/auth');
+  return {
+    ...actual,
+    onAuthStateChanged: vi.fn(),
+  };
 });
 
 describe('Header', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     (auth.currentUser as any) = null;
-    (auth.onAuthStateChanged as any).mockImplementation((cb: any) => {
+    (onAuthStateChanged as any).mockImplementation((_auth: any, cb: any) => {
       cb(auth.currentUser);
       return vi.fn();
     });

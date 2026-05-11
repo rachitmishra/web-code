@@ -72,6 +72,19 @@
 
 .cta {
   padding: 1.25rem 4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.ctaIcon {
+  font-family: 'Material Symbols Outlined';
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.cta:hover .ctaIcon {
+  transform: translateX(8px);
 }
 
 .metadataLeft {

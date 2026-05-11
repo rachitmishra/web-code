@@ -7,6 +7,9 @@ import * as orderService from '../services/orderService';
 import * as profileServiceServer from '../services/profileService.server';
 import * as authServer from '../lib/auth.server';
 
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../lib/firebase';
+
 vi.mock('../services/profileService');
 vi.mock('../services/orderService');
 vi.mock('../services/profileService.server');
@@ -14,13 +17,20 @@ vi.mock('../lib/auth.server');
 vi.mock('../lib/firebase', () => ({
   auth: { 
     currentUser: { uid: 'user123' },
-    onAuthStateChanged: vi.fn((cb) => {
-      cb({ uid: 'user123' });
-      return vi.fn();
-    }),
   },
   db: {},
 }));
+
+vi.mock('firebase/auth', async () => {
+  const actual = await vi.importActual('firebase/auth');
+  return {
+    ...actual,
+    onAuthStateChanged: vi.fn((_auth, cb) => {
+      cb({ uid: 'user123' });
+      return vi.fn();
+    }),
+  };
+});
 
 const mockProfile = {
   uid: 'user123',

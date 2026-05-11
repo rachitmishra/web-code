@@ -1,8 +1,8 @@
 import { type ShippingOrderDetails } from './shippingService';
 
 export async function createShippingOrder(details: ShippingOrderDetails) {
-  const apiKey = process.env.VITE_SHADOWFAX_API_KEY;
-  const apiUrl = process.env.VITE_SHADOWFAX_API_URL || 'https://api.shadowfax.in';
+  const apiKey = typeof process !== 'undefined' ? process.env.VITE_SHADOWFAX_API_KEY : undefined;
+  const apiUrl = (typeof process !== 'undefined' ? process.env.VITE_SHADOWFAX_API_URL : undefined) || 'https://api.shadowfax.in';
 
   if (!apiKey) {
     console.warn("VITE_SHADOWFAX_API_KEY is missing. Using mock response.");

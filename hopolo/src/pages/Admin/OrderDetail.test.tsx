@@ -1,6 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
+<<<<<<< HEAD
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
+=======
+import { MemoryRouter, Routes, Route } from 'react-router';
+>>>>>>> 336d77c (feat(cart): implement local storage fallback and robust server-side sync)
 import OrderDetail from './OrderDetail';
 import * as shippingService from '../../services/shippingService';
 import * as paymentService from '../../services/paymentService';

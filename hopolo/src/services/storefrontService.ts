@@ -60,6 +60,18 @@ export const DEFAULT_SETTINGS: StorefrontSettings = {
     ]
   },
   pageContent: {
+    '/about': {
+      title: 'About Us',
+      content: 'HYPVZN is a technical apparel laboratory focused on high-performance urban gear. We believe in brutalist efficiency and minimalist aesthetics.'
+    },
+    '/shipping': {
+      title: 'Shipping Policy',
+      content: 'Global logistics handled via encrypted channels. Orders typically processed within 24 hours. Tracking ID provided upon dispatch.'
+    },
+    '/contact': {
+      title: 'Contact Us',
+      content: 'FOR TECHNICAL SUPPORT OR INQUIRIES: support@hypvzn.systems. RESPONSE_TIME: < 12H.'
+    },
     '/archive': {
       title: 'Archive',
       content: 'Archival pieces from past seasons. Technical garments engineered for durability.'

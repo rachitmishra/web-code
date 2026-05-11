@@ -8,9 +8,16 @@ import { onAuthStateChanged } from 'firebase/auth';
 vi.mock('./lib/firebase', () => ({
   auth: {
     currentUser: null,
-    onAuthStateChanged: vi.fn(),
   },
 }));
+
+vi.mock('firebase/auth', async () => {
+  const actual = await vi.importActual('firebase/auth');
+  return {
+    ...actual,
+    onAuthStateChanged: vi.fn(),
+  };
+});
 
 vi.mock('./services/cartService', () => ({
   subscribeToCart: vi.fn(() => vi.fn()),
@@ -27,7 +34,7 @@ describe('Header Auth Update', () => {
 
   it('should update header when auth state changes to logged in', async () => {
     let authCallback: any;
-    (auth.onAuthStateChanged as any).mockImplementation((cb: any) => {
+    (onAuthStateChanged as any).mockImplementation((_auth: any, cb: any) => {
       authCallback = cb;
       return vi.fn();
     });

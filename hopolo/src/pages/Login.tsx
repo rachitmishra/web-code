@@ -1,60 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation, useSubmit, useActionData, redirect } from 'react-router-dom';
+import { useNavigate, useLocation, useSubmit, useActionData } from 'react-router';
 import PhoneSignIn from '../components/ui/Auth/PhoneSignIn';
 import OtpVerification from '../components/ui/Auth/OtpVerification';
 import { signInWithPhone, verifyOtp } from '../services/authService';
-import { createSessionCookie } from '../lib/auth.server';
-import { getSecureProfile } from '../services/profileService.server';
 import Card from '../components/ui/Card/Card';
 import styles from './Login.module.css';
 
-/**
- * Server action to handle login and set secure session cookie.
- */
-export async function action({ request }: { request: Request }) {
-  const formData = await request.formData();
-  const idToken = formData.get("idToken") as string;
-  const uid = formData.get("uid") as string;
-  const from = formData.get("from") as string;
-
-  if (!idToken || !uid) {
-    return new Response(JSON.stringify({ success: false, error: "Missing required authentication data" }), {
-      status: 400,
-      headers: { "Content-Type": "application/json" }
-    });
-  }
-
-  try {
-    // 1. Create secure session cookie
-    const { cookie } = await createSessionCookie(idToken);
-    
-    // 2. Fetch profile for role-based redirect
-    const profile = await getSecureProfile(uid);
-    const role = profile?.role || 'user';
-
-    // 3. Determine redirect target
-    let target = from || (role === 'admin' ? '/admin' : '/profile');
-    
-    // Safety check: only redirect to internal paths
-    if (target.startsWith('http') || !target.startsWith('/')) {
-      target = role === 'admin' ? '/admin' : '/profile';
-    }
-
-    console.log(`[Login Action] Success. Role: ${role}, Redirecting to: ${target}`);
-
-    return redirect(target, {
-      headers: {
-        "Set-Cookie": cookie,
-      },
-    });
-  } catch (error: any) {
-    console.error("[Login Action] Error:", error);
-    return new Response(JSON.stringify({ success: false, error: error.message || "Internal server error" }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" }
-    });
-  }
-}
+// Re-export action from server-only module
+export { action } from './Login.server';
 
 const Login: React.FC = () => {
   const [step, setStep] = useState<'phone' | 'otp'>('phone');
@@ -65,26 +18,61 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const submit = useSubmit();
-  const actionData = useActionData() as { success: boolean, error?: string };
+  const actionData = useActionData() as { success: boolean, role?: string, target?: string, error?: string, stack?: string };
   
+  const [handledSuccess, setHandledSuccess] = useState(false);
   const searchParams = new URLSearchParams(location.search);
   const from = searchParams.get("from") || (location.state as any)?.from?.pathname;
 
-  // Force loading to false on mount to prevent stuck state
+  // Handle actionData results
+  useEffect(() => {
+    if (actionData) {
+      console.log("[LoginPage] Received actionData:", actionData);
+      
+      if (actionData.success) {
+        if (handledSuccess) return;
+        setHandledSuccess(true);
+
+        // Success: Clear local cart and perform client-side redirect
+        (async () => {
+          try {
+            const { saveLocalCart } = await import('../services/cartService');
+            saveLocalCart([]);
+          } catch (err) {
+            console.warn("[LoginPage] Failed to clear local cart after login:", err);
+          }
+        })();
+
+        const target = actionData.target || '/profile';
+        console.log(`[LoginPage] Login success, navigating to: ${target}`);
+        
+        // Try SPA navigation first
+        navigate(target, { replace: true });
+        
+        // Fallback: If still on same page after 500ms, force a hard redirect
+        const timeoutId = setTimeout(() => {
+          if (window.location.pathname !== target) {
+            console.warn("[LoginPage] SPA navigation seems stuck, forcing hard redirect");
+            window.location.href = target;
+          }
+        }, 500);
+        
+        return () => clearTimeout(timeoutId);
+      } else {
+        // Error: Show message and reset loading
+        setError(actionData.error || 'Login failed');
+        if (actionData.stack) {
+          console.error("[LoginPage] Server Stack Trace:", actionData.stack);
+        }
+        setLoading(false);
+      }
+    }
+  }, [actionData, navigate]);
+
+  // Force loading to false on mount to prevent stuck state from previous sessions
   useEffect(() => {
     setLoading(false);
   }, []);
-
-  useEffect(() => {
-    // Note: Success redirects are now handled server-side in the action.
-    // We only handle errors here.
-    if (actionData && actionData.success === false) {
-      if (actionData.error) {
-        setError(actionData.error);
-      }
-      setLoading(false);
-    }
-  }, [actionData]);
 
   const handlePhoneSubmit = async (phoneNumber: string) => {
     setLoading(true);
@@ -117,10 +105,26 @@ const Login: React.FC = () => {
       }
 
       const idToken = await userCredential.user.getIdToken();
+      console.log('[LoginPage] OTP verified, preparing local cart items for sync...');
+      
+      let localItems = "[]";
+      try {
+        const { getLocalCart } = await import('../services/cartService');
+        const items = getLocalCart();
+        localItems = JSON.stringify(items);
+      } catch (err) {
+        console.warn('[LoginPage] Failed to read local cart for sync:', err);
+      }
+
       console.log('[LoginPage] OTP verified, submitting to server action...');
       
-      // Send token to server to set secure cookie. Pass 'from' for redirect.
-      submit({ idToken, uid: userCredential.user.uid, from: from || '' }, { method: "post" });
+      // Send token and local items to server to set secure cookie and sync cart.
+      submit({ 
+        idToken, 
+        uid: userCredential.user.uid, 
+        from: from || '',
+        localCartItems: localItems
+      }, { method: "post" });
     } catch (err: any) {
       console.error('[LoginPage] OTP Verification Error:', err);
       let errMsg = 'Invalid code. Please try again.';

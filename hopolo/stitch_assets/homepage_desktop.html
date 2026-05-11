@@ -1,1 +1,372 @@
-OK
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HYPVZN | ENGINEERED FOR PRECISION</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            cursor: crosshair;
+            background-color: #131313;
+        }
+        /* Custom scrollbar for technical aesthetic */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131313;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #353535;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ffffff;
+        }
+    </style>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#dcb7ff",
+                      "secondary": "#dcb8ff",
+                      "tertiary-fixed": "#e2e2e2",
+                      "surface-container-lowest": "#0e0e0e",
+                      "error-container": "#93000a",
+                      "surface-variant": "#353535",
+                      "primary-fixed": "#e2e2e2",
+                      "background": "#131313",
+                      "error": "#ffb4ab",
+                      "on-tertiary-fixed": "#1b1b1b",
+                      "surface-tint": "#c6c6c7",
+                      "surface-container": "#20201f",
+                      "on-primary-fixed": "#1a1c1c",
+                      "on-primary-container": "#636565",
+                      "on-secondary-fixed-variant": "#6700b5",
+                      "on-surface": "#e5e2e1",
+                      "secondary-fixed": "#efdbff",
+                      "on-secondary": "#480081",
+                      "inverse-surface": "#e5e2e1",
+                      "inverse-on-surface": "#313030",
+                      "surface-container-low": "#1c1b1b",
+                      "on-error": "#690005",
+                      "surface-dim": "#131313",
+                      "on-primary": "#2f3131",
+                      "secondary-fixed-dim": "#dcb8ff",
+                      "on-error-container": "#ffdad6",
+                      "on-tertiary-container": "#646464",
+                      "surface-container-high": "#2a2a2a",
+                      "primary": "#ffffff",
+                      "on-tertiary": "#303030",
+                      "outline-variant": "#444748",
+                      "surface": "#131313",
+                      "on-tertiary-fixed-variant": "#474747",
+                      "on-primary-fixed-variant": "#454747",
+                      "on-background": "#e5e2e1",
+                      "primary-fixed-dim": "#c6c6c7",
+                      "on-surface-variant": "#c4c7c8",
+                      "inverse-primary": "#5d5f5f",
+                      "tertiary": "#ffffff",
+                      "surface-bright": "#393939",
+                      "surface-container-highest": "#353535",
+                      "secondary-container": "#7701d0",
+                      "tertiary-container": "#e2e2e2",
+                      "primary-container": "#e2e2e2",
+                      "outline": "#8e9192",
+                      "tertiary-fixed-dim": "#c6c6c6",
+                      "on-secondary-fixed": "#2c0051"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0px",
+                      "lg": "0px",
+                      "xl": "0px",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1440px",
+                      "stack-lg": "120px",
+                      "gutter": "24px",
+                      "margin": "64px",
+                      "stack-md": "64px",
+                      "unit": "4px"
+              },
+              "fontFamily": {
+                      "mono-technical": ["Space Grotesk"],
+                      "body-lg": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "headline-md": ["Space Grotesk"],
+                      "headline-xl": ["Space Grotesk"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Space Grotesk"]
+              },
+              "fontSize": {
+                      "mono-technical": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.15em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-xl": ["80px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                      "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background selection:bg-secondary selection:text-on-secondary">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 z-50 flex justify-between items-center w-full px-margin h-16 bg-background dark:bg-background border-b border-primary dark:border-primary">
+<div class="flex items-center gap-gutter">
+<span class="font-headline-md text-headline-md font-bold tracking-tighter text-primary dark:text-primary">HYPVZN</span>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-secondary dark:text-secondary border-b-2 border-secondary font-mono-technical text-mono-technical transition-all active:opacity-80 active:scale-95" href="#">COLLECTIONS</a>
+<a class="text-primary dark:text-primary font-mono-technical text-mono-technical hover:text-secondary dark:hover:text-secondary transition-colors duration-200" href="#">ARCHIVE</a>
+<a class="text-primary dark:text-primary font-mono-technical text-mono-technical hover:text-secondary dark:hover:text-secondary transition-colors duration-200" href="#">STOCKISTS</a>
+</nav>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="flex items-center border border-primary px-3 py-1">
+<span class="material-symbols-outlined text-primary text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-mono-technical text-mono-technical w-32 uppercase placeholder:text-outline-variant" placeholder="SEARCH" type="text"/>
+</div>
+<button class="relative group">
+<span class="material-symbols-outlined text-primary group-hover:text-secondary transition-colors">shopping_cart</span>
+<span class="absolute -top-2 -right-2 bg-secondary text-on-secondary font-mono-technical text-[10px] w-4 h-4 flex items-center justify-center">0</span>
+</button>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-60" data-alt="A cinematic, high-contrast fashion photograph of an avant-garde technical jacket in a stark, industrial concrete environment. The lighting is dramatic and cool-toned, casting long, sharp shadows that emphasize the architectural silhouette of the garment. The background is a minimalist brutalist space with cold grey textures and sharp structural lines. The overall mood is futuristic, exclusive, and technologically advanced, following a monochrome palette with subtle electric violet reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB50EBRSPpl-CftZG-FtF8YsG2xHbpyV7Z76PoZ5TUKls3voy1a0PcS7MB0lPQk_SR246tjuSyTSWwQA_keXlM-RZRNp950efuqX2HEkGevYnt7sTr3Yo7Q3DqCbl2I_EVXx5yYu8segE0N656Dxw3FQMMXEAZp2WbBPQrd2-Da2csOleVJ-hDNUnEjzzm59oHLqgP_WhpuE9I8WYnkT0zSRMsNI07paYknXh7BSEs-rbkbcFybbfQTMUclUrOPKzIAlqQyKNQw0w"/>
+<div class="absolute inset-0 bg-gradient-to-b from-background/20 via-transparent to-background"></div>
+</div>
+<div class="relative z-10 text-center px-margin">
+<div class="flex flex-col items-center">
+<span class="font-label-caps text-label-caps tracking-[0.5em] mb-stack-md text-secondary">FW24_SYSTEM_READY</span>
+<h1 class="font-headline-xl text-headline-xl mb-stack-md max-w-4xl uppercase">Architectural <br/>Performance Gear</h1>
+<a class="inline-flex items-center px-12 py-4 border border-primary font-mono-technical text-mono-technical hover:bg-primary hover:text-background transition-all group" href="#">
+                        ENTER ARCHIVE
+                        <span class="material-symbols-outlined ml-4 group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="absolute bottom-margin left-margin font-mono-technical text-mono-technical text-outline">
+                [ LAT: 35.6895° N ] [ LONG: 139.6917° E ]
+            </div>
+<div class="absolute bottom-margin right-margin flex flex-col gap-2 items-end">
+<div class="w-24 h-[1px] bg-primary"></div>
+<span class="font-label-caps text-label-caps text-[10px]">SCROLL_FOR_INTEL</span>
+</div>
+</section>
+<!-- Featured Collection: COLLECTION 01 -->
+<section class="py-stack-lg px-margin border-t border-primary">
+<div class="flex justify-between items-end mb-stack-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg uppercase">Collection 01</h2>
+<p class="font-mono-technical text-mono-technical text-outline mt-2">DEPLOYMENT_SEQUENCE: ALPHA_v1.0</p>
+</div>
+<a class="font-label-caps text-label-caps border-b border-primary pb-1 hover:text-secondary hover:border-secondary transition-colors" href="#">VIEW_ALL_01</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Product 01 -->
+<div class="group border border-primary relative overflow-hidden">
+<div class="aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A full-body studio shot of a model wearing a high-tech Stratos Parka in matte black. The garment features intricate seam work, modular attachment points, and a structured hood. The lighting is high-key and surgical, highlighting the technical fabrics and waterproof textures. The background is a clean, medium-grey studio wall with no distractions, maintaining a technical luxury aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBGPHzFd8Xcr_bu6mEL5z-bI3zGRDLYMcmmPgcHJTK3i0MZlpwUWLzmYHiFK9nV48Arr9ifgOTOtznpU8cksjvIhDp7u1QaD4fXgcT5eJ41Csil0vrZCtPtbeF861QQcNKTwWe2y7nc2CQSsVFtMaYeMmVUeKmcMyL4VJx4I77lbyhoCCZh6sR4GyYqXkLwSlwVlrmCO6eJAxmtSViovHbOI6vHoqgGOLOLTepgpSTKPOrs84Cf3KjLCOPq84961g8xSVJ1FHHBw"/>
+</div>
+<div class="p-gutter flex justify-between items-start border-t border-primary bg-background">
+<div>
+<h3 class="font-headline-md text-headline-md uppercase">Stratos Parka V1</h3>
+<p class="font-mono-technical text-mono-technical text-outline mt-1">[ CATEGORY: OUTERWEAR ]</p>
+</div>
+<span class="font-headline-md text-headline-md text-secondary">$840.00</span>
+</div>
+<div class="absolute top-4 right-4 bg-background border border-secondary px-3 py-1">
+<span class="font-label-caps text-label-caps text-secondary">LIMIT_EDITION</span>
+</div>
+</div>
+<!-- Product 02 -->
+<div class="group border border-primary relative overflow-hidden">
+<div class="aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Detailed close-up shot of the Cargo Shell 01 technical trousers in a charcoal grey technical fabric. Focus on the asymmetric cargo pockets and articulated knee panels. The lighting is sharp and directional, showcasing the matte finish and precision stitching. The image is part of a minimalist fashion campaign with a cold, industrial mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvlT8eOJhEBvU500zNY4tKmtxMqYPxaDka248gT3umrc24aL1OkFmbbTHDx0DkFb6OoMI0Cxw6kTg66oL1S3kQhXaxD9zVSRbL5q4-cpaHcBgTfVqjb9OGHf9LSBdIJIica0AY7DIcMtYX3KrgcYAXSYqW-uM6uVxbwuKYgqN2M1aokEhq5q-yNLZH9cHmHjutRhAkycjbie9T-VnZ6VCnls9_lqzq-EIejo6S-0xloziL_HDj0jIo7sZtHct0e9DIKmIMESteqA"/>
+</div>
+<div class="p-gutter flex justify-between items-start border-t border-primary bg-background">
+<div>
+<h3 class="font-headline-md text-headline-md uppercase">Cargo Shell 01</h3>
+<p class="font-mono-technical text-mono-technical text-outline mt-1">[ CATEGORY: TROUSERS ]</p>
+</div>
+<span class="font-headline-md text-headline-md text-secondary">$420.00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Curated Essentials Section -->
+<section class="py-stack-lg border-t border-primary">
+<div class="grid grid-cols-1 md:grid-cols-12">
+<div class="md:col-span-5 px-margin py-stack-md flex flex-col justify-center border-r border-primary">
+<span class="font-label-caps text-label-caps text-secondary mb-4">SYSTEM_CORE</span>
+<h2 class="font-headline-lg text-headline-lg mb-8 uppercase leading-tight">Curated <br/>Essentials</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-md max-w-sm">
+                        High-performance base layers engineered for thermoregulation and seamless mobility. The foundation of every HYPVZN kit.
+                    </p>
+<div class="group border border-primary p-gutter hover:bg-primary transition-all">
+<div class="flex justify-between items-center">
+<div>
+<h4 class="font-headline-md text-headline-md uppercase group-hover:text-background transition-colors">Base Layer Tech-Tee</h4>
+<p class="font-mono-technical text-mono-technical text-outline group-hover:text-background transition-colors">AVAILABLE_IN_4_COLORWAYS</p>
+</div>
+<span class="material-symbols-outlined text-secondary group-hover:text-background">add</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-7 bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="A minimalist architectural shot of a folded technical t-shirt on a polished steel surface. The fabric has a visible fine-mesh texture. High-contrast lighting creates sharp highlights and deep shadows. The color palette is strictly monochromatic black, white, and silver. The mood is clinical and precise, representing the brand's focus on engineering and technical luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV6PgnkX--QhtlDZs0NePpvFbGfelEXXpAhHOfSbrv0J8D7X-v70A2parB-acA4uTo-HdfaP-00dHzQAROuqoQwU7hqSvHk10QZRqK1d1zcld4aHoSeEdjFypjUNSSOSMUNH7iYZKguJgoRNqGzheDUO_mQKj70NSsUwGkxUTKjNLMKb_JH1Xn6r6wY96p5f5nL1Hjb-BW5218YiIgldZpQ6ny5AIrK4j4eE3tmurVSvcqDSgK19giAOo4CtK1xjSqGBanILPiqg"/>
+<div class="absolute inset-0 bg-background/10"></div>
+</div>
+</div>
+</section>
+<!-- Best Sellers Grid -->
+<section class="py-stack-lg px-margin border-t border-primary">
+<div class="flex items-center gap-4 mb-stack-md">
+<div class="w-2 h-2 bg-secondary"></div>
+<h2 class="font-headline-md text-headline-md uppercase tracking-widest">TOP_PERFORMERS_RANKING</h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<!-- Product 01 -->
+<div class="group">
+<div class="aspect-[3/4] border border-primary overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Studio product photography of a futuristic black runner shoe with an oversized geometric sole. The shoe features mesh panels and a unique lacing system. The lighting is crisp and cool-toned, with bright white highlights reflecting off the glossy parts of the sole. Set against a pitch-black background to create an ultra-modern, high-end commercial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEaP9WklkatDJyh3VJt3tY2UfPEiISjCFiU_wBcBpd-tsI_i1rigvpIkHJkUhgKgZgTmNYWbxPAVbMDIewLnStxfLiJue_6OGh70XJuKDq2KQTff4icf2ymPA6K249dt1Od7umnw7eEZMUyTWdkk97Eyz8qZIJhprgu275gKgiaitg45UpyRob3RyzBiL9FnIVzPBC5ZfiHR9PAyrUW9oi0DmG66qhpLupW1fC67X2_zLTFauQWrZJYSUv75CUgbsE56KhPRz88Q"/>
+<div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform bg-background/80 backdrop-blur-md border-t border-primary">
+<button class="w-full py-2 bg-primary text-background font-mono-technical text-mono-technical">QUICK_ADD</button>
+</div>
+</div>
+<div class="mt-4 flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-outline">[ FOOTWEAR ]</span>
+<h4 class="font-mono-technical text-mono-technical uppercase">Phantom Runner</h4>
+<span class="font-mono-technical text-mono-technical text-secondary">$320.00</span>
+</div>
+</div>
+<!-- Product 02 -->
+<div class="group">
+<div class="aspect-[3/4] border border-primary overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A minimalist tech accessory, the Chrono-Core 01, which is a sleek black smart wearable with a custom digital interface. The device is displayed on a textured grey slate tile. Minimal lighting from one side creates deep shadows and sharp edge definition. The style is industrial and brutalist, focusing on the form and the materiality of the device." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7wL96RaJipLBf0DgRGYzshLDs6SK6HGLEaI3FwQU4FkJC4h7NTyAcWysmajroHUjSPV9848Jqo9B1T-4opIfhK27xT7S0r9IDIvvcD1fRBIdm3V2zpW--jlt7JmCLSKz35vZc66K2xdSZ0m0uYFmleEXeeGEacal3hIhRbPJdENz1Q1I6ZdAxovilTH00QD6mXuJy8J0l0aGwwWgaJv70KM0Uzgl7SbzfqlaI6rbva9OqNafSoiP6xFXI-B0gfROTJCH7pyaojA"/>
+<div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform bg-background/80 backdrop-blur-md border-t border-primary">
+<button class="w-full py-2 bg-primary text-background font-mono-technical text-mono-technical">QUICK_ADD</button>
+</div>
+</div>
+<div class="mt-4 flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-outline">[ ACCESSORIES ]</span>
+<h4 class="font-mono-technical text-mono-technical uppercase">Chrono-Core 01</h4>
+<span class="font-mono-technical text-mono-technical text-secondary">$550.00</span>
+</div>
+</div>
+<!-- Product 03 -->
+<div class="group">
+<div class="aspect-[3/4] border border-primary overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A model wearing a structured black hoodie with oversized drawstrings and a heavy cotton technical finish. The model is standing in a dimly lit subway tunnel with flickering fluorescent lights. The atmosphere is gritty, urban, and cinematic. The hoodie's fabric texture and silhouette are the focal point, emphasizing its protective qualities and architectural design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB54cSsiNtbLhmz-k9meir6Y4PQxFNJ45MuAdo02m4aUW1CKBVrlegTcmxydNjUq_PVK9bzcZYLjDOlobfpa10ol3u-WbZeQijoH_XhS1d--mctrB2CmvWFD_bSLvZXIrxwZHGdlLJ7KTE_-wyCSH_CgQ2rqGMLROepsD6ypjJHz63qC7Mnm1-qWrJhOiSPEUinV2fblM3BXKLZxxxW6v7dJRqodF25ANj1ocDlniS2QW4x5TdBRq8RHnNPgegBKHbcSlcRJ-JC8Q"/>
+<div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform bg-background/80 backdrop-blur-md border-t border-primary">
+<button class="w-full py-2 bg-primary text-background font-mono-technical text-mono-technical">QUICK_ADD</button>
+</div>
+</div>
+<div class="mt-4 flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-outline">[ MIDLAYER ]</span>
+<h4 class="font-mono-technical text-mono-technical uppercase">Scudo Hoodie</h4>
+<span class="font-mono-technical text-mono-technical text-secondary">$210.00</span>
+</div>
+</div>
+<!-- Product 04 -->
+<div class="group">
+<div class="aspect-[3/4] border border-primary overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A tactical sling bag shown in an exploded view style photograph, revealing its internal compartments and high-quality nylon materials. The bag is black with subtle electric violet webbing details. It is positioned against a stark white background with sharp, clear lighting. The composition is highly technical, resembling a blueprint or an industrial assembly manual." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv-MSc2oC5fk1Ul-kuhiAKHGSIilZvmwpYHleVDSkPFeNfsNpHANgxjZWPLKmA3LjTT8-mhBigYmAoZYVyDbmaS-1FDdgBrfs8WaKi6O0L19gyqmbot2cp5xFMneHfm7UCUuelUOgtAnPiQXiuckP_0AYNN59G0SfOVFORW-GEBuQSEFqLsy2YPFHAYJsI4Ptt1Z8r6TjwZ6Rtu1l-a1PLLygh1_oSO8az2mS_QaL29RQ4B-xnRRVhUFGpvISWlFQaavhH-24yJA"/>
+<div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform bg-background/80 backdrop-blur-md border-t border-primary">
+<button class="w-full py-2 bg-primary text-background font-mono-technical text-mono-technical">QUICK_ADD</button>
+</div>
+</div>
+<div class="mt-4 flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-outline">[ CARRY ]</span>
+<h4 class="font-mono-technical text-mono-technical uppercase">Tactical Sling</h4>
+<span class="font-mono-technical text-mono-technical text-secondary">$185.00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / Technical Registration -->
+<section class="py-stack-lg border-y border-primary bg-surface-container-low">
+<div class="max-w-4xl mx-auto px-margin text-center">
+<span class="font-label-caps text-label-caps text-outline">COMMUNICATIONS_PROTOCOL</span>
+<h2 class="font-headline-lg text-headline-lg uppercase my-stack-md">Receive Technical Updates</h2>
+<div class="relative max-w-xl mx-auto">
+<input class="w-full bg-transparent border-b border-primary p-4 font-mono-technical text-mono-technical focus:ring-0 focus:border-secondary transition-colors placeholder:text-outline-variant" placeholder="ENTER_EMAIL_FOR_ENCRYPTION" type="email"/>
+<button class="absolute right-0 bottom-4 font-label-caps text-label-caps text-secondary hover:translate-x-1 transition-transform">SUBMIT</button>
+</div>
+<p class="mt-8 font-mono-technical text-[10px] text-outline-variant uppercase">By registering, you agree to our data processing protocols. Opt-out at any time.</p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="flex flex-col md:flex-row justify-between items-start w-full px-margin py-stack-md gap-gutter bg-background dark:bg-background border-t border-primary dark:border-primary">
+<div class="flex flex-col gap-gutter">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">HYPVZN</span>
+<p class="font-mono-technical text-mono-technical text-outline-variant max-w-[300px]">
+                ADVANCED GARMENT ENGINEERING FOR THE METROPOLITAN ENVIRONMENT. DESIGNED IN TOKYO, BUILT FOR THE FUTURE.
+            </p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-stack-md">
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-primary underline">LEGAL</span>
+<nav class="flex flex-col gap-2">
+<a class="font-mono-technical text-mono-technical text-primary hover:text-secondary transition-all active:translate-x-1" href="#">PRIVACY_POLICY</a>
+<a class="font-mono-technical text-mono-technical text-primary hover:text-secondary transition-all active:translate-x-1" href="#">TERMS_OF_USE</a>
+<a class="font-mono-technical text-mono-technical text-primary hover:text-secondary transition-all active:translate-x-1" href="#">SHIPPING_INFO</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-primary underline">SOCIAL</span>
+<nav class="flex flex-col gap-2">
+<a class="font-mono-technical text-mono-technical text-primary hover:text-secondary transition-all active:translate-x-1" href="#">INSTAGRAM</a>
+<a class="font-mono-technical text-mono-technical text-primary hover:text-secondary transition-all active:translate-x-1" href="#">TWITTER_X</a>
+<a class="font-mono-technical text-mono-technical text-primary hover:text-secondary transition-all active:translate-x-1" href="#">DISCORD_LABS</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-primary underline">TECHNICAL SUPPORT</span>
+<nav class="flex flex-col gap-2">
+<a class="font-mono-technical text-mono-technical text-primary hover:text-secondary transition-all active:translate-x-1" href="#">WARRANTY_CLAIMS</a>
+<a class="font-mono-technical text-mono-technical text-primary hover:text-secondary transition-all active:translate-x-1" href="#">SIZING_GUIDE</a>
+<a class="font-mono-technical text-mono-technical text-primary hover:text-secondary transition-all active:translate-x-1" href="#">CONTACT_REP</a>
+</nav>
+</div>
+</div>
+<div class="w-full md:w-auto mt-stack-md md:mt-0 flex flex-col items-end">
+<span class="font-mono-technical text-mono-technical text-primary uppercase opacity-50 mb-2">LOCAL_TIME: 22:14 JST</span>
+<span class="font-mono-technical text-mono-technical text-primary">© 2024 HYPVZN. ENGINEERED FOR PRECISION.</span>
+</div>
+</footer>
+<!-- Fixed Layout Grid Indicators (Decorative) -->
+<div class="fixed inset-0 pointer-events-none z-[100] opacity-10">
+<div class="h-full px-margin grid grid-cols-12 gap-gutter">
+<div class="border-x border-primary h-full"></div>
+<div class="border-x border-primary h-full"></div>
+<div class="border-x border-primary h-full"></div>
+<div class="border-x border-primary h-full"></div>
+<div class="border-x border-primary h-full"></div>
+<div class="border-x border-primary h-full"></div>
+<div class="border-x border-primary h-full"></div>
+<div class="border-x border-primary h-full"></div>
+<div class="border-x border-primary h-full"></div>
+<div class="border-x border-primary h-full"></div>
+<div class="border-x border-primary h-full"></div>
+<div class="border-x border-primary h-full"></div>
+</div>
+</div>
+</body></html>

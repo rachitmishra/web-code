@@ -4,6 +4,7 @@ import { MemoryRouter, useLoaderData, useLocation } from 'react-router';
 import App from '../app/root';
 import { auth } from './lib/firebase';
 import { signOutUser } from './services/authService';
+import { onAuthStateChanged } from 'firebase/auth';
 
 vi.mock('react-router', async () => {
   const actual = await vi.importActual('react-router');
@@ -16,10 +17,17 @@ vi.mock('react-router', async () => {
 
 vi.mock('./lib/firebase', () => ({
   auth: {
-    onAuthStateChanged: vi.fn(),
     currentUser: null,
   },
 }));
+
+vi.mock('firebase/auth', async () => {
+  const actual = await vi.importActual('firebase/auth');
+  return {
+    ...actual,
+    onAuthStateChanged: vi.fn(),
+  };
+});
 
 vi.mock('./services/authService', () => ({
   signOutUser: vi.fn(),
@@ -56,7 +64,7 @@ describe('App Auth Sync (Fixed)', () => {
     (auth as any).currentUser = null;
 
     let authCallback: any;
-    (auth.onAuthStateChanged as any).mockImplementation((cb: any) => {
+    (onAuthStateChanged as any).mockImplementation((_auth: any, cb: any) => {
       authCallback = cb;
       return vi.fn();
     });
@@ -77,3 +85,4 @@ describe('App Auth Sync (Fixed)', () => {
     expect(signOutUser).not.toHaveBeenCalled();
   });
 });
+

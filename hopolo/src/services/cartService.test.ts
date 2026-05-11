@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { addToCart, subscribeToCart, clearCart } from './cartService';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { addToCart, subscribeToCart, getLocalCart, clearCart, syncLocalCartToRemote } from './cartService';
 import { setDoc, onSnapshot, getDoc, doc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 
@@ -9,7 +9,7 @@ vi.mock('firebase/firestore', async () => {
   return {
     ...actual,
     getFirestore: vi.fn(),
-    doc: vi.fn(() => ({ id: 'mock-doc-id' })), // Mock doc to return something
+    doc: vi.fn(() => ({ id: 'mock-doc-id' })),
     setDoc: vi.fn(),
     getDoc: vi.fn(),
     onSnapshot: vi.fn(),
@@ -29,91 +29,94 @@ vi.mock('firebase/auth', () => ({
     return vi.fn();
   }),
   signInAnonymously: vi.fn(() => Promise.resolve({ user: { uid: 'guest-uid' } })),
+  signOut: vi.fn(),
 }));
 
 // Mock lib/session
 vi.mock('../lib/session', () => ({
-  getSessionId: () => 'test-session-id',
+  getSessionId: () => 'test-session-id-long-enough-to-be-uuid',
 }));
 
-describe('cartService', () => {
+describe('cartService with LocalStorage Fallback', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     vi.useFakeTimers();
+    localStorage.clear();
   });
 
   afterEach(() => {
     vi.useRealTimers();
   });
 
-  it('addToCart should call setDoc with the new product', async () => {
-    const mockProduct = { id: 'p1', name: 'Product 1', price: 10, category: 'test' };
+  it('addToCart should update localStorage immediately', async () => {
+    const mockProduct = { id: 'p1', name: 'Product 1', price: 10, category: 'test' } as any;
     
-    // Mock getDoc to return empty cart initially
-    (getDoc as any).mockResolvedValue({
-      exists: () => false,
-    });
+    await addToCart(mockProduct, 2);
 
-    await addToCart(mockProduct as any, 2);
-
-    expect(doc).toHaveBeenCalled();
-    expect(setDoc).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({
-      items: [{ product: mockProduct, quantity: 2 }],
-      ownerId: 'test-session-id'
-    }), { merge: true });
+    const localCart = getLocalCart();
+    expect(localCart).toHaveLength(1);
+    expect(localCart[0].product.id).toBe('p1');
+    expect(localCart[0].quantity).toBe(2);
+    
+    // Remote sync (setDoc) is NOT called anymore from client-side addToCart
+    expect(setDoc).not.toHaveBeenCalled();
   });
 
-  it('addToCart should support product variants (size/color)', async () => {
-    const mockProduct = { id: 'p1', name: 'Product 1', price: 10, category: 'test' };
+  it('addToCart should merge items in localStorage', async () => {
+    const mockProduct = { id: 'p1', name: 'Product 1', price: 10, category: 'test' } as any;
     
-    (getDoc as any).mockResolvedValue({ exists: () => false });
+    await addToCart(mockProduct, 1);
+    await addToCart(mockProduct, 2);
 
-    await addToCart(mockProduct as any, 1, 'M', 'Blue');
-
-    expect(setDoc).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({
-      items: [{ 
-        product: mockProduct, 
-        quantity: 1, 
-        selectedSize: 'M', 
-        selectedColor: 'Blue' 
-      }],
-      ownerId: 'test-session-id'
-    }), { merge: true });
+    const localCart = getLocalCart();
+    expect(localCart).toHaveLength(1);
+    expect(localCart[0].quantity).toBe(3);
   });
 
-  it('subscribeToCart should call onSnapshot and trigger callback', () => {
+  it('subscribeToCart should call callback with local items immediately', () => {
+    const mockProduct = { id: 'p1', name: 'Product 1', price: 10, category: 'test' } as any;
+    localStorage.setItem('hypvzn_local_cart', JSON.stringify([{ product: mockProduct, quantity: 5 }]));
+    
     const callback = vi.fn();
-    const mockUnsubscribe = vi.fn();
-    (onSnapshot as any).mockReturnValue(mockUnsubscribe);
+    subscribeToCart(callback);
 
-    const unsubscribe = subscribeToCart(callback);
-    
-    // Trigger onAuthStateChanged callback
-    const authCb = (onAuthStateChanged as any).mock.calls[0][1];
-    authCb({ uid: 'test-user-id' });
-
-    // Run timers for the 500ms delay
-    vi.runAllTimers();
-
-    expect(onSnapshot).toHaveBeenCalled();
-    expect(typeof unsubscribe).toBe('function');
-    
-    // Simulate snapshot update
-    const mockItems = [{ product: { id: 'p1' }, quantity: 1 }];
-    const snapshotCallback = (onSnapshot as any).mock.calls[0][1];
-    
-    // Properly mock the document snapshot
-    snapshotCallback({
-      exists: () => true,
-      data: () => ({ items: mockItems })
-    });
-
-    expect(callback).toHaveBeenCalledWith(mockItems);
+    expect(callback).toHaveBeenCalledWith(expect.arrayContaining([
+      expect.objectContaining({ quantity: 5 })
+    ]));
   });
 
-  it('clearCart should call setDoc with empty items', async () => {
+  it('syncLocalCartToRemote should merge local items into remote Firestore', async () => {
+    const mockProduct = { id: 'p1', name: 'Product 1', price: 10, category: 'test' } as any;
+    localStorage.setItem('hypvzn_local_cart', JSON.stringify([{ product: mockProduct, quantity: 3 }]));
+    
+    // Mock authenticated user
+    const { auth } = await import('../lib/firebase');
+    (auth as any).currentUser = { uid: 'user-123' };
+
+    // Mock remote cart (empty)
+    (getDoc as any).mockResolvedValue({
+      exists: () => false
+    });
+
+    await syncLocalCartToRemote();
+
+    expect(setDoc).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({
+      items: expect.arrayContaining([
+        expect.objectContaining({ quantity: 3 })
+      ]),
+      ownerId: 'user-123'
+    }), { merge: true });
+
+    // Local cart should be cleared after sync
+    expect(getLocalCart()).toHaveLength(0);
+  });
+
+  it('clearCart should clear localStorage', async () => {
+    localStorage.setItem('hypvzn_local_cart', JSON.stringify([{ id: 'any' }]));
+    
     await clearCart();
+
+    expect(getLocalCart()).toHaveLength(0);
     expect(setDoc).toHaveBeenCalledWith(expect.anything(), { items: [] });
   });
-
 });

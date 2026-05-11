@@ -14,7 +14,7 @@ export const fetchEmailLogs = async (): Promise<EmailLog[]> => {
 };
 
 export const sendEmail = async (params: EmailParams) => {
-  const apiKey = process.env.VITE_RESEND_API_KEY;
+  const apiKey = typeof process !== 'undefined' ? process.env.VITE_RESEND_API_KEY : undefined;
   const resend = new Resend(apiKey);
 
   try {

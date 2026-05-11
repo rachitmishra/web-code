@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLocation, useNavigate, useRouteLoaderData } from 'react-router-dom';
+import { useLocation, useNavigate, useRouteLoaderData } from 'react-router';
 import { type StorefrontSettings } from '../../../services/storefrontService';
 
 interface MaintenanceGuardProps {

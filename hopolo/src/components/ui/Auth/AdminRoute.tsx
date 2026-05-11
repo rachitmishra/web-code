@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, useLocation, useRouteLoaderData } from 'react-router-dom';
+import { Navigate, useLocation, useRouteLoaderData } from 'react-router';
 
 interface AdminRouteProps {
   children: React.ReactNode;

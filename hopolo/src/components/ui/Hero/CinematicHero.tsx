@@ -24,15 +24,15 @@ const CinematicHero: React.FC<CinematicHeroProps> = ({
     >
       <div className={styles.overlay} />
       <div className={styles.content}>
-        <span className={styles.systemTag}>SYSTEM_CORE_READY</span>
+        <span className={styles.systemTag}>FW24_SYSTEM_READY</span>
         <h1 className={styles.title}>{title}</h1>
-        {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
         <Button
-          variant="primary"
+          variant="outline"
           className={styles.cta}
           onClick={onCtaClick}
         >
           {ctaText}
+          <span className={styles.ctaIcon}>arrow_forward</span>
         </Button>
       </div>
 

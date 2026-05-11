@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router';
 import { Home, Search, ShoppingBag, User } from 'lucide-react';
 import styles from './BottomNavBar.module.css';
 

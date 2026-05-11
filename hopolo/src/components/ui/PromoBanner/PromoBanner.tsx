@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRouteLoaderData } from 'react-router-dom';
+import { useRouteLoaderData } from 'react-router';
 import { type StorefrontSettings } from '../../../services/storefrontService';
 import styles from './PromoBanner.module.css';
 

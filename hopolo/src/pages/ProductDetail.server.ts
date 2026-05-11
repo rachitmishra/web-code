@@ -80,11 +80,10 @@ export async function action({ request, params }: { request: Request, params: an
         headers.append("Set-Cookie", `${SESSION_COOKIE_NAME}=${sessionId}; Path=/; Max-Age=${60 * 60 * 24 * 5}; SameSite=Lax`);
       }
 
+      headers.append("Content-Type", "application/json");
+
       return new Response(JSON.stringify({ success: true, cartUpdated: true }), {
-        headers: {
-          ...Object.fromEntries(headers.entries()),
-          "Content-Type": "application/json"
-        }
+        headers
       });
     } catch (err: any) {
       return new Response(JSON.stringify({ success: false, error: err.message }), {

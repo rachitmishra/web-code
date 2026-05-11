@@ -1,8 +1,9 @@
 .section {
-  padding: var(--spacing-12) var(--spacing-12);
+  padding: var(--spacing-unit) * 30 var(--spacing-unit) * 16; /* 120px 64px */
+  padding: var(--spacing-12) var(--spacing-8);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-12);
+  gap: var(--spacing-8);
   border-top: 1px solid var(--color-border);
 }
 
@@ -14,16 +15,16 @@
 }
 
 .indicator {
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   background-color: var(--color-secondary);
 }
 
 .title {
   text-align: left;
   font-family: var(--font-family-display);
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   line-height: 1;
@@ -33,13 +34,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1px; /* Stitch often uses 1px lines between grid items */
-  background-color: var(--color-border);
-  border: 1px solid var(--color-border);
-}
-
-.grid > * {
-  background-color: var(--color-background);
+  gap: var(--spacing-6);
 }
 
 @media (max-width: 1024px) {
@@ -49,21 +44,7 @@
 }
 
 @media (max-width: 768px) {
-  .section {
-    padding: var(--spacing-12) var(--spacing-6);
-  }
-  
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
-}
-
-.empty {
-  text-align: center;
-  color: var(--color-text-muted);
-  padding: var(--spacing-12);
-  font-family: var(--font-family-sans);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.875rem;
 }

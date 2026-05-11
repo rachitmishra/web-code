@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router';
 import MainLayout from './components/layout/MainLayout';
 import AdminLayout from './components/layout/AdminLayout';
 import Home from './pages/Home';
@@ -8,7 +8,7 @@ import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Checkout from './pages/Checkout';
 import Success from './pages/Success';
-import InfoPages from './pages/Static/InfoPages';
+import StaticPage from './pages/StaticPage';
 import Orders from './pages/Admin/Orders';
 import OrderDetail from './pages/Admin/OrderDetail';
 import EmailLogs from './pages/Admin/EmailLogs';
@@ -18,6 +18,7 @@ import SeedData from './pages/Admin/SeedData';
 import Analytics from './pages/Admin/Analytics';
 import Invitations from './pages/Admin/Invitations';
 import Storefront from './pages/Admin/Storefront';
+import PageManager from './pages/Admin/PageManager';
 import ProtectedRoute from './components/ui/Auth/ProtectedRoute';
 import AdminRoute from './components/ui/Auth/AdminRoute';
 import './App.css';
@@ -32,9 +33,9 @@ export const AppRoutes = () => (
     <Route path="/login" element={<MainLayout><Login /></MainLayout>} />
     <Route path="/checkout" element={<MainLayout><Checkout /></MainLayout>} />
     <Route path="/checkout/success/:orderId" element={<MainLayout><Success /></MainLayout>} />
-    <Route path="/about" element={<MainLayout><InfoPages /></MainLayout>} />
-    <Route path="/shipping" element={<MainLayout><InfoPages /></MainLayout>} />
-    <Route path="/contact" element={<MainLayout><InfoPages /></MainLayout>} />
+    <Route path="/about" element={<MainLayout><StaticPage /></MainLayout>} />
+    <Route path="/shipping" element={<MainLayout><StaticPage /></MainLayout>} />
+    <Route path="/contact" element={<MainLayout><StaticPage /></MainLayout>} />
     <Route 
       path="/profile" 
       element={
@@ -63,8 +64,9 @@ export const AppRoutes = () => (
       <Route path="marketing" element={<Marketing />} />
       <Route path="seed" element={<SeedData />} />
       <Route path="analytics" element={<Analytics />} />
-      <Route path="invitations" element={<Invitations />} />
+      <route path="invitations" element={<Invitations />} />
       <Route path="storefront" element={<Storefront />} />
+      <Route path="pages" element={<PageManager />} />
     </Route>
   </Routes>
 );

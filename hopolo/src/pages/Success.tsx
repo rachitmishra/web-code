@@ -1,18 +1,11 @@
 import React from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router';
 import Card from '../components/ui/Card/Card';
 import Button from '../components/ui/Button/Button';
 import styles from './Success.module.css';
-import { fetchOrderById } from '../services/orderService.server';
 import { type Order } from '../services/orderService';
 
-export async function loader({ params }: { params: any }) {
-  const { orderId } = params;
-  if (!orderId) throw new Response("Order ID required", { status: 400 });
-  
-  const order = await fetchOrderById(orderId);
-  return { order };
-}
+export { loader } from './Success.server';
 
 const Success: React.FC = () => {
   const { order } = useLoaderData() as { order: Order | null };

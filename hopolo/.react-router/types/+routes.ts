@@ -45,6 +45,18 @@ type Pages = {
   "/contact": {
     params: {};
   };
+  "/archive": {
+    params: {};
+  };
+  "/stockists": {
+    params: {};
+  };
+  "/legal/privacy": {
+    params: {};
+  };
+  "/legal/terms": {
+    params: {};
+  };
   "/profile": {
     params: {};
   };
@@ -83,6 +95,9 @@ type Pages = {
   "/admin/storefront": {
     params: {};
   };
+  "/admin/pages": {
+    params: {};
+  };
   "/admin/pdp": {
     params: {};
   };
@@ -94,10 +109,10 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/product/:id" | "/cart" | "/login" | "/logout" | "/checkout" | "/checkout/success/:orderId" | "/about" | "/shipping" | "/contact" | "/profile" | "/maintenance" | "/admin" | "/admin/orders" | "/admin/orders/:id" | "/admin/email-logs" | "/admin/inventory" | "/admin/marketing" | "/admin/seed" | "/admin/analytics" | "/admin/invitations" | "/admin/storefront" | "/admin/pdp" | "/admin/upload";
+    page: "/" | "/product/:id" | "/cart" | "/login" | "/logout" | "/checkout" | "/checkout/success/:orderId" | "/about" | "/shipping" | "/contact" | "/archive" | "/stockists" | "/legal/privacy" | "/legal/terms" | "/profile" | "/maintenance" | "/admin" | "/admin/orders" | "/admin/orders/:id" | "/admin/email-logs" | "/admin/inventory" | "/admin/marketing" | "/admin/seed" | "/admin/analytics" | "/admin/invitations" | "/admin/storefront" | "/admin/pages" | "/admin/pdp" | "/admin/upload";
   };
-  "../src/pages/Home/index.ts": {
-    id: "../src/pages/Home/index";
+  "../src/pages/Home/Home.tsx": {
+    id: "../src/pages/Home/Home";
     page: "/";
   };
   "../src/pages/ProductDetail.tsx": {
@@ -124,7 +139,7 @@ type RouteFiles = {
     id: "../src/pages/Success";
     page: "/checkout/success/:orderId";
   };
-  "../src/pages/Static/InfoPages.tsx": {
+  "../src/pages/StaticPage.tsx": {
     id: "about";
     page: "/about";
   } | {
@@ -133,6 +148,18 @@ type RouteFiles = {
   } | {
     id: "contact";
     page: "/contact";
+  } | {
+    id: "archive";
+    page: "/archive";
+  } | {
+    id: "stockists";
+    page: "/stockists";
+  } | {
+    id: "privacy";
+    page: "/legal/privacy";
+  } | {
+    id: "terms";
+    page: "/legal/terms";
   };
   "../src/pages/Profile.tsx": {
     id: "../src/pages/Profile";
@@ -144,7 +171,7 @@ type RouteFiles = {
   };
   "../src/components/layout/AdminLayout.tsx": {
     id: "../src/components/layout/AdminLayout";
-    page: "/admin" | "/admin/orders" | "/admin/orders/:id" | "/admin/email-logs" | "/admin/inventory" | "/admin/marketing" | "/admin/seed" | "/admin/analytics" | "/admin/invitations" | "/admin/storefront" | "/admin/pdp" | "/admin/upload";
+    page: "/admin" | "/admin/orders" | "/admin/orders/:id" | "/admin/email-logs" | "/admin/inventory" | "/admin/marketing" | "/admin/seed" | "/admin/analytics" | "/admin/invitations" | "/admin/storefront" | "/admin/pages" | "/admin/pdp" | "/admin/upload";
   };
   "../src/pages/Admin/Orders.tsx": {
     id: "admin-index";
@@ -185,6 +212,10 @@ type RouteFiles = {
     id: "../src/pages/Admin/Storefront";
     page: "/admin/storefront";
   };
+  "../src/pages/Admin/PageManager.tsx": {
+    id: "../src/pages/Admin/PageManager";
+    page: "/admin/pages";
+  };
   "../src/pages/Admin/PDPManager.tsx": {
     id: "../src/pages/Admin/PDPManager";
     page: "/admin/pdp";
@@ -197,7 +228,7 @@ type RouteFiles = {
 
 type RouteModules = {
   "root": typeof import("./app/root.tsx");
-  "../src/pages/Home/index": unknown;
+  "../src/pages/Home/Home": unknown;
   "../src/pages/ProductDetail": unknown;
   "../src/pages/Cart": unknown;
   "../src/pages/Login": unknown;
@@ -207,6 +238,10 @@ type RouteModules = {
   "about": unknown;
   "shipping": unknown;
   "contact": unknown;
+  "archive": unknown;
+  "stockists": unknown;
+  "privacy": unknown;
+  "terms": unknown;
   "../src/pages/Profile": unknown;
   "../src/pages/Static/Maintenance": unknown;
   "../src/components/layout/AdminLayout": unknown;
@@ -220,6 +255,7 @@ type RouteModules = {
   "../src/pages/Admin/Analytics": unknown;
   "../src/pages/Admin/Invitations": unknown;
   "../src/pages/Admin/Storefront": unknown;
+  "../src/pages/Admin/PageManager": unknown;
   "../src/pages/Admin/PDPManager": unknown;
   "../src/pages/Admin/Upload": unknown;
 };

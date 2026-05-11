@@ -10,21 +10,21 @@
 .inputWrapper {
   display: flex;
   align-items: center;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background-color: var(--color-surface);
   transition: outline 0.2s, border-color 0.2s;
 }
 
 .inputWrapper:focus-within {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-secondary);
   border-color: transparent;
 }
 
 .prefix {
   padding: 0 var(--spacing-3);
   color: var(--color-text-muted);
-  border-right: 1px solid #e5e7eb;
+  border-right: 1px solid var(--color-border);
   font-size: 1rem;
   user-select: none;
   height: 100%;
@@ -37,6 +37,7 @@
   padding: var(--spacing-3);
   border: none;
   background: transparent;
+  color: var(--color-text);
   font-size: 1rem;
   width: 100%;
 }
@@ -47,13 +48,15 @@
 
 .input {
   padding: var(--spacing-3);
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  color: var(--color-text);
   font-size: 1rem;
 }
 
 .input:focus {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-secondary);
   border-color: transparent;
 }
 

@@ -1,17 +1,12 @@
 import React from "react";
 import { useLoaderData, useNavigate } from "react-router";
-import { fetchAllOrders } from "../../services/orderService.server";
 import { type Order } from "../../services/orderService";
-import { requireRole } from "../../lib/auth.server";
 import Card from "../../components/ui/Card/Card";
 import Button from "../../components/ui/Button/Button";
 import styles from "./Orders.module.css";
 
-export async function loader({ request }: { request: Request }) {
-  await requireRole(request, ['admin']);
-  const orders = await fetchAllOrders();
-  return { orders };
-}
+// Re-export loader from server-only module
+export { loader } from './Orders.server';
 
 const Orders: React.FC = () => {
   const { orders } = useLoaderData() as { orders: Order[] };

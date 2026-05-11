@@ -1,25 +1,27 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router';
 import LoginDialog from './LoginDialog';
 import * as authService from '../../../services/authService';
 
 vi.mock('../../../services/authService');
 
-// Mock react-router-dom hooks
+// Mock react-router hooks
 const mockNavigate = vi.fn();
+const mockLocation = { pathname: '/' };
 const mockFetcher = {
   submit: vi.fn(),
   data: null as any,
   state: 'idle',
 };
 
-vi.mock('react-router-dom', async () => {
-  const actual = await vi.importActual('react-router-dom');
+vi.mock('react-router', async () => {
+  const actual = await vi.importActual('react-router');
   return {
     ...actual,
     useNavigate: () => mockNavigate,
     useFetcher: () => mockFetcher,
+    useLocation: () => mockLocation,
   };
 });
 
@@ -30,9 +32,9 @@ describe('LoginDialog', () => {
     mockFetcher.state = 'idle';
   });
 
-  it('should call onClose when actionData.success is true', async () => {
+  it('should call onClose and navigate when actionData.success is true', async () => {
     const mockOnClose = vi.fn();
-    mockFetcher.data = { success: true, role: 'user' };
+    mockFetcher.data = { success: true, role: 'user', target: '/profile' };
     
     render(
       <MemoryRouter>
@@ -41,13 +43,14 @@ describe('LoginDialog', () => {
     );
 
     await waitFor(() => {
+      expect(mockNavigate).toHaveBeenCalledWith('/profile', { replace: true });
       expect(mockOnClose).toHaveBeenCalled();
     });
   });
 
   it('should redirect admin to /admin when actionData.role is admin', async () => {
     const mockOnClose = vi.fn();
-    mockFetcher.data = { success: true, role: 'admin' };
+    mockFetcher.data = { success: true, role: 'admin', target: '/admin' };
     
     render(
       <MemoryRouter>
@@ -62,7 +65,7 @@ describe('LoginDialog', () => {
 
   it('should redirect standard user to /profile when actionData.role is user', async () => {
     const mockOnClose = vi.fn();
-    mockFetcher.data = { success: true, role: 'user' };
+    mockFetcher.data = { success: true, role: 'user', target: '/profile' };
     
     render(
       <MemoryRouter>
@@ -152,7 +155,7 @@ describe('LoginDialog', () => {
     await waitFor(() => {
       expect(authService.verifyOtp).toHaveBeenCalled();
       expect(mockFetcher.submit).toHaveBeenCalledWith(
-        { idToken: 't1', uid: 'u1' },
+        { idToken: 't1', uid: 'u1', from: '/' },
         { method: 'post', action: '/login' }
       );
     });

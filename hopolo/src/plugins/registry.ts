@@ -10,6 +10,9 @@ import BestSellersPlugin from './home/BestSellers/BestSellersPlugin';
 import ProductGridSectionPlugin from './home/ProductGridSection/ProductGridSectionPlugin';
 import ReviewSectionPlugin from './home/ReviewSection/ReviewSectionPlugin';
 import PromoBannerPlugin from './home/PromoBanner/PromoBannerPlugin';
+import FeaturedCollectionPlugin from './home/FeaturedCollection/FeaturedCollectionPlugin';
+import CuratedEssentialsPlugin from './home/CuratedEssentials/CuratedEssentialsPlugin';
+import NewsletterPlugin from './home/Newsletter/NewsletterPlugin';
 
 export type PluginComponent<P = any> = React.FC<P>;
 
@@ -71,6 +74,24 @@ registerPlugin('BestSellers', BestSellersPlugin, {
   id: 'BestSellers',
   name: 'Best Sellers',
   description: 'Displays best selling products.'
+});
+
+registerPlugin('FeaturedCollection', FeaturedCollectionPlugin, {
+  id: 'FeaturedCollection',
+  name: 'Featured Collection',
+  description: 'Displays a 2-column featured collection grid.'
+});
+
+registerPlugin('CuratedEssentials', CuratedEssentialsPlugin, {
+  id: 'CuratedEssentials',
+  name: 'Curated Essentials',
+  description: 'Displays curated essentials with a call to action.'
+});
+
+registerPlugin('Newsletter', NewsletterPlugin, {
+  id: 'Newsletter',
+  name: 'Newsletter',
+  description: 'Displays a technical newsletter registration form.'
 });
 
 registerPlugin('ProductGridSection', ProductGridSectionPlugin, {

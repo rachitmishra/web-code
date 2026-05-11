@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import MainLayout from './MainLayout';
 import * as storefrontService from '../../services/storefrontService';
+import { onAuthStateChanged } from 'firebase/auth';
 
 vi.mock('react-router', async () => {
   const actual = await vi.importActual('react-router');
@@ -22,8 +23,16 @@ vi.mock('react-router', async () => {
   };
 });
 
+vi.mock('firebase/auth', () => ({
+  getAuth: vi.fn(() => ({ currentUser: null })),
+  onAuthStateChanged: vi.fn((_auth, cb) => {
+    cb(null);
+    return vi.fn();
+  }),
+}));
+
 vi.mock('../../lib/firebase', () => ({
-  auth: { currentUser: null, onAuthStateChanged: vi.fn(() => vi.fn()) },
+  auth: { currentUser: null },
   db: {}
 }));
 

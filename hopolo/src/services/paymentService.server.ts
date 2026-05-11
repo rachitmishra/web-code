@@ -1,6 +1,6 @@
 export async function refundOrder(paymentId: string, amount: number) {
-  const keyId = process.env.VITE_RAZORPAY_KEY_ID;
-  const keySecret = process.env.VITE_RAZORPAY_KEY_SECRET;
+  const keyId = typeof process !== 'undefined' ? process.env.VITE_RAZORPAY_KEY_ID : undefined;
+  const keySecret = typeof process !== 'undefined' ? process.env.VITE_RAZORPAY_KEY_SECRET : undefined;
 
   if (!keyId || !keySecret) {
     console.warn("Razorpay credentials missing. Using mock refund.");

@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 if (!admin.apps.length) {
-  const projectId = import.meta.env.VITE_FIREBASE_PROJECT_ID;
+  const projectId = (import.meta.env?.VITE_FIREBASE_PROJECT_ID) || (typeof process !== 'undefined' ? process.env.VITE_FIREBASE_PROJECT_ID : undefined);
   if (!projectId) {
     console.error('[Firebase Admin] VITE_FIREBASE_PROJECT_ID is missing! Firebase Admin will likely fail.');
   }

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router';
+import { Link, useNavigate, useLocation, useOutletContext } from 'react-router';
 import styles from './Header.module.css';
 import { subscribeToCart, type CartItem } from '../../../services/cartService';
 import { auth } from '../../../lib/firebase';
-import { onAuthStateChanged, type User } from 'firebase/auth';
+import { type User, onAuthStateChanged } from 'firebase/auth';
 import { ShoppingBag } from 'lucide-react';
 import { signOutUser } from '../../../services/authService';
 import LoginDialog from '../../ui/Auth/LoginDialog';
@@ -14,8 +14,13 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ onOpenCart }) => {
+  const { user: serverUser } = useOutletContext<{ user: any, role: string }>() || {};
   const [itemCount, setItemCount] = useState(0);
   const [user, setUser] = useState<User | null>(auth.currentUser);
+  
+  // Combined auth state
+  const activeUser = user || serverUser;
+  
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   
@@ -47,8 +52,8 @@ const Header: React.FC<HeaderProps> = ({ onOpenCart }) => {
       setItemCount(totalCount);
     });
 
-    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const unsubscribeAuth = onAuthStateChanged(auth, (u) => {
+      setUser(u);
     });
 
     return () => {
@@ -89,7 +94,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenCart }) => {
           
           <div className={styles.right}>
             <div className={styles.actions}>
-              {user ? (
+              {activeUser && !activeUser.isAnonymous ? (
                 <>
                   <Link to="/profile" className={styles.linkButton}>Account</Link>
                   <button onClick={handleSignOut} className={styles.linkButton}>Sign Out</button>

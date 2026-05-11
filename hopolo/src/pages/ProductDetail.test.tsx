@@ -1,16 +1,16 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router';
 import ProductDetail from './ProductDetail';
 import * as cartService from '../services/cartService';
 import * as reviewService from '../services/reviewService';
 import { auth } from '../lib/firebase';
 import { useSEO } from '../hooks/useSEO';
-import { useLoaderData, useSubmit, useActionData } from 'react-router-dom';
+import { useLoaderData, useSubmit, useActionData } from 'react-router';
 import { DEFAULT_PDP_LAYOUT } from '../services/storefrontService';
 
-vi.mock('react-router-dom', async () => {
-  const actual = await vi.importActual('react-router-dom');
+vi.mock('react-router', async () => {
+  const actual = await vi.importActual('react-router');
   return {
     ...actual,
     useLoaderData: vi.fn(),

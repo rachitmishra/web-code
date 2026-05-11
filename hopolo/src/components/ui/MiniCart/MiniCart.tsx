@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import styles from "./MiniCart.module.css";
 import Button from "../Button/Button";
 import { subscribeToCart, type CartItem } from "../../../services/cartService";

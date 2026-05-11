@@ -11,8 +11,18 @@ export async function createSessionCookie(idToken: string) {
     expiresIn: FIVE_DAYS_IN_MS,
   });
   
+  const isProd = typeof process !== 'undefined' && process.env.NODE_ENV === 'production';
+  const cookieOptions = [
+    `${SESSION_COOKIE_NAME}=${sessionCookie}`,
+    "Path=/",
+    "HttpOnly",
+    isProd ? "Secure" : "",
+    "SameSite=Lax",
+    `Max-Age=${FIVE_DAYS_IN_MS / 1000}`
+  ].filter(Boolean).join("; ");
+
   return {
-    cookie: `${SESSION_COOKIE_NAME}=${sessionCookie}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${FIVE_DAYS_IN_MS / 1000}`,
+    cookie: cookieOptions,
     expires: FIVE_DAYS_IN_MS
   };
 }
@@ -21,7 +31,8 @@ export async function createSessionCookie(idToken: string) {
  * Clears the session cookie.
  */
 export function getSignOutCookie() {
-  return `${SESSION_COOKIE_NAME}=; Path=/; HttpOnly; Secure; SameSite=Lax; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+  const isProd = typeof process !== 'undefined' && process.env.NODE_ENV === 'production';
+  return `${SESSION_COOKIE_NAME}=; Path=/; HttpOnly;${isProd ? ' Secure;' : ''} SameSite=Lax; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
 }
 
 /**
@@ -29,20 +40,32 @@ export function getSignOutCookie() {
  */
 export async function getAuthenticatedUser(request: Request) {
   const cookieHeader = request.headers.get('Cookie');
-  const sessionCookie = cookieHeader?.split('; ').find(row => row.trim().startsWith(`${SESSION_COOKIE_NAME}=`))?.split('=')[1];
+  console.log(`[getAuthenticatedUser] Cookie Header: ${cookieHeader ? 'Present' : 'Missing'}`);
+  
+  if (!cookieHeader) return null;
 
-  if (!sessionCookie) return null;
+  const sessionCookie = cookieHeader
+    .split(';')
+    .find(row => row.trim().startsWith(`${SESSION_COOKIE_NAME}=`))
+    ?.split('=')[1]
+    ?.trim();
+
+  if (!sessionCookie) {
+    console.log("[getAuthenticatedUser] No session cookie found");
+    return null;
+  }
 
   try {
     // Verify the session cookie. checkRevoked: true is more secure but adds a network request.
     const decodedClaims = await adminAuth.verifySessionCookie(sessionCookie, true);
+    console.log(`[getAuthenticatedUser] Success for UID: ${decodedClaims.uid}`);
     return {
       uid: decodedClaims.uid,
       email: decodedClaims.email,
       phoneNumber: decodedClaims.phone_number
     };
   } catch (error: any) {
-    // Session cookie might be expired or revoked
+    console.error("[getAuthenticatedUser] Verification failed:", error.message);
     return null;
   }
 }
@@ -53,6 +76,7 @@ export async function getAuthenticatedUser(request: Request) {
 export async function requireRole(request: Request, allowedRoles: string[]) {
   const user = await getAuthenticatedUser(request);
   if (!user) {
+    console.log("[requireRole] No authenticated user");
     throw new Response("Unauthorized", { status: 401 });
   }
 
@@ -60,12 +84,15 @@ export async function requireRole(request: Request, allowedRoles: string[]) {
   const profileDoc = await adminDb.collection('profiles').doc(user.uid).get();
   
   if (!profileDoc.exists) {
+    console.warn(`[requireRole] Profile not found for UID: ${user.uid}`);
     throw new Response("Profile not found", { status: 404 });
   }
 
   const role = profileDoc.data()?.role || 'user';
+  console.log(`[requireRole] User: ${user.uid}, Role: ${role}, Allowed: ${allowedRoles.join(',')}`);
   
   if (!allowedRoles.includes(role)) {
+    console.warn(`[requireRole] Access denied. User role: ${role}`);
     throw new Response("Forbidden", { status: 403 });
   }
 

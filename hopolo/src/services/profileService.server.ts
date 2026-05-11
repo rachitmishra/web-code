@@ -2,7 +2,7 @@ import { adminDb, adminAuth, FieldValue } from '../lib/firebase-admin.server';
 import { encrypt, decrypt, hash } from '../lib/encryption.server';
 import { v4 as uuidv4 } from 'uuid';
 
-const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY || 'test_secret_key_32_chars_long_!!'; // fallback for dev
+const ENCRYPTION_KEY = (typeof process !== 'undefined' ? process.env.ENCRYPTION_KEY : undefined) || 'test_secret_key_32_chars_long_!!'; // fallback for dev
 
 export interface SecureProfile {
   uid: string;

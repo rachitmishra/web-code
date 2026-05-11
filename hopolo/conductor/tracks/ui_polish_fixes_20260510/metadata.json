@@ -1,8 +1,0 @@
-{
-  "track_id": "ui_polish_fixes_20260510",
-  "type": "feature",
-  "status": "new",
-  "created_at": "2026-05-10T00:00:00Z",
-  "updated_at": "2026-05-10T00:00:00Z",
-  "description": "When use sucessfully logs in on homescreen they should be redirected to the admin panel if they are admin, otherwise the header on homescreen should update with the logged in state. b) When home banner is set on admin panel it's not visible on home fix it. c) the current theme as very poor text visibility, address the text visibility, make the backgroud color consistent across the app on admin panels and on all pages."
-}

@@ -53,7 +53,7 @@ const ProductDetail: React.FC = () => {
     }
   }, [actionData]);
 
-  const handleAddToCart = (pOrEvent?: Product | React.MouseEvent, q: number = quantity) => {
+  const handleAddToCart = async (pOrEvent?: Product | React.MouseEvent, q: number = quantity) => {
     // If it's a click event from ProductInfoPlugin, use the main product
     const p = (pOrEvent && 'id' in pOrEvent) ? pOrEvent : product!;
     
@@ -69,6 +69,16 @@ const ProductDetail: React.FC = () => {
     }
 
     setAdding(true);
+
+    // 1. Client-side update for immediate feedback & LocalStorage fallback
+    try {
+      const { addToCart } = await import('../services/cartService');
+      await addToCart(p, q, { size: selectedSize, color: selectedColor });
+    } catch (err) {
+      console.warn("[ProductDetail] Client-side add-to-cart failed, relying on server action", err);
+    }
+
+    // 2. Server action for persistent state
     submit(
       { 
         intent: "add-to-cart", 
@@ -83,7 +93,7 @@ const ProductDetail: React.FC = () => {
   };
 
   const handleAddReview = async (rating: number, comment: string) => {
-    if (!auth.currentUser) return;
+    if (!auth.currentUser || auth.currentUser.isAnonymous) return;
     
     setSubmittingReview(true);
     submit(
@@ -103,7 +113,7 @@ const ProductDetail: React.FC = () => {
     product,
     reviews,
     relatedProducts,
-    user: auth.currentUser || serverUser,
+    user: (auth.currentUser && !auth.currentUser.isAnonymous) ? auth.currentUser : serverUser,
     quantity,
     setQuantity,
     selectedSize,

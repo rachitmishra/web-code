@@ -38,24 +38,41 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  const { serverUser } = useLoaderData() as { serverUser: any };
+  const { serverUser, role } = useLoaderData() as { serverUser: any, role: string };
   const location = useLocation();
 
   useEffect(() => {
     // Sync check on initial mount:
     // If the server says we're NOT authenticated, but the client-side Firebase IS,
     // we should sign out the client to stay in sync.
-    // We skip this if we're on the login page as we might be mid-login flow.
     const checkSync = async () => {
       const clientUser = auth.currentUser;
-      if (!serverUser && clientUser && location.pathname !== "/login") {
-        console.warn("[AuthSync] Initial check: Client session found without server session. Clearing client.");
-        await signOutUser();
+      
+      // 1. Skip if no client user (nothing to sync)
+      if (!clientUser) return;
+      
+      // 2. Skip if client user is anonymous (guests are allowed without server session)
+      if (clientUser.isAnonymous) return;
+
+      // 3. If server has no user but client does:
+      if (!serverUser) {
+        // Skip on login page to avoid race conditions during login
+        if (location.pathname === "/login") return;
+        
+        // Give a small grace period for loaders to re-run and catch the new cookie
+        // This is especially important for SPA navigations after login
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // Re-check after delay
+        if (!serverUser && auth.currentUser && !auth.currentUser.isAnonymous) {
+          console.warn("[AuthSync] Client session found without server session. Clearing client.");
+          await signOutUser();
+        }
       }
     };
 
     checkSync();
-  }, []); // Only run once on mount
+  }, [serverUser, location.pathname]); // Re-run if serverUser or route changes
 
-  return <Outlet />;
+  return <Outlet context={{ user: serverUser, role }} />;
 }

@@ -1,6 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
+<<<<<<< HEAD
 import { RouterProvider, createMemoryRouter, Outlet } from 'react-router-dom';
+=======
+import { MemoryRouter, Routes, Route } from 'react-router';
+>>>>>>> 336d77c (feat(cart): implement local storage fallback and robust server-side sync)
 import MaintenanceGuard from './MaintenanceGuard';
 
 vi.mock('react-router-dom', async () => {

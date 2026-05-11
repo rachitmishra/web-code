@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { RouterProvider, createMemoryRouter, Outlet } from 'react-router-dom';
+=======
+import { describe, it, expect, vi } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { MemoryRouter, Routes, Route } from 'react-router';
+>>>>>>> 336d77c (feat(cart): implement local storage fallback and robust server-side sync)
 import AdminLayout from './AdminLayout';
 
 vi.mock('react-router-dom', async () => {

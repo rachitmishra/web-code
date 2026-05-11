@@ -29,7 +29,7 @@ export const clearDebugErrors = () => {
 
 export function useDebug() {
   const [errors, setErrors] = useState<DebugError[]>(globalErrors);
-  const isDebugMode = import.meta.env.VITE_DEBUG_MODE === 'true';
+  const isDebugMode = ((import.meta.env?.VITE_DEBUG_MODE) || (typeof process !== 'undefined' ? process.env.VITE_DEBUG_MODE : undefined)) === 'true';
 
   useEffect(() => {
     const listener = (newErrors: DebugError[]) => setErrors(newErrors);

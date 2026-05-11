@@ -1,17 +1,11 @@
 import React from "react";
 import { useLoaderData, useNavigate } from "react-router";
-import { fetchEmailLogs } from "../../services/emailService.server";
 import { type EmailLog } from "../../services/emailService";
-import { requireRole } from "../../lib/auth.server";
 import Card from "../../components/ui/Card/Card";
-import Button from "../../components/ui/Button/Button";
 import styles from "./EmailLogs.module.css";
 
-export async function loader({ request }: { request: Request }) {
-  await requireRole(request, ['admin']);
-  const logs = await fetchEmailLogs();
-  return { logs };
-}
+// Re-export loader from server-only module
+export { loader } from './EmailLogs.server';
 
 const EmailLogs: React.FC = () => {
   const { logs } = useLoaderData() as { logs: EmailLog[] };

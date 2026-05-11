@@ -1,32 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useSubmit, useActionData, useLoaderData } from 'react-router-dom';
+import { useSubmit, useActionData, useLoaderData } from 'react-router';
 import { type PDPLayout, type PDPPluginConfig } from '../../services/storefrontService';
-import { fetchPDPLayout, updatePDPLayout } from '../../services/storefrontService.server';
-import { requireRole } from '../../lib/auth.server';
 import Button from '../../components/ui/Button/Button';
 import Card from '../../components/ui/Card/Card';
 import { ArrowUp, ArrowDown } from 'lucide-react';
 import styles from './PDPManager.module.css';
 
-export async function loader({ request }: { request: Request }) {
-  await requireRole(request, ['admin']);
-  const layout = await fetchPDPLayout();
-  return { layout };
-}
-
-export async function action({ request }: { request: Request }) {
-  await requireRole(request, ['admin']);
-  const formData = await request.formData();
-  const layoutJson = formData.get("layout") as string;
-  
-  try {
-    const layout = JSON.parse(layoutJson);
-    await updatePDPLayout(layout);
-    return { success: true };
-  } catch (error: any) {
-    return { success: false, error: error.message };
-  }
-}
+export { loader, action } from './PDPManager.server';
 
 const PDPManager: React.FC = () => {
   const { layout: initialLayout } = useLoaderData() as { layout: PDPLayout };

@@ -1,1 +1,2 @@
-export { default, loader, action } from './Home';
+import Home from './Home';
+export default Home;

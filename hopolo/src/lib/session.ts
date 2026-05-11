@@ -9,7 +9,7 @@ export const getSessionId = (): string => {
   // 0. Use UID if authenticated (Highest priority for Firestore compatibility)
   const user = auth.currentUser;
   if (user) {
-    console.log(`[Session] Using UID as session ID: ${user.uid}`);
+    console.log(`[Session] Using AUTHENTICATED UID: ${user.uid} (Anonymous: ${user.isAnonymous})`);
     return user.uid;
   }
 
@@ -19,8 +19,9 @@ export const getSessionId = (): string => {
     let sessionId = cookieMatch[2];
     
     // Safety: If not authenticated, ensure we aren't using a stale UID
-    if (!user && sessionId.length === 28) {
-      console.warn(`[Session] Ignoring stale UID session ID: ${sessionId}`);
+    // Firebase UIDs are typically 28 chars. UUIDs are 36 chars.
+    if (!user && sessionId.length < 32) {
+      console.warn(`[Session] Found stale UID in cookie: ${sessionId}. User is NOT authenticated. Clearing...`);
       sessionId = '';
     } else {
       // Sync localStorage
@@ -33,8 +34,8 @@ export const getSessionId = (): string => {
 
   // 2. Fallback to localStorage
   let sessionId = localStorage.getItem('hypvzn_session_id');
-  if (sessionId && !user && sessionId.length === 28) {
-    console.warn(`[Session] Clearing stale UID from localStorage: ${sessionId}`);
+  if (sessionId && !user && sessionId.length < 32) {
+    console.warn(`[Session] Found stale UID in localStorage: ${sessionId}. User is NOT authenticated. Clearing...`);
     localStorage.removeItem('hypvzn_session_id');
     sessionId = null;
   }
@@ -42,6 +43,7 @@ export const getSessionId = (): string => {
   if (!sessionId) {
     // 3. Generate new ID if none exists
     sessionId = uuidv4();
+    console.log(`[Session] Generated NEW UUID for guest: ${sessionId}`);
     localStorage.setItem('hypvzn_session_id', sessionId);
   }
 

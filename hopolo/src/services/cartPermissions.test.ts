@@ -18,7 +18,7 @@ vi.mock('../lib/firebase', () => ({
   db: {},
   auth: {
     currentUser: null,
-    onAuthStateChanged: vi.fn((cb) => {
+    onAuthStateChanged: vi.fn((_auth, cb) => {
       // Simulate no user initially
       cb(null);
       return vi.fn();
@@ -26,9 +26,19 @@ vi.mock('../lib/firebase', () => ({
   },
 }));
 
+// Mock firebase/auth
+vi.mock('firebase/auth', () => ({
+  signInAnonymously: vi.fn(() => Promise.reject({ code: 'auth/admin-restricted-operation' })),
+  onAuthStateChanged: vi.fn((_auth, cb) => {
+    cb(null);
+    return vi.fn();
+  }),
+}));
+
 // Mock lib/session
 vi.mock('../lib/session', () => ({
-  getSessionId: () => 'test-guest-session-id',
+  getSessionId: () => 'test-guest-session-id-long-enough-to-pass',
+  SESSION_COOKIE_NAME: 'hypvzn_cart_id',
 }));
 
 describe('cartService permissions', () => {
@@ -53,11 +63,15 @@ describe('cartService permissions', () => {
 
     subscribeToCart(callback);
     
-    // Fast-forward time to trigger setTimeouts
-    vi.runAllTimers();
+    // Wait for ensureAnonymousAuth to fail and startListening to skip
+    await vi.waitFor(() => {
+      if (consoleWarnSpy.mock.calls.some(call => call[0].includes('Skipping Firestore subscription'))) return;
+      vi.runAllTimers();
+      if (!consoleWarnSpy.mock.calls.length) throw new Error('Not yet');
+    });
 
     expect(consoleWarnSpy).toHaveBeenCalledWith(
-      expect.stringContaining('Access denied for test-guest-session-id')
+      expect.stringContaining('Skipping Firestore subscription for unauthenticated session')
     );
     expect(callback).toHaveBeenCalledWith([]);
 
