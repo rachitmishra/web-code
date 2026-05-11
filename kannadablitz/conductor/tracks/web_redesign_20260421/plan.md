@@ -1,7 +1,7 @@
 # Implementation Plan: KannadaBlitz Web Redesign
 
 **Phase 1: Foundations & Design System**
-- [ ] Task: Audit existing CSS variables and map them to the new Stitch Design System tokens.
+- [~] Task: Audit existing CSS variables and map them to the new Stitch Design System tokens.
 - [ ] Task: Implement the new Design System tokens in `src/styles/variables.css`.
 - [ ] Task: Create a new library of base components (Button, Input, Card, Modal) in `src/components/ui/`.
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Foundations & Design System' (Protocol in workflow.md)
