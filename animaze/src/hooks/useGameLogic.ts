@@ -1,14 +1,18 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { ref, getDownloadURL } from "firebase/storage";
 import { ANIMAL_MAP, ALL_ANIMALS } from "../data/animals";
-import type { Animal } from "../types";
+import { BIRD_MAP } from "../data/birds";
+import { COLOR_MAP } from "../data/colors";
+import type { Animal, Bird, ColorItem, GameMode } from "../types";
 import { playClickSound, pcmToWav } from "../utils/audioUtils";
+import { playPianoNote } from "../utils/pianoUtils";
 import { genAI } from "../utils/ai";
 import { storage } from "../firebase";
 
 export const useGameLogic = () => {
+  const [gameMode, setGameMode] = useState<GameMode>("animals");
   const [displayType, setDisplayType] = useState<"single" | "multiple">("single");
-  const [currentAnimals, setCurrentAnimals] = useState<Animal[]>([]);
+  const [currentItems, setCurrentItems] = useState<(Animal | Bird | ColorItem)[]>([]);
   const [lastKeyPressed, setLastKeyPressed] = useState<string | null>(null);
   const [lastPressId, setLastPressId] = useState<number>(0);
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -22,34 +26,23 @@ export const useGameLogic = () => {
   const getRandomAnimal = () =>
     ALL_ANIMALS[Math.floor(Math.random() * ALL_ANIMALS.length)];
 
-  const generateAnimalImage = async (animalName: string) => {
-    const localStorageKey = `cached_image_${animalName}`;
+  const generateAIImage = async (name: string, folder: string = "animals") => {
+    const localStorageKey = `cached_image_${name}`;
     
-    // 1. Check LocalStorage
     try {
       const cached = localStorage.getItem(localStorageKey);
-      if (cached) {
-        return cached;
-      }
-    } catch (e) {
-      // Ignore localStorage errors
-    }
+      if (cached) return cached;
+    } catch (e) {}
 
-    // 2. Check Session Cache (RAM)
-    if (imageCache.current[animalName]) {
-      return imageCache.current[animalName];
-    }
+    if (imageCache.current[name]) return imageCache.current[name];
 
     try {
       setIsGeneratingImage(true);
-      const sanitizedName = animalName.toLowerCase().replace(/\s+/g, '-');
-      const storageRef = ref(storage, `animals/${sanitizedName}.png`);
+      const sanitizedName = name.toLowerCase().replace(/\s+/g, '-');
+      const storageRef = ref(storage, `${folder}/${sanitizedName}.png`);
 
-      // 3. Fetch from Firebase Storage
       const url = await getDownloadURL(storageRef);
       
-      // 4. Download and convert to Base64 for caching
-      // Note: This requires CORS to be configured on the Firebase Storage bucket
       try {
         const response = await fetch(url);
         if (!response.ok) throw new Error("Fetch failed");
@@ -60,17 +53,10 @@ export const useGameLogic = () => {
           const reader = new FileReader();
           reader.onloadend = () => {
             const base64data = reader.result as string;
-            
-            // Update RAM cache
-            imageCache.current[animalName] = base64data;
-            
-            // Update LocalStorage
+            imageCache.current[name] = base64data;
             try {
               localStorage.setItem(localStorageKey, base64data);
-            } catch (e) {
-              console.warn("LocalStorage full, could not cache image:", animalName);
-            }
-            
+            } catch (e) {}
             setIsGeneratingImage(false);
             resolve(base64data);
           };
@@ -78,24 +64,18 @@ export const useGameLogic = () => {
           reader.readAsDataURL(blob);
         });
       } catch (fetchErr) {
-        console.warn("CORS or network error prevented local caching. Using direct URL instead.", fetchErr);
-        // Fallback: Just return the URL. <img> tags can display it without CORS, 
-        // though we won't be able to store it in LocalStorage.
         setIsGeneratingImage(false);
         return url;
       }
-
     } catch (err) {
-      console.error("Image fetch error", err);
       setIsGeneratingImage(false);
       return null;
     }
   };
 
-  const playAnimalSound = async (animal: Animal, isFunnyMode = false) => {
+  const speakText = async (text: string, cacheKey: string) => {
     if (isSpeaking) return;
     
-    const cacheKey = `${animal.name}-${isFunnyMode ? 'funny' : 'sound'}`;
     if (soundCache.current[cacheKey]) {
         setIsSpeaking(true);
         const audio = new Audio(soundCache.current[cacheKey]);
@@ -107,14 +87,10 @@ export const useGameLogic = () => {
     setIsSpeaking(true);
     setError(null);
 
-    const prompt = isFunnyMode 
-        ? `Make a short, funny, silly sound effect for a ${animal.name}. Then say something funny as the ${animal.name}.`
-        : `Say in the style of a nature documentary narrator: ${animal.sound}`;
-
     try {
       const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-preview-tts" });
       const result = await model.generateContent({
-        contents: [{ role: "user", parts: [{ text: prompt }] }],
+        contents: [{ role: "user", parts: [{ text }] }],
         generationConfig: {
           responseModalities: ["AUDIO"],
           speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: "Puck" } } },
@@ -132,15 +108,11 @@ export const useGameLogic = () => {
       soundCache.current[cacheKey] = audioUrl;
 
       const audio = new Audio(audioUrl);
-
-      audio.onended = () => {
-        setIsSpeaking(false);
-      };
-
+      audio.onended = () => setIsSpeaking(false);
       await audio.play();
     } catch (err) {
       console.error(err);
-      setError("Couldn't hear the animal right now.");
+      setError("Couldn't hear that right now.");
       setIsSpeaking(false);
     }
   };
@@ -152,25 +124,21 @@ export const useGameLogic = () => {
       setLastPressId(Date.now());
       playClickSound();
 
-      if (key === " ") {
-        event.preventDefault();
-      }
+      if (key === " ") event.preventDefault();
 
-      if (processingTimeout.current) {
-        clearTimeout(processingTimeout.current);
-      }
+      if (processingTimeout.current) clearTimeout(processingTimeout.current);
 
       processingTimeout.current = setTimeout(async () => {
         if (/^\d$/.test(key)) {
           const count = parseInt(key, 10);
           if (count === 0) {
             setDisplayType("single");
-            setCurrentAnimals([]);
+            setCurrentItems([]);
           } else {
             const baseAnimal = getRandomAnimal();
             const batch = Array(count).fill(baseAnimal);
             setDisplayType("multiple");
-            setCurrentAnimals(batch);
+            setCurrentItems(batch);
           }
           return;
         }
@@ -178,48 +146,69 @@ export const useGameLogic = () => {
         if (key === " ") {
           const animal = getRandomAnimal();
           setDisplayType("single");
-          setCurrentAnimals([animal]);
-          playAnimalSound(animal, true);
+          setCurrentItems([animal]);
+          speakText(`Make a short, funny, silly sound effect for a ${animal.name}. Then say something funny as the ${animal.name}.`, `${animal.name}-funny`);
           return;
         }
 
         if (/^[a-zA-Z]$/.test(key)) {
           const char = key.toLowerCase();
-          const animalsForChar = ANIMAL_MAP[char];
+          
+          if (gameMode === "piano") {
+            playPianoNote(key);
+            setCurrentItems([]);
+            return;
+          }
 
-          if (animalsForChar && animalsForChar.length > 0) {
-            const animal = animalsForChar[Math.floor(Math.random() * animalsForChar.length)];
+          if (gameMode === "colors") {
+            const color = COLOR_MAP[char];
+            if (color) {
+              setDisplayType("single");
+              setCurrentItems([color]);
+              speakText(color.sound, color.name);
+            } else {
+              setError(`No color found for ${key.toUpperCase()}!`);
+            }
+            return;
+          }
 
+          const map = gameMode === "birds" ? BIRD_MAP : ANIMAL_MAP;
+          const folder = gameMode === "birds" ? "birds" : "animals";
+          const itemsForChar = map[char];
+
+          if (itemsForChar && itemsForChar.length > 0) {
+            const item = itemsForChar[Math.floor(Math.random() * itemsForChar.length)];
             setDisplayType("single");
-            setCurrentAnimals([animal]);
+            setCurrentItems([item]);
 
-            const imageUrl = await generateAnimalImage(animal.name);
+            speakText(`Say in the style of a nature documentary narrator: ${item.sound}`, `${item.name}-doc`);
+
+            const imageUrl = await generateAIImage(item.name, folder);
             if (imageUrl) {
-              setCurrentAnimals([{ ...animal, imageUrl }]);
+              setCurrentItems([{ ...item, imageUrl }]);
             }
           } else {
-            setError(`No animal found for ${key.toUpperCase()}!`);
+            setError(`No ${gameMode.slice(0, -1)} found for ${key.toUpperCase()}!`);
           }
-          return;
         }
       }, 300);
     },
-    [isSpeaking]
+    [gameMode, isSpeaking]
   );
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      if (processingTimeout.current) {
-        clearTimeout(processingTimeout.current);
-      }
+      if (processingTimeout.current) clearTimeout(processingTimeout.current);
     };
   }, [handleKeyDown]);
 
   return {
+    gameMode,
+    setGameMode,
     displayType,
-    currentAnimals,
+    currentItems,
     lastKeyPressed,
     lastPressId,
     isSpeaking,
