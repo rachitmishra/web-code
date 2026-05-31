@@ -6,8 +6,8 @@ const crypto = require("crypto");
 // Configuration
 const ENCRYPTION_KEY =
   process.env.VITE_ENCRYPTION_KEY || "OneRingToRuleThemAllMyPrecious!!"; // Must be 32 chars
-const ADMIN_PHONE = process.env.VITE_ADMIN_PHONE || "+919967457062";
-const ADMIN_UID = "d9934223-dcfa-41ce-af64-90e68dd2f7ae";
+const ADMIN_PHONE = process.env.VITE_ADMIN_PHONE || "+919999999999";
+const ADMIN_UID = process.env.VITE_ADMIN_UUID || "d9934223-dcfa-41ce-af64-90e68dd2f7ae";
 
 // Path to service account key (assumed to be in project root or specified via env)
 const serviceAccountPath =
