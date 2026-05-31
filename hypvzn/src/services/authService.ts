@@ -27,27 +27,6 @@ export const signInWithPhone = async (
 ): Promise<ConfirmationResult> => {
   // Check if Firebase is properly configured
   if (!auth.app.options.apiKey || auth.app.options.apiKey === 'undefined') {
-    if (import.meta.env.DEV) {
-      console.warn('[AuthService] Using MOCK Phone Sign-In because VITE_FIREBASE_API_KEY is missing.');
-      // Return a mock ConfirmationResult for testing in development
-      return {
-        confirm: async (otp: string) => {
-          if (otp === '123456') {
-            console.log('[AuthService] MOCK OTP Verified (123456)');
-            return {
-              user: {
-                uid: 'mock-user-123',
-                email: 'mock@example.com',
-                phoneNumber: phoneNumber,
-                getIdToken: async () => 'mock-id-token-123',
-              }
-            } as any;
-          }
-          throw { code: 'auth/invalid-verification-code', message: 'Invalid mock code. Use 123456' };
-        },
-        verificationId: 'mock-verification-id'
-      } as any;
-    }
     throw new Error('Firebase is not configured. Please add a valid VITE_FIREBASE_API_KEY to your .env file.');
   }
 
