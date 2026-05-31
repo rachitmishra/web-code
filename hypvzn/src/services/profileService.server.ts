@@ -19,8 +19,31 @@ export interface SecureProfile {
  * Creates one Just-In-Time if it doesn't exist (e.g. if Auth trigger failed).
  */
 export async function getSecureProfile(uid: string): Promise<SecureProfile | null> {
+  const isDev = typeof process !== 'undefined' && process.env.NODE_ENV !== 'production';
+  
+  // Support Mock Mode in development
+  if (isDev && (uid === 'mock-user-123' || uid === 'mock-admin-123')) {
+    console.warn(`[ProfileService] Returning MOCK profile for: ${uid}`);
+    return {
+      uid,
+      email: uid === 'mock-admin-123' ? 'admin@example.com' : 'mock@example.com',
+      phoneNumber: '+919999999999',
+      role: uid === 'mock-admin-123' ? 'admin' : 'user',
+      displayName: uid === 'mock-admin-123' ? 'Mock Admin' : 'Mock User',
+      emoji: uid === 'mock-admin-123' ? '👑' : '👤',
+      addresses: []
+    };
+  }
+
   const docRef = adminDb.collection('profiles').doc(uid);
-  let doc = await docRef.get();
+  let doc: any;
+  try {
+    doc = await docRef.get();
+  } catch (error) {
+    console.error(`[ProfileService] Failed to fetch profile for ${uid}:`, error);
+    return null;
+  }
+  
   const key = ENCRYPTION_KEY;
   
   if (!doc.exists) {

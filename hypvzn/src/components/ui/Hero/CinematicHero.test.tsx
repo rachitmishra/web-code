@@ -19,14 +19,14 @@ describe('CinematicHero', () => {
 
   it('should render the CTA button with correct text', () => {
     render(<CinematicHero {...defaultProps} />);
-    const ctaButton = screen.getByRole('button', { name: defaultProps.ctaText });
+    const ctaButton = screen.getByRole('button', { name: new RegExp(defaultProps.ctaText, 'i') });
     expect(ctaButton).toBeInTheDocument();
   });
 
   it('should call onCtaClick when CTA button is clicked', () => {
     const onCtaClick = vi.fn();
     render(<CinematicHero {...defaultProps} onCtaClick={onCtaClick} />);
-    const ctaButton = screen.getByRole('button', { name: defaultProps.ctaText });
+    const ctaButton = screen.getByRole('button', { name: new RegExp(defaultProps.ctaText, 'i') });
     fireEvent.click(ctaButton);
     expect(onCtaClick).toHaveBeenCalledTimes(1);
   });

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter, Routes, Route } from 'react-router';
+import { MemoryRouter, Routes, Route, createMemoryRouter, RouterProvider } from 'react-router';
 import Header from './Header';
 import * as cartService from '../../../services/cartService';
 import { auth } from '../../../lib/firebase';

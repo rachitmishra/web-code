@@ -16,8 +16,9 @@ describe('Home Layout Foundation', () => {
     const pluginTypes = DEFAULT_HOME_LAYOUT.plugins.map(p => p.type);
     expect(pluginTypes).toContain('CinematicHero');
     expect(pluginTypes).toContain('BestSellers');
-    expect(pluginTypes).toContain('ProductGridSection');
-    expect(pluginTypes).toContain('ReviewSection');
+    expect(pluginTypes).toContain('FeaturedCollection');
+    expect(pluginTypes).toContain('CuratedEssentials');
+    expect(pluginTypes).toContain('Newsletter');
     expect(pluginTypes).toContain('PromoBanner');
   });
 

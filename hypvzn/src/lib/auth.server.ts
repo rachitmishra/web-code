@@ -7,6 +7,18 @@ const FIVE_DAYS_IN_MS = 60 * 60 * 24 * 5 * 1000;
  * Creates a secure Firebase Session Cookie from an ID Token.
  */
 export async function createSessionCookie(idToken: string) {
+  const isDev = typeof process !== 'undefined' && process.env.NODE_ENV !== 'production';
+  
+  // Support Mock Mode in development
+  if (idToken === 'mock-id-token-123' && isDev) {
+    console.warn("[AuthServer] Creating MOCK session cookie for development.");
+    const mockSessionCookie = 'mock-session-cookie-123';
+    return {
+      cookie: `${SESSION_COOKIE_NAME}=${mockSessionCookie}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${FIVE_DAYS_IN_MS / 1000}`,
+      expires: FIVE_DAYS_IN_MS
+    };
+  }
+
   const sessionCookie = await adminAuth.createSessionCookie(idToken, {
     expiresIn: FIVE_DAYS_IN_MS,
   });
@@ -53,6 +65,16 @@ export async function getAuthenticatedUser(request: Request) {
   if (!sessionCookie) {
     console.log("[getAuthenticatedUser] No session cookie found");
     return null;
+  }
+
+  const isDev = typeof process !== 'undefined' && process.env.NODE_ENV !== 'production';
+  if (sessionCookie === 'mock-session-cookie-123' && isDev) {
+    console.log("[getAuthenticatedUser] Success for MOCK user");
+    return {
+      uid: 'mock-user-123',
+      email: 'mock@example.com',
+      phoneNumber: '+919999999999'
+    };
   }
 
   try {

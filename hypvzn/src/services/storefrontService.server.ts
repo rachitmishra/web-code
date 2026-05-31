@@ -11,11 +11,15 @@ const LAYOUT_DOC_ID = 'pdp_layout';
 const SETTINGS_COLLECTION = 'settings';
 
 export const getStorefrontSettings = async (): Promise<StorefrontSettings> => {
-  const docRef = adminDb.collection(SETTINGS_COLLECTION).doc(SETTINGS_DOC_ID);
-  const docSnap = await docRef.get();
+  try {
+    const docRef = adminDb.collection(SETTINGS_COLLECTION).doc(SETTINGS_DOC_ID);
+    const docSnap = await docRef.get();
 
-  if (docSnap.exists) {
-    return { ...DEFAULT_SETTINGS, ...docSnap.data() } as StorefrontSettings;
+    if (docSnap.exists) {
+      return { ...DEFAULT_SETTINGS, ...docSnap.data() } as StorefrontSettings;
+    }
+  } catch (error) {
+    console.error('[Storefront Service] Failed to fetch settings:', error);
   }
   return DEFAULT_SETTINGS;
 };

@@ -15,7 +15,13 @@ vi.mock('firebase/auth', async () => {
 });
 
 vi.mock('../lib/firebase', () => ({
-  auth: {},
+  auth: {
+    app: {
+      options: {
+        apiKey: 'test-api-key'
+      }
+    }
+  },
 }));
 
 describe('authService', () => {
@@ -24,12 +30,16 @@ describe('authService', () => {
   });
 
   it('signInWithPhone should call firebase signInWithPhoneNumber', async () => {
+    // Create container for reCAPTCHA
+    const containerId = 'recaptcha-container';
+    document.body.innerHTML = `<div id="${containerId}"></div>`;
+
     const mockConfirmationResult = { confirm: vi.fn() };
     (signInWithPhoneNumber as any).mockResolvedValue(mockConfirmationResult);
 
     const phoneNumber = '+1234567890';
     // Mock RecaptchaVerifier instance if needed, but here we just pass a dummy container ID
-    const result = await signInWithPhone(phoneNumber, 'recaptcha-container');
+    const result = await signInWithPhone(phoneNumber, containerId);
 
     expect(signInWithPhoneNumber).toHaveBeenCalledWith(expect.anything(), phoneNumber, expect.anything());
     expect(result).toBe(mockConfirmationResult);

@@ -11,12 +11,16 @@ describe('AdminSidebar Component', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getAllByText(/orders/i)[0]).toBeInTheDocument();
-    expect(screen.getAllByText(/inventory/i)[0]).toBeInTheDocument();
-    expect(screen.getAllByText(/storefront/i)[0]).toBeInTheDocument();
-    expect(screen.getAllByText(/dashboard/i)[0]).toBeInTheDocument();
-    expect(screen.getAllByText(/access_logs/i)[0]).toBeInTheDocument();
-    expect(screen.getAllByText(/email_logs/i)[0]).toBeInTheDocument();
+    expect(screen.getByText(/orders/i)).toBeInTheDocument();
+    expect(screen.getByText(/inventory/i)).toBeInTheDocument();
+    expect(screen.getByText(/marketing/i)).toBeInTheDocument();
+    expect(screen.getByText(/storefront/i)).toBeInTheDocument();
+    expect(screen.getByText(/static pages/i)).toBeInTheDocument();
+    expect(screen.getByText(/pdp layout/i)).toBeInTheDocument();
+    expect(screen.getByText(/analytics/i)).toBeInTheDocument();
+    expect(screen.getByText(/invitations/i)).toBeInTheDocument();
+    expect(screen.getByText(/email logs/i)).toBeInTheDocument();
+    expect(screen.getByText(/seed data/i)).toBeInTheDocument();
   });
 
   it('should render icons for each link', () => {
@@ -26,9 +30,12 @@ describe('AdminSidebar Component', () => {
       </MemoryRouter>
     );
 
-    const icons = container.querySelectorAll('.material-symbols-outlined');
-    // 6 nav links + 1 logout link = 7 icons
-    expect(icons.length).toBe(7);
+    // navItems (10) use Lucide icons
+    const lucideIcons = container.querySelectorAll('.lucide');
+    expect(lucideIcons.length).toBe(10);
+
+    // Logout uses material icon
+    expect(screen.getByText('logout')).toBeInTheDocument();
   });
 
   it('should call onToggle when the toggle button is clicked', () => {

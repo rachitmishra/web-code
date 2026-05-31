@@ -26,6 +26,7 @@ const CinematicHero: React.FC<CinematicHeroProps> = ({
       <div className={styles.content}>
         <span className={styles.systemTag}>FW24_SYSTEM_READY</span>
         <h1 className={styles.title}>{title}</h1>
+        {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
         <Button
           variant="outline"
           className={styles.cta}

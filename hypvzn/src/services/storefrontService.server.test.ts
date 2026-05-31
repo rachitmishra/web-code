@@ -42,7 +42,7 @@ describe('storefrontService.server', () => {
     });
 
     const settings = await getStorefrontSettings();
-    expect(settings.heroTitle).toBe('HYPVZN Boutique');
+    expect(settings.heroTitle).toBe('Architectural Performance Gear');
   });
 
   it('updateStorefrontSettings should call set with merge', async () => {
