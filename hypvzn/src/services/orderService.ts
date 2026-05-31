@@ -28,7 +28,7 @@ export const createOrder = async (orderData: Omit<Order, 'id' | 'createdAt'>) =>
     try {
       await sendEmail({
         to: orderData.userEmail,
-        subject: 'Order Confirmed - Hopolo',
+        subject: 'Order Confirmed - HYPVZN',
         html: getOrderConfirmationEmailHtml({ id: docRef.id, ...orderData } as any)
       });
     } catch (e) {

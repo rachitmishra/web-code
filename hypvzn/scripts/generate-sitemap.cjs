@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const baseUrl = 'https://hopolo.vercel.app';
+const baseUrl = 'https://hypvzn.vercel.app';
 const routes = [
   '/',
   '/about',

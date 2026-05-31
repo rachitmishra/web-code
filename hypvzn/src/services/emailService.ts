@@ -22,7 +22,7 @@ export const sendEmail = async (params: EmailParams) => {
   const resend = new Resend(apiKey);
 
   const response = await resend.emails.send({
-    from: "Hopolo <onboarding@resend.dev>",
+    from: "HYPVZN <onboarding@resend.dev>",
     to: params.to,
     subject: params.subject,
     html: params.html,

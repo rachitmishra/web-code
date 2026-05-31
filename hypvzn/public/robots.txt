@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /profile/
 
-Sitemap: https://hopolo.vercel.app/sitemap.xml
+Sitemap: https://hypvzn.vercel.app/sitemap.xml

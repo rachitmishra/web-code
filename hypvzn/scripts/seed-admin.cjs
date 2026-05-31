@@ -161,7 +161,7 @@ const seedUsers = async () => {
     {
       uid: ADMIN_UID,
       phoneNumber: encrypt(ADMIN_PHONE),
-      email: "admin@hopolo.com", // Optional
+      email: "admin@hypvzn.com", // Optional
       role: "admin",
       // Encrypt sensitive fields
       displayName: encrypt("Admin User"),
@@ -199,10 +199,10 @@ const seedSettings = async () => {
   console.log("Seeding storefront settings...");
   const settingsRef = db.collection("settings").doc("storefront");
   await settingsRef.set({
-    bannerText: "Welcome to Hopolo!",
+    bannerText: "Welcome to HYPVZN!",
     bannerColor: "#5D3FD3",
     bannerVisible: true,
-    heroTitle: "Hopolo Boutique",
+    heroTitle: "HYPVZN Boutique",
     heroSubtitle: "Discover unique products curated just for you. Minimalist design, playful details.",
     heroImage: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1920&q=80&fm=webp",
     heroCtaText: "Shop the Collection",

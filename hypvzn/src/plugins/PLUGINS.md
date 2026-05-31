@@ -1,6 +1,6 @@
 # Plugin System Documentation
 
-Hopolo uses a plugin-based architecture for its Product Detail Page (PDP), allowing for dynamic layouts manageable via the Admin Panel.
+HYPVZN uses a plugin-based architecture for its Product Detail Page (PDP), allowing for dynamic layouts manageable via the Admin Panel.
 
 ## Architecture
 
