@@ -8,6 +8,7 @@ import { FooterLegend } from "./components/FooterLegend";
 import { ErrorToast } from "./components/ErrorToast";
 import { KeyWaveAnimation } from "./components/KeyWaveAnimation";
 import { ModeSelector } from "./components/ModeSelector";
+import { PianoKeyboard } from "./components/PianoKeyboard";
 
 export default function App() {
   const {
@@ -38,11 +39,7 @@ export default function App() {
 
       <main className="main-stage">
         {gameMode === "piano" && (
-           <div className="piano-view">
-             <div className="piano-instruction">
-                Press keys <strong>A S D F G H J K L</strong> to play!
-             </div>
-           </div>
+           <PianoKeyboard activeKey={lastKeyPressed} />
         )}
 
         {displayType === "single" && currentItems.length > 0 && (

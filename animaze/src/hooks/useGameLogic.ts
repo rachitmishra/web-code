@@ -122,7 +122,11 @@ export const useGameLogic = () => {
       const key = event.key;
       setLastKeyPressed(key === " " ? "Space" : key);
       setLastPressId(Date.now());
-      playClickSound();
+      
+      // Don't play generic click sound in piano mode to avoid interference
+      if (gameMode !== "piano") {
+        playClickSound();
+      }
 
       if (key === " ") event.preventDefault();
 

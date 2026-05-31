@@ -16,14 +16,14 @@
     transform: translate(-50%, -50%);
     border-radius: 50%;
     animation: expand-wave 1.5s ease-out forwards;
-    opacity: 0.3;
+    opacity: 0.1;
 }
 
 @keyframes expand-wave {
     0% {
         width: 0;
         height: 0;
-        opacity: 0.3;
+        opacity: 0.1;
     }
     100% {
         width: 250vmax; /* Use vmax to cover biggest dimension */

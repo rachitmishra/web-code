@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/ModeSelector.css';
-import { GameMode } from '../types';
+import type { GameMode } from '../types';
 
 interface ModeSelectorProps {
   currentMode: GameMode;
