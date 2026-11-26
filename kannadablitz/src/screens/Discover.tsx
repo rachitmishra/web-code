@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { go } from "../app/router";
 import type { HeritageCategory, HeritageEntry, NewsFeedSpec, PhraseSituation } from "../content/schema";
-import { fetchRssFeed, findVocabInText, formatRelativeTime, loadCustomFeeds, saveCustomFeeds, translateToEnglish, type MatchedVocab, type NewsItem } from "../engine/news";
+import { fetchRssFeed, findVocabInText, formatRelativeTime, loadCustomFeeds, translateToEnglish, type MatchedVocab, type NewsItem } from "../engine/news";
 import { useEngine } from "../engine/store";
 import { Icon } from "../ui/Icon";
 import { Art, DebugLabel, Empty, Native, Roman, Say, SpeakButton } from "../ui/kit";
@@ -336,8 +336,8 @@ function PhrasebookTab() {
 }
 
 function NewsTab() {
-  const { pack, progress } = useEngine();
-  const [customFeeds, setCustomFeeds] = useState<NewsFeedSpec[]>(() => loadCustomFeeds(pack.config.id));
+  const { pack, progress, state } = useEngine();
+  const customFeeds = useMemo(() => loadCustomFeeds(pack.config.id), [pack.config.id]);
   const feeds = useMemo(() => [...(pack.newsFeeds ?? []), ...customFeeds], [pack.newsFeeds, customFeeds]);
   const [feedId, setFeedId] = useState<string>(() => feeds[0]?.id ?? "");
   const activeFeed = feeds.find((f) => f.id === feedId) ?? feeds[0];
@@ -345,11 +345,8 @@ function NewsTab() {
   const [items, setItems] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [showPhonetics, setShowPhonetics] = useState(true);
-  const [showMeaning, setShowMeaning] = useState(true);
-  const [addOpen, setAddOpen] = useState(false);
-  const [newName, setNewName] = useState("");
-  const [newUrl, setNewUrl] = useState("");
+  const showPhonetics = state.settings.newsPhonetics ?? true;
+  const showMeaning = state.settings.newsMeaning ?? true;
 
   const learnedIds = useMemo(
     () => new Set(Object.entries(progress.words).filter(([, c]) => c.correct + c.wrong > 0).map(([k]) => k)),
@@ -386,26 +383,8 @@ function NewsTab() {
     void loadFeed(activeFeed, false);
   }, [activeFeed, loadFeed]);
 
-  const addCustomFeed = () => {
-    const url = newUrl.trim();
-    if (!/^https?:\/\//i.test(url)) return;
-    const spec: NewsFeedSpec = {
-      id: `custom-${Date.now()}`,
-      name: newName.trim() || new URL(url).hostname.replace(/^www\./, ""),
-      url,
-      tagline: "Subscribed RSS feed",
-    };
-    const next = [...customFeeds, spec];
-    setCustomFeeds(next);
-    saveCustomFeeds(pack.config.id, next);
-    setFeedId(spec.id);
-    setNewName("");
-    setNewUrl("");
-    setAddOpen(false);
-  };
-
   if (feeds.length === 0) {
-    return <Empty icon="scroll" title="No news feeds configured" body="Add an RSS feed for this language pack to read live headlines." />;
+    return <Empty icon="scroll" title="No news feeds configured" body="Add an RSS feed in Settings to read live headlines." />;
   }
 
   return (
@@ -418,7 +397,9 @@ function NewsTab() {
             <h2 style={{ marginTop: 2 }}>Read today's news</h2>
           </div>
           <div className="row" style={{ gap: 6 }}>
-            <button type="button" className="btn sm" onClick={() => setAddOpen((v) => !v)}>+ Subscribe RSS</button>
+            <button type="button" className="icon-btn" aria-label="News settings" title="News settings" onClick={() => go({ name: "settings" })}>
+              <Icon name="settings" />
+            </button>
             <button type="button" className="icon-btn" aria-label="Refresh news" onClick={() => void loadFeed(activeFeed, true)} disabled={loading}>
               <Icon name="refresh" />
             </button>
@@ -439,26 +420,6 @@ function NewsTab() {
             </button>
           ))}
         </div>
-
-        <div className="row wrap" style={{ gap: 8 }}>
-          <button type="button" className={`chip ${showPhonetics ? "active" : ""}`} onClick={() => setShowPhonetics((v) => !v)}>
-            Phonetics {showPhonetics ? "ON" : "OFF"}
-          </button>
-          <button type="button" className={`chip ${showMeaning ? "active" : ""}`} onClick={() => setShowMeaning((v) => !v)}>
-            English Meaning {showMeaning ? "ON" : "OFF"}
-          </button>
-        </div>
-
-        {addOpen && (
-          <div className="card warm stack" style={{ gap: 8, padding: 14 }}>
-            <span className="eyebrow">Subscribe to any {pack.config.name} RSS feed</span>
-            <input className="input" placeholder="Feed name (e.g. Prajavani)" value={newName} onChange={(e) => setNewName(e.target.value)} />
-            <input className="input" placeholder="https://example.com/feed.xml" value={newUrl} onChange={(e) => setNewUrl(e.target.value)} />
-            <button type="button" className="btn primary sm" style={{ alignSelf: "flex-start" }} disabled={!/^https?:\/\//i.test(newUrl.trim())} onClick={addCustomFeed}>
-              Subscribe
-            </button>
-          </div>
-        )}
       </section>
 
       {loading && (

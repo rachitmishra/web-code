@@ -84,8 +84,26 @@ export function Passport() {
 }
 
 export function Achievements() {
-  const { progress } = useEngine();
+  const { progress, state, pack } = useEngine();
+  const [sharedId, setSharedId] = useState<string | null>(null);
   const earned = Object.keys(progress.achievements).length;
+
+  const shareBadge = async (id: string, title: string, description: string) => {
+    const text = `I unlocked "${title}" (${description}) on ${pack.config.brand ?? pack.config.name} as ${state.learner.name}!`;
+    const url = window.location.origin;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: `${title} · ${pack.config.brand ?? pack.config.name}`, text, url });
+      } else {
+        await navigator.clipboard?.writeText(`${text} ${url}`);
+      }
+      setSharedId(id);
+      setTimeout(() => setSharedId((cur) => (cur === id ? null : cur)), 2000);
+    } catch {
+      /* user cancelled share sheet */
+    }
+  };
+
   return (
     <div className="stack lg">
       <button type="button" className="btn sm ghost" style={{ alignSelf: "flex-start" }} onClick={() => go({ name: "passport" })}><Icon name="arrowLeft" /> Passport</button>
@@ -102,11 +120,22 @@ export function Achievements() {
           return (
             <div key={a.id} className={`card ach-card ${at ? "unlocked" : "locked"}`}>
               <AchievementBadge id={a.id} unlocked={!!at} size={72} />
-              <div className="stack" style={{ gap: 3, minWidth: 0 }}>
+              <div className="stack" style={{ gap: 3, minWidth: 0, flex: 1 }}>
                 <strong>{a.title}</strong>
                 <span className="muted" style={{ fontSize: 13, lineHeight: 1.35 }}>{a.description}</span>
                 {at ? (
-                  <span className="tag leaf" style={{ alignSelf: "flex-start", marginTop: 4 }}>{new Date(at).toLocaleDateString()}</span>
+                  <div className="row between wrap" style={{ gap: 6, marginTop: 4 }}>
+                    <span className="tag leaf">{new Date(at).toLocaleDateString()}</span>
+                    <button
+                      type="button"
+                      className="btn sm ghost"
+                      style={{ minHeight: 28, padding: "0 8px", fontSize: 12 }}
+                      onClick={() => void shareBadge(a.id, a.title, a.description)}
+                      aria-label={`Share ${a.title} achievement`}
+                    >
+                      <Icon name={sharedId === a.id ? "check" : "share"} /> {sharedId === a.id ? "Shared!" : "Share"}
+                    </button>
+                  </div>
                 ) : (
                   <span className="eyebrow" style={{ marginTop: 4, opacity: 0.65 }}>Locked</span>
                 )}

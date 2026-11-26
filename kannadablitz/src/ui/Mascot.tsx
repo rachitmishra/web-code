@@ -4,16 +4,6 @@ import { useEngine } from "../engine/store";
 import { Icon } from "./Icon";
 import { DebugLabel, Modal, Native, SpeakButton } from "./kit";
 
-const MOOD_LABEL: Record<MascotMood, string> = {
-  happy: "Cheerful",
-  excited: "Hyped",
-  thinking: "Thinking",
-  encouraging: "Rooting for you",
-  proud: "Proud",
-  curious: "Curious",
-  sleepy: "Cozy",
-};
-
 /**
  * Relatable Mysuru elephant calf mascot portrait.
  * Renders the pack's 3D studio character portrait per mood (with a clean SVG fallback
@@ -197,7 +187,6 @@ export function MascotGreetingCard({
             title={`Tap ${mascot.name} to say hi!`}
           >
             <MascotAvatar mood={line.mood} size={82} />
-            <span className="mascot-mood-dot">{MOOD_LABEL[line.mood]}</span>
           </button>
 
           <div className="mascot-bubble stack" style={{ gap: 6, flex: 1, minWidth: 0 }}>

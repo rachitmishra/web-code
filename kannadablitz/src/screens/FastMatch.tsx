@@ -45,7 +45,7 @@ export function FastMatch() {
     return (
       <div className="stack lg" style={{ alignItems: "center", textAlign: "center" }}>
         <button type="button" className="btn sm ghost" style={{ alignSelf: "flex-start" }} onClick={() => go({ name: "practice" })}><Icon name="arrowLeft" /> Practice</button>
-        <div style={{ width: 96, height: 96, borderRadius: 28, background: "var(--saffron)", display: "grid", placeItems: "center", border: "3px solid var(--ink)", boxShadow: "0 6px 0 var(--ink)" }}><Icon name="bolt" /></div>
+        <div className="practice-icon saffron" style={{ width: 78, height: 78, borderRadius: 24 }}><Icon name="bolt" /></div>
         <h1>Fast Match</h1>
         <p className="muted" style={{ maxWidth: 440 }}>Match native words to their meanings as fast as you can. Every three in a row raises your multiplier. Three misses end the round.</p>
         {phase === "count" ? (
@@ -208,9 +208,15 @@ function Game({ pool, seconds, onEnd, reducedMotion }: {
         </div>
         <Hearts count={lives} max={GAME_LIVES} />
       </div>
-      <div className="columns">
-        <div className="col">{left.map((s) => <button key={s.key} type="button" className={cls("l", s.v.id)} onClick={() => tap("l", s.v.id)} lang={pack.config.id} data-say={sayIt(s.v.script)}>{s.v.script}</button>)}</div>
-        <div className="col">{right.map((s) => <button key={s.key} type="button" className={cls("r", s.v.id)} onClick={() => tap("r", s.v.id)}>{s.v.meaning}</button>)}</div>
+      <div className="columns fm-columns">
+        <div className="col fm-col fm-col-left">
+          <div className="col-head fm-col-head left">{pack.config.name}</div>
+          {left.map((s) => <button key={s.key} type="button" className={cls("l", s.v.id)} onClick={() => tap("l", s.v.id)} lang={pack.config.id} data-say={sayIt(s.v.script)}>{s.v.script}</button>)}
+        </div>
+        <div className="col fm-col fm-col-right">
+          <div className="col-head fm-col-head right">Meaning</div>
+          {right.map((s) => <button key={s.key} type="button" className={cls("r", s.v.id)} onClick={() => tap("r", s.v.id)}>{s.v.meaning}</button>)}
+        </div>
       </div>
     </div>
   );

@@ -21,11 +21,11 @@ export function PracticeHub() {
   const letter = pack.letters.find((l) => l.id === letterId) ?? pack.letters[0];
 
   const tiles = [
-    { title: "Fast Match", body: `30 or 60 seconds of rapid matching. Best: ${Math.max(progress.stats.fastMatchBest30, progress.stats.fastMatchBest60)}`, icon: "bolt", tone: "var(--saffron)", go: () => go({ name: "fastmatch" }) },
-    { title: "Flashcards", body: "Swipe through cards. Mark what you know, keep what you don't.", icon: "cards", tone: "var(--sky)", go: () => go({ name: "flashcards" }) },
-    { title: "Sentence Builder", body: `Arrange ${pack.config.name} words into natural sentences.`, icon: "tiles", tone: "var(--terracotta)", go: () => go({ name: "session", id: "sentences-build" }) },
-    { title: "Fill in the Blank", body: `Complete real ${pack.config.name} sentences by picking the missing word.`, icon: "pen", tone: "var(--saffron-soft)", go: () => go({ name: "session", id: "sentences-fill" }) },
-    { title: "Revision centre", body: due ? `${due} due now · ${weak} tricky` : "Spaced repetition of everything you've learned", icon: "repeat", tone: "var(--leaf)", go: () => go({ name: "revision" }) },
+    { title: "Fast Match", body: `30 or 60 seconds of rapid matching. Best: ${Math.max(progress.stats.fastMatchBest30, progress.stats.fastMatchBest60)}`, icon: "bolt", tone: "saffron", go: () => go({ name: "fastmatch" }) },
+    { title: "Flashcards", body: "Swipe through cards. Mark what you know, keep what you don't.", icon: "cards", tone: "sky", go: () => go({ name: "flashcards" }) },
+    { title: "Sentence Builder", body: `Arrange ${pack.config.name} words into natural sentences.`, icon: "tiles", tone: "terracotta", go: () => go({ name: "session", id: "sentences-build" }) },
+    { title: "Fill in the Blank", body: `Complete real ${pack.config.name} sentences by picking the missing word.`, icon: "pen", tone: "gold", go: () => go({ name: "session", id: "sentences-fill" }) },
+    { title: "Revision centre", body: due ? `${due} due now · ${weak} tricky` : "Spaced repetition of everything you've learned", icon: "repeat", tone: "leaf", go: () => go({ name: "revision" }) },
   ];
 
   return (
@@ -34,7 +34,7 @@ export function PracticeHub() {
       <div className="grid three">
         {tiles.map((t) => (
           <button key={t.title} type="button" className="card clickable stack" onClick={t.go}>
-            <div style={{ width: 52, height: 52, borderRadius: 16, background: t.tone, display: "grid", placeItems: "center", border: "2px solid var(--ink)", boxShadow: "0 3px 0 var(--ink)" }}><Icon name={t.icon} /></div>
+            <div className={`practice-icon ${t.tone}`}><Icon name={t.icon} /></div>
             <h3>{t.title}</h3>
             <p className="muted" style={{ fontSize: 13 }}>{t.body}</p>
           </button>

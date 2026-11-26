@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import confetti from "canvas-confetti";
 import { go } from "../app/router";
 import { ACHIEVEMENTS, findSublevel } from "../engine/progress";
@@ -12,6 +12,7 @@ const TOASTS = new Set(["level_unlocked", "goal_met", "streak"]);
 
 export function RewardOverlay() {
   const { rewards, dismissReward, curriculum, pack, state, progress } = useEngine();
+  const [shared, setShared] = useState(false);
   const ev = rewards[0];
 
   useEffect(() => {
@@ -83,6 +84,19 @@ export function RewardOverlay() {
 
   if (ev.type === "achievement") {
     const a = ACHIEVEMENTS.find((x) => x.id === ev.achievementId);
+    const shareAch = async () => {
+      if (!a) return;
+      const text = `I unlocked "${a.title}" (${a.description}) on ${pack.config.brand ?? pack.config.name} as ${state.learner.name}!`;
+      const url = window.location.origin;
+      try {
+        if (navigator.share) await navigator.share({ title: a.title, text, url });
+        else await navigator.clipboard?.writeText(`${text} ${url}`);
+        setShared(true);
+        setTimeout(() => setShared(false), 2000);
+      } catch {
+        /* user cancelled */
+      }
+    };
     return (
       <Modal label="Achievement" onClose={dismissReward}>
         <div className="stack" style={{ alignItems: "center", textAlign: "center" }}>
@@ -92,7 +106,12 @@ export function RewardOverlay() {
           </div>
           <h2>{a?.title}</h2>
           <p className="muted">{a?.description}</p>
-          <button type="button" className="btn primary lg block" onClick={dismissReward} autoFocus>Nice</button>
+          <div className="row" style={{ width: "100%" }}>
+            <button type="button" className="btn block" onClick={() => void shareAch()}>
+              <Icon name={shared ? "check" : "share"} /> {shared ? "Shared!" : "Share"}
+            </button>
+            <button type="button" className="btn primary lg block" onClick={dismissReward} autoFocus>Nice</button>
+          </div>
         </div>
       </Modal>
     );

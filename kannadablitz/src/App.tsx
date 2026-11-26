@@ -87,7 +87,7 @@ export default function App() {
   }, [state.settings.debug]);
 
   useEffect(() => {
-    document.documentElement.dataset.theme = state.settings.theme ?? "studio";
+    document.documentElement.dataset.theme = state.settings.theme ?? "glass";
   }, [state.settings.theme]);
 
   useEffect(() => {

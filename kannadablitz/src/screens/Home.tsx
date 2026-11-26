@@ -65,8 +65,8 @@ export function Home() {
 
   return (
     <div className="stack lg">
-      <header className="anim-rise stack" style={{ gap: 4 }}>
-        {greetPhrase && <Native size={18} style={{ color: "var(--terracotta)" }}>{greetPhrase.script}</Native>}
+      <header className="anim-rise stack" style={{ gap: 4, alignItems: "flex-start", textAlign: "left" }}>
+        {greetPhrase && <Native as="div" size={18} style={{ color: "var(--terracotta)", textAlign: "left" }}>{greetPhrase.script}</Native>}
         <h1>{greeting()}, {state.learner.name}</h1>
         <p className="muted" style={{ fontWeight: 600 }}>
           {today >= goal ? "Today's goal is done. Anything more is a bonus." : streak > 0 ? `Keep your ${streak}-day streak alive with one short lesson.` : "One short lesson today starts a streak."}

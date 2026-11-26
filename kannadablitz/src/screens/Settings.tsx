@@ -1,10 +1,11 @@
 import { useMemo, useRef, useState } from "react";
 import { go } from "../app/router";
-import type { Topic } from "../content/schema";
+import type { NewsFeedSpec, Topic } from "../content/schema";
 import { exportPack, isBuiltin } from "../content/registry";
 import { validatePack, type ValidationReport } from "../content/validate";
 import { TOPIC_LABEL } from "../engine/curriculum";
 import { artPrompt } from "../engine/illustration";
+import { loadCustomFeeds, saveCustomFeeds } from "../engine/news";
 import { useEngine } from "../engine/store";
 import { Icon } from "../ui/Icon";
 import { Art, Modal, Native } from "../ui/kit";
@@ -31,8 +32,33 @@ export function Settings() {
   const [syncMsg, setSyncMsg] = useState<{ ok: boolean; text: string } | null>(null);
   const [copiedKey, setCopiedKey] = useState(false);
   const [showRestore, setShowRestore] = useState(false);
+  const [customFeeds, setCustomFeeds] = useState<NewsFeedSpec[]>(() => loadCustomFeeds(pack.config.id));
+  const [newFeedName, setNewFeedName] = useState("");
+  const [newFeedUrl, setNewFeedUrl] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
   const set = (patch: Partial<typeof state.settings>) => update((s) => ({ ...s, settings: { ...s.settings, ...patch } }));
+
+  const addCustomFeed = () => {
+    const url = newFeedUrl.trim();
+    if (!/^https?:\/\//i.test(url)) return;
+    const spec: NewsFeedSpec = {
+      id: `custom-${Date.now()}`,
+      name: newFeedName.trim() || new URL(url).hostname.replace(/^www\./, ""),
+      url,
+      tagline: "Subscribed RSS feed",
+    };
+    const next = [...customFeeds, spec];
+    setCustomFeeds(next);
+    saveCustomFeeds(pack.config.id, next);
+    setNewFeedName("");
+    setNewFeedUrl("");
+  };
+
+  const removeCustomFeed = (id: string) => {
+    const next = customFeeds.filter((f) => f.id !== id);
+    setCustomFeeds(next);
+    saveCustomFeeds(pack.config.id, next);
+  };
 
   const runImport = (text: string) => setReport(importPackJson(text));
 
@@ -173,27 +199,80 @@ export function Settings() {
           <div>
             <strong>Theme</strong>
             <p className="muted" style={{ fontSize: 13 }}>
-              {(state.settings.theme ?? "studio") === "studio"
-                ? "Kala Studio: crisp alabaster, Liquid Glass chrome & bold tactile cards"
-                : "Sandalwood Glass: warm sandalwood ivory & classic Liquid Glass"}
+              {(state.settings.theme ?? "glass") === "glass"
+                ? "Sandalwood Glass: warm sandalwood ivory & classic Liquid Glass"
+                : state.settings.theme === "canvas"
+                  ? "Canvas: ultra-clean dot-grid, pure white floating cards & minimal pills"
+                  : "Kala Studio: crisp alabaster, Liquid Glass chrome & bold tactile cards"}
             </p>
           </div>
-          <div className="row" style={{ gap: 6 }}>
+          <div className="row wrap" style={{ gap: 6 }}>
             <button
               type="button"
-              className={`chip ${(state.settings.theme ?? "studio") === "studio" ? "active" : ""}`}
-              aria-pressed={(state.settings.theme ?? "studio") === "studio"}
+              className={`chip ${(state.settings.theme ?? "glass") === "glass" ? "active" : ""}`}
+              aria-pressed={(state.settings.theme ?? "glass") === "glass"}
+              onClick={() => set({ theme: "glass" })}
+            >
+              Sandalwood Glass
+            </button>
+            <button
+              type="button"
+              className={`chip ${state.settings.theme === "studio" ? "active" : ""}`}
+              aria-pressed={state.settings.theme === "studio"}
               onClick={() => set({ theme: "studio" })}
             >
               Kala Studio
             </button>
             <button
               type="button"
-              className={`chip ${state.settings.theme === "glass" ? "active" : ""}`}
-              aria-pressed={state.settings.theme === "glass"}
-              onClick={() => set({ theme: "glass" })}
+              className={`chip ${state.settings.theme === "canvas" ? "active" : ""}`}
+              aria-pressed={state.settings.theme === "canvas"}
+              onClick={() => set({ theme: "canvas" })}
             >
-              Sandalwood Glass
+              Canvas
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section className="card stack" style={{ gap: 10 }}>
+        <h3>News &amp; RSS</h3>
+        <div className="setting-row">
+          <div>
+            <strong>Show phonetics in news</strong>
+            <p className="muted" style={{ fontSize: 13 }}>Displays book-scheme phonetics under {pack.config.name} headlines &amp; summaries</p>
+          </div>
+          <Toggle on={state.settings.newsPhonetics ?? true} label="Show phonetics in news" onClick={() => set({ newsPhonetics: !(state.settings.newsPhonetics ?? true) })} />
+        </div>
+        <div className="setting-row">
+          <div>
+            <strong>Show English meaning in news</strong>
+            <p className="muted" style={{ fontSize: 13 }}>Translates headlines &amp; summaries for reading comprehension</p>
+          </div>
+          <Toggle on={state.settings.newsMeaning ?? true} label="Show English meaning in news" onClick={() => set({ newsMeaning: !(state.settings.newsMeaning ?? true) })} />
+        </div>
+        <div className="stack" style={{ gap: 8, paddingTop: 6 }}>
+          <span className="eyebrow">Custom {pack.config.name} RSS feeds</span>
+          {customFeeds.length > 0 && (
+            <div className="stack" style={{ gap: 6 }}>
+              {customFeeds.map((f) => (
+                <div key={f.id} className="row between" style={{ gap: 8 }}>
+                  <div className="stack" style={{ gap: 1, minWidth: 0 }}>
+                    <strong style={{ fontSize: 14 }}>{f.name}</strong>
+                    <span className="muted" style={{ fontSize: 12, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{f.url}</span>
+                  </div>
+                  <button type="button" className="icon-btn" aria-label={`Remove ${f.name}`} onClick={() => removeCustomFeed(f.id)}>
+                    <Icon name="trash" />
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+          <div className="row wrap" style={{ gap: 8 }}>
+            <input className="input" style={{ flex: "1 1 160px" }} placeholder="Feed name (e.g. Prajavani)" value={newFeedName} onChange={(e) => setNewFeedName(e.target.value)} />
+            <input className="input" style={{ flex: "2 1 220px" }} placeholder="https://example.com/feed.xml" value={newFeedUrl} onChange={(e) => setNewFeedUrl(e.target.value)} />
+            <button type="button" className="btn primary sm" disabled={!/^https?:\/\//i.test(newFeedUrl.trim())} onClick={addCustomFeed}>
+              Subscribe
             </button>
           </div>
         </div>
@@ -207,7 +286,7 @@ export function Settings() {
           <div className="row" style={{ gap: 6 }}>{[3, 5, 7].map((n) => <button key={n} type="button" className={`chip ${state.settings.maxLives === n ? "active" : ""}`} onClick={() => update((s) => ({ ...s, settings: { ...s.settings, maxLives: n }, lives: { ...s.lives, count: Math.min(n, s.lives.count) } }))}>{n}</button>)}</div>
         </div>
         <div className="setting-row"><div><strong>Show romanisation</strong><p className="muted" style={{ fontSize: 13 }}>{pack.config.romanisation}. Hide it to rely on the script alone.</p></div><Toggle on={state.settings.showRoman} label="Show romanisation" onClick={() => set({ showRoman: !state.settings.showRoman })} /></div>
-        {pack.phonetics && <div className="setting-row"><div><strong>English pronunciation hints</strong><p className="muted" style={{ fontSize: 13 }}>Shows simplified English phonetics like "namaskaara" so you can read and say words comfortably</p></div><Toggle on={state.settings.showPhonetics} label="English pronunciation hints" onClick={() => set({ showPhonetics: !state.settings.showPhonetics })} /></div>}
+        {pack.phonetics && <div className="setting-row"><div><strong>Book phonetics hints</strong><p className="muted" style={{ fontSize: 13 }}>Uses the Halemane book scheme (doubled vowels = long: aa, ii, ee; capitals = retroflex: T, D, N, L)</p></div><Toggle on={state.settings.showPhonetics} label="Book phonetics hints" onClick={() => set({ showPhonetics: !state.settings.showPhonetics })} /></div>}
         <div className="setting-row"><div><strong>Pronunciation audio</strong><p className="muted" style={{ fontSize: 13 }}>Uses your device's {pack.config.name} voice. If there isn't one, the English pronunciation is read aloud instead.</p></div><Toggle on={state.settings.sound} label="Audio" onClick={() => set({ sound: !state.settings.sound })} /></div>
         <div className="setting-row"><div><strong>Reduce motion</strong></div><Toggle on={state.settings.reducedMotion} label="Reduce motion" onClick={() => set({ reducedMotion: !state.settings.reducedMotion })} /></div>
         <div className="setting-row"><div><strong>Debug UI labels</strong><p className="muted" style={{ fontSize: 13 }}>Overlay screen and component names for UI inspection (shortcut: Alt+D)</p></div><Toggle on={!!state.settings.debug} label="Debug UI labels" onClick={() => set({ debug: !state.settings.debug })} /></div>
