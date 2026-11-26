@@ -10,11 +10,11 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'favicon.svg'],
       manifest: {
-        name: 'KannadaBlitz',
-        short_name: 'KannadaBlitz',
-        description: 'Learn Kannada quickly and effectively.',
-        theme_color: '#f5efa0',
-        background_color: '#f5efa0',
+        name: 'Namma Kannada · Language Journal',
+        short_name: 'Namma Kannada',
+        description: 'An illustrated, gamified journey through Kannada.',
+        theme_color: '#fff7e6',
+        background_color: '#fff7e6',
         display: 'standalone',
         icons: [
           {

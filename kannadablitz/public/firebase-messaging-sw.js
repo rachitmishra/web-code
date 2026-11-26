@@ -1,28 +1,26 @@
 importScripts('https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js');
 importScripts('https://www.gstatic.com/firebasejs/10.13.0/firebase-messaging-compat.js');
 
-firebase.initializeApp({
-  apiKey: "AIzaSyDwv89h8vSyIjwkqStlw-omiXcdTzUMWTM",
-  authDomain: "kannadablitz.firebaseapp.com",
-  projectId: "kannadablitz",
-  storageBucket: "kannadablitz.firebasestorage.app",
-  messagingSenderId: "569869531050",
-  appId: "1:569869531050:web:3ebf1cd0305bab6c4f5dd3"
-});
+const params = new URLSearchParams(self.location.search);
+const firebaseConfig = {
+  apiKey: params.get('apiKey') || '',
+  authDomain: params.get('authDomain') || '',
+  projectId: params.get('projectId') || '',
+  storageBucket: params.get('storageBucket') || '',
+  messagingSenderId: params.get('messagingSenderId') || '',
+  appId: params.get('appId') || '',
+};
 
-const messaging = firebase.messaging();
-
-messaging.onBackgroundMessage(function(payload) {
-  console.log('[firebase-messaging-sw.js] Received background message ', payload);
-  
-  if (payload.notification) {
-      const notificationTitle = payload.notification.title;
-      const notificationOptions = {
+if (firebaseConfig.apiKey && firebaseConfig.projectId) {
+  firebase.initializeApp(firebaseConfig);
+  const messaging = firebase.messaging();
+  messaging.onBackgroundMessage(function(payload) {
+    if (payload.notification) {
+      self.registration.showNotification(payload.notification.title, {
         body: payload.notification.body,
         icon: '/favicon-96x96.png',
-        data: payload.data
-      };
-    
-      self.registration.showNotification(notificationTitle, notificationOptions);
-  }
-});
+        data: payload.data,
+      });
+    }
+  });
+}

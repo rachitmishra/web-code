@@ -1,0 +1,7862 @@
+[
+{
+"id": "kn.adhyaapaka",
+"script": "ಅಧ್ಯಾಪಕ",
+"roman": "adhyaapaka",
+"meaning": "teacher (masc.)",
+"pos": "noun",
+"topic": "professions",
+"lesson": 1,
+"source": "halemane",
+"example": {
+"script": "ಅವರು ಕನ್ನಡ ಅಧ್ಯಾಪಕ.",
+"meaning": "He is a Kannada teacher."
+}
+},
+{
+"id": "kn.adhyaapaki",
+"script": "ಅಧ್ಯಾಪಕಿ",
+"roman": "adhyaapaki",
+"meaning": "teacher (fem.)",
+"pos": "noun",
+"topic": "professions",
+"lesson": 1,
+"source": "halemane"
+},
+{
+"id": "kn.avara",
+"script": "ಅವರ",
+"roman": "avara",
+"meaning": "his / her (honorific)",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 1,
+"source": "halemane"
+},
+{
+"id": "kn.avaru",
+"script": "ಅವರು",
+"roman": "avaru",
+"meaning": "he / she (honorific)",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 1,
+"source": "halemane",
+"example": {
+"script": "ಅವರು ನನ್ನ ಸ್ನೇಹಿತ.",
+"meaning": "He is my friend."
+}
+},
+{
+"id": "kn.ivara",
+"script": "ಇವರ",
+"roman": "ivara",
+"meaning": "his / her (this person)",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 1,
+"source": "halemane"
+},
+{
+"id": "kn.eenu",
+"script": "ಏನು",
+"roman": "eenu",
+"meaning": "what",
+"pos": "pronoun",
+"topic": "questions",
+"lesson": 1,
+"source": "halemane",
+"example": {
+"script": "ಇದು ಏನು?",
+"meaning": "What is this?"
+}
+},
+{
+"id": "kn.nanna",
+"script": "ನನ್ನ",
+"roman": "nanna",
+"meaning": "my",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 1,
+"source": "halemane"
+},
+{
+"id": "kn.namaskaara",
+"script": "ನಮಸ್ಕಾರ",
+"roman": "namaskaara",
+"meaning": "hello / greetings",
+"pos": "noun",
+"topic": "greetings",
+"lesson": 1,
+"source": "halemane",
+"example": {
+"script": "ನಮಸ್ಕಾರ ಸಾರ್, ಹೇಗಿದ್ದೀರಿ?",
+"meaning": "Hello sir, how are you?"
+}
+},
+{
+"id": "kn.naanu",
+"script": "ನಾನು",
+"roman": "naanu",
+"meaning": "I",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 1,
+"source": "halemane",
+"example": {
+"script": "ನಾನು ಕನ್ನಡ ವಿದ್ಯಾರ್ಥಿ.",
+"meaning": "I am a Kannada student."
+}
+},
+{
+"id": "kn.nimma",
+"script": "ನಿಮ್ಮ",
+"roman": "nimma",
+"meaning": "your",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 1,
+"source": "halemane"
+},
+{
+"id": "kn.niivu",
+"script": "ನೀವು",
+"roman": "niivu",
+"meaning": "you (polite)",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 1,
+"source": "halemane",
+"example": {
+"script": "ನೀವು ಯಾರು?",
+"meaning": "Who are you?"
+}
+},
+{
+"id": "kn.maatrubhaashe",
+"script": "ಮಾತೃಭಾಷೆ",
+"roman": "maatrubhaaShe",
+"meaning": "mother tongue",
+"pos": "noun",
+"topic": "family",
+"lesson": 1,
+"source": "halemane"
+},
+{
+"id": "kn.yaaru",
+"script": "ಯಾರು",
+"roman": "yaaru",
+"meaning": "who",
+"pos": "pronoun",
+"topic": "questions",
+"lesson": 1,
+"source": "halemane",
+"example": {
+"script": "ಇವರು ಯಾರು?",
+"meaning": "Who is this person?"
+}
+},
+{
+"id": "kn.yaavudu",
+"script": "ಯಾವುದು",
+"roman": "yaavudu",
+"meaning": "which one",
+"pos": "pronoun",
+"topic": "questions",
+"lesson": 1,
+"source": "halemane"
+},
+{
+"id": "kn.raajya",
+"script": "ರಾಜ್ಯ",
+"roman": "raajya",
+"meaning": "state",
+"pos": "noun",
+"topic": "places",
+"lesson": 1,
+"source": "halemane"
+},
+{
+"id": "kn.vidyaarthi",
+"script": "ವಿದ್ಯಾರ್ಥಿ",
+"roman": "vidyaarthi",
+"meaning": "student (masc.)",
+"pos": "noun",
+"topic": "professions",
+"lesson": 1,
+"source": "halemane",
+"example": {
+"script": "ನಾನು ಕನ್ನಡ ವಿದ್ಯಾರ್ಥಿ.",
+"meaning": "I am a Kannada student."
+}
+},
+{
+"id": "kn.sneehita",
+"script": "ಸ್ನೇಹಿತ",
+"roman": "sneehita",
+"meaning": "friend (masc.)",
+"pos": "noun",
+"topic": "people",
+"lesson": 1,
+"source": "halemane",
+"example": {
+"script": "ಇವರು ನನ್ನ ಆತ್ಮೀಯ ಸ್ನೇಹಿತ.",
+"meaning": "This is my dear friend."
+}
+},
+{
+"id": "kn.hesaru",
+"script": "ಹೆಸರು",
+"roman": "hesaru",
+"meaning": "name",
+"pos": "noun",
+"topic": "language",
+"lesson": 1,
+"source": "halemane",
+"example": {
+"script": "ನಿಮ್ಮ ಹೆಸರು ಏನು?",
+"meaning": "What is your name?"
+}
+},
+{
+"id": "kn.gumaasta",
+"script": "ಗುಮಾಸ್ತ",
+"roman": "gumaasta",
+"meaning": "clerk",
+"pos": "noun",
+"topic": "professions",
+"lesson": 1,
+"source": "halemane"
+},
+{
+"id": "kn.jille",
+"script": "ಜಿಲ್ಲೆ",
+"roman": "jille",
+"meaning": "district",
+"pos": "noun",
+"topic": "places",
+"lesson": 1,
+"source": "halemane"
+},
+{
+"id": "kn.deesha",
+"script": "ದೇಶ",
+"roman": "deesha",
+"meaning": "country",
+"pos": "noun",
+"topic": "places",
+"lesson": 1,
+"source": "halemane"
+},
+{
+"id": "kn.leekhaki",
+"script": "ಲೇಖಕಿ",
+"roman": "leekhaki",
+"meaning": "writer (fem.)",
+"pos": "noun",
+"topic": "professions",
+"lesson": 1,
+"source": "halemane"
+},
+{
+"id": "kn.vaidya",
+"script": "ವೈದ್ಯ",
+"roman": "vaidya",
+"meaning": "doctor",
+"pos": "noun",
+"topic": "professions",
+"lesson": 1,
+"source": "halemane"
+},
+{
+"id": "kn.vyaapaari",
+"script": "ವ್ಯಾಪಾರಿ",
+"roman": "vyaapaari",
+"meaning": "businessman",
+"pos": "noun",
+"topic": "professions",
+"lesson": 1,
+"source": "halemane"
+},
+{
+"id": "kn.sneehite",
+"script": "ಸ್ನೇಹಿತೆ",
+"roman": "sneehite",
+"meaning": "friend (fem.)",
+"pos": "noun",
+"topic": "people",
+"lesson": 1,
+"source": "halemane"
+},
+{
+"id": "kn.akka",
+"script": "ಅಕ್ಕ",
+"roman": "akka",
+"meaning": "elder sister",
+"pos": "noun",
+"topic": "family",
+"lesson": 2,
+"source": "halemane",
+"example": {
+"script": "ನನ್ನ ಅಕ್ಕ ಬೆಂಗಳೂರಿನಲ್ಲಿ ಇದ್ದಾರೆ.",
+"meaning": "My elder sister lives in Bengaluru."
+}
+},
+{
+"id": "kn.adara",
+"script": "ಅದರ",
+"roman": "adara",
+"meaning": "its",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 2,
+"source": "halemane"
+},
+{
+"id": "kn.anna",
+"script": "ಅಣ್ಣ",
+"roman": "aNNa",
+"meaning": "elder brother",
+"pos": "noun",
+"topic": "family",
+"lesson": 2,
+"source": "halemane",
+"example": {
+"script": "ಅಣ್ಣ, ಬಸ್ ನಿಲ್ದಾಣ ಎಲ್ಲಿ?",
+"meaning": "Brother, where is the bus stop?"
+}
+},
+{
+"id": "kn.avala",
+"script": "ಅವಳ",
+"roman": "avaLa",
+"meaning": "her",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 2,
+"source": "halemane"
+},
+{
+"id": "kn.avana",
+"script": "ಅವನ",
+"roman": "avana",
+"meaning": "his",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 2,
+"source": "halemane"
+},
+{
+"id": "kn.aa",
+"script": "ಆ",
+"roman": "aa",
+"meaning": "that",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 2,
+"source": "halemane"
+},
+{
+"id": "kn.idara",
+"script": "ಇದರ",
+"roman": "idara",
+"meaning": "its",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 2,
+"source": "halemane"
+},
+{
+"id": "kn.ivana",
+"script": "ಇವನ",
+"roman": "ivana",
+"meaning": "his",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 2,
+"source": "halemane"
+},
+{
+"id": "kn.ivala",
+"script": "ಇವಳ",
+"roman": "ivaLa",
+"meaning": "her",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 2,
+"source": "halemane"
+},
+{
+"id": "kn.ii",
+"script": "ಈ",
+"roman": "ii",
+"meaning": "this",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 2,
+"source": "halemane"
+},
+{
+"id": "kn.kaadambari",
+"script": "ಕಾದಂಬರಿ",
+"roman": "kaadambari",
+"meaning": "novel",
+"pos": "noun",
+"topic": "language",
+"lesson": 2,
+"source": "halemane",
+"art": "book"
+},
+{
+"id": "kn.tangi",
+"script": "ತಂಗಿ",
+"roman": "tangi",
+"meaning": "younger sister",
+"pos": "noun",
+"topic": "family",
+"lesson": 2,
+"source": "halemane"
+},
+{
+"id": "kn.tamma",
+"script": "ತಮ್ಮ",
+"roman": "tamma",
+"meaning": "younger brother",
+"pos": "noun",
+"topic": "family",
+"lesson": 2,
+"source": "halemane"
+},
+{
+"id": "kn.ninna",
+"script": "ನಿನ್ನ",
+"roman": "ninna",
+"meaning": "your",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 2,
+"source": "halemane"
+},
+{
+"id": "kn.maga",
+"script": "ಮಗ",
+"roman": "maga",
+"meaning": "son",
+"pos": "noun",
+"topic": "family",
+"lesson": 2,
+"source": "halemane"
+},
+{
+"id": "kn.pustaka",
+"script": "ಪುಸ್ತಕ",
+"roman": "pustaka",
+"meaning": "book",
+"pos": "noun",
+"topic": "language",
+"lesson": 2,
+"source": "halemane",
+"art": "book",
+"example": {
+"script": "ಇದು ನನ್ನ ಕನ್ನಡ ಪುಸ್ತಕ.",
+"meaning": "This is my Kannada book."
+}
+},
+{
+"id": "kn.yaava",
+"script": "ಯಾವ",
+"roman": "yaava",
+"meaning": "which",
+"pos": "pronoun",
+"topic": "questions",
+"lesson": 2,
+"source": "halemane"
+},
+{
+"id": "kn.haudu",
+"script": "ಹೌದು",
+"roman": "haudu",
+"meaning": "yes",
+"pos": "noun",
+"topic": "greetings",
+"lesson": 2,
+"source": "halemane",
+"example": {
+"script": "ಹೌದು, ಇದು ನನ್ನ ಮನೆ.",
+"meaning": "Yes, this is my house."
+}
+},
+{
+"id": "kn.hudugi",
+"script": "ಹುಡುಗಿ",
+"roman": "huDugi",
+"meaning": "girl",
+"pos": "noun",
+"topic": "people",
+"lesson": 2,
+"source": "halemane"
+},
+{
+"id": "kn.makkalu",
+"script": "ಮಕ್ಕಳು",
+"roman": "makkaLu",
+"meaning": "children",
+"pos": "noun",
+"topic": "family",
+"lesson": 3,
+"source": "halemane"
+},
+{
+"id": "kn.magalu",
+"script": "ಮಗಳು",
+"roman": "magaLu",
+"meaning": "daughter",
+"pos": "noun",
+"topic": "family",
+"lesson": 3,
+"source": "halemane"
+},
+{
+"id": "kn.hirimaga",
+"script": "ಹಿರಿ ಮಗ",
+"roman": "hiri maga",
+"meaning": "eldest son",
+"pos": "noun",
+"topic": "family",
+"lesson": 3,
+"source": "halemane"
+},
+{
+"id": "kn.hendati",
+"script": "ಹೆಂಡತಿ",
+"roman": "heNDati",
+"meaning": "wife",
+"pos": "noun",
+"topic": "family",
+"lesson": 3,
+"source": "halemane"
+},
+{
+"id": "kn.entha",
+"script": "ಎಂಥ",
+"roman": "entha",
+"meaning": "what type of",
+"pos": "pronoun",
+"topic": "questions",
+"lesson": 4,
+"source": "halemane"
+},
+{
+"id": "kn.olleya",
+"script": "ಒಳ್ಳೆಯ",
+"roman": "oLLeya",
+"meaning": "good",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 4,
+"source": "halemane"
+},
+{
+"id": "kn.ketta",
+"script": "ಕೆಟ್ಟ",
+"roman": "keTTa",
+"meaning": "bad",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 4,
+"source": "halemane"
+},
+{
+"id": "kn.cikka",
+"script": "ಚಿಕ್ಕ",
+"roman": "cikka",
+"meaning": "small",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.dodda",
+"script": "ದೊಡ್ಡ",
+"roman": "doDDa",
+"meaning": "big",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.badaavane",
+"script": "ಬಡಾವಣೆ",
+"roman": "baDaavaNe",
+"meaning": "residential extension",
+"pos": "noun",
+"topic": "places",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.sanna",
+"script": "ಸಣ್ಣ",
+"roman": "saNNa",
+"meaning": "small",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.hattira",
+"script": "ಹತ್ತಿರ",
+"roman": "hattira",
+"meaning": "near by",
+"pos": "noun",
+"topic": "directions",
+"lesson": 5,
+"source": "halemane",
+"example": {
+"script": "ನಿಲ್ದಾಣ ಇಲ್ಲಿಗೆ ಹತ್ತಿರ ಇದೆ.",
+"meaning": "The station is nearby here."
+}
+},
+{
+"id": "kn.haleya",
+"script": "ಹಳೆಯ",
+"roman": "haLeya",
+"meaning": "old",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.hosa",
+"script": "ಹೊಸ",
+"roman": "hosa",
+"meaning": "new",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.aramane",
+"script": "ಅರಮನೆ",
+"roman": "aramane",
+"meaning": "palace",
+"pos": "noun",
+"topic": "home",
+"lesson": 5,
+"source": "halemane",
+"art": "palace",
+"example": {
+"script": "ಮೈಸೂರಿನ ಅರಮನೆ ತುಂಬಾ ಸುಂದರ.",
+"meaning": "Mysuru Palace is very beautiful."
+}
+},
+{
+"id": "kn.gadiyaara",
+"script": "ಗಡಿಯಾರ",
+"roman": "gaDiyaara",
+"meaning": "watch / clock",
+"pos": "noun",
+"topic": "home",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.nata",
+"script": "ನಟ",
+"roman": "naTa",
+"meaning": "actor",
+"pos": "noun",
+"topic": "professions",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.nati",
+"script": "ನಟಿ",
+"roman": "naTi",
+"meaning": "actress",
+"pos": "noun",
+"topic": "professions",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.nagara",
+"script": "ನಗರ",
+"roman": "nagara",
+"meaning": "city",
+"pos": "noun",
+"topic": "places",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.naayi",
+"script": "ನಾಯಿ",
+"roman": "naayi",
+"meaning": "dog",
+"pos": "noun",
+"topic": "animals",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.pattana",
+"script": "ಪಟ್ಟಣ",
+"roman": "paTTaNa",
+"meaning": "city",
+"pos": "noun",
+"topic": "places",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.manushya",
+"script": "ಮನುಷ್ಯ",
+"roman": "manuShya",
+"meaning": "man",
+"pos": "noun",
+"topic": "people",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.hengasu",
+"script": "ಹೆಂಗಸು",
+"roman": "hengasu",
+"meaning": "woman",
+"pos": "noun",
+"topic": "people",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.ivalunannamagalu",
+"script": "ಇವಳು ನನ್ನ ಮಗಳು",
+"roman": "ivaLu nanna magaLu",
+"meaning": "she is my daughter",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.iimagunannadu",
+"script": "ಈ ಮಗು ನನ್ನದು",
+"roman": "ii magu nannadu",
+"meaning": "this child is mine",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.idunannamane",
+"script": "ಇದು ನನ್ನ ಮನೆ",
+"roman": "idu nanna mane",
+"meaning": "this is my house",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.iimanenannadu",
+"script": "ಈ ಮನೆ ನನ್ನದು",
+"roman": "ii mane nannadu",
+"meaning": "this house is mine",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.munde",
+"script": "ಮುಂದೆ",
+"roman": "munde",
+"meaning": "in front of",
+"pos": "noun",
+"topic": "directions",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.hinde",
+"script": "ಹಿಂದೆ",
+"roman": "hinde",
+"meaning": "behind",
+"pos": "noun",
+"topic": "directions",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.balapakka",
+"script": "ಬಲ ಪಕ್ಕ",
+"roman": "bala pakka",
+"meaning": "right side",
+"pos": "noun",
+"topic": "directions",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.edapakka",
+"script": "ಎಡ ಪಕ್ಕ",
+"roman": "eDa pakka",
+"meaning": "left side",
+"pos": "noun",
+"topic": "directions",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.meele",
+"script": "ಮೇಲೆ",
+"roman": "meele",
+"meaning": "above",
+"pos": "noun",
+"topic": "directions",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.kelage",
+"script": "ಕೆಳಗೆ",
+"roman": "keLage",
+"meaning": "below",
+"pos": "noun",
+"topic": "directions",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.maneyamunde",
+"script": "ಮನೆಯ ಮುಂದೆ",
+"roman": "maneya munde",
+"meaning": "in front of the house",
+"pos": "noun",
+"topic": "home",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.meejinameele",
+"script": "ಮೇಜಿನ ಮೇಲೆ",
+"roman": "meejina meele",
+"meaning": "on the table",
+"pos": "noun",
+"topic": "home",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.elli",
+"script": "ಎಲ್ಲಿ",
+"roman": "elli",
+"meaning": "where",
+"pos": "adverb",
+"topic": "questions",
+"lesson": 5,
+"source": "halemane",
+"example": {
+"script": "ನಿಮ್ಮ ಮನೆ ಎಲ್ಲಿ ಇದೆ?",
+"meaning": "Where is your house?"
+}
+},
+{
+"id": "kn.yaake",
+"script": "ಯಾಕೆ",
+"roman": "yaake",
+"meaning": "why",
+"pos": "adverb",
+"topic": "questions",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.heege",
+"script": "ಹೇಗೆ",
+"roman": "heege",
+"meaning": "how",
+"pos": "adverb",
+"topic": "questions",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.elliyaadaruu",
+"script": "ಎಲ್ಲಿಯಾದರೂ",
+"roman": "elliyaadaruu",
+"meaning": "somewhere / any where",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.yaaraadaruu",
+"script": "ಯಾರಾದರೂ",
+"roman": "yaaraadaruu",
+"meaning": "some one",
+"pos": "noun",
+"topic": "people",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.eenaadaruu",
+"script": "ಏನಾದರೂ",
+"roman": "eenaadaruu",
+"meaning": "something",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.yaakaadaruu",
+"script": "ಯಾಕಾದರೂ",
+"roman": "yaakaadaruu",
+"meaning": "for some reason",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.heegaadaruu",
+"script": "ಹೇಗಾದರೂ",
+"roman": "heegaadaruu",
+"meaning": "somehow",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.gurutu",
+"script": "ಗುರುತು",
+"roman": "gurutu",
+"meaning": "identification / land mark",
+"pos": "noun",
+"topic": "animals",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.tenginamara",
+"script": "ತೆಂಗಿನ ಮರ",
+"roman": "tengina mara",
+"meaning": "coconut tree",
+"pos": "noun",
+"topic": "nature",
+"lesson": 5,
+"source": "halemane",
+"art": "tree"
+},
+{
+"id": "kn.duura",
+"script": "ದೂರ",
+"roman": "duura",
+"meaning": "far off",
+"pos": "noun",
+"topic": "directions",
+"lesson": 5,
+"source": "halemane",
+"example": {
+"script": "ರಾಜಾಜಿನಗರ ತುಂಬಾ ದೂರ.",
+"meaning": "Rajajinagar is very far."
+}
+},
+{
+"id": "kn.baadige",
+"script": "ಬಾಡಿಗೆ",
+"roman": "baaDige",
+"meaning": "rent",
+"pos": "noun",
+"topic": "market",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.mane",
+"script": "ಮನೆ",
+"roman": "mane",
+"meaning": "house",
+"pos": "noun",
+"topic": "home",
+"lesson": 5,
+"source": "halemane",
+"art": "house",
+"example": {
+"script": "ಇದು ನನ್ನ ಮನೆ.",
+"meaning": "This is my house."
+}
+},
+{
+"id": "kn.svanta",
+"script": "ಸ್ವಂತ",
+"roman": "svanta",
+"meaning": "own",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.svalpa",
+"script": "ಸ್ವಲ್ಪ",
+"roman": "svalpa",
+"meaning": "a little",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.aane",
+"script": "ಆನೆ",
+"roman": "aane",
+"meaning": "elephant",
+"pos": "noun",
+"topic": "animals",
+"lesson": 5,
+"source": "halemane",
+"art": "elephant",
+"example": {
+"script": "ದಸರಾ ಮೆರವಣಿಗೆಯಲ್ಲಿ ಆನೆ ಬರುತ್ತದೆ.",
+"meaning": "The elephant walks in the Dasara procession."
+}
+},
+{
+"id": "kn.kannadi",
+"script": "ಕನ್ನಡಿ",
+"roman": "kannaDi",
+"meaning": "mirror",
+"pos": "noun",
+"topic": "home",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.kaadu",
+"script": "ಕಾಡು",
+"roman": "kaaDu",
+"meaning": "forest",
+"pos": "noun",
+"topic": "nature",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.kaaleeju",
+"script": "ಕಾಲೇಜು",
+"roman": "kaaleeju",
+"meaning": "college",
+"pos": "noun",
+"topic": "body",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.kitaki",
+"script": "ಕಿಟಕಿ",
+"roman": "kiTaki",
+"meaning": "window",
+"pos": "noun",
+"topic": "home",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.gani",
+"script": "ಗಣಿ",
+"roman": "gaNi",
+"meaning": "mines",
+"pos": "noun",
+"topic": "places",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.cappali",
+"script": "ಚಪ್ಪಲಿ",
+"roman": "cappali",
+"meaning": "sandals",
+"pos": "noun",
+"topic": "clothing",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.cinna",
+"script": "ಚಿನ್ನ",
+"roman": "cinna",
+"meaning": "gold",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.jaaga",
+"script": "ಜಾಗ",
+"roman": "jaaga",
+"meaning": "place",
+"pos": "noun",
+"topic": "places",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.pettige",
+"script": "ಪೆಟ್ಟಿಗೆ",
+"roman": "peTTige",
+"meaning": "box",
+"pos": "noun",
+"topic": "home",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.benkipattana",
+"script": "ಬೆಂಕಿ ಪಟ್ಟಣ",
+"roman": "benki paTTaNa",
+"meaning": "match box",
+"pos": "noun",
+"topic": "home",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.ruumu",
+"script": "ರೂಮು",
+"roman": "ruumu",
+"meaning": "room",
+"pos": "noun",
+"topic": "home",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.saikal",
+"script": "ಸೈಕಲ್",
+"roman": "saikal",
+"meaning": "cycle",
+"pos": "noun",
+"topic": "transport",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.siire",
+"script": "ಸೀರೆ",
+"roman": "siire",
+"meaning": "saree",
+"pos": "noun",
+"topic": "clothing",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.shartu",
+"script": "ಶರ್ಟು",
+"roman": "sharTu",
+"meaning": "shirt",
+"pos": "noun",
+"topic": "clothing",
+"lesson": 5,
+"source": "halemane"
+},
+{
+"id": "kn.nuuraondu",
+"script": "ನೂರ ಒಂದು",
+"roman": "nuura ondu",
+"meaning": "hundred and one",
+"pos": "number",
+"topic": "numbers",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.nuurahattu",
+"script": "ನೂರ ಹತ್ತು",
+"roman": "nuura hattu",
+"meaning": "hundred and ten",
+"pos": "number",
+"topic": "numbers",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.aidunuurahattu",
+"script": "ಐದು ನೂರ ಹತ್ತು",
+"roman": "aidu nuura hattu",
+"meaning": "five hundred and ten",
+"pos": "number",
+"topic": "numbers",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.ondusaaviradaeradu",
+"script": "ಒಂದು ಸಾವಿರದ ಎರಡು",
+"roman": "ondu saavirada eraDu",
+"meaning": "one thousand and two",
+"pos": "number",
+"topic": "numbers",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.nanagekaaphibeeku",
+"script": "ನನಗೆ ಕಾಫಿ ಬೇಕು",
+"roman": "nanage kaaphi beeku",
+"meaning": "I want coffee",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.aameele",
+"script": "ಆಮೇಲೆ",
+"roman": "aameele",
+"meaning": "after wards",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.inneenu",
+"script": "ಇನ್ನೇನು",
+"roman": "inneenu",
+"meaning": "what else",
+"pos": "pronoun",
+"topic": "questions",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.eshtu",
+"script": "ಎಷ್ಟು",
+"roman": "eShTu",
+"meaning": "how much",
+"pos": "adverb",
+"topic": "questions",
+"lesson": 6,
+"source": "halemane",
+"example": {
+"script": "ಇದಕ್ಕೆ ಎಷ್ಟು ರೂಪಾಯಿ?",
+"meaning": "How many rupees for this?"
+}
+},
+{
+"id": "kn.kadime",
+"script": "ಕಡಿಮೆ",
+"roman": "kaDime",
+"meaning": "less",
+"pos": "noun",
+"topic": "market",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.kante",
+"script": "ಕಂತೆ",
+"roman": "kante",
+"meaning": "bundle / bunch",
+"pos": "noun",
+"topic": "market",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.kottumbarisoppu",
+"script": "ಕೊತ್ತುಂಬರಿ ಸೊಪ್ಪು",
+"roman": "kottumbari soppu",
+"meaning": "coriander leaves",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.koolimotte",
+"script": "ಕೋಳಿಮೊಟ್ಟೆ",
+"roman": "kooLimoTTe",
+"meaning": "egg",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.tomyaato",
+"script": "ಟೊಮ್ಯಾಟೊ",
+"roman": "TomyaaTo",
+"meaning": "tomato",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.tarakaari",
+"script": "ತರಕಾರಿ",
+"roman": "tarakaari",
+"meaning": "vegetable",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.taajamaalu",
+"script": "ತಾಜ ಮಾಲು",
+"roman": "taaja maalu",
+"meaning": "fresh stuff",
+"pos": "noun",
+"topic": "market",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.badanekaayi",
+"script": "ಬದನೆಕಾಯಿ",
+"roman": "badanekaayi",
+"meaning": "brinjal",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "halemane",
+"art": "brinjal",
+"example": {
+"script": "ಒಂದು ಕೆಜಿ ಬದನೆಕಾಯಿಗೆ ಎಂಟು ರೂಪಾಯಿ.",
+"meaning": "Eight rupees for one kilo of brinjals."
+}
+},
+{
+"id": "kn.bele",
+"script": "ಬೆಲೆ",
+"roman": "bele",
+"meaning": "cost / price",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "halemane",
+"example": {
+"script": "ನಿಮ್ಮ ಅಂಗಡಿಯಲ್ಲಿ ಬೆಲೆ ಜಾಸ್ತಿ!",
+"meaning": "Prices are high in your shop!"
+}
+},
+{
+"id": "kn.habba",
+"script": "ಹಬ್ಬ",
+"roman": "habba",
+"meaning": "festival",
+"pos": "noun",
+"topic": "culture",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.kaalu",
+"script": "ಕಾಲು",
+"roman": "kaalu",
+"meaning": "leg",
+"pos": "noun",
+"topic": "body",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.baalehannu",
+"script": "ಬಾಳೆ ಹಣ್ಣು",
+"roman": "baaLe haNNu",
+"meaning": "banana",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "halemane",
+"art": "banana"
+},
+{
+"id": "kn.vayassu",
+"script": "ವಯಸ್ಸು",
+"roman": "vayassu",
+"meaning": "age",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.saamaanu",
+"script": "ಸಾಮಾನು",
+"roman": "saamaanu",
+"meaning": "things / articles",
+"pos": "noun",
+"topic": "market",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.sautekaayi",
+"script": "ಸೌತೆಕಾಯಿ",
+"roman": "sautekaayi",
+"meaning": "cucumber",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.huralikaayi",
+"script": "ಹುರಳಿಕಾಯಿ",
+"roman": "huraLikaayi",
+"meaning": "beans",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "halemane"
+},
+{
+"id": "kn.aduondumara",
+"script": "ಅದು ಒಂದು ಮರ",
+"roman": "adu ondu mara",
+"meaning": "that is a tree",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.avanuobbahuduga",
+"script": "ಅವನು ಒಬ್ಬ ಹುಡುಗ",
+"roman": "avanu obba huDuga",
+"meaning": "he is a boy",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.muurujana",
+"script": "ಮೂರು ಜನ",
+"roman": "muuru jana",
+"meaning": "three people",
+"pos": "number",
+"topic": "numbers",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.hattujana",
+"script": "ಹತ್ತು ಜನ",
+"roman": "hattu jana",
+"meaning": "ten people",
+"pos": "number",
+"topic": "numbers",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.nuurujana",
+"script": "ನೂರು ಜನ",
+"roman": "nuuru jana",
+"meaning": "hundred people",
+"pos": "number",
+"topic": "numbers",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.nuuraentu",
+"script": "ನೂರ ಎಂಟು",
+"roman": "nuura eNTu",
+"meaning": "hundred and eight",
+"pos": "number",
+"topic": "numbers",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.ivattu",
+"script": "ಇವತ್ತು",
+"roman": "ivattu",
+"meaning": "today",
+"pos": "noun",
+"topic": "time",
+"lesson": 7,
+"source": "halemane",
+"example": {
+"script": "ಇವತ್ತು ಹಬ್ಬದ ದಿನ.",
+"meaning": "Today is a festival day."
+}
+},
+{
+"id": "kn.gandumakkalu",
+"script": "ಗಂಡು ಮಕ್ಕಳು",
+"roman": "gaNDu makkaLu",
+"meaning": "sons",
+"pos": "noun",
+"topic": "family",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.janmadina",
+"script": "ಜನ್ಮದಿನ",
+"roman": "janmadina",
+"meaning": "birthday",
+"pos": "noun",
+"topic": "time",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.taariiku",
+"script": "ತಾರೀಕು",
+"roman": "taariiku",
+"meaning": "date",
+"pos": "noun",
+"topic": "time",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.naale",
+"script": "ನಾಳೆ",
+"roman": "naaLe",
+"meaning": "tomorrow",
+"pos": "noun",
+"topic": "time",
+"lesson": 7,
+"source": "halemane",
+"example": {
+"script": "ನಾಳೆ ಬೆಳಿಗ್ಗೆ ಸಿಗೋಣ.",
+"meaning": "Let us meet tomorrow morning."
+}
+},
+{
+"id": "kn.mangalavaara",
+"script": "ಮಂಗಳವಾರ",
+"roman": "mangaLavaara",
+"meaning": "Tuesday",
+"pos": "noun",
+"topic": "days",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.mukhyaatithi",
+"script": "ಮುಖ್ಯ ಅತಿಥಿ",
+"roman": "mukhya atithi",
+"meaning": "chief guest",
+"pos": "noun",
+"topic": "professions",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.raja",
+"script": "ರಜ",
+"roman": "raja",
+"meaning": "holiday",
+"pos": "noun",
+"topic": "time",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.vaarshikootsava",
+"script": "ವಾರ್ಷಿಕೋತ್ಸವ",
+"roman": "vaarShikootsava",
+"meaning": "annual day",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.sankhye",
+"script": "ಸಂಖ್ಯೆ",
+"roman": "sankhye",
+"meaning": "number",
+"pos": "number",
+"topic": "numbers",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.aalu",
+"script": "ಆಳು",
+"roman": "aaLu",
+"meaning": "servant",
+"pos": "noun",
+"topic": "professions",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.gante",
+"script": "ಗಂಟೆ",
+"roman": "gaNTe",
+"meaning": "hour / bell",
+"pos": "noun",
+"topic": "time",
+"lesson": 7,
+"source": "halemane",
+"example": {
+"script": "ಈಗ ಎಷ್ಟು ಗಂಟೆ ಆಯಿತು?",
+"meaning": "What time is it now?"
+}
+},
+{
+"id": "kn.guruvaara",
+"script": "ಗುರುವಾರ",
+"roman": "guruvaara",
+"meaning": "Thursday",
+"pos": "noun",
+"topic": "days",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.nimisha",
+"script": "ನಿಮಿಷ",
+"roman": "nimiSha",
+"meaning": "minute",
+"pos": "noun",
+"topic": "time",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.bekku",
+"script": "ಬೆಕ್ಕು",
+"roman": "bekku",
+"meaning": "cat",
+"pos": "noun",
+"topic": "animals",
+"lesson": 7,
+"source": "halemane",
+"art": "cat",
+"example": {
+"script": "ಬೆಕ್ಕು ಹಾಲು ಕುಡಿಯುತ್ತದೆ.",
+"meaning": "The cat drinks milk."
+}
+},
+{
+"id": "kn.budhavaara",
+"script": "ಬುಧವಾರ",
+"roman": "budhavaara",
+"meaning": "Wednesday",
+"pos": "noun",
+"topic": "days",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.bhaanuvaara",
+"script": "ಭಾನುವಾರ",
+"roman": "bhaanuvaara",
+"meaning": "Sunday",
+"pos": "noun",
+"topic": "days",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.soomavaara",
+"script": "ಸೋಮವಾರ",
+"roman": "soomavaara",
+"meaning": "Monday",
+"pos": "noun",
+"topic": "days",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.shanivaara",
+"script": "ಶನಿವಾರ",
+"roman": "shanivaara",
+"meaning": "Saturday",
+"pos": "noun",
+"topic": "days",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.shukravaara",
+"script": "ಶುಕ್ರವಾರ",
+"roman": "shukravaara",
+"meaning": "Friday",
+"pos": "noun",
+"topic": "days",
+"lesson": 7,
+"source": "halemane"
+},
+{
+"id": "kn.bili",
+"script": "ಬಿಳಿ",
+"roman": "biLi",
+"meaning": "white",
+"pos": "adjective",
+"topic": "colors",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.kempu",
+"script": "ಕೆಂಪು",
+"roman": "kempu",
+"meaning": "red",
+"pos": "adjective",
+"topic": "colors",
+"lesson": 8,
+"source": "halemane",
+"example": {
+"script": "ಕೆಂಪು ಸೇಬು ಸಿಹಿಯಾಗಿದೆ.",
+"meaning": "The red apple is sweet."
+}
+},
+{
+"id": "kn.hasiru",
+"script": "ಹಸಿರು",
+"roman": "hasiru",
+"meaning": "green",
+"pos": "adjective",
+"topic": "colors",
+"lesson": 8,
+"source": "halemane",
+"example": {
+"script": "ಮರದ ಎಲೆ ಹಸಿರು ಬಣ್ಣ.",
+"meaning": "The tree leaf is green."
+}
+},
+{
+"id": "kn.haladi",
+"script": "ಹಳದಿ",
+"roman": "haLadi",
+"meaning": "yellow",
+"pos": "adjective",
+"topic": "colors",
+"lesson": 8,
+"source": "halemane",
+"example": {
+"script": "ಹಳದಿ ಬಾಳೆಹಣ್ಣು ತಾಜಾ ಇದೆ.",
+"meaning": "The yellow banana is fresh."
+}
+},
+{
+"id": "kn.niili",
+"script": "ನೀಲಿ",
+"roman": "niili",
+"meaning": "blue",
+"pos": "adjective",
+"topic": "colors",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.ishta",
+"script": "ಇಷ್ಟ",
+"roman": "iShTa",
+"meaning": "like",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.saaku",
+"script": "ಸಾಕು",
+"roman": "saaku",
+"meaning": "enough",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.gottu",
+"script": "ಗೊತ್ತು",
+"roman": "gottu",
+"meaning": "know",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.beeda",
+"script": "ಬೇಡ",
+"roman": "beeDa",
+"meaning": "do not want",
+"pos": "noun",
+"topic": "grammar",
+"lesson": 8,
+"source": "halemane",
+"example": {
+"script": "ನನಗೆ ಸಕ್ಕರೆ ಬೇಡ.",
+"meaning": "I do not want sugar."
+}
+},
+{
+"id": "kn.ishtailla",
+"script": "ಇಷ್ಟ ಇಲ್ಲ",
+"roman": "iShTa illa",
+"meaning": "do not like",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.saalalla",
+"script": "ಸಾಲಲ್ಲ",
+"roman": "saalalla",
+"meaning": "not enough",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.gottilla",
+"script": "ಗೊತ್ತಿಲ್ಲ",
+"roman": "gottilla",
+"meaning": "do not know",
+"pos": "noun",
+"topic": "grammar",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.nanagetindibeeku",
+"script": "ನನಗೆ ತಿಂಡಿ ಬೇಕು",
+"roman": "nanage tiNDi beeku",
+"meaning": "I want tiffin",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.kappu",
+"script": "ಕಪ್ಪು",
+"roman": "kappu",
+"meaning": "black",
+"pos": "adjective",
+"topic": "colors",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.batte",
+"script": "ಬಟ್ಟೆ",
+"roman": "baTTe",
+"meaning": "cloth",
+"pos": "noun",
+"topic": "clothing",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.banna",
+"script": "ಬಣ್ಣ",
+"roman": "baNNa",
+"meaning": "colour",
+"pos": "adjective",
+"topic": "colors",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.akki",
+"script": "ಅಕ್ಕಿ",
+"roman": "akki",
+"meaning": "raw rice",
+"pos": "noun",
+"topic": "food",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.uppinakaayi",
+"script": "ಉಪ್ಪಿನಕಾಯಿ",
+"roman": "uppinakaayi",
+"meaning": "pickles",
+"pos": "noun",
+"topic": "food",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.uuta",
+"script": "ಊಟ",
+"roman": "uuTa",
+"meaning": "meals",
+"pos": "noun",
+"topic": "food",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.kaduniili",
+"script": "ಕಡು ನೀಲಿ",
+"roman": "kaDu niili",
+"meaning": "dark blue",
+"pos": "adjective",
+"topic": "colors",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.teluniili",
+"script": "ತೆಳು ನೀಲಿ",
+"roman": "teLu niili",
+"meaning": "light blue",
+"pos": "adjective",
+"topic": "colors",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.goode",
+"script": "ಗೋಡೆ",
+"roman": "gooDe",
+"meaning": "wall",
+"pos": "noun",
+"topic": "home",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.daari",
+"script": "ದಾರಿ",
+"roman": "daari",
+"meaning": "way / path",
+"pos": "noun",
+"topic": "directions",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.langa",
+"script": "ಲಂಗ",
+"roman": "langa",
+"meaning": "long skirt",
+"pos": "noun",
+"topic": "clothing",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.sampaadaka",
+"script": "ಸಂಪಾದಕ",
+"roman": "sampaadaka",
+"meaning": "editor",
+"pos": "noun",
+"topic": "professions",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.sahavaasa",
+"script": "ಸಹವಾಸ",
+"roman": "sahavaasa",
+"meaning": "companionship",
+"pos": "noun",
+"topic": "society",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.haalu",
+"script": "ಹಾಲು",
+"roman": "haalu",
+"meaning": "milk",
+"pos": "noun",
+"topic": "food",
+"lesson": 8,
+"source": "halemane"
+},
+{
+"id": "kn.toota",
+"script": "ತೋಟ",
+"roman": "tooTa",
+"meaning": "garden",
+"pos": "noun",
+"topic": "nature",
+"lesson": 9,
+"source": "halemane"
+},
+{
+"id": "kn.raatri",
+"script": "ರಾತ್ರಿ",
+"roman": "raatri",
+"meaning": "night",
+"pos": "noun",
+"topic": "time",
+"lesson": 9,
+"source": "halemane"
+},
+{
+"id": "kn.saayankaala",
+"script": "ಸಾಯಂಕಾಲ",
+"roman": "saayankaala",
+"meaning": "evening",
+"pos": "noun",
+"topic": "time",
+"lesson": 9,
+"source": "halemane"
+},
+{
+"id": "kn.olage",
+"script": "ಒಳಗೆ",
+"roman": "oLage",
+"meaning": "inside",
+"pos": "noun",
+"topic": "directions",
+"lesson": 9,
+"source": "halemane"
+},
+{
+"id": "kn.karu",
+"script": "ಕರು",
+"roman": "karu",
+"meaning": "calf",
+"pos": "noun",
+"topic": "animals",
+"lesson": 9,
+"source": "halemane",
+"art": "cow"
+},
+{
+"id": "kn.biidi",
+"script": "ಬೀದಿ",
+"roman": "biidi",
+"meaning": "street",
+"pos": "noun",
+"topic": "nature",
+"lesson": 9,
+"source": "halemane"
+},
+{
+"id": "kn.madhyaahna",
+"script": "ಮಧ್ಯಾಹ್ನ",
+"roman": "madhyaahna",
+"meaning": "afternoon",
+"pos": "noun",
+"topic": "time",
+"lesson": 9,
+"source": "halemane"
+},
+{
+"id": "kn.vaasa",
+"script": "ವಾಸ",
+"roman": "vaasa",
+"meaning": "residence / living",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 9,
+"source": "halemane"
+},
+{
+"id": "kn.hannu",
+"script": "ಹಣ್ಣು",
+"roman": "haNNu",
+"meaning": "fruit",
+"pos": "noun",
+"topic": "food",
+"lesson": 9,
+"source": "halemane",
+"art": "apple"
+},
+{
+"id": "kn.horage",
+"script": "ಹೊರಗೆ",
+"roman": "horage",
+"meaning": "outside",
+"pos": "noun",
+"topic": "directions",
+"lesson": 9,
+"source": "halemane"
+},
+{
+"id": "kn.niinubaa",
+"script": "ನೀನು ಬಾ",
+"roman": "niinu baa",
+"meaning": "you come",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.niinuhoogu",
+"script": "ನೀನು ಹೋಗು",
+"roman": "niinu hoogu",
+"meaning": "you go",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.avanuhoogali",
+"script": "ಅವನು ಹೋಗಲಿ",
+"roman": "avanu hoogali",
+"meaning": "let him go",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.avaluhoogali",
+"script": "ಅವಳು ಹೋಗಲಿ",
+"roman": "avaLu hoogali",
+"meaning": "let her go",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.avaruhoogali",
+"script": "ಅವರು ಹೋಗಲಿ",
+"roman": "avaru hoogali",
+"meaning": "let them go",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.aduhoogali",
+"script": "ಅದು ಹೋಗಲಿ",
+"roman": "adu hoogali",
+"meaning": "let it go",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.avuhoogali",
+"script": "ಅವು ಹೋಗಲಿ",
+"roman": "avu hoogali",
+"meaning": "let them go",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.naanukaaphikudiitiini",
+"script": "ನಾನು ಕಾಫಿ ಕುಡೀತೀನಿ",
+"roman": "naanu kaaphi kuDiitiini",
+"meaning": "I drink coffee",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.keelu",
+"script": "ಕೇಳು",
+"roman": "keeLu",
+"meaning": "to ask / to listen",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.togonduhoogu",
+"script": "ತೊಗೊಂಡು ಹೋಗು",
+"roman": "togoNDu hoogu",
+"meaning": "to take away",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.tagombaa",
+"script": "ತಗೊಂಬಾ",
+"roman": "tagombaa",
+"meaning": "bring (it)",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.nandibetta",
+"script": "ನಂದಿ ಬೆಟ್ಟ",
+"roman": "nandi beTTa",
+"meaning": "Nandi hills",
+"pos": "noun",
+"topic": "nature",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.puliyoogare",
+"script": "ಪುಳಿಯೋಗರೆ",
+"roman": "puLiyoogare",
+"meaning": "tamarind rice",
+"pos": "noun",
+"topic": "food",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.baa",
+"script": "ಬಾ",
+"roman": "baa",
+"meaning": "to come",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.mundinavaara",
+"script": "ಮುಂದಿನ ವಾರ",
+"roman": "mundina vaara",
+"meaning": "next week",
+"pos": "noun",
+"topic": "time",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.sigu",
+"script": "ಸಿಗು",
+"roman": "sigu",
+"meaning": "to be available",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.sihitindi",
+"script": "ಸಿಹಿ ತಿಂಡಿ",
+"roman": "sihi tiNDi",
+"meaning": "sweets",
+"pos": "noun",
+"topic": "food",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.horadu",
+"script": "ಹೊರಡು",
+"roman": "horaDu",
+"meaning": "to start",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.hoogu",
+"script": "ಹೋಗು",
+"roman": "hoogu",
+"meaning": "to go",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.iiga",
+"script": "ಈಗ",
+"roman": "iiga",
+"meaning": "now",
+"pos": "noun",
+"topic": "time",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.kudi",
+"script": "ಕುಡಿ",
+"roman": "kuDi",
+"meaning": "to drink",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.tinnu",
+"script": "ತಿನ್ನು",
+"roman": "tinnu",
+"meaning": "to eat",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.hullu",
+"script": "ಹುಲ್ಲು",
+"roman": "hullu",
+"meaning": "grass",
+"pos": "noun",
+"topic": "nature",
+"lesson": 10,
+"source": "halemane"
+},
+{
+"id": "kn.avalinagaragalu",
+"script": "ಅವಳಿ ನಗರಗಳು",
+"roman": "avaLi nagaragaLu",
+"meaning": "twin cities",
+"pos": "noun",
+"topic": "places",
+"lesson": 11,
+"source": "halemane"
+},
+{
+"id": "kn.caarju",
+"script": "ಚಾರ್ಜು",
+"roman": "caarju",
+"meaning": "fare",
+"pos": "noun",
+"topic": "market",
+"lesson": 11,
+"source": "halemane"
+},
+{
+"id": "kn.tada",
+"script": "ತಡ",
+"roman": "taDa",
+"meaning": "late",
+"pos": "noun",
+"topic": "time",
+"lesson": 11,
+"source": "halemane"
+},
+{
+"id": "kn.prayaana",
+"script": "ಪ್ರಯಾಣ",
+"roman": "prayaaNa",
+"meaning": "journey",
+"pos": "noun",
+"topic": "transport",
+"lesson": 11,
+"source": "halemane"
+},
+{
+"id": "kn.beega",
+"script": "ಬೇಗ",
+"roman": "beega",
+"meaning": "early / quickly",
+"pos": "noun",
+"topic": "time",
+"lesson": 11,
+"source": "halemane"
+},
+{
+"id": "kn.maarga",
+"script": "ಮಾರ್ಗ",
+"roman": "maarga",
+"meaning": "route / via",
+"pos": "noun",
+"topic": "directions",
+"lesson": 11,
+"source": "halemane"
+},
+{
+"id": "kn.ettara",
+"script": "ಎತ್ತರ",
+"roman": "ettara",
+"meaning": "tall",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 11,
+"source": "halemane"
+},
+{
+"id": "kn.kali",
+"script": "ಕಲಿ",
+"roman": "kali",
+"meaning": "to learn",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 11,
+"source": "halemane"
+},
+{
+"id": "kn.gulaabi",
+"script": "ಗುಲಾಬಿ",
+"roman": "gulaabi",
+"meaning": "rose",
+"pos": "noun",
+"topic": "nature",
+"lesson": 11,
+"source": "halemane"
+},
+{
+"id": "kn.dhuumapaana",
+"script": "ಧೂಮಪಾನ",
+"roman": "dhuumapaana",
+"meaning": "smoking",
+"pos": "noun",
+"topic": "professions",
+"lesson": 11,
+"source": "halemane"
+},
+{
+"id": "kn.dhairyashaali",
+"script": "ಧೈರ್ಯಶಾಲಿ",
+"roman": "dhairyashaali",
+"meaning": "brave person",
+"pos": "noun",
+"topic": "professions",
+"lesson": 11,
+"source": "halemane"
+},
+{
+"id": "kn.paksha",
+"script": "ಪಕ್ಷ",
+"roman": "pakSha",
+"meaning": "party",
+"pos": "noun",
+"topic": "culture",
+"lesson": 11,
+"source": "halemane"
+},
+{
+"id": "kn.bai",
+"script": "ಬೈ",
+"roman": "bai",
+"meaning": "to scold",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 11,
+"source": "halemane"
+},
+{
+"id": "kn.sundara",
+"script": "ಸುಂದರ",
+"roman": "sundara",
+"meaning": "beautiful",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 11,
+"source": "halemane"
+},
+{
+"id": "kn.sundari",
+"script": "ಸುಂದರಿ",
+"roman": "sundari",
+"meaning": "beautiful woman",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 11,
+"source": "halemane"
+},
+{
+"id": "kn.seevantige",
+"script": "ಸೇವಂತಿಗೆ",
+"roman": "seevantige",
+"meaning": "chrysanthemum",
+"pos": "noun",
+"topic": "nature",
+"lesson": 11,
+"source": "halemane"
+},
+{
+"id": "kn.huu",
+"script": "ಹೂ",
+"roman": "huu",
+"meaning": "flower",
+"pos": "noun",
+"topic": "nature",
+"lesson": 11,
+"source": "halemane",
+"art": "flower"
+},
+{
+"id": "kn.tinnuvudu",
+"script": "ತಿನ್ನುವುದು",
+"roman": "tinnuvudu",
+"meaning": "eating",
+"pos": "noun",
+"topic": "grammar",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.maaduvudu",
+"script": "ಮಾಡುವುದು",
+"roman": "maaDuvudu",
+"meaning": "doing",
+"pos": "noun",
+"topic": "grammar",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.keeloodalla",
+"script": "ಕೇಳೋದಲ್ಲ",
+"roman": "keeLoodalla",
+"meaning": "not to be listened",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.maadoodalla",
+"script": "ಮಾಡೋದಲ್ಲ",
+"roman": "maaDoodalla",
+"meaning": "not to be done",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.arthaaagu",
+"script": "ಅರ್ಥ ಆಗು",
+"roman": "artha aagu",
+"meaning": "to understand",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.anumaana",
+"script": "ಅನುಮಾನ",
+"roman": "anumaana",
+"meaning": "doubt",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.iisaari",
+"script": "ಈ ಸಾರಿ",
+"roman": "ii saari",
+"meaning": "this time",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.tondare",
+"script": "ತೊಂದರೆ",
+"roman": "tondare",
+"meaning": "trouble",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.prayatnapadu",
+"script": "ಪ್ರಯತ್ನಪಡು",
+"roman": "prayatnapaDu",
+"meaning": "to try",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.maataadu",
+"script": "ಮಾತಾಡು",
+"roman": "maataaDu",
+"meaning": "to speak",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.anaaroogya",
+"script": "ಅನಾರೋಗ್ಯ",
+"roman": "anaaroogya",
+"meaning": "ill health",
+"pos": "noun",
+"topic": "body",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.uli",
+"script": "ಉಳಿ",
+"roman": "uLi",
+"meaning": "to remain / to stay",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.oodu",
+"script": "ಓದು",
+"roman": "oodu",
+"meaning": "to read",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.oodu2",
+"script": "ಓಡು",
+"roman": "ooDu",
+"meaning": "to run",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.kashtapadu",
+"script": "ಕಷ್ಟಪಡು",
+"roman": "kaShTapaDu",
+"meaning": "suffer / try hard",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.galaate",
+"script": "ಗಲಾಟೆ",
+"roman": "galaaTe",
+"meaning": "noise",
+"pos": "noun",
+"topic": "society",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.jagala",
+"script": "ಜಗಳ",
+"roman": "jagaLa",
+"meaning": "quarrel",
+"pos": "noun",
+"topic": "society",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.talenoovu",
+"script": "ತಲೆ ನೋವು",
+"roman": "tale noovu",
+"meaning": "head ache",
+"pos": "noun",
+"topic": "body",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.duhkhapadu",
+"script": "ದುಃಖಪಡು",
+"roman": "duhkhapaDu",
+"meaning": "suffer",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.niiru",
+"script": "ನೀರು",
+"roman": "niiru",
+"meaning": "water",
+"pos": "noun",
+"topic": "food",
+"lesson": 12,
+"source": "halemane",
+"example": {
+"script": "ಸ್ವಲ್ಪ ಕುಡಿಯುವ ನೀರು ಕೊಡಿ.",
+"meaning": "Please give some drinking water."
+}
+},
+{
+"id": "kn.patrike",
+"script": "ಪತ್ರಿಕೆ",
+"roman": "patrike",
+"meaning": "paper / magazine",
+"pos": "noun",
+"topic": "language",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.buddhivaada",
+"script": "ಬುದ್ಧಿವಾದ",
+"roman": "buddhivaada",
+"meaning": "advice",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.madhye",
+"script": "ಮಧ್ಯೆ",
+"roman": "madhye",
+"meaning": "middle / centre",
+"pos": "noun",
+"topic": "directions",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.laabha",
+"script": "ಲಾಭ",
+"roman": "laabha",
+"meaning": "advantage / profit",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.siimehasu",
+"script": "ಸೀಮೆ ಹಸು",
+"roman": "siime hasu",
+"meaning": "hybrid cow",
+"pos": "noun",
+"topic": "animals",
+"lesson": 12,
+"source": "halemane",
+"art": "cow"
+},
+{
+"id": "kn.sukhapadu",
+"script": "ಸುಖ ಪಡು",
+"roman": "sukha paDu",
+"meaning": "enjoy",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.sulabha",
+"script": "ಸುಲಭ",
+"roman": "sulabha",
+"meaning": "easy",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.haadu",
+"script": "ಹಾಡು",
+"roman": "haaDu",
+"meaning": "song / sing",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.heelu",
+"script": "ಹೇಳು",
+"roman": "heeLu",
+"meaning": "to say",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 12,
+"source": "halemane"
+},
+{
+"id": "kn.naanuoodtiini",
+"script": "ನಾನು ಓಡ್ತೀನಿ",
+"roman": "naanu ooDtiini",
+"meaning": "I run",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.naanumalgtiini",
+"script": "ನಾನು ಮಲ್ಗ್ತೀನಿ",
+"roman": "naanu malgtiini",
+"meaning": "I sleep",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.aacarane",
+"script": "ಆಚರಣೆ",
+"roman": "aacaraNe",
+"meaning": "celebration",
+"pos": "noun",
+"topic": "culture",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.aakarshane",
+"script": "ಆಕರ್ಷಣೆ",
+"roman": "aakarShaNe",
+"meaning": "attraction",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.udghaatane",
+"script": "ಉದ್ಘಾಟನೆ",
+"roman": "udghaaTane",
+"meaning": "inauguration",
+"pos": "noun",
+"topic": "society",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.eerpaadu",
+"script": "ಏರ್ಪಾಡು",
+"roman": "eerpaaDu",
+"meaning": "arrangement",
+"pos": "noun",
+"topic": "professions",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.kriidootsava",
+"script": "ಕ್ರೀಡೋತ್ಸವ",
+"roman": "kriiDootsava",
+"meaning": "sports festival",
+"pos": "noun",
+"topic": "culture",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.jambuusavaari",
+"script": "ಜಂಬೂಸವಾರಿ",
+"roman": "jambuusavaari",
+"meaning": "elephant parade",
+"pos": "noun",
+"topic": "animals",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.diipaalankaara",
+"script": "ದೀಪಾಲಂಕಾರ",
+"roman": "diipaalankaara",
+"meaning": "illumination",
+"pos": "noun",
+"topic": "culture",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.naadahabba",
+"script": "ನಾಡಹಬ್ಬ",
+"roman": "naaDahabba",
+"meaning": "state festival",
+"pos": "noun",
+"topic": "places",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.puujisu",
+"script": "ಪೂಜಿಸು",
+"roman": "puujisu",
+"meaning": "to worship",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.manaranjane",
+"script": "ಮನರಂಜನೆ",
+"roman": "manaranjane",
+"meaning": "entertainment",
+"pos": "noun",
+"topic": "professions",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.meravanige",
+"script": "ಮೆರವಣಿಗೆ",
+"roman": "meravaNige",
+"meaning": "procession",
+"pos": "noun",
+"topic": "culture",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.raaja",
+"script": "ರಾಜ",
+"roman": "raaja",
+"meaning": "king",
+"pos": "noun",
+"topic": "professions",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.vamsha",
+"script": "ವಂಶ",
+"roman": "vamsha",
+"meaning": "family",
+"pos": "noun",
+"topic": "family",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.vastupradarshana",
+"script": "ವಸ್ತು ಪ್ರದರ್ಶನ",
+"roman": "vastu pradarshana",
+"meaning": "exhibition",
+"pos": "noun",
+"topic": "society",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.vidyuddiipa",
+"script": "ವಿದ್ಯುದ್ದೀಪ",
+"roman": "vidyuddiipa",
+"meaning": "electric bulb",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.sangiitagaararu",
+"script": "ಸಂಗೀತಗಾರರು",
+"roman": "sangiitagaararu",
+"meaning": "musicians",
+"pos": "noun",
+"topic": "professions",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.sangiitakaceeri",
+"script": "ಸಂಗೀತ ಕಚೇರಿ",
+"roman": "sangiita kaceeri",
+"meaning": "music concert",
+"pos": "noun",
+"topic": "culture",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.anukarane",
+"script": "ಅನುಕರಣೆ",
+"roman": "anukaraNe",
+"meaning": "imitation",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.kanavarisu",
+"script": "ಕನವರಿಸು",
+"roman": "kanavarisu",
+"meaning": "to talk in dreams",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.kalisu",
+"script": "ಕಲಿಸು",
+"roman": "kalisu",
+"meaning": "to teach",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.talebaacu",
+"script": "ತಲೆಬಾಚು",
+"roman": "talebaacu",
+"meaning": "comb the hair",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.toorisu",
+"script": "ತೋರಿಸು",
+"roman": "toorisu",
+"meaning": "to show",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.pratime",
+"script": "ಪ್ರತಿಮೆ",
+"roman": "pratime",
+"meaning": "statue",
+"pos": "noun",
+"topic": "culture",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.pratishthaapane",
+"script": "ಪ್ರತಿಷ್ಠಾಪನೆ",
+"roman": "pratiShThaapane",
+"meaning": "installation",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.bhaashaantara",
+"script": "ಭಾಷಾಂತರ",
+"roman": "bhaaShaantara",
+"meaning": "translation",
+"pos": "noun",
+"topic": "language",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.satya",
+"script": "ಸತ್ಯ",
+"roman": "satya",
+"meaning": "truth",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.sandarshisu",
+"script": "ಸಂದರ್ಶಿಸು",
+"roman": "sandarshisu",
+"meaning": "to interview",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.hode",
+"script": "ಹೊಡೆ",
+"roman": "hoDe",
+"meaning": "to beat",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 13,
+"source": "halemane"
+},
+{
+"id": "kn.aranya",
+"script": "ಅರಣ್ಯ",
+"roman": "araNya",
+"meaning": "forest",
+"pos": "noun",
+"topic": "nature",
+"lesson": 14,
+"source": "halemane"
+},
+{
+"id": "kn.kabbu",
+"script": "ಕಬ್ಬು",
+"roman": "kabbu",
+"meaning": "sugarcane",
+"pos": "noun",
+"topic": "food",
+"lesson": 14,
+"source": "halemane"
+},
+{
+"id": "kn.kallaru",
+"script": "ಕಳ್ಳರು",
+"roman": "kaLLaru",
+"meaning": "thieves",
+"pos": "noun",
+"topic": "professions",
+"lesson": 14,
+"source": "halemane"
+},
+{
+"id": "kn.kaagada",
+"script": "ಕಾಗದ",
+"roman": "kaagada",
+"meaning": "paper",
+"pos": "noun",
+"topic": "language",
+"lesson": 14,
+"source": "halemane"
+},
+{
+"id": "kn.kaanuunu",
+"script": "ಕಾನೂನು",
+"roman": "kaanuunu",
+"meaning": "law",
+"pos": "noun",
+"topic": "society",
+"lesson": 14,
+"source": "halemane"
+},
+{
+"id": "kn.kuuli",
+"script": "ಕೂಲಿ",
+"roman": "kuuli",
+"meaning": "labourer",
+"pos": "noun",
+"topic": "professions",
+"lesson": 14,
+"source": "halemane"
+},
+{
+"id": "kn.caraka",
+"script": "ಚರಕ",
+"roman": "caraka",
+"meaning": "spinning wheel",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 14,
+"source": "halemane"
+},
+{
+"id": "kn.caluvaligaararu",
+"script": "ಚಳುವಳಿಗಾರರು",
+"roman": "caLuvaLigaararu",
+"meaning": "agitators",
+"pos": "noun",
+"topic": "professions",
+"lesson": 14,
+"source": "halemane"
+},
+{
+"id": "kn.duranta",
+"script": "ದುರಂತ",
+"roman": "duranta",
+"meaning": "tragedy",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 14,
+"source": "halemane"
+},
+{
+"id": "kn.nadi",
+"script": "ನದಿ",
+"roman": "nadi",
+"meaning": "river",
+"pos": "noun",
+"topic": "nature",
+"lesson": 14,
+"source": "halemane"
+},
+{
+"id": "kn.patra",
+"script": "ಪತ್ರ",
+"roman": "patra",
+"meaning": "letter",
+"pos": "noun",
+"topic": "language",
+"lesson": 14,
+"source": "halemane"
+},
+{
+"id": "kn.raitaru",
+"script": "ರೈತರು",
+"roman": "raitaru",
+"meaning": "peasants",
+"pos": "noun",
+"topic": "professions",
+"lesson": 14,
+"source": "halemane"
+},
+{
+"id": "kn.vishaya",
+"script": "ವಿಷಯ",
+"roman": "viShaya",
+"meaning": "thing / matter",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 14,
+"source": "halemane"
+},
+{
+"id": "kn.sagani",
+"script": "ಸಗಣಿ",
+"roman": "sagaNi",
+"meaning": "cowdung",
+"pos": "noun",
+"topic": "animals",
+"lesson": 14,
+"source": "halemane"
+},
+{
+"id": "kn.sele",
+"script": "ಸೆಳೆ",
+"roman": "seLe",
+"meaning": "to fascinate",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 14,
+"source": "halemane"
+},
+{
+"id": "kn.saundarya",
+"script": "ಸೌಂದರ್ಯ",
+"roman": "saundarya",
+"meaning": "beauty",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 14,
+"source": "halemane"
+},
+{
+"id": "kn.hasivu",
+"script": "ಹಸಿವು",
+"roman": "hasivu",
+"meaning": "hunger",
+"pos": "noun",
+"topic": "body",
+"lesson": 14,
+"source": "halemane"
+},
+{
+"id": "kn.hola",
+"script": "ಹೊಲ",
+"roman": "hola",
+"meaning": "field",
+"pos": "noun",
+"topic": "nature",
+"lesson": 14,
+"source": "halemane"
+},
+{
+"id": "kn.jamiinu",
+"script": "ಜಮೀನು",
+"roman": "jamiinu",
+"meaning": "land",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.suttaadu",
+"script": "ಸುತ್ತಾಡು",
+"roman": "suttaaDu",
+"meaning": "to wander",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.laksha",
+"script": "ಲಕ್ಷ",
+"roman": "lakSha",
+"meaning": "lakh",
+"pos": "number",
+"topic": "numbers",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.aatmahatye",
+"script": "ಆತ್ಮಹತ್ಯೆ",
+"roman": "aatmahatye",
+"meaning": "suicide",
+"pos": "noun",
+"topic": "society",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.idu",
+"script": "ಇಡು",
+"roman": "iDu",
+"meaning": "to keep",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.unnu",
+"script": "ಉಣ್ಣು",
+"roman": "uNNu",
+"meaning": "to eat meals",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.aishvarya",
+"script": "ಐಶ್ವರ್ಯ",
+"roman": "aishvarya",
+"meaning": "wealth",
+"pos": "noun",
+"topic": "market",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.kattisu",
+"script": "ಕಟ್ಟಿಸು",
+"roman": "kaTTisu",
+"meaning": "to build",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.katte",
+"script": "ಕತ್ತೆ",
+"roman": "katte",
+"meaning": "donkey",
+"pos": "noun",
+"topic": "animals",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.kalla",
+"script": "ಕಳ್ಳ",
+"roman": "kaLLa",
+"meaning": "thief",
+"pos": "noun",
+"topic": "professions",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.kedu",
+"script": "ಕೆಡು",
+"roman": "keDu",
+"meaning": "to be spoiled",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.guundaagalu",
+"script": "ಗೂಂಡಾಗಳು",
+"roman": "guuNDaagaLu",
+"meaning": "hoodlums",
+"pos": "noun",
+"topic": "society",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.todu",
+"script": "ತೊಡು",
+"roman": "toDu",
+"meaning": "to put on clothes",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.daana",
+"script": "ದಾನ",
+"roman": "daana",
+"meaning": "charity",
+"pos": "noun",
+"topic": "culture",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.nedu",
+"script": "ನೆಡು",
+"roman": "neDu",
+"meaning": "to plant",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.patrakartaru",
+"script": "ಪತ್ರಕರ್ತರು",
+"roman": "patrakartaru",
+"meaning": "journalists",
+"pos": "noun",
+"topic": "professions",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.bahumaana",
+"script": "ಬಹುಮಾನ",
+"roman": "bahumaana",
+"meaning": "prize",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.beeli",
+"script": "ಬೇಲಿ",
+"roman": "beeli",
+"meaning": "fence",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.raagimudde",
+"script": "ರಾಗಿ ಮುದ್ದೆ",
+"roman": "raagi mudde",
+"meaning": "ragi balls",
+"pos": "noun",
+"topic": "food",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.sarkaara",
+"script": "ಸರ್ಕಾರ",
+"roman": "sarkaara",
+"meaning": "government",
+"pos": "noun",
+"topic": "professions",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.sahaavaasa",
+"script": "ಸಹಾವಾಸ",
+"roman": "sahaavaasa",
+"meaning": "company",
+"pos": "noun",
+"topic": "society",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.svaatantrya",
+"script": "ಸ್ವಾತಂತ್ರ್ಯ",
+"roman": "svaatantrya",
+"meaning": "independence",
+"pos": "noun",
+"topic": "society",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.sudu",
+"script": "ಸುಡು",
+"roman": "suDu",
+"meaning": "to burn",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.suuryagrahana",
+"script": "ಸೂರ್ಯಗ್ರಹಣ",
+"roman": "suuryagrahaNa",
+"meaning": "solar eclipse",
+"pos": "noun",
+"topic": "nature",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.haavu",
+"script": "ಹಾವು",
+"roman": "haavu",
+"meaning": "snake",
+"pos": "noun",
+"topic": "animals",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.hunnu",
+"script": "ಹುಣ್ಣು",
+"roman": "huNNu",
+"meaning": "wound",
+"pos": "noun",
+"topic": "body",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.hotte",
+"script": "ಹೊಟ್ಟೆ",
+"roman": "hoTTe",
+"meaning": "stomach",
+"pos": "noun",
+"topic": "body",
+"lesson": 15,
+"source": "halemane"
+},
+{
+"id": "kn.abhyaasa",
+"script": "ಅಭ್ಯಾಸ",
+"roman": "abhyaasa",
+"meaning": "practice / habit",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.kelavomme",
+"script": "ಕೆಲವೊಮ್ಮೆ",
+"roman": "kelavomme",
+"meaning": "sometime",
+"pos": "noun",
+"topic": "time",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.tanniiru",
+"script": "ತಣ್ಣೀರು",
+"roman": "taNNiiru",
+"meaning": "cold water",
+"pos": "noun",
+"topic": "food",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.bisiniiru",
+"script": "ಬಿಸಿ ನೀರು",
+"roman": "bisi niiru",
+"meaning": "hot water",
+"pos": "noun",
+"topic": "food",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.snaanamaadu",
+"script": "ಸ್ನಾನ ಮಾಡು",
+"roman": "snaana maaDu",
+"meaning": "to take bath",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.haratehodi",
+"script": "ಹರಟೆ ಹೊಡಿ",
+"roman": "haraTe hoDi",
+"meaning": "to chat",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.hallu",
+"script": "ಹಲ್ಲು",
+"roman": "hallu",
+"meaning": "teeth",
+"pos": "noun",
+"topic": "body",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.halluujju",
+"script": "ಹಲ್ಲು ಉಜ್ಜು",
+"roman": "hallu ujju",
+"meaning": "to brush the teeth",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.ettu",
+"script": "ಎತ್ತು",
+"roman": "ettu",
+"meaning": "bullock",
+"pos": "noun",
+"topic": "animals",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.aushadha",
+"script": "ಔಷಧ",
+"roman": "auShadha",
+"meaning": "medicine",
+"pos": "noun",
+"topic": "body",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.kaccu",
+"script": "ಕಚ್ಚು",
+"roman": "kaccu",
+"meaning": "to bite",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.kemmu",
+"script": "ಕೆಮ್ಮು",
+"roman": "kemmu",
+"meaning": "to cough",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.kai",
+"script": "ಕೈ",
+"roman": "kai",
+"meaning": "hand",
+"pos": "noun",
+"topic": "body",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.gida",
+"script": "ಗಿಡ",
+"roman": "giDa",
+"meaning": "plant",
+"pos": "noun",
+"topic": "nature",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.tale",
+"script": "ತಲೆ",
+"roman": "tale",
+"meaning": "head",
+"pos": "noun",
+"topic": "body",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.duddu",
+"script": "ದುಡ್ಡು",
+"roman": "duDDu",
+"meaning": "money",
+"pos": "noun",
+"topic": "market",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.deevaru",
+"script": "ದೇವರು",
+"roman": "deevaru",
+"meaning": "god",
+"pos": "noun",
+"topic": "culture",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.puuje",
+"script": "ಪೂಜೆ",
+"roman": "puuje",
+"meaning": "worship",
+"pos": "noun",
+"topic": "culture",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.baddi",
+"script": "ಬಡ್ಡಿ",
+"roman": "baDDi",
+"meaning": "interest",
+"pos": "noun",
+"topic": "market",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.bele2",
+"script": "ಬೆಳೆ",
+"roman": "beLe",
+"meaning": "crop",
+"pos": "noun",
+"topic": "nature",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.baalegida",
+"script": "ಬಾಳೆಗಿಡ",
+"roman": "baaLegiDa",
+"meaning": "plantain tree",
+"pos": "noun",
+"topic": "food",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.bogalu",
+"script": "ಬೊಗಳು",
+"roman": "bogaLu",
+"meaning": "to bark",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.bhaashana",
+"script": "ಭಾಷಣ",
+"roman": "bhaaShaNa",
+"meaning": "speech",
+"pos": "noun",
+"topic": "language",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.male",
+"script": "ಮಳೆ",
+"roman": "maLe",
+"meaning": "rain",
+"pos": "noun",
+"topic": "nature",
+"lesson": 16,
+"source": "halemane",
+"art": "rain",
+"example": {
+"script": "ಮಳೆ ಬಂದರೆ ಬೆಳೆ.",
+"meaning": "If it rains, crops flourish."
+}
+},
+{
+"id": "kn.manca",
+"script": "ಮಂಚ",
+"roman": "manca",
+"meaning": "cot",
+"pos": "noun",
+"topic": "home",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.mukha",
+"script": "ಮುಖ",
+"roman": "mukha",
+"meaning": "face",
+"pos": "noun",
+"topic": "body",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.saala",
+"script": "ಸಾಲ",
+"roman": "saala",
+"meaning": "loan",
+"pos": "noun",
+"topic": "market",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.hanakattu",
+"script": "ಹಣ ಕಟ್ಟು",
+"roman": "haNa kaTTu",
+"meaning": "to pay money",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.huccu",
+"script": "ಹುಚ್ಚು",
+"roman": "huccu",
+"meaning": "madness",
+"pos": "noun",
+"topic": "body",
+"lesson": 16,
+"source": "halemane"
+},
+{
+"id": "kn.maadtaaidda",
+"script": "ಮಾಡ್ತಾ ಇದ್ದ",
+"roman": "maaDtaa idda",
+"meaning": "he was doing",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.maadtaairtiini",
+"script": "ಮಾಡ್ತಾ ಇರ್ತೀನಿ",
+"roman": "maaDtaa irtiini",
+"meaning": "I will be doing",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.tintaairtiini",
+"script": "ತಿಂತಾ ಇರ್ತೀನಿ",
+"roman": "tintaa irtiini",
+"meaning": "I will be eating",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.maadtaailla",
+"script": "ಮಾಡ್ತಾ ಇಲ್ಲ",
+"roman": "maaDtaa illa",
+"meaning": "not doing",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.tintaailla",
+"script": "ತಿಂತಾ ಇಲ್ಲ",
+"roman": "tintaa illa",
+"meaning": "not eating",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.maadtaairalilla",
+"script": "ಮಾಡ್ತಾ ಇರಲಿಲ್ಲ",
+"roman": "maaDtaa iralilla",
+"meaning": "was not doing",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.tintaairalilla",
+"script": "ತಿಂತಾ ಇರಲಿಲ್ಲ",
+"roman": "tintaa iralilla",
+"meaning": "was not eating",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.maadtaairalla",
+"script": "ಮಾಡ್ತಾ ಇರಲ್ಲ",
+"roman": "maaDtaa iralla",
+"meaning": "will not be doing",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.tintaairalla",
+"script": "ತಿಂತಾ ಇರಲ್ಲ",
+"roman": "tintaa iralla",
+"meaning": "will not be eating",
+"pos": "phrase",
+"topic": "grammar",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.aagaagge",
+"script": "ಆಗಾಗ್ಗೆ",
+"roman": "aagaagge",
+"meaning": "now and then",
+"pos": "noun",
+"topic": "time",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.ondondusaari",
+"script": "ಒಂದೊಂದು ಸಾರಿ",
+"roman": "ondondu saari",
+"meaning": "once in a while",
+"pos": "noun",
+"topic": "time",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.kelasamaadu",
+"script": "ಕೆಲಸ ಮಾಡು",
+"roman": "kelasa maaDu",
+"meaning": "to work",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.adbhutavaagi",
+"script": "ಅದ್ಭುತವಾಗಿ",
+"roman": "adbhutavaagi",
+"meaning": "splendidly",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.rushi",
+"script": "ಋಷಿ",
+"roman": "ruShi",
+"meaning": "sage",
+"pos": "noun",
+"topic": "professions",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.kedisu",
+"script": "ಕೆಡಿಸು",
+"roman": "keDisu",
+"meaning": "to spoil",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.tapassu",
+"script": "ತಪಸ್ಸು",
+"roman": "tapassu",
+"meaning": "penance",
+"pos": "noun",
+"topic": "culture",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.naatyamaadu",
+"script": "ನಾಟ್ಯಮಾಡು",
+"roman": "naaTyamaaDu",
+"meaning": "to dance",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.yuddha",
+"script": "ಯುದ್ಧ",
+"roman": "yuddha",
+"meaning": "battle",
+"pos": "noun",
+"topic": "society",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.raakshasa",
+"script": "ರಾಕ್ಷಸ",
+"roman": "raakShasa",
+"meaning": "demon",
+"pos": "noun",
+"topic": "professions",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.sakkare",
+"script": "ಸಕ್ಕರೆ",
+"roman": "sakkare",
+"meaning": "sugar",
+"pos": "noun",
+"topic": "food",
+"lesson": 17,
+"source": "halemane"
+},
+{
+"id": "kn.attige",
+"script": "ಅತ್ತಿಗೆ",
+"roman": "attige",
+"meaning": "sister - in - law",
+"pos": "noun",
+"topic": "family",
+"lesson": 18,
+"source": "halemane"
+},
+{
+"id": "kn.ulidukollu",
+"script": "ಉಳಿದುಕೊಳ್ಳು",
+"roman": "uLidukoLLu",
+"meaning": "to stay",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 18,
+"source": "halemane"
+},
+{
+"id": "kn.adhikaari",
+"script": "ಅಧಿಕಾರಿ",
+"roman": "adhikaari",
+"meaning": "officer",
+"pos": "noun",
+"topic": "professions",
+"lesson": 18,
+"source": "halemane"
+},
+{
+"id": "kn.naalkaane",
+"script": "ನಾಲ್ಕಾಣೆ",
+"roman": "naalkaaNe",
+"meaning": "four annas",
+"pos": "number",
+"topic": "numbers",
+"lesson": 18,
+"source": "halemane"
+},
+{
+"id": "kn.nungu",
+"script": "ನುಂಗು",
+"roman": "nungu",
+"meaning": "to swallow",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 18,
+"source": "halemane"
+},
+{
+"id": "kn.prabandha",
+"script": "ಪ್ರಬಂಧ",
+"roman": "prabandha",
+"meaning": "essay",
+"pos": "noun",
+"topic": "language",
+"lesson": 18,
+"source": "halemane"
+},
+{
+"id": "kn.pravaasa",
+"script": "ಪ್ರವಾಸ",
+"roman": "pravaasa",
+"meaning": "tour",
+"pos": "noun",
+"topic": "transport",
+"lesson": 18,
+"source": "halemane"
+},
+{
+"id": "kn.moosa",
+"script": "ಮೋಸ",
+"roman": "moosa",
+"meaning": "cheating",
+"pos": "noun",
+"topic": "food",
+"lesson": 18,
+"source": "halemane"
+},
+{
+"id": "kn.roogi",
+"script": "ರೋಗಿ",
+"roman": "roogi",
+"meaning": "patient",
+"pos": "noun",
+"topic": "professions",
+"lesson": 18,
+"source": "halemane"
+},
+{
+"id": "kn.lanca",
+"script": "ಲಂಚ",
+"roman": "lanca",
+"meaning": "bribe",
+"pos": "noun",
+"topic": "society",
+"lesson": 18,
+"source": "halemane"
+},
+{
+"id": "kn.sullu",
+"script": "ಸುಳ್ಳು",
+"roman": "suLLu",
+"meaning": "lie",
+"pos": "noun",
+"topic": "society",
+"lesson": 18,
+"source": "halemane"
+},
+{
+"id": "kn.anubhava",
+"script": "ಅನುಭವ",
+"roman": "anubhava",
+"meaning": "experience",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.aparuupa",
+"script": "ಅಪರೂಪ",
+"roman": "aparuupa",
+"meaning": "rare",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.apaara",
+"script": "ಅಪಾರ",
+"roman": "apaara",
+"meaning": "plenty",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.aakramana",
+"script": "ಆಕ್ರಮಣ",
+"roman": "aakramaNa",
+"meaning": "attack",
+"pos": "noun",
+"topic": "society",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.aanandisu",
+"script": "ಆನಂದಿಸು",
+"roman": "aanandisu",
+"meaning": "to enjoy",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.kattu",
+"script": "ಕಟ್ಟು",
+"roman": "kaTTu",
+"meaning": "to build",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.kaanike",
+"script": "ಕಾಣಿಕೆ",
+"roman": "kaaNike",
+"meaning": "gift",
+"pos": "noun",
+"topic": "culture",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.kusurikelasa",
+"script": "ಕುಸುರಿ ಕೆಲಸ",
+"roman": "kusuri kelasa",
+"meaning": "subtle carving",
+"pos": "noun",
+"topic": "transport",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.keendra",
+"script": "ಕೇಂದ್ರ",
+"roman": "keendra",
+"meaning": "centre",
+"pos": "noun",
+"topic": "directions",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.jagatprasiddha",
+"script": "ಜಗತ್ಪ್ರಸಿದ್ಧ",
+"roman": "jagatprasiddha",
+"meaning": "world famous",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.jagali",
+"script": "ಜಗಲಿ",
+"roman": "jagali",
+"meaning": "platform",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.dandanaayaka",
+"script": "ದಂಡನಾಯಕ",
+"roman": "daNDanaayaka",
+"meaning": "commander in chief",
+"pos": "noun",
+"topic": "professions",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.daalimaadu",
+"script": "ದಾಳಿ ಮಾಡು",
+"roman": "daaLi maaDu",
+"meaning": "to invade",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.drushya",
+"script": "ದೃಶ್ಯ",
+"roman": "drushya",
+"meaning": "scene",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.deevasthaana",
+"script": "ದೇವಸ್ಥಾನ",
+"roman": "deevasthaana",
+"meaning": "temple",
+"pos": "noun",
+"topic": "places",
+"lesson": 19,
+"source": "halemane",
+"art": "temple",
+"example": {
+"script": "ಬೇಲೂರಿನಲ್ಲಿ ಹೊಯ್ಸಳ ದೇವಸ್ಥಾನ ಇದೆ.",
+"meaning": "There is a Hoysala temple in Belur."
+}
+},
+{
+"id": "kn.natadrushta",
+"script": "ನತದೃಷ್ಟ",
+"roman": "natadruShTa",
+"meaning": "unfortunate person",
+"pos": "noun",
+"topic": "professions",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.naya",
+"script": "ನಯ",
+"roman": "naya",
+"meaning": "fine, soft",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.nakshatraakaara",
+"script": "ನಕ್ಷತ್ರಾಕಾರ",
+"roman": "nakShatraakaara",
+"meaning": "star shape",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.naatyakale",
+"script": "ನಾಟ್ಯಕಲೆ",
+"roman": "naaTyakale",
+"meaning": "art of dance",
+"pos": "noun",
+"topic": "culture",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.naatyaraani",
+"script": "ನಾಟ್ಯರಾಣಿ",
+"roman": "naaTyaraaNi",
+"meaning": "queen of dance",
+"pos": "noun",
+"topic": "culture",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.nirnayisu",
+"script": "ನಿರ್ಣಯಿಸು",
+"roman": "nirNayisu",
+"meaning": "to decide",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.pade",
+"script": "ಪಡೆ",
+"roman": "paDe",
+"meaning": "to possess",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.basava",
+"script": "ಬಸವ",
+"roman": "basava",
+"meaning": "bull",
+"pos": "noun",
+"topic": "animals",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.balapadakallu",
+"script": "ಬಳಪದ ಕಲ್ಲು",
+"roman": "baLapada kallu",
+"meaning": "soap stone",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.birudu",
+"script": "ಬಿರುದು",
+"roman": "birudu",
+"meaning": "title",
+"pos": "noun",
+"topic": "culture",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.beesara",
+"script": "ಬೇಸರ",
+"roman": "beesara",
+"meaning": "boredom",
+"pos": "noun",
+"topic": "nature",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.maralu",
+"script": "ಮರಳು",
+"roman": "maraLu",
+"meaning": "sand",
+"pos": "noun",
+"topic": "nature",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.mere",
+"script": "ಮೆರೆ",
+"roman": "mere",
+"meaning": "to proclaim",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.raajyabhaaramaadu",
+"script": "ರಾಜ್ಯಭಾರ ಮಾಡು",
+"roman": "raajyabhaara maaDu",
+"meaning": "to rule",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.vaastushilpa",
+"script": "ವಾಸ್ತುಶಿಲ್ಪ",
+"roman": "vaastushilpa",
+"meaning": "architecture",
+"pos": "noun",
+"topic": "culture",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.vividhabhangi",
+"script": "ವಿವಿಧ ಭಂಗಿ",
+"roman": "vividha bhangi",
+"meaning": "various postures",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.vruttaakaara",
+"script": "ವೃತ್ತಾಕಾರ",
+"roman": "vruttaakaara",
+"meaning": "circular",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.sangama",
+"script": "ಸಂಗಮ",
+"roman": "sangama",
+"meaning": "confluence",
+"pos": "noun",
+"topic": "nature",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.suvarnayuga",
+"script": "ಸುವರ್ಣಯುಗ",
+"roman": "suvarNayuga",
+"meaning": "golden age",
+"pos": "noun",
+"topic": "culture",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.saukarya",
+"script": "ಸೌಕರ್ಯ",
+"roman": "saukarya",
+"meaning": "facility",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.shilpi",
+"script": "ಶಿಲ್ಪಿ",
+"roman": "shilpi",
+"meaning": "sculptor",
+"pos": "noun",
+"topic": "professions",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.shilpikale",
+"script": "ಶಿಲ್ಪಿಕಲೆ",
+"roman": "shilpikale",
+"meaning": "architecture",
+"pos": "noun",
+"topic": "culture",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.shilaabaalike",
+"script": "ಶಿಲಾಬಾಲಿಕೆ",
+"roman": "shilaabaalike",
+"meaning": "stone-carved maidens",
+"pos": "noun",
+"topic": "transport",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.shreeshtha",
+"script": "ಶ್ರೇಷ್ಠ",
+"roman": "shreeShTha",
+"meaning": "superior",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.shaili",
+"script": "ಶೈಲಿ",
+"roman": "shaili",
+"meaning": "style",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.haalaagu",
+"script": "ಹಾಳಾಗು",
+"roman": "haaLaagu",
+"meaning": "to ruin",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.agasa",
+"script": "ಅಗಸ",
+"roman": "agasa",
+"meaning": "washerman",
+"pos": "noun",
+"topic": "professions",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.aadu",
+"script": "ಆಡು",
+"roman": "aaDu",
+"meaning": "goat",
+"pos": "noun",
+"topic": "animals",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.edavu",
+"script": "ಎಡವು",
+"roman": "eDavu",
+"meaning": "to trip over",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.kasagudisu",
+"script": "ಕಸ ಗುಡಿಸು",
+"roman": "kasa guDisu",
+"meaning": "to sweep",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.kumbaara",
+"script": "ಕುಂಬಾರ",
+"roman": "kumbaara",
+"meaning": "potter",
+"pos": "noun",
+"topic": "professions",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.cammaara",
+"script": "ಚಮ್ಮಾರ",
+"roman": "cammaara",
+"meaning": "cobbler",
+"pos": "noun",
+"topic": "professions",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.kammaara",
+"script": "ಕಮ್ಮಾರ",
+"roman": "kammaara",
+"meaning": "blacksmith",
+"pos": "noun",
+"topic": "professions",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.darji",
+"script": "ದರ್ಜಿ",
+"roman": "darji",
+"meaning": "tailor",
+"pos": "noun",
+"topic": "professions",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.nade",
+"script": "ನಡೆ",
+"roman": "naDe",
+"meaning": "to walk",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.badagi",
+"script": "ಬಡಗಿ",
+"roman": "baDagi",
+"meaning": "carpenter",
+"pos": "noun",
+"topic": "professions",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.madake",
+"script": "ಮಡಕೆ",
+"roman": "maDake",
+"meaning": "pot",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.mantrimandala",
+"script": "ಮಂತ್ರಿ ಮಂಡಲ",
+"roman": "mantri maNDala",
+"meaning": "cabinet",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.yoogya",
+"script": "ಯೋಗ್ಯ",
+"roman": "yoogya",
+"meaning": "fit",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.saahitya",
+"script": "ಸಾಹಿತ್ಯ",
+"roman": "saahitya",
+"meaning": "literary form",
+"pos": "noun",
+"topic": "culture",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.hinjari",
+"script": "ಹಿಂಜರಿ",
+"roman": "hinjari",
+"meaning": "to flinch",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 19,
+"source": "halemane"
+},
+{
+"id": "kn.adhyakshate",
+"script": "ಅಧ್ಯಕ್ಷತೆ",
+"roman": "adhyakShate",
+"meaning": "presiding",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 21,
+"source": "halemane"
+},
+{
+"id": "kn.aaraama",
+"script": "ಆರಾಮ",
+"roman": "aaraama",
+"meaning": "leisurely",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 21,
+"source": "halemane"
+},
+{
+"id": "kn.vidyaamantri",
+"script": "ವಿದ್ಯಾಮಂತ್ರಿ",
+"roman": "vidyaamantri",
+"meaning": "education minister",
+"pos": "noun",
+"topic": "professions",
+"lesson": 21,
+"source": "halemane"
+},
+{
+"id": "kn.vivaravaagi",
+"script": "ವಿವರವಾಗಿ",
+"roman": "vivaravaagi",
+"meaning": "in detail",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 21,
+"source": "halemane"
+},
+{
+"id": "kn.abhinaya",
+"script": "ಅಭಿನಯ",
+"roman": "abhinaya",
+"meaning": "acting",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 21,
+"source": "halemane"
+},
+{
+"id": "kn.dappa",
+"script": "ದಪ್ಪ",
+"roman": "dappa",
+"meaning": "fat",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 21,
+"source": "halemane"
+},
+{
+"id": "kn.paatra",
+"script": "ಪಾತ್ರ",
+"roman": "paatra",
+"meaning": "character",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 21,
+"source": "halemane"
+},
+{
+"id": "kn.raajyapaala",
+"script": "ರಾಜ್ಯಪಾಲ",
+"roman": "raajyapaala",
+"meaning": "governor",
+"pos": "noun",
+"topic": "professions",
+"lesson": 21,
+"source": "halemane"
+},
+{
+"id": "kn.sukhavaagi",
+"script": "ಸುಖವಾಗಿ",
+"roman": "sukhavaagi",
+"meaning": "happily",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 21,
+"source": "halemane"
+},
+{
+"id": "kn.ajaraamara",
+"script": "ಅಜರಾಮರ",
+"roman": "ajaraamara",
+"meaning": "immortal",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.anekatte",
+"script": "ಅಣೆಕಟ್ಟೆ",
+"roman": "aNekaTTe",
+"meaning": "dam",
+"pos": "noun",
+"topic": "places",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.aduru",
+"script": "ಅದುರು",
+"roman": "aduru",
+"meaning": "ore",
+"pos": "noun",
+"topic": "nature",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.abhayaaranya",
+"script": "ಅಭಯಾರಣ್ಯ",
+"roman": "abhayaaraNya",
+"meaning": "wildlife sanctuary",
+"pos": "noun",
+"topic": "places",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.ale",
+"script": "ಅಳೆ",
+"roman": "aLe",
+"meaning": "to measure",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.aadumaatu",
+"script": "ಆಡು ಮಾತು",
+"roman": "aaDu maatu",
+"meaning": "spoken language",
+"pos": "noun",
+"topic": "language",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.aadi",
+"script": "ಆದಿ",
+"roman": "aadi",
+"meaning": "beginning, first",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.ilisu",
+"script": "ಇಳಿಸು",
+"roman": "iLisu",
+"meaning": "to bring down",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.utpaadisu",
+"script": "ಉತ್ಪಾದಿಸು",
+"roman": "utpaadisu",
+"meaning": "to produce",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.eelakki",
+"script": "ಏಲಕ್ಕಿ",
+"roman": "eelakki",
+"meaning": "cardamom",
+"pos": "noun",
+"topic": "food",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.eerisu",
+"script": "ಏರಿಸು",
+"roman": "eerisu",
+"meaning": "to raise",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.katuvaagi",
+"script": "ಕಟುವಾಗಿ",
+"roman": "kaTuvaagi",
+"meaning": "bitterly",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.kadale",
+"script": "ಕಡಲೆ",
+"roman": "kaDale",
+"meaning": "bengal Gram",
+"pos": "noun",
+"topic": "food",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.kabbina",
+"script": "ಕಬ್ಬಿಣ",
+"roman": "kabbiNa",
+"meaning": "iron",
+"pos": "noun",
+"topic": "nature",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.karaavali",
+"script": "ಕರಾವಳಿ",
+"roman": "karaavaLi",
+"meaning": "coastal",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.kaarkhaane",
+"script": "ಕಾರ್ಖಾನೆ",
+"roman": "kaarkhaane",
+"meaning": "factory",
+"pos": "noun",
+"topic": "professions",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.kaademme",
+"script": "ಕಾಡೆಮ್ಮೆ",
+"roman": "kaaDemme",
+"meaning": "bison",
+"pos": "noun",
+"topic": "animals",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.kaapaadu",
+"script": "ಕಾಪಾಡು",
+"roman": "kaapaaDu",
+"meaning": "to protect",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.kaaryaalaya",
+"script": "ಕಾರ್ಯಾಲಯ",
+"roman": "kaaryaalaya",
+"meaning": "secretariat",
+"pos": "noun",
+"topic": "places",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.kraantipurusharu",
+"script": "ಕ್ರಾಂತಿ ಪುರುಷರು",
+"roman": "kraanti puruSharu",
+"meaning": "revolutionary men",
+"pos": "noun",
+"topic": "professions",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.kulaguru",
+"script": "ಕುಲಗುರು",
+"roman": "kulaguru",
+"meaning": "patron saint",
+"pos": "noun",
+"topic": "culture",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.kaigaarike",
+"script": "ಕೈಗಾರಿಕೆ",
+"roman": "kaigaarike",
+"meaning": "industry",
+"pos": "noun",
+"topic": "market",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.khanija",
+"script": "ಖನಿಜ",
+"roman": "khanija",
+"meaning": "mineral",
+"pos": "noun",
+"topic": "nature",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.gandhadaennekaarkhaane",
+"script": "ಗಂಧದ ಎಣ್ಣೆ ಕಾರ್ಖಾನೆ",
+"roman": "gandhada eNNe kaarkhaane",
+"meaning": "sandalwood oil factory",
+"pos": "noun",
+"topic": "professions",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.giridhaama",
+"script": "ಗಿರಿಧಾಮ",
+"roman": "giridhaama",
+"meaning": "hill station",
+"pos": "noun",
+"topic": "nature",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.goodambi",
+"script": "ಗೋಡಂಬಿ",
+"roman": "gooDambi",
+"meaning": "cashew",
+"pos": "noun",
+"topic": "food",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.ghataka",
+"script": "ಘಟಕ",
+"roman": "ghaTaka",
+"meaning": "unit",
+"pos": "noun",
+"topic": "market",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.cirate",
+"script": "ಚಿರತೆ",
+"roman": "cirate",
+"meaning": "cheetah",
+"pos": "noun",
+"topic": "animals",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.caukattu",
+"script": "ಚೌಕಟ್ಟು",
+"roman": "caukaTTu",
+"meaning": "frame",
+"pos": "noun",
+"topic": "home",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.jaati",
+"script": "ಜಾತಿ",
+"roman": "jaati",
+"meaning": "caste",
+"pos": "noun",
+"topic": "culture",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.jinke",
+"script": "ಜಿಂಕೆ",
+"roman": "jinke",
+"meaning": "deer",
+"pos": "noun",
+"topic": "animals",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.joola",
+"script": "ಜೋಳ",
+"roman": "jooLa",
+"meaning": "jowar",
+"pos": "noun",
+"topic": "food",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.tiddu",
+"script": "ತಿದ್ದು",
+"roman": "tiddu",
+"meaning": "to correct",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.teega",
+"script": "ತೇಗ",
+"roman": "teega",
+"meaning": "teak",
+"pos": "noun",
+"topic": "food",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.dattavaada",
+"script": "ದಟ್ಟವಾದ",
+"roman": "daTTavaada",
+"meaning": "dense",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.doraku",
+"script": "ದೊರಕು",
+"roman": "doraku",
+"meaning": "available",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.doosha",
+"script": "ದೋಷ",
+"roman": "dooSha",
+"meaning": "flaw",
+"pos": "noun",
+"topic": "society",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.dhaarmikamukhandaru",
+"script": "ಧಾರ್ಮಿಕ ಮುಖಂಡರು",
+"roman": "dhaarmika mukhaNDaru",
+"meaning": "religious leaders",
+"pos": "noun",
+"topic": "professions",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.naadaadi",
+"script": "ನಾಡಾಡಿ",
+"roman": "naaDaaDi",
+"meaning": "itinerant",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.naisargika",
+"script": "ನೈಸರ್ಗಿಕ",
+"roman": "naisargika",
+"meaning": "natural",
+"pos": "noun",
+"topic": "nature",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.parampare",
+"script": "ಪರಂಪರೆ",
+"roman": "parampare",
+"meaning": "tradition",
+"pos": "noun",
+"topic": "culture",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.prabuddha",
+"script": "ಪ್ರಬುದ್ಧ",
+"roman": "prabuddha",
+"meaning": "mature",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.prashasti",
+"script": "ಪ್ರಶಸ್ತಿ",
+"roman": "prashasti",
+"meaning": "award",
+"pos": "noun",
+"topic": "culture",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.pooshisu",
+"script": "ಪೋಷಿಸು",
+"roman": "pooShisu",
+"meaning": "to nourish",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.prootsaahisu",
+"script": "ಪ್ರೋತ್ಸಾಹಿಸು",
+"roman": "prootsaahisu",
+"meaning": "to encourage",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.bandaru",
+"script": "ಬಂದರು",
+"roman": "bandaru",
+"meaning": "harbour",
+"pos": "noun",
+"topic": "places",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.bruhatkaigaarike",
+"script": "ಬೃಹತ್ ಕೈಗಾರಿಕೆ",
+"roman": "bruhat kaigaarike",
+"meaning": "large scale industry",
+"pos": "noun",
+"topic": "market",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.belebaaluva",
+"script": "ಬೆಲೆಬಾಳುವ",
+"roman": "belebaaLuva",
+"meaning": "valuable",
+"pos": "noun",
+"topic": "market",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.bhatta",
+"script": "ಭತ್ತ",
+"roman": "bhatta",
+"meaning": "paddy",
+"pos": "noun",
+"topic": "food",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.matta",
+"script": "ಮಟ್ಟ",
+"roman": "maTTa",
+"meaning": "level",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.mata",
+"script": "ಮತ",
+"roman": "mata",
+"meaning": "religion",
+"pos": "noun",
+"topic": "culture",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.maadari",
+"script": "ಮಾದರಿ",
+"roman": "maadari",
+"meaning": "model",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.miiru",
+"script": "ಮೀರು",
+"roman": "miiru",
+"meaning": "to transcend",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.raagi",
+"script": "ರಾಗಿ",
+"roman": "raagi",
+"meaning": "ragi",
+"pos": "noun",
+"topic": "food",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.lalitakale",
+"script": "ಲಲಿತ ಕಲೆ",
+"roman": "lalita kale",
+"meaning": "fine arts",
+"pos": "noun",
+"topic": "culture",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.loopa",
+"script": "ಲೋಪ",
+"roman": "loopa",
+"meaning": "lapse",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.vaanijya",
+"script": "ವಾಣಿಜ್ಯ",
+"roman": "vaaNijya",
+"meaning": "commercial",
+"pos": "noun",
+"topic": "market",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.vidyucchakti",
+"script": "ವಿದ್ಯುಚ್ಛಕ್ತಿ",
+"roman": "vidyucchakti",
+"meaning": "electricity",
+"pos": "noun",
+"topic": "places",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.vidhaanaparishat",
+"script": "ವಿಧಾನ ಪರಿಷತ್",
+"roman": "vidhaana pariShat",
+"meaning": "legislative council",
+"pos": "noun",
+"topic": "body",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.vidhaanasabhe",
+"script": "ವಿಧಾನಸಭೆ",
+"roman": "vidhaanasabhe",
+"meaning": "legislative assembly",
+"pos": "noun",
+"topic": "body",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.vishvavidyaalaya",
+"script": "ವಿಶ್ವವಿದ್ಯಾಲಯ",
+"roman": "vishvavidyaalaya",
+"meaning": "university",
+"pos": "noun",
+"topic": "places",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.sampattu",
+"script": "ಸಂಪತ್ತು",
+"roman": "sampattu",
+"meaning": "wealth",
+"pos": "noun",
+"topic": "market",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.samaajasudhaarakaru",
+"script": "ಸಮಾಜ ಸುಧಾರಕರು",
+"roman": "samaaja sudhaarakaru",
+"meaning": "social reformers",
+"pos": "noun",
+"topic": "professions",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.sahanaashiilaru",
+"script": "ಸಹನಾಶೀಲರು",
+"roman": "sahanaashiilaru",
+"meaning": "tolerant",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.saamraajya",
+"script": "ಸಾಮ್ರಾಜ್ಯ",
+"roman": "saamraajya",
+"meaning": "kingdom",
+"pos": "noun",
+"topic": "professions",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.susamskruta",
+"script": "ಸುಸಂಸ್ಕೃತ",
+"roman": "susamskruta",
+"meaning": "cultured person",
+"pos": "noun",
+"topic": "professions",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.susajjitavaada",
+"script": "ಸುಸಜ್ಜಿತವಾದ",
+"roman": "susajjitavaada",
+"meaning": "well equipped",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.shilaavigraha",
+"script": "ಶಿಲಾ ವಿಗ್ರಹ",
+"roman": "shilaa vigraha",
+"meaning": "stone idol",
+"pos": "noun",
+"topic": "culture",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.hitakara",
+"script": "ಹಿತಕರ",
+"roman": "hitakara",
+"meaning": "congenial",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.hitaasakti",
+"script": "ಹಿತಾಸಕ್ತಿ",
+"roman": "hitaasakti",
+"meaning": "beneficial",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.heerala",
+"script": "ಹೇರಳ",
+"roman": "heeraLa",
+"meaning": "in plenty",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.honne",
+"script": "ಹೊನ್ನೆ",
+"roman": "honne",
+"meaning": "yellow teak",
+"pos": "adjective",
+"topic": "colors",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.hatti",
+"script": "ಹತ್ತಿ",
+"roman": "hatti",
+"meaning": "cotton",
+"pos": "noun",
+"topic": "food",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.hattigirani",
+"script": "ಹತ್ತಿ ಗಿರಣಿ",
+"roman": "hatti giraNi",
+"meaning": "cotton mill",
+"pos": "noun",
+"topic": "food",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.havaa",
+"script": "ಹವಾ",
+"roman": "havaa",
+"meaning": "weather",
+"pos": "noun",
+"topic": "food",
+"lesson": 22,
+"source": "halemane"
+},
+{
+"id": "kn.arthavaagu",
+"script": "ಅರ್ಥವಾಗು",
+"roman": "arthavaagu",
+"meaning": "to understand",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.abhipraaya",
+"script": "ಅಭಿಪ್ರಾಯ",
+"roman": "abhipraaya",
+"meaning": "opinion",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.avadhi",
+"script": "ಅವಧಿ",
+"roman": "avadhi",
+"meaning": "period",
+"pos": "noun",
+"topic": "time",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.aadalitabhaashe",
+"script": "ಆಡಳಿತ ಭಾಷೆ",
+"roman": "aaDaLita bhaaShe",
+"meaning": "administrative language",
+"pos": "noun",
+"topic": "language",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.aadhaara",
+"script": "ಆಧಾರ",
+"roman": "aadhaara",
+"meaning": "source",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.aarambha",
+"script": "ಆರಂಭ",
+"roman": "aarambha",
+"meaning": "beginning",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.ittiicina",
+"script": "ಇತ್ತೀಚಿನ",
+"roman": "ittiicina",
+"meaning": "recent",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.upabhaashe",
+"script": "ಉಪಭಾಷೆ",
+"roman": "upabhaaShe",
+"meaning": "dialect",
+"pos": "noun",
+"topic": "language",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.olapadu",
+"script": "ಒಳಪಡು",
+"roman": "oLapaDu",
+"meaning": "to undergo",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.kristashaka",
+"script": "ಕ್ರಿಸ್ತಶಕ",
+"roman": "kristashaka",
+"meaning": "A.D",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.kruti",
+"script": "ಕೃತಿ",
+"roman": "kruti",
+"meaning": "work of art",
+"pos": "noun",
+"topic": "culture",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.gamana",
+"script": "ಗಮನ",
+"roman": "gamana",
+"meaning": "attention",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.grantha",
+"script": "ಗ್ರಂಥ",
+"roman": "grantha",
+"meaning": "book",
+"pos": "noun",
+"topic": "language",
+"lesson": 23,
+"source": "halemane",
+"art": "book"
+},
+{
+"id": "kn.graama",
+"script": "ಗ್ರಾಮ",
+"roman": "graama",
+"meaning": "village",
+"pos": "noun",
+"topic": "places",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.javaabdaari",
+"script": "ಜವಾಬ್ದಾರಿ",
+"roman": "javaabdaari",
+"meaning": "responsibility",
+"pos": "noun",
+"topic": "society",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.jiivanakrama",
+"script": "ಜೀವನ ಕ್ರಮ",
+"roman": "jiivana krama",
+"meaning": "life style",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.taantrikashikshana",
+"script": "ತಾಂತ್ರಿಕ ಶಿಕ್ಷಣ",
+"roman": "taantrika shikShaNa",
+"meaning": "technical education",
+"pos": "noun",
+"topic": "animals",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.nadugannada",
+"script": "ನಡುಗನ್ನಡ",
+"roman": "naDugannaDa",
+"meaning": "medieval kannada",
+"pos": "noun",
+"topic": "language",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.niyama",
+"script": "ನಿಯಮ",
+"roman": "niyama",
+"meaning": "principle",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.pratishthe",
+"script": "ಪ್ರತಿಷ್ಠೆ",
+"roman": "pratiShThe",
+"meaning": "pride",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.prabhaava",
+"script": "ಪ್ರಭಾವ",
+"roman": "prabhaava",
+"meaning": "influence",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.prabheeda",
+"script": "ಪ್ರಭೇದ",
+"roman": "prabheeda",
+"meaning": "variety",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.pandita",
+"script": "ಪಂಡಿತ",
+"roman": "paNDita",
+"meaning": "scholar",
+"pos": "noun",
+"topic": "professions",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.paashcaatyasaahitya",
+"script": "ಪಾಶ್ಚಾತ್ಯ ಸಾಹಿತ್ಯ",
+"roman": "paashcaatya saahitya",
+"meaning": "western literature",
+"pos": "noun",
+"topic": "culture",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.puurvadahalagannada",
+"script": "ಪೂರ್ವದ ಹಳಗನ್ನಡ",
+"roman": "puurvada haLagannaDa",
+"meaning": "pre old kannada",
+"pos": "noun",
+"topic": "language",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.praudha",
+"script": "ಪ್ರೌಢ",
+"roman": "prauDha",
+"meaning": "mature, learned",
+"pos": "noun",
+"topic": "language",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.maanya",
+"script": "ಮಾನ್ಯ",
+"roman": "maanya",
+"meaning": "acceptable",
+"pos": "noun",
+"topic": "home",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.muulabhuuta",
+"script": "ಮೂಲಭೂತ",
+"roman": "muulabhuuta",
+"meaning": "fundamental",
+"pos": "noun",
+"topic": "professions",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.ruupa",
+"script": "ರೂಪ",
+"roman": "ruupa",
+"meaning": "shape",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.vyatyaasa",
+"script": "ವ್ಯತ್ಯಾಸ",
+"roman": "vyatyaasa",
+"meaning": "difference",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.vyaakarana",
+"script": "ವ್ಯಾಕರಣ",
+"roman": "vyaakaraNa",
+"meaning": "grammar",
+"pos": "noun",
+"topic": "food",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.vaakyaracane",
+"script": "ವಾಕ್ಯರಚನೆ",
+"roman": "vaakyaracane",
+"meaning": "sentence construction",
+"pos": "noun",
+"topic": "language",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.vicitra",
+"script": "ವಿಚಿತ್ರ",
+"roman": "vicitra",
+"meaning": "peculiar",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.vidvaamsa",
+"script": "ವಿದ್ವಾಂಸ",
+"roman": "vidvaamsa",
+"meaning": "scholar",
+"pos": "noun",
+"topic": "professions",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.vibhaagisu",
+"script": "ವಿಭಾಗಿಸು",
+"roman": "vibhaagisu",
+"meaning": "to divide",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.vaijnaanikadrushtikoona",
+"script": "ವೈಜ್ಞಾನಿಕ ದೃಷ್ಟಿಕೋನ",
+"roman": "vaijñaanika druShTikoona",
+"meaning": "scientific outlook",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.sankeeta",
+"script": "ಸಂಕೇತ",
+"roman": "sankeeta",
+"meaning": "symbol",
+"pos": "noun",
+"topic": "language",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.samartha",
+"script": "ಸಮರ್ಥ",
+"roman": "samartha",
+"meaning": "capable",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.samuuhamaadhyama",
+"script": "ಸಮೂಹ ಮಾಧ್ಯಮ",
+"roman": "samuuha maadhyama",
+"meaning": "mass media",
+"pos": "noun",
+"topic": "language",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.svaruupa",
+"script": "ಸ್ವರೂಪ",
+"roman": "svaruupa",
+"meaning": "form",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.saamaanyaru",
+"script": "ಸಾಮಾನ್ಯರು",
+"roman": "saamaanyaru",
+"meaning": "ordinary people",
+"pos": "noun",
+"topic": "professions",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.sthuulavaagi",
+"script": "ಸ್ಥೂಲವಾಗಿ",
+"roman": "sthuulavaagi",
+"meaning": "in brief",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.shabda",
+"script": "ಶಬ್ದ",
+"roman": "shabda",
+"meaning": "sound",
+"pos": "noun",
+"topic": "language",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.shaasana",
+"script": "ಶಾಸನ",
+"roman": "shaasana",
+"meaning": "inscription",
+"pos": "noun",
+"topic": "language",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.shikshanamaadhyama",
+"script": "ಶಿಕ್ಷಣ ಮಾಧ್ಯಮ",
+"roman": "shikShaNa maadhyama",
+"meaning": "educational medium",
+"pos": "noun",
+"topic": "animals",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.shishtabhaashe",
+"script": "ಶಿಷ್ಟ ಭಾಷೆ",
+"roman": "shiShTa bhaaShe",
+"meaning": "standard language",
+"pos": "noun",
+"topic": "language",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.halegannada",
+"script": "ಹಳೆಗನ್ನಡ",
+"roman": "haLegannaDa",
+"meaning": "old kannada",
+"pos": "noun",
+"topic": "language",
+"lesson": 23,
+"source": "halemane"
+},
+{
+"id": "kn.aparaadha",
+"script": "ಅಪರಾಧ",
+"roman": "aparaadha",
+"meaning": "crime",
+"pos": "noun",
+"topic": "society",
+"lesson": 24,
+"source": "halemane"
+},
+{
+"id": "kn.asurakshita",
+"script": "ಅಸುರಕ್ಷಿತ",
+"roman": "asurakShita",
+"meaning": "un protected",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 24,
+"source": "halemane"
+},
+{
+"id": "kn.aagantukaru",
+"script": "ಆಗಂತುಕರು",
+"roman": "aagantukaru",
+"meaning": "strangers",
+"pos": "noun",
+"topic": "people",
+"lesson": 24,
+"source": "halemane"
+},
+{
+"id": "kn.irita",
+"script": "ಇರಿತ",
+"roman": "irita",
+"meaning": "stabbing",
+"pos": "noun",
+"topic": "society",
+"lesson": 24,
+"source": "halemane"
+},
+{
+"id": "kn.kambikiilu",
+"script": "ಕಂಬಿಕೀಳು",
+"roman": "kambikiiLu",
+"meaning": "to take to ones heels",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 24,
+"source": "halemane"
+},
+{
+"id": "kn.kartavya",
+"script": "ಕರ್ತವ್ಯ",
+"roman": "kartavya",
+"meaning": "duty",
+"pos": "noun",
+"topic": "society",
+"lesson": 24,
+"source": "halemane"
+},
+{
+"id": "kn.kasi",
+"script": "ಕಸಿ",
+"roman": "kasi",
+"meaning": "snatch",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 24,
+"source": "halemane"
+},
+{
+"id": "kn.kaakapookaru",
+"script": "ಕಾಕಪೋಕರು",
+"roman": "kaakapookaru",
+"meaning": "lawless",
+"pos": "noun",
+"topic": "market",
+"lesson": 24,
+"source": "halemane"
+},
+{
+"id": "kn.kolepaatakaru",
+"script": "ಕೊಲೆಪಾತಕರು",
+"roman": "kolepaatakaru",
+"meaning": "murderers",
+"pos": "noun",
+"topic": "professions",
+"lesson": 24,
+"source": "halemane"
+},
+{
+"id": "kn.kshanaganda",
+"script": "ಕ್ಷಣಗಂಡ",
+"roman": "kShaNagaNDa",
+"meaning": "disaster at every moment",
+"pos": "noun",
+"topic": "professions",
+"lesson": 24,
+"source": "halemane"
+},
+{
+"id": "kn.caaku",
+"script": "ಚಾಕು",
+"roman": "caaku",
+"meaning": "knife",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 24,
+"source": "halemane"
+},
+{
+"id": "kn.cuuri",
+"script": "ಚೂರಿ",
+"roman": "cuuri",
+"meaning": "knife",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 24,
+"source": "halemane"
+},
+{
+"id": "kn.jagajjaahiiru",
+"script": "ಜಗಜ್ಜಾಹೀರು",
+"roman": "jagajjaahiiru",
+"meaning": "proclaim to the world",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 24,
+"source": "halemane"
+},
+{
+"id": "kn.dinaganda",
+"script": "ದಿನಗಂಡ",
+"roman": "dinagaNDa",
+"meaning": "daily disaster",
+"pos": "noun",
+"topic": "time",
+"lesson": 24,
+"source": "halemane"
+},
+{
+"id": "kn.doocu",
+"script": "ದೋಚು",
+"roman": "doocu",
+"meaning": "to loot",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.nagaravaasigalu",
+"script": "ನಗರವಾಸಿಗಳು",
+"roman": "nagaravaasigaLu",
+"meaning": "citizens",
+"pos": "noun",
+"topic": "people",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.naganaanya",
+"script": "ನಗನಾಣ್ಯ",
+"roman": "naganaaNya",
+"meaning": "jewellery and cash",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.neraveerisu",
+"script": "ನೆರವೇರಿಸು",
+"roman": "neraveerisu",
+"meaning": "to perform",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.prakarana",
+"script": "ಪ್ರಕರಣ",
+"roman": "prakaraNa",
+"meaning": "incident",
+"pos": "noun",
+"topic": "society",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.pratibhatisu",
+"script": "ಪ್ರತಿಭಟಿಸು",
+"roman": "pratibhaTisu",
+"meaning": "to protest",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.patte",
+"script": "ಪತ್ತೆ",
+"roman": "patte",
+"meaning": "detection",
+"pos": "noun",
+"topic": "society",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.palaayana",
+"script": "ಪಲಾಯನ",
+"roman": "palaayana",
+"meaning": "escape",
+"pos": "noun",
+"topic": "society",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.paadacaarigalu",
+"script": "ಪಾದಚಾರಿಗಳು",
+"roman": "paadacaarigaLu",
+"meaning": "pedestrians",
+"pos": "noun",
+"topic": "professions",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.paalu",
+"script": "ಪಾಲು",
+"roman": "paalu",
+"meaning": "share",
+"pos": "noun",
+"topic": "market",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.pundupookarigalu",
+"script": "ಪುಂಡುಪೋಕರಿಗಳು",
+"roman": "puNDupookarigaLu",
+"meaning": "lawless men",
+"pos": "noun",
+"topic": "professions",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.badi",
+"script": "ಬಡಿ",
+"roman": "baDi",
+"meaning": "to beat",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.bedarisu",
+"script": "ಬೆದರಿಸು",
+"roman": "bedarisu",
+"meaning": "to threaten",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.bhayaanaka",
+"script": "ಭಯಾನಕ",
+"roman": "bhayaanaka",
+"meaning": "horrifying",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.bhaaga",
+"script": "ಭಾಗ",
+"roman": "bhaaga",
+"meaning": "part",
+"pos": "noun",
+"topic": "culture",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.mugdhajana",
+"script": "ಮುಗ್ಧ ಜನ",
+"roman": "mugdha jana",
+"meaning": "innocent people",
+"pos": "noun",
+"topic": "professions",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.muutekattu",
+"script": "ಮೂಟೆ ಕಟ್ಟು",
+"roman": "muuTe kaTTu",
+"meaning": "pack up",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.savaararu",
+"script": "ಸವಾರರು",
+"roman": "savaararu",
+"meaning": "riders",
+"pos": "noun",
+"topic": "professions",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.shikshaadanda",
+"script": "ಶಿಕ್ಷಾದಂಡ",
+"roman": "shikShaadaNDa",
+"meaning": "punishment",
+"pos": "noun",
+"topic": "professions",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.hagaludaroode",
+"script": "ಹಗಲು ದರೋಡೆ",
+"roman": "hagalu darooDe",
+"meaning": "day light robbery",
+"pos": "noun",
+"topic": "society",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.haaduhagalu",
+"script": "ಹಾಡು ಹಗಲು",
+"roman": "haaDu hagalu",
+"meaning": "broad day light",
+"pos": "noun",
+"topic": "places",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.avashyakate",
+"script": "ಅವಶ್ಯಕತೆ",
+"roman": "avashyakate",
+"meaning": "necessity",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.aatmavishvaasa",
+"script": "ಆತ್ಮವಿಶ್ವಾಸ",
+"roman": "aatmavishvaasa",
+"meaning": "confidence",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.eccarike",
+"script": "ಎಚ್ಚರಿಕೆ",
+"roman": "eccarike",
+"meaning": "caution, conscious",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.gamanisu",
+"script": "ಗಮನಿಸು",
+"roman": "gamanisu",
+"meaning": "to notice",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.ghanate",
+"script": "ಘನತೆ",
+"roman": "ghanate",
+"meaning": "dignity",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.carcisu",
+"script": "ಚರ್ಚಿಸು",
+"roman": "carcisu",
+"meaning": "to discuss",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.jnaapaka",
+"script": "ಜ್ಞಾಪಕ",
+"roman": "jñaapaka",
+"meaning": "memory",
+"pos": "noun",
+"topic": "language",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.tappu",
+"script": "ತಪ್ಪು",
+"roman": "tappu",
+"meaning": "mistake",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.dantakathe",
+"script": "ದಂತಕಥೆ",
+"roman": "dantakathe",
+"meaning": "mythological story",
+"pos": "noun",
+"topic": "culture",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.dinanitya",
+"script": "ದಿನ ನಿತ್ಯ",
+"roman": "dina nitya",
+"meaning": "daily",
+"pos": "noun",
+"topic": "time",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.nagepaatalu",
+"script": "ನಗೆಪಾಟಲು",
+"roman": "nagepaaTalu",
+"meaning": "laughing stock",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.nighantu",
+"script": "ನಿಘಂಟು",
+"roman": "nighaNTu",
+"meaning": "dictionary",
+"pos": "noun",
+"topic": "language",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.niyatakaalika",
+"script": "ನಿಯತಕಾಲಿಕ",
+"roman": "niyatakaalika",
+"meaning": "periodicals",
+"pos": "noun",
+"topic": "language",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.nirantara",
+"script": "ನಿರಂತರ",
+"roman": "nirantara",
+"meaning": "constantly",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.nirutsaaha",
+"script": "ನಿರುತ್ಸಾಹ",
+"roman": "nirutsaaha",
+"meaning": "discourage",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.nishcaya",
+"script": "ನಿಶ್ಚಯ",
+"roman": "nishcaya",
+"meaning": "determination",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.nenapu",
+"script": "ನೆನಪು",
+"roman": "nenapu",
+"meaning": "memory",
+"pos": "noun",
+"topic": "language",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.parisara",
+"script": "ಪರಿಸರ",
+"roman": "parisara",
+"meaning": "environment",
+"pos": "noun",
+"topic": "professions",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.prayoojana",
+"script": "ಪ್ರಯೋಜನ",
+"roman": "prayoojana",
+"meaning": "usefulness",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.praathamika",
+"script": "ಪ್ರಾಥಮಿಕ",
+"roman": "praathamika",
+"meaning": "primary",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.baravanige",
+"script": "ಬರವಣಿಗೆ",
+"roman": "baravaNige",
+"meaning": "writing",
+"pos": "noun",
+"topic": "language",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.baalisha",
+"script": "ಬಾಲಿಶ",
+"roman": "baalisha",
+"meaning": "childish",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.bhaya",
+"script": "ಭಯ",
+"roman": "bhaya",
+"meaning": "fear",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.matte",
+"script": "ಮತ್ತೆ",
+"roman": "matte",
+"meaning": "again",
+"pos": "noun",
+"topic": "time",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.muurkha",
+"script": "ಮೂರ್ಖ",
+"roman": "muurkha",
+"meaning": "fool",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.meccu",
+"script": "ಮೆಚ್ಚು",
+"roman": "meccu",
+"meaning": "to appreciate",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.sandarbha",
+"script": "ಸಂದರ್ಭ",
+"roman": "sandarbha",
+"meaning": "incident",
+"pos": "noun",
+"topic": "society",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.sthaliiya",
+"script": "ಸ್ಥಳೀಯ",
+"roman": "sthaLiiya",
+"meaning": "local",
+"pos": "noun",
+"topic": "society",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.sanniveesha",
+"script": "ಸನ್ನಿವೇಶ",
+"roman": "sanniveesha",
+"meaning": "situation",
+"pos": "noun",
+"topic": "society",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.samparka",
+"script": "ಸಂಪರ್ಕ",
+"roman": "samparka",
+"meaning": "contact",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.samasye",
+"script": "ಸಮಸ್ಯೆ",
+"roman": "samasye",
+"meaning": "problem",
+"pos": "noun",
+"topic": "society",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.samyama",
+"script": "ಸಂಯಮ",
+"roman": "samyama",
+"meaning": "patience",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.sarala",
+"script": "ಸರಳ",
+"roman": "saraLa",
+"meaning": "simple",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.saripadisikollu",
+"script": "ಸರಿಪಡಿಸಿಕೊಳ್ಳು",
+"roman": "saripaDisikoLLu",
+"meaning": "set right",
+"pos": "noun",
+"topic": "directions",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.srushtisu",
+"script": "ಸೃಷ್ಟಿಸು",
+"roman": "sruShTisu",
+"meaning": "to create",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.saarvajanika",
+"script": "ಸಾರ್ವಜನಿಕ",
+"roman": "saarvajanika",
+"meaning": "general / public",
+"pos": "noun",
+"topic": "society",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.shabdabhandaara",
+"script": "ಶಬ್ದ ಭಂಡಾರ",
+"roman": "shabda bhaNDaara",
+"meaning": "vocabulary",
+"pos": "noun",
+"topic": "language",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.hanta",
+"script": "ಹಂತ",
+"roman": "hanta",
+"meaning": "stage",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.hinnele",
+"script": "ಹಿನ್ನೆಲೆ",
+"roman": "hinnele",
+"meaning": "background",
+"pos": "noun",
+"topic": "concepts",
+"lesson": 25,
+"source": "halemane"
+},
+{
+"id": "kn.ondu",
+"script": "ಒಂದು",
+"roman": "ondu",
+"meaning": "one",
+"pos": "number",
+"topic": "numbers",
+"lesson": 5,
+"source": "core",
+"example": {
+"script": "ಒಂದು ಕಪ್ ಕಾಫಿ ಕೊಡಿ.",
+"meaning": "Please give one cup of coffee."
+}
+},
+{
+"id": "kn.eradu",
+"script": "ಎರಡು",
+"roman": "eraDu",
+"meaning": "two",
+"pos": "number",
+"topic": "numbers",
+"lesson": 5,
+"source": "core",
+"example": {
+"script": "ಎರಡು ಇಡ್ಲಿ ಕೊಡಿ.",
+"meaning": "Please give two idlis."
+}
+},
+{
+"id": "kn.muuru",
+"script": "ಮೂರು",
+"roman": "muuru",
+"meaning": "three",
+"pos": "number",
+"topic": "numbers",
+"lesson": 5,
+"source": "core",
+"example": {
+"script": "ಮೂರು ಪುಸ್ತಕಗಳು ಇವೆ.",
+"meaning": "There are three books."
+}
+},
+{
+"id": "kn.naalku",
+"script": "ನಾಲ್ಕು",
+"roman": "naalku",
+"meaning": "four",
+"pos": "number",
+"topic": "numbers",
+"lesson": 5,
+"source": "core"
+},
+{
+"id": "kn.aidu",
+"script": "ಐದು",
+"roman": "aidu",
+"meaning": "five",
+"pos": "number",
+"topic": "numbers",
+"lesson": 5,
+"source": "core"
+},
+{
+"id": "kn.aaru",
+"script": "ಆರು",
+"roman": "aaru",
+"meaning": "six",
+"pos": "number",
+"topic": "numbers",
+"lesson": 5,
+"source": "core"
+},
+{
+"id": "kn.eelu",
+"script": "ಏಳು",
+"roman": "eeLu",
+"meaning": "seven",
+"pos": "number",
+"topic": "numbers",
+"lesson": 5,
+"source": "core"
+},
+{
+"id": "kn.entu",
+"script": "ಎಂಟು",
+"roman": "eNTu",
+"meaning": "eight",
+"pos": "number",
+"topic": "numbers",
+"lesson": 5,
+"source": "core"
+},
+{
+"id": "kn.ombattu",
+"script": "ಒಂಬತ್ತು",
+"roman": "ombattu",
+"meaning": "nine",
+"pos": "number",
+"topic": "numbers",
+"lesson": 5,
+"source": "core"
+},
+{
+"id": "kn.hattu",
+"script": "ಹತ್ತು",
+"roman": "hattu",
+"meaning": "ten",
+"pos": "number",
+"topic": "numbers",
+"lesson": 5,
+"source": "core",
+"example": {
+"script": "ಇದಕ್ಕೆ ಹತ್ತು ರೂಪಾಯಿ.",
+"meaning": "Ten rupees for this."
+}
+},
+{
+"id": "kn.ippattu",
+"script": "ಇಪ್ಪತ್ತು",
+"roman": "ippattu",
+"meaning": "twenty",
+"pos": "number",
+"topic": "numbers",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.aivattu",
+"script": "ಐವತ್ತು",
+"roman": "aivattu",
+"meaning": "fifty",
+"pos": "number",
+"topic": "numbers",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.nuuru",
+"script": "ನೂರು",
+"roman": "nuuru",
+"meaning": "hundred",
+"pos": "number",
+"topic": "numbers",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.saavira",
+"script": "ಸಾವಿರ",
+"roman": "saavira",
+"meaning": "thousand",
+"pos": "number",
+"topic": "numbers",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.ardha",
+"script": "ಅರ್ಧ",
+"roman": "ardha",
+"meaning": "half",
+"pos": "number",
+"topic": "numbers",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.anna2",
+"script": "ಅನ್ನ",
+"roman": "anna",
+"meaning": "cooked rice",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.idli",
+"script": "ಇಡ್ಲಿ",
+"roman": "iDli",
+"meaning": "idli",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.saaru",
+"script": "ಸಾರು",
+"roman": "saaru",
+"meaning": "rasam / thin curry",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.mosaru",
+"script": "ಮೊಸರು",
+"roman": "mosaru",
+"meaning": "curd",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.uppu",
+"script": "ಉಪ್ಪು",
+"roman": "uppu",
+"meaning": "salt",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.tuppa",
+"script": "ತುಪ್ಪ",
+"roman": "tuppa",
+"meaning": "ghee",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.cahaa",
+"script": "ಚಹಾ",
+"roman": "cahaa",
+"meaning": "tea",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.tindi",
+"script": "ತಿಂಡಿ",
+"roman": "tiNDi",
+"meaning": "snack / tiffin",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.maavinahannu",
+"script": "ಮಾವಿನಹಣ್ಣು",
+"roman": "maavinahaNNu",
+"meaning": "mango",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.iirulli",
+"script": "ಈರುಳ್ಳಿ",
+"roman": "iiruLLi",
+"meaning": "onion",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.aaluugadde",
+"script": "ಆಲೂಗಡ್ಡೆ",
+"roman": "aaluugaDDe",
+"meaning": "potato",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.aatoo",
+"script": "ಆಟೋ",
+"roman": "aaToo",
+"meaning": "auto-rickshaw",
+"pos": "noun",
+"topic": "transport",
+"lesson": 11,
+"source": "core"
+},
+{
+"id": "kn.basnildaana",
+"script": "ಬಸ್ ನಿಲ್ದಾಣ",
+"roman": "bas nildaaNa",
+"meaning": "bus stand",
+"pos": "noun",
+"topic": "transport",
+"lesson": 11,
+"source": "core"
+},
+{
+"id": "kn.tiket",
+"script": "ಟಿಕೆಟ್",
+"roman": "TikeT",
+"meaning": "ticket",
+"pos": "noun",
+"topic": "transport",
+"lesson": 11,
+"source": "core"
+},
+{
+"id": "kn.raste",
+"script": "ರಸ್ತೆ",
+"roman": "raste",
+"meaning": "road",
+"pos": "noun",
+"topic": "places",
+"lesson": 11,
+"source": "core"
+},
+{
+"id": "kn.vimaana",
+"script": "ವಿಮಾನ",
+"roman": "vimaana",
+"meaning": "aeroplane",
+"pos": "noun",
+"topic": "transport",
+"lesson": 11,
+"source": "core"
+},
+{
+"id": "kn.kaaru",
+"script": "ಕಾರು",
+"roman": "kaaru",
+"meaning": "car",
+"pos": "noun",
+"topic": "transport",
+"lesson": 11,
+"source": "core"
+},
+{
+"id": "kn.edakke",
+"script": "ಎಡಕ್ಕೆ",
+"roman": "eDakke",
+"meaning": "to the left",
+"pos": "verb",
+"topic": "directions",
+"lesson": 11,
+"source": "core"
+},
+{
+"id": "kn.balakke",
+"script": "ಬಲಕ್ಕೆ",
+"roman": "balakke",
+"meaning": "to the right",
+"pos": "verb",
+"topic": "directions",
+"lesson": 11,
+"source": "core"
+},
+{
+"id": "kn.neeravaagi",
+"script": "ನೇರವಾಗಿ",
+"roman": "neeravaagi",
+"meaning": "straight ahead",
+"pos": "noun",
+"topic": "directions",
+"lesson": 11,
+"source": "core"
+},
+{
+"id": "kn.nillisi",
+"script": "ನಿಲ್ಲಿಸಿ",
+"roman": "nillisi",
+"meaning": "please stop",
+"pos": "verb",
+"topic": "transport",
+"lesson": 11,
+"source": "core"
+},
+{
+"id": "kn.ninne",
+"script": "ನಿನ್ನೆ",
+"roman": "ninne",
+"meaning": "yesterday",
+"pos": "noun",
+"topic": "time",
+"lesson": 7,
+"source": "core"
+},
+{
+"id": "kn.beligge",
+"script": "ಬೆಳಿಗ್ಗೆ",
+"roman": "beLigge",
+"meaning": "morning",
+"pos": "noun",
+"topic": "time",
+"lesson": 7,
+"source": "core",
+"example": {
+"script": "ಬೆಳಿಗ್ಗೆ ಸೂರ್ಯ ಉದಯಿಸುತ್ತಾನೆ.",
+"meaning": "The sun rises in the morning."
+}
+},
+{
+"id": "kn.vaara",
+"script": "ವಾರ",
+"roman": "vaara",
+"meaning": "week",
+"pos": "noun",
+"topic": "time",
+"lesson": 7,
+"source": "core"
+},
+{
+"id": "kn.tingalu",
+"script": "ತಿಂಗಳು",
+"roman": "tingaLu",
+"meaning": "month",
+"pos": "noun",
+"topic": "time",
+"lesson": 7,
+"source": "core"
+},
+{
+"id": "kn.varsha",
+"script": "ವರ್ಷ",
+"roman": "varSha",
+"meaning": "year",
+"pos": "noun",
+"topic": "time",
+"lesson": 7,
+"source": "core"
+},
+{
+"id": "kn.santoosha",
+"script": "ಸಂತೋಷ",
+"roman": "santooSha",
+"meaning": "happiness",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 16,
+"source": "core"
+},
+{
+"id": "kn.duhkha",
+"script": "ದುಃಖ",
+"roman": "duhkha",
+"meaning": "sorrow",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 16,
+"source": "core"
+},
+{
+"id": "kn.koopa",
+"script": "ಕೋಪ",
+"roman": "koopa",
+"meaning": "anger",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 16,
+"source": "core"
+},
+{
+"id": "kn.priiti",
+"script": "ಪ್ರೀತಿ",
+"roman": "priiti",
+"meaning": "love",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 16,
+"source": "core"
+},
+{
+"id": "kn.aase",
+"script": "ಆಸೆ",
+"roman": "aase",
+"meaning": "desire / wish",
+"pos": "noun",
+"topic": "emotions",
+"lesson": 16,
+"source": "core"
+},
+{
+"id": "kn.cennaagi",
+"script": "ಚೆನ್ನಾಗಿ",
+"roman": "cennaagi",
+"meaning": "well / nicely",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 16,
+"source": "core"
+},
+{
+"id": "kn.bisi",
+"script": "ಬಿಸಿ",
+"roman": "bisi",
+"meaning": "hot",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 16,
+"source": "core"
+},
+{
+"id": "kn.tannage",
+"script": "ತಣ್ಣಗೆ",
+"roman": "taNNage",
+"meaning": "cold",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 16,
+"source": "core"
+},
+{
+"id": "kn.udda",
+"script": "ಉದ್ದ",
+"roman": "udda",
+"meaning": "long",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 16,
+"source": "core"
+},
+{
+"id": "kn.gidda",
+"script": "ಗಿಡ್ಡ",
+"roman": "giDDa",
+"meaning": "short",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 16,
+"source": "core"
+},
+{
+"id": "kn.taayi",
+"script": "ತಾಯಿ",
+"roman": "taayi",
+"meaning": "mother",
+"pos": "noun",
+"topic": "family",
+"lesson": 3,
+"source": "core",
+"example": {
+"script": "ನನ್ನ ತಾಯಿ ಮನೆಯಲ್ಲಿದ್ದಾರೆ.",
+"meaning": "My mother is at home."
+}
+},
+{
+"id": "kn.tande",
+"script": "ತಂದೆ",
+"roman": "tande",
+"meaning": "father",
+"pos": "noun",
+"topic": "family",
+"lesson": 3,
+"source": "core",
+"example": {
+"script": "ನನ್ನ ತಂದೆ ವೈದ್ಯರು.",
+"meaning": "My father is a doctor."
+}
+},
+{
+"id": "kn.ajja",
+"script": "ಅಜ್ಜ",
+"roman": "ajja",
+"meaning": "grandfather",
+"pos": "noun",
+"topic": "family",
+"lesson": 3,
+"source": "core"
+},
+{
+"id": "kn.ajji",
+"script": "ಅಜ್ಜಿ",
+"roman": "ajji",
+"meaning": "grandmother",
+"pos": "noun",
+"topic": "family",
+"lesson": 3,
+"source": "core"
+},
+{
+"id": "kn.ganda",
+"script": "ಗಂಡ",
+"roman": "gaNDa",
+"meaning": "husband",
+"pos": "noun",
+"topic": "family",
+"lesson": 3,
+"source": "core"
+},
+{
+"id": "kn.huduga",
+"script": "ಹುಡುಗ",
+"roman": "huDuga",
+"meaning": "boy",
+"pos": "noun",
+"topic": "people",
+"lesson": 2,
+"source": "core"
+},
+{
+"id": "kn.magu",
+"script": "ಮಗು",
+"roman": "magu",
+"meaning": "child",
+"pos": "noun",
+"topic": "family",
+"lesson": 3,
+"source": "core"
+},
+{
+"id": "kn.uuru",
+"script": "ಊರು",
+"roman": "uuru",
+"meaning": "town / native place",
+"pos": "noun",
+"topic": "places",
+"lesson": 1,
+"source": "core",
+"example": {
+"script": "ನನ್ನ ಊರು ಮೈಸೂರು.",
+"meaning": "My native place is Mysuru."
+}
+},
+{
+"id": "kn.idu2",
+"script": "ಇದು",
+"roman": "idu",
+"meaning": "this",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 2,
+"source": "core"
+},
+{
+"id": "kn.adu",
+"script": "ಅದು",
+"roman": "adu",
+"meaning": "that",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 2,
+"source": "core"
+},
+{
+"id": "kn.avanu",
+"script": "ಅವನು",
+"roman": "avanu",
+"meaning": "he",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 2,
+"source": "core"
+},
+{
+"id": "kn.avalu",
+"script": "ಅವಳು",
+"roman": "avaLu",
+"meaning": "she",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 2,
+"source": "core"
+},
+{
+"id": "kn.niinu",
+"script": "ನೀನು",
+"roman": "niinu",
+"meaning": "you (informal)",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 2,
+"source": "core"
+},
+{
+"id": "kn.naavu",
+"script": "ನಾವು",
+"roman": "naavu",
+"meaning": "we",
+"pos": "pronoun",
+"topic": "pronouns",
+"lesson": 2,
+"source": "core"
+},
+{
+"id": "kn.alla",
+"script": "ಅಲ್ಲ",
+"roman": "alla",
+"meaning": "no / is not",
+"pos": "noun",
+"topic": "greetings",
+"lesson": 2,
+"source": "core",
+"example": {
+"script": "ಇದು ಬಾಡಿಗೆ ಮನೆ ಅಲ್ಲ.",
+"meaning": "This is not a rented house."
+}
+},
+{
+"id": "kn.illa",
+"script": "ಇಲ್ಲ",
+"roman": "illa",
+"meaning": "no / there is not",
+"pos": "noun",
+"topic": "greetings",
+"lesson": 5,
+"source": "core",
+"example": {
+"script": "ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ ಟೊಮ್ಯಾಟೊ ಇಲ್ಲ.",
+"meaning": "There are no tomatoes in the market."
+}
+},
+{
+"id": "kn.dhanyavaadagalu",
+"script": "ಧನ್ಯವಾದಗಳು",
+"roman": "dhanyavaadagaLu",
+"meaning": "thank you",
+"pos": "noun",
+"topic": "greetings",
+"lesson": 1,
+"source": "core",
+"example": {
+"script": "ನಿಮ್ಮ ಸಹಾಯಕ್ಕೆ ಧನ್ಯವಾದಗಳು.",
+"meaning": "Thank you for your help."
+}
+},
+{
+"id": "kn.banni",
+"script": "ಬನ್ನಿ",
+"roman": "banni",
+"meaning": "please come",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 10,
+"source": "core",
+"example": {
+"script": "ದಯವಿಟ್ಟು ಒಳಗೆ ಬನ್ನಿ.",
+"meaning": "Please come inside."
+}
+},
+{
+"id": "kn.kodi",
+"script": "ಕೊಡಿ",
+"roman": "koDi",
+"meaning": "please give",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 10,
+"source": "core",
+"example": {
+"script": "ಒಂದು ಗ್ಲಾಸ್ ನೀರು ಕೊಡಿ.",
+"meaning": "Please give a glass of water."
+}
+},
+{
+"id": "kn.noodu",
+"script": "ನೋಡು",
+"roman": "nooDu",
+"meaning": "to see",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 10,
+"source": "core"
+},
+{
+"id": "kn.maadu",
+"script": "ಮಾಡು",
+"roman": "maaDu",
+"meaning": "to do",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 10,
+"source": "core"
+},
+{
+"id": "kn.bare",
+"script": "ಬರೆ",
+"roman": "bare",
+"meaning": "to write",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 10,
+"source": "core"
+},
+{
+"id": "kn.malagu",
+"script": "ಮಲಗು",
+"roman": "malagu",
+"meaning": "to sleep",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 10,
+"source": "core"
+},
+{
+"id": "kn.kuuru",
+"script": "ಕೂರು",
+"roman": "kuuru",
+"meaning": "to sit",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 10,
+"source": "core"
+},
+{
+"id": "kn.beeku",
+"script": "ಬೇಕು",
+"roman": "beeku",
+"meaning": "want / need",
+"pos": "verb",
+"topic": "verbs",
+"lesson": 8,
+"source": "core",
+"example": {
+"script": "ನನಗೆ ಒಂದು ಕಪ್ ಕಾಫಿ ಬೇಕು.",
+"meaning": "I want a cup of coffee."
+}
+},
+{
+"id": "kn.huli",
+"script": "ಹುಲಿ",
+"roman": "huli",
+"meaning": "tiger",
+"pos": "noun",
+"topic": "animals",
+"lesson": 14,
+"source": "core",
+"art": "tiger",
+"example": {
+"script": "ಬಂಡೀಪುರ ಅರಣ್ಯದಲ್ಲಿ ಹುಲಿ ಇದೆ.",
+"meaning": "There is a tiger in Bandipur forest."
+}
+},
+{
+"id": "kn.hasu",
+"script": "ಹಸು",
+"roman": "hasu",
+"meaning": "cow",
+"pos": "noun",
+"topic": "animals",
+"lesson": 12,
+"source": "core",
+"art": "cow"
+},
+{
+"id": "kn.mara",
+"script": "ಮರ",
+"roman": "mara",
+"meaning": "tree",
+"pos": "noun",
+"topic": "nature",
+"lesson": 7,
+"source": "core",
+"art": "tree",
+"example": {
+"script": "ಆ ಮರ ಆಲದ ಮರ.",
+"meaning": "That tree is a banyan tree."
+}
+},
+{
+"id": "kn.suurya",
+"script": "ಸೂರ್ಯ",
+"roman": "suurya",
+"meaning": "sun",
+"pos": "noun",
+"topic": "nature",
+"lesson": 14,
+"source": "core",
+"art": "sun",
+"example": {
+"script": "ಬೆಳಿಗ್ಗೆ ಪೂರ್ವದಲ್ಲಿ ಸೂರ್ಯ ಹುಟ್ಟುತ್ತಾನೆ.",
+"meaning": "The sun rises in the east in the morning."
+}
+},
+{
+"id": "kn.candra",
+"script": "ಚಂದ್ರ",
+"roman": "candra",
+"meaning": "moon",
+"pos": "noun",
+"topic": "nature",
+"lesson": 14,
+"source": "core"
+},
+{
+"id": "kn.huuvu",
+"script": "ಹೂವು",
+"roman": "huuvu",
+"meaning": "flower",
+"pos": "noun",
+"topic": "nature",
+"lesson": 11,
+"source": "core",
+"art": "flower",
+"example": {
+"script": "ಮೈಸೂರು ಮಲ್ಲಿಗೆ ಸುಂದರ ಹೂವು.",
+"meaning": "Mysore jasmine is a beautiful flower."
+}
+},
+{
+"id": "kn.diipa",
+"script": "ದೀಪ",
+"roman": "diipa",
+"meaning": "oil lamp",
+"pos": "noun",
+"topic": "culture",
+"lesson": 13,
+"source": "core",
+"art": "lamp",
+"example": {
+"script": "ಹಬ್ಬದ ದಿನ ದೀಪ ಬೆಳಗಿಸಿ.",
+"meaning": "Light the lamp on the festival day."
+}
+},
+{
+"id": "kn.doose",
+"script": "ದೋಸೆ",
+"roman": "doose",
+"meaning": "dosa",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "core",
+"art": "dosa",
+"example": {
+"script": "ಉಡುಪಿ ಹೋಟೆಲ್‌ನಲ್ಲಿ ದೋಸೆ ಚೆನ್ನಾಗಿದೆ.",
+"meaning": "Dosa at the Udupi hotel is great."
+}
+},
+{
+"id": "kn.kaaphi",
+"script": "ಕಾಫಿ",
+"roman": "kaaphi",
+"meaning": "coffee",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "core",
+"art": "coffee",
+"example": {
+"script": "ಬಿಸಿ ಫಿಲ್ಟರ್ ಕಾಫಿ ಕುಡಿಯಿರಿ.",
+"meaning": "Drink hot filter coffee."
+}
+},
+{
+"id": "kn.tenginakaayi",
+"script": "ತೆಂಗಿನಕಾಯಿ",
+"roman": "tenginakaayi",
+"meaning": "coconut",
+"pos": "noun",
+"topic": "food",
+"lesson": 6,
+"source": "core",
+"art": "coconut",
+"example": {
+"script": "ಕರ್ನಾಟಕದಲ್ಲಿ ತೆಂಗಿನಕಾಯಿ ಹೆಚ್ಚು.",
+"meaning": "Coconuts are abundant in Karnataka."
+}
+},
+{
+"id": "kn.bassu",
+"script": "ಬಸ್ಸು",
+"roman": "bassu",
+"meaning": "bus",
+"pos": "noun",
+"topic": "transport",
+"lesson": 11,
+"source": "core",
+"art": "bus",
+"example": {
+"script": "ಕೆಎಸ್‌ಆರ್‌ಟಿಸಿ ಬಸ್ಸು ಬಂತು.",
+"meaning": "The KSRTC bus has arrived."
+}
+},
+{
+"id": "kn.railu",
+"script": "ರೈಲು",
+"roman": "railu",
+"meaning": "train",
+"pos": "noun",
+"topic": "transport",
+"lesson": 11,
+"source": "core",
+"art": "train",
+"example": {
+"script": "ರೈಲು ಮೈಸೂರಿಗೆ ಹೋಗುತ್ತದೆ.",
+"meaning": "The train goes to Mysuru."
+}
+},
+{
+"id": "kn.angadi",
+"script": "ಅಂಗಡಿ",
+"roman": "angaDi",
+"meaning": "shop",
+"pos": "noun",
+"topic": "market",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.keji",
+"script": "ಕೆಜಿ",
+"roman": "keji",
+"meaning": "kilogram",
+"pos": "noun",
+"topic": "market",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.ruupaayi",
+"script": "ರೂಪಾಯಿ",
+"roman": "ruupaayi",
+"meaning": "rupee",
+"pos": "noun",
+"topic": "market",
+"lesson": 6,
+"source": "core"
+},
+{
+"id": "kn.kittale",
+"script": "ಕಿತ್ತಳೆ",
+"roman": "kittaLe",
+"meaning": "orange (colour / fruit)",
+"pos": "adjective",
+"topic": "colors",
+"lesson": 8,
+"source": "core"
+},
+{
+"id": "kn.hoogi",
+"script": "ಹೋಗಿ",
+"roman": "hoogi",
+"meaning": "please go",
+"pos": "verb",
+"topic": "greetings",
+"lesson": 8,
+"source": "core",
+"example": {
+"script": "ನೇರವಾಗಿ ಮುಂದೆ ಹೋಗಿ.",
+"meaning": "Go straight ahead."
+}
+},
+{
+"id": "kn.noodi",
+"script": "ನೋಡಿ",
+"roman": "nooDi",
+"meaning": "please look / see",
+"pos": "verb",
+"topic": "greetings",
+"lesson": 8,
+"source": "core",
+"example": {
+"script": "ಆ ಸುಂದರ ಅರಮನೆ ನೋಡಿ.",
+"meaning": "Look at that beautiful palace."
+}
+},
+{
+"id": "kn.baalehannu2",
+"script": "ಬಾಳೆಹಣ್ಣು",
+"roman": "baaLehaNNu",
+"meaning": "banana",
+"pos": "noun",
+"topic": "food",
+"lesson": 11,
+"source": "core",
+"art": "banana",
+"example": {
+"script": "ನಂಜನಗೂಡು ಬಾಳೆಹಣ್ಣು ತುಂಬಾ ಸಿಹಿ.",
+"meaning": "Nanjangud bananas are very sweet."
+}
+},
+{
+"id": "kn.hosadu",
+"script": "ಹೊಸದು",
+"roman": "hosadu",
+"meaning": "new one",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 16,
+"source": "core",
+"example": {
+"script": "ನಮ್ಮ ಮನೆ ಹೊಸದು.",
+"meaning": "Our house is a new one."
+}
+},
+{
+"id": "kn.doddadu",
+"script": "ದೊಡ್ಡದು",
+"roman": "doDDadu",
+"meaning": "big one",
+"pos": "adjective",
+"topic": "adjectives",
+"lesson": 16,
+"source": "core",
+"example": {
+"script": "ಆನೆ ತುಂಬಾ ದೊಡ್ಡದು.",
+"meaning": "The elephant is very big."
+}
+}
+]
