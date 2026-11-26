@@ -43,23 +43,36 @@ const toCards = (pairs: PairItem[]): Card[] =>
     { key: `${p.id}.m`, pairId: p.id, side: "m" as const, text: p.meaning },
   ]);
 
-/** Tile grid: native and meaning tiles mixed together. */
+/** Two-column matching: native script words/letters on the left, meanings on the right. */
 export function MatchGrid({ ex, onAnswer, locked }: ExerciseProps) {
-  const lang = useEngine().pack.config.id;
+  const { pack } = useEngine();
+  const lang = pack.config.id;
   const say = usePhonetic();
   const pairs = useMemo(() => ex.pairs ?? [], [ex.pairs]);
-  const cards = useMemo(() => shuffle(toCards(pairs)), [pairs]);
+  const left = useMemo(() => shuffle(toCards(pairs).filter((c) => c.side === "n")), [pairs]);
+  const right = useMemo(() => shuffle(toCards(pairs).filter((c) => c.side === "m")), [pairs]);
   const m = useMatcher(pairs, (mistakes) => onAnswer({ correct: mistakes === 0, mistakes }));
   return (
     <div>
       <p className="prompt">Match the pairs</p>
-      <p className="prompt-sub">Tap a word, then its meaning. {m.matched.size}/{pairs.length} matched</p>
-      <div className="match-grid">
-        {cards.map((c) => (
-          <button key={c.key} type="button" className={m.cls(c)} disabled={locked || m.matched.has(c.pairId)} onClick={() => m.tap(c)} lang={c.side === "n" ? lang : undefined} data-say={c.side === "n" ? say(c.roman) : undefined}>
-            {c.text}
-          </button>
-        ))}
+      <p className="prompt-sub">Tap a {pack.config.name} word on the left, then its match on the right. {m.matched.size}/{pairs.length} matched</p>
+      <div className="columns">
+        <div className="col">
+          <div className="col-head">{pack.config.name}</div>
+          {left.map((c) => (
+            <button key={c.key} type="button" className={m.cls(c)} disabled={locked || m.matched.has(c.pairId)} onClick={() => m.tap(c)} lang={lang} data-say={say(c.roman)}>
+              {c.text}
+            </button>
+          ))}
+        </div>
+        <div className="col">
+          <div className="col-head">Meaning</div>
+          {right.map((c) => (
+            <button key={c.key} type="button" className={m.cls(c)} disabled={locked || m.matched.has(c.pairId)} onClick={() => m.tap(c)}>
+              {c.text}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -67,7 +80,8 @@ export function MatchGrid({ ex, onAnswer, locked }: ExerciseProps) {
 
 /** Two vertical columns: native script left, meanings right. */
 export function MatchColumns({ ex, onAnswer, locked }: ExerciseProps) {
-  const lang = useEngine().pack.config.id;
+  const { pack } = useEngine();
+  const lang = pack.config.id;
   const say = usePhonetic();
   const pairs = useMemo(() => ex.pairs ?? [], [ex.pairs]);
   const left = useMemo(() => shuffle(toCards(pairs).filter((c) => c.side === "n")), [pairs]);
@@ -79,7 +93,7 @@ export function MatchColumns({ ex, onAnswer, locked }: ExerciseProps) {
       <p className="prompt-sub">{m.matched.size}/{pairs.length} pairs</p>
       <div className="columns">
         <div className="col">
-          <div className="col-head">Script</div>
+          <div className="col-head">{pack.config.name}</div>
           {left.map((c) => (
             <button key={c.key} type="button" className={m.cls(c)} disabled={locked || m.matched.has(c.pairId)} onClick={() => m.tap(c)} lang={lang} data-say={say(c.roman)}>{c.text}</button>
           ))}

@@ -546,9 +546,12 @@ button.pill:active { transform: scale(0.95); }
 
 /* letter card */
 .letter-hero {
-  display: grid; place-items: center; width: min(100%, 260px); aspect-ratio: 1; margin: 0 auto;
+  display: grid; place-items: center; width: min(100%, 240px); aspect-ratio: 1; margin: 0 auto 24px;
   border-radius: 34% 34% 30% 30%; border: 2px solid var(--ink); background: var(--saffron-soft); box-shadow: 0 6px 0 var(--ink);
-  font-family: var(--native-font); font-size: clamp(110px, 24vw, 150px); font-weight: 700; line-height: 1;
+  font-family: var(--native-font); font-size: clamp(104px, 24vw, 144px); font-weight: 700; line-height: 1;
+}
+.letter-pick-hero {
+  width: min(46vw, 180px); font-size: clamp(78px, 20vw, 110px); margin: 4px auto 28px;
 }
 
 /* flashcards */
@@ -911,7 +914,8 @@ table.data td { padding: 8px; border-bottom: 1px dashed var(--line); vertical-al
   .feedback { padding: 10px 16px 14px; gap: 10px; max-height: 54vh; }
   .feedback .btn.lg { min-height: 50px; }
   .feedback-spacer { height: 185px; }
-  .letter-hero { width: min(58vw, 220px); font-size: clamp(96px, 30vw, 140px); }
+  .letter-hero { width: min(56vw, 200px); font-size: clamp(92px, 28vw, 130px); margin-bottom: 22px; }
+  .letter-pick-hero { width: min(44vw, 164px); font-size: clamp(74px, 20vw, 102px); margin-bottom: 24px; }
   .reveal { padding: 20px 16px 18px; border-radius: 24px; }
   .reveal .native-word { font-size: clamp(42px, 13vw, 64px); }
   .reveal .native-word.long { font-size: clamp(30px, 9vw, 44px); }
@@ -1243,6 +1247,37 @@ html.debug-ui :has(> .debug-tag.screen) {
   display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 5px;
   font-size: 13px; font-weight: 700; color: var(--ink);
 }
+
+/* ───────────────── Mobile-friendly Lives & Recovery (Onboarding-inspired) ───────────────── */
+.lives-shell {
+  max-width: 600px; width: 100%; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.lives-top {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px;
+  padding: 6px 8px; border-radius: 999px;
+  background: var(--glass-bg); background-image: var(--glass-specular);
+  backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+  border: 1.5px solid var(--glass-border); box-shadow: var(--glass-rim), var(--shadow-1);
+}
+.lives-back { width: 38px; height: 38px; box-shadow: none; background: var(--paper-2); border-color: transparent; }
+.lives-top-title { display: flex; flex-direction: column; align-items: center; line-height: 1.15; }
+.lives-top-title strong { font-family: var(--font-display); font-size: 15px; font-weight: 800; }
+.lives-hero { align-items: center; text-align: center; gap: 10px; padding: 22px 18px; }
+.lives-hearts .hearts { flex-wrap: wrap; justify-content: center; gap: 6px; }
+.lives-hearts .hearts .ico { width: 28px; height: 28px; }
+.lives-action {
+  padding: 13px 14px; gap: 12px; border-radius: 20px; width: 100%;
+  border: 1.5px solid var(--line-strong); background: var(--card);
+  box-shadow: 0 3px 0 rgba(30, 23, 22, 0.08);
+  transition: transform 0.14s var(--spring), border-color 0.16s, box-shadow 0.16s;
+}
+.lives-action:hover:not(:disabled) { border-color: var(--ink); box-shadow: 0 3px 0 var(--ink); transform: translateY(-1px); }
+.lives-action:active:not(:disabled) { transform: translateY(1px); box-shadow: 0 1px 0 var(--ink); }
+.lives-rules { display: grid; gap: 10px; }
+.lives-rule { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: var(--ink-soft); line-height: 1.4; }
+.lives-rule .ico { width: 17px; height: 17px; color: var(--terracotta); flex-shrink: 0; margin-top: 2px; }
+.lives-dock { padding: 4px 0 8px; }
 
 /* ───────────────── Classic Theme: Sandalwood Glass (Settings → Theme) ───────────────── */
 html[data-theme="glass"] {

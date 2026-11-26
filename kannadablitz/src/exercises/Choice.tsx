@@ -32,7 +32,7 @@ export function ChoiceExercise({ ex, onAnswer, locked }: ExerciseProps) {
     header = (
       <>
         <p className="prompt">Which sound does this letter make?</p>
-        <div className="letter-hero" style={{ width: 180, fontSize: 110 }}><span lang={lang}>{ex.letter.script}</span></div>
+        <div className="letter-hero letter-pick-hero"><span lang={lang}>{ex.letter.script}</span></div>
       </>
     );
   } else if (ex.type === "letter_find" && ex.letter) {
