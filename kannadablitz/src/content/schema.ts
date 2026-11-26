@@ -190,6 +190,8 @@ export interface MascotSpec {
   name: string;
   nameScript: string;
   role: string;
+  /** Optional 3D/illustrated portrait URLs keyed by mood */
+  avatars?: Partial<Record<MascotMood, string>>;
   lines: MascotLine[];
   /** Sample conversation starters shown in the upcoming Live Chat preview */
   chatStarters: { script: string; roman: string; meaning: string }[];

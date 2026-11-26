@@ -1,4 +1,8 @@
 import type { MascotSpec } from "../../schema";
+import chinnuHappy from "./mascot/chinnu-happy.jpg";
+import chinnuExcited from "./mascot/chinnu-excited.jpg";
+import chinnuThinking from "./mascot/chinnu-thinking.jpg";
+import chinnuEncouraging from "./mascot/chinnu-encouraging.jpg";
 
 /**
  * Chinnu (ಚಿನ್ನು) — a cheerful Mysuru elephant calf companion.
@@ -10,6 +14,15 @@ export const KN_MASCOT: MascotSpec = {
   name: "Chinnu",
   nameScript: "ಚಿನ್ನು",
   role: "Your Mysuru study buddy",
+  avatars: {
+    happy: chinnuHappy,
+    excited: chinnuExcited,
+    proud: chinnuExcited,
+    thinking: chinnuThinking,
+    curious: chinnuThinking,
+    encouraging: chinnuEncouraging,
+    sleepy: chinnuEncouraging,
+  },
   lines: [
     {
       id: "kn.m.morning.1",

@@ -84,6 +84,34 @@ h1 { font-size: clamp(26px, 4vw, 35px); line-height: 1.14; }
 h2 { font-size: clamp(20px, 3vw, 24px); line-height: 1.2; }
 h3 { font-size: 17px; letter-spacing: -0.015em; }
 .mascot-svg { flex-shrink: 0; display: block; filter: drop-shadow(0 2px 0 rgba(30, 23, 22, 0.14)); }
+.mascot-frame {
+  position: relative; display: inline-block; flex-shrink: 0; overflow: hidden;
+  background: #FCFBF7; border: 2px solid var(--ink);
+  box-shadow: 0 3px 0 var(--ink), 0 8px 18px rgba(30, 23, 22, 0.12);
+  transition: transform 0.22s var(--spring), box-shadow 0.2s var(--ease);
+}
+.mascot-frame.mood-excited, .mascot-frame.mood-proud {
+  border-color: var(--saffron);
+  box-shadow: 0 3px 0 var(--gold), 0 8px 20px rgba(242, 183, 5, 0.28);
+  animation: mascotPop 0.42s var(--spring);
+}
+.mascot-img {
+  display: block; width: 100%; height: 100%; object-fit: cover;
+  animation: mascotFade 0.22s var(--ease);
+}
+@keyframes mascotPop {
+  0% { transform: scale(0.9); }
+  55% { transform: scale(1.06) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+@keyframes mascotFade {
+  from { opacity: 0.72; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+html[data-theme="glass"] .mascot-frame {
+  border: 1.5px solid var(--glass-border);
+  box-shadow: var(--glass-rim), 0 6px 18px rgba(59, 18, 20, 0.14);
+}
 p { margin: 0; }
 img { max-width: 100%; }
 

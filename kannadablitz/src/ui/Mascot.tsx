@@ -15,9 +15,9 @@ const MOOD_LABEL: Record<MascotMood, string> = {
 };
 
 /**
- * Relatable Mysuru elephant calf mascot in crisp geometric vector style.
- * Supports 7 live facial expressions so it works for greetings, exercise reactions,
- * and future Live Chat conversation states.
+ * Relatable Mysuru elephant calf mascot portrait.
+ * Renders the pack's 3D studio character portrait per mood (with a clean SVG fallback
+ * if a language pack doesn't supply custom portraits).
  */
 export function MascotAvatar({
   mood = "happy",
@@ -28,6 +28,28 @@ export function MascotAvatar({
   size?: number;
   className?: string;
 }) {
+  const { pack } = useEngine();
+  const src = pack.mascot?.avatars?.[mood] ?? pack.mascot?.avatars?.happy;
+
+  if (src) {
+    const radius = Math.round(size * 0.28);
+    return (
+      <span
+        className={`mascot-frame mood-${mood} ${className}`}
+        style={{ width: size, height: size, borderRadius: radius }}
+        aria-hidden="true"
+      >
+        <img
+          key={src}
+          src={src}
+          alt={pack.mascot?.name ?? "Mascot"}
+          className="mascot-img"
+          draggable={false}
+        />
+      </span>
+    );
+  }
+
   const isExcited = mood === "excited" || mood === "proud";
   const isThinking = mood === "thinking";
   const isSleepy = mood === "sleepy";
@@ -174,7 +196,7 @@ export function MascotGreetingCard({
             aria-label={`Tap ${mascot.name} for another greeting`}
             title={`Tap ${mascot.name} to say hi!`}
           >
-            <MascotAvatar mood={line.mood} size={68} />
+            <MascotAvatar mood={line.mood} size={82} />
             <span className="mascot-mood-dot">{MOOD_LABEL[line.mood]}</span>
           </button>
 
