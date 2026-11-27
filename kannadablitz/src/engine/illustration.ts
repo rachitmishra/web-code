@@ -60,9 +60,9 @@ export function resolveArt(v: VocabEntry, pack: LanguagePack, overrides: ArtOver
  */
 export function artPrompt(v: VocabEntry, languageName: string): string {
   return [
-    `Editorial illustration of "${v.meaning}" (${v.pos}, topic: ${v.topic}) for a ${languageName} vocabulary card.`,
-    "Single clear subject, centred, generous margin, warm ivory paper background (#fff7e6).",
-    "Flat shapes with a fine deep-indigo outline (#3b1214), accents of terracotta (#c8102e), saffron (#f2b705) and leaf green (#2e7a3c).",
-    "Subtle paper grain, no gradients, no text or letters, culturally appropriate South Indian context, square 1:1.",
+    `Minimal Scandinavian flat-editorial vector illustration of "${v.meaning}" (${v.pos}, topic: ${v.topic}) for a ${languageName} vocabulary card.`,
+    "Single clear rounded subject, centred, generous margin, soft pale sky-mist gradient background with a subtle oval ground shadow.",
+    "Lineless flat pastel shapes (no heavy black outlines), warm terracotta coral (#E07A5F), soft butter yellow (#F2C974), eucalyptus sage (#7BB28C), slate blue (#84A7C4) and oatmeal cream (#EFE0CA).",
+    "Calm modern iOS editorial aesthetic, no text or letters, culturally appropriate South Indian context, square 1:1.",
   ].join(" ");
 }
