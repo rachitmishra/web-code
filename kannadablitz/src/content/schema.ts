@@ -150,6 +150,12 @@ export interface PostcardSpec {
 
 export type HeritageCategory = "stories" | "folk_tales" | "traditions" | "music" | "art";
 
+export interface HeritageParagraph {
+  script: string;
+  roman: string;
+  meaning: string;
+}
+
 export interface HeritageEntry {
   id: string;
   category: HeritageCategory;
@@ -160,6 +166,10 @@ export interface HeritageEntry {
   summary: string;
   story: string;
   keyTerm: { script: string; roman: string; meaning: string };
+  /** Full multi-paragraph native-script story with phonetics & English meaning */
+  paragraphs?: HeritageParagraph[];
+  /** Key vocabulary words highlighted & summarised at the end of the story */
+  glossary?: { script: string; roman: string; meaning: string }[];
   /** Short native-script reading passage with meaning for reading comprehension */
   readingPassage?: { script: string; roman: string; meaning: string };
   references: string[];

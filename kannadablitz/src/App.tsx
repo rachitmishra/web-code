@@ -11,7 +11,7 @@ import { Journey, LevelScreen, SublevelIntro } from "./screens/Learn";
 import { SessionScreen } from "./screens/Session";
 import { PracticeHub, FlashcardDeck, RevisionCentre } from "./screens/Practice";
 import { FastMatch } from "./screens/FastMatch";
-import { Discover, DailyWordScreen } from "./screens/Discover";
+import { Discover, DailyWordScreen, HeritageStoryScreen } from "./screens/Discover";
 import { Passport, Achievements, Certificate } from "./screens/Passport";
 import { Stats } from "./screens/Stats";
 import { Settings, ContentStudio } from "./screens/Settings";
@@ -37,6 +37,7 @@ function Screen({ route }: { route: Route }) {
     case "fastmatch": return <FastMatch />;
     case "revision": return <RevisionCentre />;
     case "discover": return <Discover />;
+    case "heritage": return <HeritageStoryScreen id={route.id} />;
     case "daily": return <DailyWordScreen />;
     case "passport": return <Passport />;
     case "achievements": return <Achievements />;
@@ -60,6 +61,7 @@ function screenName(route: Route): string {
     case "fastmatch": return "FastMatch";
     case "revision": return "RevisionCentre";
     case "discover": return "Discover";
+    case "heritage": return `HeritageStory (${route.id})`;
     case "daily": return "DailyWordScreen";
     case "passport": return "Passport";
     case "achievements": return "Achievements";
@@ -131,7 +133,7 @@ export default function App() {
 
       <main className={`main ${focus ? "focus" : ""}`} id="main">
         {!focus && <StatusBar />}
-        <div key={route.name === "level" ? `level-${route.level}` : route.name === "sublevel" || route.name === "session" ? `${route.name}-${route.id}` : route.name} className="screen-enter">
+        <div key={route.name === "level" ? `level-${route.level}` : route.name === "sublevel" || route.name === "session" || route.name === "heritage" ? `${route.name}-${route.id}` : route.name} className="screen-enter">
           <DebugLabel name={activeScreen} kind="screen" />
           <Screen route={route} />
         </div>

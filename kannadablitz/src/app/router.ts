@@ -11,6 +11,7 @@ export type Route =
   | { name: "fastmatch" }
   | { name: "revision" }
   | { name: "discover" }
+  | { name: "heritage"; id: string }
   | { name: "daily" }
   | { name: "passport" }
   | { name: "achievements" }
@@ -33,7 +34,10 @@ export function parse(hash: string): Route {
       if (b === "fast") return { name: "fastmatch" };
       if (b === "revision") return { name: "revision" };
       return { name: "practice" };
-    case "discover": return b === "daily" ? { name: "daily" } : { name: "discover" };
+    case "discover":
+      if (b === "daily") return { name: "daily" };
+      if (b === "heritage" && parts[2]) return { name: "heritage", id: parts[2] };
+      return { name: "discover" };
     case "passport": return b === "achievements" ? { name: "achievements" } : { name: "passport" };
     case "stats": return { name: "stats" };
     case "settings": return b === "content" ? { name: "content" } : { name: "settings" };
@@ -55,6 +59,7 @@ export function href(r: Route): string {
     case "fastmatch": return "#/practice/fast";
     case "revision": return "#/practice/revision";
     case "discover": return "#/discover";
+    case "heritage": return `#/discover/heritage/${encodeURIComponent(r.id)}`;
     case "daily": return "#/discover/daily";
     case "passport": return "#/passport";
     case "achievements": return "#/passport/achievements";
@@ -89,7 +94,7 @@ export function tabOf(r: Route): Tab | null {
     case "home": case "stats": case "settings": case "content": case "lives": return "home";
     case "learn": case "level": case "sublevel": return "learn";
     case "practice": case "flashcards": case "fastmatch": case "revision": return "practice";
-    case "discover": case "daily": return "discover";
+    case "discover": case "heritage": case "daily": return "discover";
     case "passport": case "achievements": case "certificate": return "passport";
     default: return null;
   }

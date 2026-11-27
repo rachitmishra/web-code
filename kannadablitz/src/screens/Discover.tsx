@@ -91,7 +91,6 @@ export function Discover() {
 function HeritageTab() {
   const { pack } = useEngine();
   const [cat, setCat] = useState<HeritageCategory | "all">("all");
-  const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const entries = pack.heritage ?? [];
   const filtered = entries.filter((e) => cat === "all" || e.category === cat);
 
@@ -122,19 +121,7 @@ function HeritageTab() {
 
         <div className="grid two">
           {filtered.map((item) => (
-            <HeritageCard
-              key={item.id}
-              item={item}
-              open={expanded.has(item.id)}
-              onToggle={() =>
-                setExpanded((prev) => {
-                  const next = new Set(prev);
-                  if (next.has(item.id)) next.delete(item.id);
-                  else next.add(item.id);
-                  return next;
-                })
-              }
-            />
+            <HeritageCard key={item.id} item={item} />
           ))}
         </div>
       </section>
@@ -176,20 +163,22 @@ function VocabMatches({ matches }: { matches: MatchedVocab[] }) {
   );
 }
 
-function HeritageCard({ item, open, onToggle }: { item: HeritageEntry; open: boolean; onToggle: () => void }) {
-  const { pack, progress } = useEngine();
+function HeritageCard({ item }: { item: HeritageEntry }) {
+  const { pack, state } = useEngine();
   const art = item.postcardArt ? pack.postcardArt[item.postcardArt] : undefined;
-  const learnedIds = useMemo(
-    () => new Set(Object.entries(progress.words).filter(([, c]) => c.correct + c.wrong > 0).map(([k]) => k)),
-    [progress.words],
-  );
-  const matches = useMemo(
-    () => findVocabInText(`${item.titleScript} ${item.keyTerm.script} ${item.readingPassage?.script ?? ""}`, pack.vocab, learnedIds, 5),
-    [item, pack.vocab, learnedIds],
-  );
+  const titlePhon = pack.phonetics ? pack.phonetics(item.titleRoman) : item.titleRoman;
+  const paraCount = item.paragraphs?.length ?? 0;
 
   return (
-    <article className="card heritage-card stack" style={{ gap: 0, padding: 0, overflow: "hidden" }}>
+    <article
+      className="card heritage-card heritage-card-link stack"
+      style={{ gap: 0, padding: 0, overflow: "hidden", cursor: "pointer" }}
+      onClick={() => go({ name: "heritage", id: item.id })}
+      role="button"
+      tabIndex={0}
+      aria-label={`Read ${item.title}`}
+      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go({ name: "heritage", id: item.id }); } }}
+    >
       <DebugLabel name="HeritageCard" />
       {art && (
         <div className="heritage-banner">
@@ -203,61 +192,235 @@ function HeritageCard({ item, open, onToggle }: { item: HeritageEntry; open: boo
         </div>
       )}
 
-      <div className="stack" style={{ padding: 18, gap: 10 }}>
-        <div className="row between" style={{ alignItems: "flex-start" }}>
-          <div className="stack" style={{ gap: 2, minWidth: 0 }}>
-            {!art && <span className="eyebrow">{CAT_LABEL[item.category]} · {item.region}</span>}
-            <h3 style={{ fontSize: 19, lineHeight: 1.2 }}>{item.title}</h3>
-            <Native as="div" size={20} style={{ color: "var(--terracotta)" }}>{item.titleScript}</Native>
-          </div>
-          <SpeakButton text={item.titleScript} roman={item.titleRoman} small />
+      <div className="stack" style={{ padding: 18, gap: 8, flex: 1 }}>
+        <div className="stack" style={{ gap: 2, minWidth: 0 }}>
+          {!art && <span className="eyebrow">{CAT_LABEL[item.category]} · {item.region}</span>}
+          {state.settings.showPhonetics && <span className="mascot-phon" style={{ fontSize: 12 }}>{titlePhon}</span>}
+          <Native as="div" size={19} say={false} style={{ color: "var(--ink)", lineHeight: 1.3 }}>{item.titleScript}</Native>
+          <h3 style={{ fontSize: 15, fontWeight: 700, color: "var(--ink-soft)", lineHeight: 1.3 }}>{item.title}</h3>
         </div>
 
-        <p className="muted" style={{ fontSize: 14, lineHeight: 1.5 }}>{open ? item.story : item.summary}</p>
+        <p className="muted" style={{ fontSize: 13.5, lineHeight: 1.5, margin: 0 }}>{item.summary}</p>
 
-        {item.readingPassage && (
-          <div className="news-summary stack" style={{ gap: 5 }}>
-            <div className="row between">
-              <span className="eyebrow">Reading practice</span>
-              <SpeakButton text={item.readingPassage.script} roman={item.readingPassage.roman} small />
-            </div>
-            <p className="news-summary-say">{pack.phonetics ? pack.phonetics(item.readingPassage.roman) : item.readingPassage.roman}</p>
-            <Native as="p" size={16} say={false} style={{ lineHeight: 1.55, fontWeight: 600 }}>{item.readingPassage.script}</Native>
-            <p className="news-meaning">{item.readingPassage.meaning}</p>
-          </div>
-        )}
-
-        <div className="heritage-term">
-          <div className="row between" style={{ gap: 8 }}>
-            <div className="stack" style={{ gap: 2 }}>
-              <span className="eyebrow">Cultural term</span>
-              <Native size={20}>{item.keyTerm.script}</Native>
-              <div style={{ fontSize: 13 }}>
-                <strong>{item.keyTerm.meaning}</strong>
-              </div>
-            </div>
-            <SpeakButton text={item.keyTerm.script} roman={item.keyTerm.roman} small />
-          </div>
+        <div className="row between" style={{ marginTop: "auto", paddingTop: 6 }}>
+          <span className="muted" style={{ fontSize: 12, fontWeight: 700 }}>
+            {paraCount > 0 ? `${paraCount} parts` : CAT_LABEL[item.category]}
+          </span>
+          <span className="story-read-cta">Read <Icon name="arrowRight" /></span>
         </div>
-
-        {open && <VocabMatches matches={matches} />}
-
-        {open && item.references.length > 0 && (
-          <div className="heritage-refs stack" style={{ gap: 6 }}>
-            <span className="eyebrow">Explore &amp; listen</span>
-            <ul className="heritage-ref-list">
-              {item.references.map((ref) => (
-                <li key={ref}>{ref}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        <button type="button" className="btn sm ghost" style={{ alignSelf: "flex-start", paddingLeft: 6 }} onClick={onToggle}>
-          <Icon name={open ? "arrowUp" : "eye"} /> {open ? "Show less" : "Read story & references"}
-        </button>
       </div>
     </article>
+  );
+}
+
+export function HeritageStoryScreen({ id }: { id: string }) {
+  const { pack, progress, state } = useEngine();
+  const meaningMode = useMeaningMode();
+  const entries = pack.heritage ?? [];
+  const idx = entries.findIndex((e) => e.id === id);
+  const item = entries[idx];
+
+  const [openParas, setOpenParas] = useState<Set<number>>(new Set());
+  const [showAllMeanings, setShowAllMeanings] = useState(false);
+
+  const learnedIds = useMemo(
+    () => new Set(Object.entries(progress.words).filter(([, c]) => c.correct + c.wrong > 0).map(([k]) => k)),
+    [progress.words],
+  );
+
+  const fullScript = useMemo(() => {
+    if (!item) return "";
+    const parts = [
+      item.titleScript,
+      item.keyTerm.script,
+      ...(item.paragraphs?.map((p) => p.script) ?? []),
+      item.readingPassage?.script ?? "",
+    ];
+    return parts.join(" ");
+  }, [item]);
+
+  const matches = useMemo(
+    () => (item ? findVocabInText(fullScript, pack.vocab, learnedIds, 10) : []),
+    [item, fullScript, pack.vocab, learnedIds],
+  );
+
+  if (!item) {
+    return (
+      <div className="stack lg">
+        <button type="button" className="btn sm ghost" style={{ alignSelf: "flex-start" }} onClick={() => go({ name: "discover" })}>
+          <Icon name="arrowLeft" /> Discover
+        </button>
+        <Empty icon="crown" title="Story not found" body="Pick another story from Discover → Heritage." />
+      </div>
+    );
+  }
+
+  const art = item.postcardArt ? pack.postcardArt[item.postcardArt] : undefined;
+  const showPhon = state.settings.showPhonetics;
+  const titlePhon = pack.phonetics ? pack.phonetics(item.titleRoman) : item.titleRoman;
+  const paragraphs = item.paragraphs?.length
+    ? item.paragraphs
+    : item.readingPassage
+      ? [item.readingPassage]
+      : [];
+  const nextEntry = entries.length > 1 ? entries[(idx + 1) % entries.length] : undefined;
+
+  const glossaryItems = [
+    ...(item.glossary ?? []),
+    ...((item.glossary ?? []).some((g) => g.script === item.keyTerm.script) ? [] : [item.keyTerm]),
+  ];
+  const learnedMatchCount = matches.filter((m) => m.learned).length;
+
+  const togglePara = (i: number) => {
+    setOpenParas((prev) => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i);
+      else next.add(i);
+      return next;
+    });
+  };
+
+  return (
+    <div className="story-shell stack lg">
+      <DebugLabel name="HeritageStoryScreen" />
+      <div className="row between wrap" style={{ gap: 8 }}>
+        <button type="button" className="btn sm ghost" onClick={() => go({ name: "discover" })}>
+          <Icon name="arrowLeft" /> Heritage
+        </button>
+        {meaningMode !== "always" && meaningMode !== "off" && paragraphs.length > 0 && (
+          <button
+            type="button"
+            className={`chip ${showAllMeanings ? "active" : ""}`}
+            onClick={() => setShowAllMeanings((v) => !v)}
+          >
+            <Icon name="eye" /> {showAllMeanings ? "Hide meanings" : "Show all meanings"}
+          </button>
+        )}
+      </div>
+
+      <article className="card stack" style={{ padding: 0, overflow: "hidden", gap: 0 }}>
+        {art && (
+          <div className="story-hero-banner">
+            {art.trimStart().startsWith("<") ? (
+              <div style={{ width: "100%", height: "100%" }} dangerouslySetInnerHTML={{ __html: art }} />
+            ) : (
+              <img src={art} alt={item.title} />
+            )}
+            <span className="heritage-cat-pill">{CAT_LABEL[item.category]}</span>
+            <span className="heritage-region">{item.region}</span>
+          </div>
+        )}
+
+        <div className="stack" style={{ padding: "20px 22px 22px", gap: 10 }}>
+          <div className="row between" style={{ alignItems: "flex-start", gap: 12 }}>
+            <div className="stack" style={{ gap: 3, minWidth: 0 }}>
+              {showPhon && <span className="mascot-phon" style={{ fontSize: 13 }}>{titlePhon}</span>}
+              <Native as="h1" size={26} say={false} style={{ lineHeight: 1.25, color: "var(--ink)" }}>{item.titleScript}</Native>
+              <p style={{ fontSize: 16, fontWeight: 700, color: "var(--ink-soft)", margin: 0 }}>{item.title}</p>
+            </div>
+            <SpeakButton text={item.titleScript} roman={item.titleRoman} />
+          </div>
+          <p className="muted" style={{ fontSize: 14, lineHeight: 1.55, margin: 0 }}>{item.story}</p>
+        </div>
+      </article>
+
+      {paragraphs.length > 0 && (
+        <section className="stack" style={{ gap: 12 }} aria-label="Story paragraphs">
+          <div className="row between">
+            <span className="eyebrow">Read in {pack.config.name}</span>
+            {meaningMode === "tap" && !showAllMeanings && (
+              <span className="muted" style={{ fontSize: 12, fontWeight: 600 }}>Tap a paragraph for meaning</span>
+            )}
+          </div>
+
+          {paragraphs.map((p, i) => {
+            const phon = pack.phonetics ? pack.phonetics(p.roman) : p.roman;
+            const meaningShown =
+              meaningMode === "always" ||
+              (meaningMode === "tap" && (showAllMeanings || openParas.has(i)));
+            return (
+              <div key={i} className="card story-para stack" style={{ gap: 8 }}>
+                <div className="row between" style={{ alignItems: "flex-start", gap: 10 }}>
+                  <button
+                    type="button"
+                    className={`mascot-phrase-btn ${meaningMode === "tap" ? "tappable" : ""}`}
+                    onClick={() => { if (meaningMode === "tap") togglePara(i); }}
+                    aria-expanded={meaningMode === "tap" ? meaningShown : undefined}
+                  >
+                    {showPhon && <span className="mascot-phon" style={{ fontSize: 13, lineHeight: 1.45 }}>{phon}</span>}
+                    <Native as="span" size={19} say={false} style={{ lineHeight: 1.6, color: "var(--ink)" }}>
+                      {p.script}
+                    </Native>
+                  </button>
+                  <SpeakButton text={p.script} roman={p.roman} small />
+                </div>
+                {meaningShown && (
+                  <p className="story-para-meaning">{p.meaning}</p>
+                )}
+              </div>
+            );
+          })}
+        </section>
+      )}
+
+      <section className="card story-words-card stack" style={{ gap: 14 }} aria-label="Words learnt summary">
+        <div className="row between wrap" style={{ gap: 8 }}>
+          <div className="stack" style={{ gap: 2 }}>
+            <span className="eyebrow">Words learnt &amp; spotted</span>
+            <h2 style={{ fontSize: 19 }}>Story vocabulary summary</h2>
+          </div>
+          <div className="row wrap" style={{ gap: 6 }}>
+            <span className="tag saffron">{glossaryItems.length} key words</span>
+            {matches.length > 0 && (
+              <span className="tag leaf">{learnedMatchCount}/{matches.length} lesson words learned</span>
+            )}
+          </div>
+        </div>
+
+        <div className="story-glossary-grid">
+          {glossaryItems.map((w) => {
+            const phon = pack.phonetics ? pack.phonetics(w.roman) : w.roman;
+            return (
+              <div key={w.script} className="story-glossary-item row between" style={{ gap: 8 }}>
+                <div className="stack" style={{ gap: 2, minWidth: 0 }}>
+                  {showPhon && <span className="mascot-phon" style={{ fontSize: 11.5 }}>{phon}</span>}
+                  <Native as="span" size={17} say={false} style={{ color: "var(--ink)" }}>{w.script}</Native>
+                  <span className="muted" style={{ fontSize: 12.5, fontWeight: 600 }}>{w.meaning}</span>
+                </div>
+                <SpeakButton text={w.script} roman={w.roman} small />
+              </div>
+            );
+          })}
+        </div>
+
+        {matches.length > 0 && <VocabMatches matches={matches} />}
+      </section>
+
+      {item.references.length > 0 && (
+        <section className="card warm stack" style={{ gap: 8 }}>
+          <span className="eyebrow">Explore &amp; listen</span>
+          <ul className="heritage-ref-list">
+            {item.references.map((ref) => (
+              <li key={ref}>{ref}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {nextEntry && (
+        <button
+          type="button"
+          className="card row between story-next-btn"
+          onClick={() => go({ name: "heritage", id: nextEntry.id })}
+        >
+          <div className="stack" style={{ gap: 2, textAlign: "left" }}>
+            <span className="eyebrow">Next in Heritage</span>
+            <strong>{nextEntry.title}</strong>
+          </div>
+          <Icon name="arrowRight" />
+        </button>
+      )}
+    </div>
   );
 }
 
