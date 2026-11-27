@@ -56,6 +56,12 @@ describe("curriculum", () => {
     }
     expect(fresh / total).toBeGreaterThan(0.75);
   });
+  it("weaves prior-level revision into later levels", () => {
+    const prior = new Set<string>(cur.levels.slice(0, 4).flatMap((l) => l.vocabIds));
+    const l5Plans = cur.levels[4].sublevels.flatMap((s) => s.plan);
+    const revisits = l5Plans.filter((p) => (p.vocabIds ?? []).some((id) => prior.has(id)));
+    expect(revisits.length).toBeGreaterThanOrEqual(8);
+  });
   it("builds for another language without code changes", () => {
     const hi = buildCurriculum(HINDI_PACK);
     expect(hi.levels).toHaveLength(3);

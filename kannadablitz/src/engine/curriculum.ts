@@ -113,13 +113,22 @@ function planFor(
   sentences: string[],
   readings: string[],
   review: string[],
+  priorVocab: string[],
+  priorLetters: string[],
   rng: () => number,
 ): ExercisePlan[] {
   const w = (i: number) => cycle(words, i);
+  const pv = (i: number) => cycle(priorVocab, i);
+  const pl = (i: number) => cycle(priorLetters, i);
   const pool = review.length >= 4 ? review : [...new Set([...words, ...review])];
   const group = (n: number, off = 0) => {
     const src = pool.length >= n ? pool : [...new Set([...pool, ...words])];
     return shuffle(src, rng).slice(off, off + n);
+  };
+  const spiralGroup = (n: number, priorCount = 1) => {
+    const fromPrior = priorVocab.length ? shuffle(priorVocab, rng).slice(0, priorCount) : [];
+    const fromCur = shuffle(pool.length ? pool : words, rng).filter((id) => !fromPrior.includes(id));
+    return [...fromPrior, ...fromCur].slice(0, n);
   };
   const s = (i: number) => cycle(sentences, i);
   const p = (i: number) => cycle(phrases, i);
@@ -141,6 +150,8 @@ function planFor(
     const lpick = (i: number) => ({ type: "letter_pick" as const, letterId: L(i) });
     const find = (i: number) => ({ type: "letter_find" as const, letterId: L(i) });
     const trace = (i: number, freehand = false) => ({ type: "letter_trace" as const, letterId: L(i), freehand });
+    const prevLpick = (i: number) => (pl(i) ? { type: "letter_pick" as const, letterId: pl(i)! } : lpick(i));
+    const prevFind = (i: number) => (pl(i) ? { type: "letter_find" as const, letterId: pl(i)! } : find(i));
     const n = letters.length;
     // Words that use this lesson's letters, so every letter is immediately read in context.
     const wIntro = (i: number) => intro(i) ?? lpick(i);
@@ -148,44 +159,44 @@ function planFor(
     if (kind === "lesson") {
       let seq: ExercisePlan[];
       if (mode === "writing") {
-        seq = [learn(0), trace(0), trace(0, true), wIntro(0), learn(1), trace(1), trace(1, true), lpick(0), find(1), wPick(0)];
+        seq = [learn(0), trace(0), trace(0, true), prevLpick(0), learn(1), trace(1), trace(1, true), lpick(0), prevFind(1), wPick(0)];
       } else if (n >= 4) {
-        seq = [learn(0), trace(0), learn(1), trace(1), wIntro(0), learn(2), learn(3), trace(2), find(3), wPick(0)];
+        seq = [learn(0), trace(0), learn(1), trace(1), wIntro(0), learn(2), learn(3), prevLpick(0), find(3), wPick(0)];
       } else if (n === 3) {
-        seq = [learn(0), trace(0), learn(1), trace(1), wIntro(0), learn(2), trace(2), lpick(0), find(1), wPick(0)];
+        seq = [learn(0), trace(0), learn(1), trace(1), wIntro(0), learn(2), trace(2), prevLpick(0), find(1), wPick(0)];
       } else {
-        seq = [learn(0), trace(0), n > 1 ? learn(1) : lpick(0), trace(n > 1 ? 1 : 0, n <= 1), wIntro(0), lpick(0), wIntro(1), find(n - 1), trace(0, true), wPick(1)];
+        seq = [learn(0), trace(0), n > 1 ? learn(1) : lpick(0), trace(n > 1 ? 1 : 0, n <= 1), wIntro(0), prevLpick(0), wIntro(1), find(n - 1), trace(0, true), wPick(1)];
       }
       seq.forEach(push);
     } else {
-      // review: recognise, trace from memory, and read words, ending with a word match
+      // review: recognise, trace from memory, and spiral-review prior level letters & words
       for (let i = 0; i < EXERCISES_PER_SUBLEVEL - 1; i++) {
         const t = i % 5;
         const word = pool.length ? pick(cycle(shuffle(pool, rng), i)) : null;
-        push(t === 0 ? lpick(i) : t === 1 ? trace(i, kind !== "milestone" || i > 4) : t === 2 ? find(i) : t === 3 ? word ?? lpick(i + 3) : trace(i + 2, true));
+        push(t === 0 ? (i % 2 === 1 ? prevLpick(i) : lpick(i)) : t === 1 ? trace(i, kind !== "milestone" || i > 4) : t === 2 ? (i % 2 === 0 ? prevFind(i) : find(i)) : t === 3 ? word ?? lpick(i + 3) : trace(i + 2, true));
       }
-      push(pool.length >= 3 ? { type: "match_grid", vocabIds: group(4) } : find(9));
+      push(pool.length >= 3 ? { type: "match_grid", vocabIds: spiralGroup(4, 1) } : prevFind(9));
     }
     return out.slice(0, EXERCISES_PER_SUBLEVEL);
   }
 
   if (kind === "lesson") {
     if (mode === "sentences") {
-      [intro(0), fill(s(0)), pick(w(0)), intro(1), build(s(1)), grid([w(0)!, w(1)!, ...group(2)].filter(Boolean)), fill(s(2)), rpick(w(1)), phrase(p(0)) ?? flash(w(2)), build(s(3))].forEach(push);
+      [intro(0), fill(s(0)), pick(pv(0)) ?? pick(w(0)), intro(1), build(s(1)), grid(spiralGroup(4, 2)), fill(s(2)), rpick(w(1)), phrase(p(0)) ?? flash(pv(1) ?? w(2)), build(s(3))].forEach(push);
     } else if (mode === "mixed") {
-      [intro(0), intro(1), pick(w(0)), phrase(p(0)) ?? intro(2), intro(2), grid([w(0)!, w(1)!, w(2)!].filter(Boolean)), fill(s(0)) ?? pick(w(2)), intro(3), build(s(1)) ?? rpick(w(3) ?? w(1)), cols([w(0)!, w(1)!, w(2)!, w(3)!].filter(Boolean))].forEach(push);
+      [intro(0), intro(1), pick(w(0)), phrase(p(0)) ?? pick(pv(0)) ?? intro(2), intro(2), grid([...words.slice(0, 3), ...(pv(0) ? [pv(0)!] : [])].filter(Boolean)), fill(s(0)) ?? pick(pv(1) ?? w(2)), intro(3), build(s(1)) ?? rpick(pv(2) ?? w(3) ?? w(1)), cols(spiralGroup(5, 2))].forEach(push);
     } else {
-      [intro(0), intro(1), pick(w(0)), intro(2), pick(w(1)), grid([w(0)!, w(1)!, w(2)!].filter(Boolean)), intro(3), rpick(w(2)), fill(s(0)) ?? flash(w(3)), cols([w(0)!, w(1)!, w(2)!, w(3)!].filter(Boolean))].forEach(push);
+      [intro(0), intro(1), pick(w(0)), intro(2), pick(pv(0) ?? w(1)), grid([...words.slice(0, 3), ...(pv(1) ? [pv(1)!] : [])].filter(Boolean)), intro(3), rpick(w(2)), fill(s(0)) ?? flash(pv(2) ?? w(3)), cols(spiralGroup(5, 2))].forEach(push);
     }
   } else if (kind === "milestone") {
     const r = group(6);
-    [pick(r[0]), rpick(r[1]), grid(group(4)), pick(r[2]), fill(s(0)) ?? pick(r[5]), flash(r[3]), cols(group(5)), build(s(1)) ?? rpick(r[4]), phrase(p(0)) ?? pick(r[1]), grid(group(4, 1))].forEach(push);
+    [pick(r[0]), rpick(pv(0) ?? r[1]), grid(spiralGroup(4, 2)), pick(r[2]), fill(s(0)) ?? pick(pv(1) ?? r[5]), flash(r[3]), cols(spiralGroup(5, 2)), build(s(1)) ?? rpick(r[4]), phrase(p(0)) ?? pick(pv(2) ?? r[1]), grid(spiralGroup(4, 1))].forEach(push);
   } else {
-    // challenge + bonus: harder mix, more production (script_pick) and sentences
+    // challenge + bonus: harder mix with strong spiral revision of prior levels + sentences
     const r = group(7);
     const read = readings.length ? { type: "reading" as const, readingId: readings[0] } : null;
-    [rpick(r[0]), fill(s(0)) ?? pick(r[0]), cols(group(5)), rpick(r[1]), build(s(1)) ?? pick(r[1]), pick(r[2]),
-      read ?? grid(group(5)), rpick(r[3]), build(s(2)) ?? rpick(r[4]), cols(group(6, 1))].forEach(push);
+    [rpick(r[0]), fill(s(0)) ?? pick(pv(0) ?? r[0]), cols(spiralGroup(5, 2)), rpick(pv(1) ?? r[1]), build(s(1)) ?? pick(r[1]), pick(pv(2) ?? r[2]),
+      read ?? grid(spiralGroup(5, 2)), rpick(r[3]), build(s(2)) ?? rpick(pv(3) ?? r[4]), cols(spiralGroup(6, 2))].forEach(push);
   }
   // Pad with safe fallbacks if a slot had nothing to reference.
   let k = 0;
@@ -195,6 +206,8 @@ function planFor(
 
 export function buildCurriculum(pack: LanguagePack): Curriculum {
   const used = new Set<string>();
+  const priorVocabAll: string[] = [];
+  const priorLettersAll: string[] = [];
   const rng = seeded(`${pack.config.id}@${pack.config.version}`);
   const levels: Level[] = [];
 
@@ -233,7 +246,9 @@ export function buildCurriculum(pack: LanguagePack): Curriculum {
       const review = kind === "lesson" ? [] : index === MILESTONE || isLetterMode ? [...new Set(levelWords)] : vocab.map((v) => v.id);
       const subSentences = kind === "lesson" ? sentChunks[slot % Math.max(1, sentChunks.length)] ?? [] : shuffle(sentences, rng).slice(0, 4);
       const subPhrases = shuffle(phrases, rng).slice(0, 2);
-      const plan = planFor(kind, spec.mode, words, letters, subPhrases, subSentences, readings, review, rng);
+      const subPriorVocab = shuffle(priorVocabAll, rng).slice(0, 8);
+      const subPriorLetters = shuffle(priorLettersAll, rng).slice(0, 6);
+      const plan = planFor(kind, spec.mode, words, letters, subPhrases, subSentences, readings, review, subPriorVocab, subPriorLetters, rng);
       const leadVocab = pack.vocab.find((v) => v.id === words[0]);
       const leadLetters = letters.map((id) => pack.letters.find((l) => l.id === id)!).filter(Boolean);
 
@@ -289,6 +304,7 @@ export function buildCurriculum(pack: LanguagePack): Curriculum {
       if (n > 1) s.title = `${s.title} ${["", "", "II", "III", "IV", "V", "VI", "VII", "VIII"][n] ?? n}`;
     });
 
+    const levelVocabIds = isLetterMode ? [...new Set(levelWords)] : vocab.map((v) => v.id);
     levels.push({
       number: spec.number,
       title: spec.title,
@@ -300,8 +316,10 @@ export function buildCurriculum(pack: LanguagePack): Curriculum {
       sublevels: subs,
       xp: 100 + spec.number * 10,
       coins: 40 + spec.number * 5,
-      vocabIds: isLetterMode ? [...new Set(levelWords)] : vocab.map((v) => v.id),
+      vocabIds: levelVocabIds,
     });
+    for (const id of levelVocabIds) if (!priorVocabAll.includes(id)) priorVocabAll.push(id);
+    for (const l of lettersAll) if (!priorLettersAll.includes(l.id)) priorLettersAll.push(l.id);
   }
 
   const sublevels = levels.flatMap((l) => l.sublevels);
