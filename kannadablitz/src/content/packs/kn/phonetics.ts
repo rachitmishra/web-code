@@ -6,9 +6,8 @@
 
 export function knPhonetic(roman: string): string {
   return roman
-    .replace(/R/g, "ru")
-    .replace(/S(?!h)/g, "sh")
-    .replace(/J/g, "j")
-    .replace(/w/g, "v")
+    .replace(/R(?![aeiou])/g, "ru")
+    .replace(/S(?![haeiou])/g, "sh")
+    .replace(/J(?![aeiou])/g, "j")
     .trim();
 }

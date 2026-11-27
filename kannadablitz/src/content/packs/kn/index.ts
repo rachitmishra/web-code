@@ -46,5 +46,5 @@ export const KANNADA_PACK: LanguagePack = {
   postcardArt: KN_POSTCARD_ART,
   phonetics: knPhonetic,
   romanize: (script) => (hasKannada(script) ? knToRoman(script) : ""),
-  sayScript: (script) => (hasKannada(script) ? knPhonetic(knToRoman(script)) : ""),
+  sayScript: (script) => (hasKannada(script) ? knToRoman(script) : ""),
 };

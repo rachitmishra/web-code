@@ -4,7 +4,7 @@ import type { HeritageCategory, HeritageEntry, NewsFeedSpec, PhraseSituation } f
 import { fetchRssFeed, findVocabInText, formatRelativeTime, loadCustomFeeds, translateToEnglish, type MatchedVocab, type NewsItem } from "../engine/news";
 import { useEngine } from "../engine/store";
 import { Icon } from "../ui/Icon";
-import { Art, DebugLabel, Empty, Native, Roman, Say, SpeakButton } from "../ui/kit";
+import { Art, DebugLabel, Empty, Native, SpeakButton, useMeaningMode } from "../ui/kit";
 import { DailyWordCard } from "./DailyWord";
 
 type DiscoverTab = "heritage" | "phrases" | "news";
@@ -221,8 +221,8 @@ function HeritageCard({ item, open, onToggle }: { item: HeritageEntry; open: boo
               <span className="eyebrow">Reading practice</span>
               <SpeakButton text={item.readingPassage.script} roman={item.readingPassage.roman} small />
             </div>
-            <Native as="p" size={16} say={false} style={{ lineHeight: 1.55, fontWeight: 600 }}>{item.readingPassage.script}</Native>
             <p className="news-summary-say">{pack.phonetics ? pack.phonetics(item.readingPassage.roman) : item.readingPassage.roman}</p>
+            <Native as="p" size={16} say={false} style={{ lineHeight: 1.55, fontWeight: 600 }}>{item.readingPassage.script}</Native>
             <p className="news-meaning">{item.readingPassage.meaning}</p>
           </div>
         )}
@@ -231,11 +231,10 @@ function HeritageCard({ item, open, onToggle }: { item: HeritageEntry; open: boo
           <div className="row between" style={{ gap: 8 }}>
             <div className="stack" style={{ gap: 2 }}>
               <span className="eyebrow">Cultural term</span>
-              <Native size={20} say={false}>{item.keyTerm.script}</Native>
+              <Native size={20}>{item.keyTerm.script}</Native>
               <div style={{ fontSize: 13 }}>
                 <strong>{item.keyTerm.meaning}</strong>
               </div>
-              <Say roman={item.keyTerm.roman} small />
             </div>
             <SpeakButton text={item.keyTerm.script} roman={item.keyTerm.roman} small />
           </div>
@@ -264,6 +263,7 @@ function HeritageCard({ item, open, onToggle }: { item: HeritageEntry; open: boo
 
 function PhrasebookTab() {
   const { pack } = useEngine();
+  const meaningMode = useMeaningMode();
   const [filter, setFilter] = useState<PhraseSituation | "all">("all");
   const [open, setOpen] = useState<Set<string>>(new Set());
   const [reading, setReading] = useState<string | null>(null);
@@ -286,19 +286,18 @@ function PhrasebookTab() {
         </div>
         <div className="grid two">
           {phrases.map((p) => {
-            const isOpen = open.has(p.id);
+            const isOpen = meaningMode === "always" || (meaningMode === "tap" && open.has(p.id));
             return (
               <div key={p.id} className="card stack" style={{ gap: 8 }}>
                 <div className="row between"><span className="tag saffron">{p.situation}</span><SpeakButton text={p.script} roman={p.roman} small /></div>
                 <button type="button" style={{ border: "none", background: "none", padding: 0, textAlign: "left" }} aria-expanded={isOpen}
                   onClick={() => setOpen((o) => { const n = new Set(o); if (n.has(p.id)) n.delete(p.id); else n.add(p.id); return n; })}>
                   <Native as="div" size={26}>{p.script}</Native>
-                  {!isOpen && <span className="reveal-hint" style={{ marginTop: 8 }}><Icon name="hand" /> Tap to reveal</span>}
+                  {!isOpen && meaningMode === "tap" && <span className="reveal-hint" style={{ marginTop: 8 }}><Icon name="hand" /> Tap to reveal</span>}
                 </button>
                 {isOpen && (
                   <div className="reveal-body">
                     <strong style={{ fontSize: 17 }}>{p.meaning}</strong>
-                    <Roman force>{p.roman}</Roman>
                     <span className="muted" style={{ fontSize: 13 }}>{p.context}</span>
                   </div>
                 )}
@@ -337,16 +336,24 @@ function PhrasebookTab() {
 
 function NewsTab() {
   const { pack, progress, state } = useEngine();
+  const meaningMode = useMeaningMode();
   const customFeeds = useMemo(() => loadCustomFeeds(pack.config.id), [pack.config.id]);
   const feeds = useMemo(() => [...(pack.newsFeeds ?? []), ...customFeeds], [pack.newsFeeds, customFeeds]);
   const [feedId, setFeedId] = useState<string>(() => feeds[0]?.id ?? "");
   const activeFeed = feeds.find((f) => f.id === feedId) ?? feeds[0];
 
   const [items, setItems] = useState<NewsItem[]>([]);
+  const [openMeanings, setOpenMeanings] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const showPhonetics = state.settings.newsPhonetics ?? true;
-  const showMeaning = state.settings.newsMeaning ?? true;
+  const showMeaningSetting = (state.settings.newsMeaning ?? true) && meaningMode !== "off";
+  const toggleMeaning = (id: string) => setOpenMeanings((prev) => {
+    const next = new Set(prev);
+    if (next.has(id)) next.delete(id);
+    else next.add(id);
+    return next;
+  });
 
   const learnedIds = useMemo(
     () => new Set(Object.entries(progress.words).filter(([, c]) => c.correct + c.wrong > 0).map(([k]) => k)),
@@ -447,6 +454,8 @@ function NewsTab() {
             const ago = formatRelativeTime(item.pubDate);
             const matches = findVocabInText(`${item.title} ${item.summary}`, pack.vocab, learnedIds, 6);
 
+            const meaningVisible = showMeaningSetting && (meaningMode === "always" || openMeanings.has(item.id));
+
             return (
               <article key={item.id} className="card news-card stack" style={{ gap: 10 }}>
                 <DebugLabel name="NewsCard" />
@@ -458,28 +467,28 @@ function NewsTab() {
                   <SpeakButton text={item.title} roman={titleRoman || undefined} small />
                 </div>
 
-                <div className="stack" style={{ gap: 5 }}>
-                  <Native as="h3" size={21} say={false} style={{ lineHeight: 1.35, color: "var(--ink)" }}>{item.title}</Native>
-                  {showPhonetics && titleSay && (
-                    <div className="news-phonetics">
-                      <span className="news-mini-label">Read</span>
-                      <strong>{titleSay}</strong>
-                    </div>
-                  )}
-                  {showMeaning && item.titleEn && (
-                    <div className="news-meaning-row">
-                      <span className="news-mini-label">Meaning</span>
-                      <span className="news-meaning">{item.titleEn}</span>
-                    </div>
+                <div className="stack" style={{ gap: 6 }}>
+                  <button
+                    type="button"
+                    className={`mascot-phrase-btn ${showMeaningSetting && meaningMode === "tap" ? "tappable" : ""}`}
+                    onClick={() => { if (showMeaningSetting && meaningMode === "tap") toggleMeaning(item.id); }}
+                    aria-expanded={showMeaningSetting && meaningMode === "tap" ? meaningVisible : undefined}
+                  >
+                    {showPhonetics && titleSay && (
+                      <span className="news-summary-say" style={{ fontSize: 13 }}>{titleSay}</span>
+                    )}
+                    <Native as="span" size={20} say={false} style={{ lineHeight: 1.38, color: "var(--ink)" }}>{item.title}</Native>
+                  </button>
+                  {meaningVisible && item.titleEn && (
+                    <p className="news-meaning">{item.titleEn}</p>
                   )}
                 </div>
 
                 {item.summary && (
                   <div className="news-summary stack" style={{ gap: 5 }}>
-                    <span className="eyebrow">Summary</span>
-                    <Native as="p" size={15} say={false} style={{ lineHeight: 1.55, fontWeight: 500 }}>{item.summary}</Native>
                     {showPhonetics && summarySay && <p className="news-summary-say">{summarySay}</p>}
-                    {showMeaning && item.summaryEn && <p className="news-meaning">{item.summaryEn}</p>}
+                    <Native as="p" size={15} say={false} style={{ lineHeight: 1.55, fontWeight: 500 }}>{item.summary}</Native>
+                    {meaningVisible && item.summaryEn && <p className="news-meaning">{item.summaryEn}</p>}
                   </div>
                 )}
 

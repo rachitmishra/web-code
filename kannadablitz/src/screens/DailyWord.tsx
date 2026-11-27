@@ -3,19 +3,21 @@ import { exampleFor } from "../engine/exercises";
 import { dayKey } from "../engine/date";
 import { useEngine } from "../engine/store";
 import { Icon } from "../ui/Icon";
-import { Art, DebugLabel, Native, Roman, SpeakButton } from "../ui/kit";
+import { Art, DebugLabel, Native, SpeakButton, useMeaningMode } from "../ui/kit";
 
-/** The daily word: native script first, meaning revealed on tap. */
+/** The daily word: native script first, meaning revealed on tap (or always shown per settings). */
 export function DailyWordCard({ large = false }: { large?: boolean }) {
   const { dailyWord: v, progress, revealDaily, saveWord, ix, answer } = useEngine();
+  const meaningMode = useMeaningMode();
   const today = dayKey();
   const already = progress.dailyWord.day === today && progress.dailyWord.revealed;
   const [open, setOpen] = useState(already);
   const saved = progress.saved.includes(v.id);
   const ex = exampleFor(ix, v);
+  const showMeaning = meaningMode === "always" || open;
 
   const reveal = () => {
-    if (open) return;
+    if (showMeaning) return;
     setOpen(true);
     if (!already) {
       revealDaily();
@@ -33,15 +35,14 @@ export function DailyWordCard({ large = false }: { large?: boolean }) {
         </button>
         <div className="stack" style={{ gap: 8 }}>
           <div className="row between">
-            <span className="eyebrow">Word of the day · {new Date().toLocaleDateString(undefined, { weekday: "long", day: "numeric", month: "short" })}</span>
+            <span className="eyebrow">Word of the day</span>
           </div>
-          <button type="button" onClick={reveal} style={{ border: "none", background: "none", padding: 0, textAlign: "left" }} aria-expanded={open}>
+          <button type="button" onClick={reveal} style={{ border: "none", background: "none", padding: 0, textAlign: "left" }} aria-expanded={showMeaning}>
             <Native as="div" size={v.script.length > 8 ? 44 : large ? 72 : 58} style={{ lineHeight: 1.1 }}>{v.script}</Native>
           </button>
-          {open ? (
+          {showMeaning ? (
             <div className="reveal-body" style={{ gap: 4 }}>
               <h2>{v.meaning}</h2>
-              <Roman force>{v.roman}</Roman>
               {ex && (
                 <div className="example">
                   <Native as="div">{ex.script}</Native>

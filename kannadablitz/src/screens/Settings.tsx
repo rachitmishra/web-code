@@ -287,7 +287,28 @@ export function Settings() {
         </div>
         <div className="setting-row"><div><strong>Show romanisation</strong><p className="muted" style={{ fontSize: 13 }}>{pack.config.romanisation}. Hide it to rely on the script alone.</p></div><Toggle on={state.settings.showRoman} label="Show romanisation" onClick={() => set({ showRoman: !state.settings.showRoman })} /></div>
         {pack.phonetics && <div className="setting-row"><div><strong>Book phonetics hints</strong><p className="muted" style={{ fontSize: 13 }}>Uses the Halemane book scheme (doubled vowels = long: aa, ii, ee; capitals = retroflex: T, D, N, L)</p></div><Toggle on={state.settings.showPhonetics} label="Book phonetics hints" onClick={() => set({ showPhonetics: !state.settings.showPhonetics })} /></div>}
-        <div className="setting-row"><div><strong>Tap word for meaning</strong><p className="muted" style={{ fontSize: 13 }}>Tap dotted-underlined words in exercises to peek at their English meaning</p></div><Toggle on={state.settings.showWordMeaning ?? true} label="Tap word for meaning" onClick={() => set({ showWordMeaning: !(state.settings.showWordMeaning ?? true) })} /></div>
+        <div className="setting-row">
+          <div>
+            <strong>Word &amp; phrase meanings</strong>
+            <p className="muted" style={{ fontSize: 13 }}>Show English meanings on tap, always visible, or hidden</p>
+          </div>
+          <div className="row wrap" style={{ gap: 6 }}>
+            {(["tap", "always", "off"] as const).map((m) => {
+              const cur = state.settings.meaningMode ?? (state.settings.showWordMeaning === false ? "off" : "tap");
+              return (
+                <button
+                  key={m}
+                  type="button"
+                  className={`chip ${cur === m ? "active" : ""}`}
+                  aria-pressed={cur === m}
+                  onClick={() => set({ meaningMode: m, showWordMeaning: m !== "off" })}
+                >
+                  {m === "tap" ? "On tap" : m === "always" ? "Always" : "Hidden"}
+                </button>
+              );
+            })}
+          </div>
+        </div>
         <div className="setting-row"><div><strong>Pronunciation audio</strong><p className="muted" style={{ fontSize: 13 }}>Uses your device's {pack.config.name} voice. If there isn't one, the English pronunciation is read aloud instead.</p></div><Toggle on={state.settings.sound} label="Audio" onClick={() => set({ sound: !state.settings.sound })} /></div>
         <div className="setting-row"><div><strong>Reduce motion</strong></div><Toggle on={state.settings.reducedMotion} label="Reduce motion" onClick={() => set({ reducedMotion: !state.settings.reducedMotion })} /></div>
         <div className="setting-row"><div><strong>Debug UI labels</strong><p className="muted" style={{ fontSize: 13 }}>Overlay screen and component names for UI inspection (shortcut: Alt+D)</p></div><Toggle on={!!state.settings.debug} label="Debug UI labels" onClick={() => set({ debug: !state.settings.debug })} /></div>

@@ -41,7 +41,14 @@ export function lookupWordMeaning(token: string, vocab: VocabEntry[]): string | 
   return best?.meaning;
 }
 
-/** Single native-script word with phonetics on top and optional tap-to-peek English meaning. */
+/** Effective meaning display mode: "tap" (default), "always", or "off". */
+export function useMeaningMode(): "tap" | "always" | "off" {
+  const { state } = useEngine();
+  if (state.settings.meaningMode) return state.settings.meaningMode;
+  return state.settings.showWordMeaning === false ? "off" : "tap";
+}
+
+/** Single native-script word with phonetics on top and optional tap-to-peek or always-on English meaning. */
 export function WordPeek({
   token,
   className = "",
@@ -55,10 +62,10 @@ export function WordPeek({
   active?: boolean;
   onToggle?: () => void;
 }) {
-  const { pack, state } = useEngine();
+  const { pack } = useEngine();
   const sayScript = useSayScript();
-  const enabled = state.settings.showWordMeaning ?? true;
-  const meaning = enabled ? lookupWordMeaning(token, pack.vocab) : undefined;
+  const mode = useMeaningMode();
+  const meaning = mode !== "off" ? lookupWordMeaning(token, pack.vocab) : undefined;
   const said = sayScript(token);
 
   if (!meaning) {
@@ -70,6 +77,22 @@ export function WordPeek({
         data-say={said}
       >
         {token}
+      </span>
+    );
+  }
+
+  if (mode === "always") {
+    return (
+      <span className="word-peek-always-wrap">
+        <span
+          className={`word-peek-plain ${className}`}
+          lang={pack.config.id}
+          style={size ? { fontSize: size } : undefined}
+          data-say={said}
+        >
+          {token}
+        </span>
+        <span className="word-peek-always">{meaning}</span>
       </span>
     );
   }

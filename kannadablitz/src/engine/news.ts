@@ -20,7 +20,7 @@ interface CachedFeed {
   items: NewsItem[];
 }
 
-const CACHE_PREFIX = "lj.rss.v2:";
+const CACHE_PREFIX = "lj.rss.v3:";
 const TRANS_PREFIX = "lj.tr.v1:";
 const CUSTOM_FEEDS_KEY = "lj.rss.custom.v1";
 const TTL_MS = 15 * 60 * 1000;
@@ -98,27 +98,46 @@ function writeCache(url: string, items: NewsItem[]): void {
   }
 }
 
+/** True when an RSS description mostly repeats the headline instead of adding new info. */
+function isRedundantSummary(title: string, summary: string): boolean {
+  if (!summary) return true;
+  if (summary === title || summary.includes(title) || title.includes(summary)) return true;
+  const words = (s: string) =>
+    new Set(
+      s
+        .toLowerCase()
+        .replace(/[.,!?;:"'()—–\-|:/]+/g, " ")
+        .split(/\s+/)
+        .filter((w) => w.length >= 2),
+    );
+  const tw = words(title);
+  const sw = words(summary);
+  if (tw.size === 0 || sw.size === 0) return true;
+  let shared = 0;
+  for (const w of tw) if (sw.has(w)) shared++;
+  return shared / Math.min(tw.size, sw.size) >= 0.45;
+}
+
 function parseRssXml(xmlText: string, fallbackSource: string): NewsItem[] {
   const doc = new DOMParser().parseFromString(xmlText, "text/xml");
-  const channelTitle = stripHtml(doc.querySelector("channel > title, feed > title")?.textContent ?? fallbackSource);
   const nodes = Array.from(doc.querySelectorAll("item, entry")).slice(0, 14);
   const items: NewsItem[] = [];
   for (let i = 0; i < nodes.length; i++) {
     const el = nodes[i];
     const title = stripHtml(el.querySelector("title")?.textContent ?? "");
     if (!title) continue;
-    const summary = summarizeText(el.querySelector("description, summary")?.textContent ?? "");
+    const rawSummary = summarizeText(el.querySelector("description, summary")?.textContent ?? "");
+    const summary = isRedundantSummary(title, rawSummary) ? "" : rawSummary;
     const linkEl = el.querySelector("link");
     const link = (linkEl?.getAttribute("href") || linkEl?.textContent || "").trim();
     const pubDate = (el.querySelector("pubDate, published, updated")?.textContent ?? "").trim();
-    const source = stripHtml(el.querySelector("source")?.textContent ?? "") || channelTitle;
     items.push({
       id: `${link || title}-${i}`,
       title,
-      summary: summary && summary !== title ? summary : "",
+      summary,
       link,
       pubDate,
-      source,
+      source: fallbackSource,
     });
   }
   return items;
@@ -201,14 +220,14 @@ export async function fetchRssFeed(
           .slice(0, 14)
           .map((it, i) => {
             const title = stripHtml(it.title ?? "");
-            const summary = summarizeText(it.description ?? "");
+            const rawSummary = summarizeText(it.description ?? "");
             return {
               id: `${it.link || title}-${i}`,
               title,
-              summary: summary && summary !== title ? summary : "",
+              summary: isRedundantSummary(title, rawSummary) ? "" : rawSummary,
               link: (it.link ?? "").trim(),
               pubDate: (it.pubDate ?? "").trim(),
-              source: stripHtml(data.feed?.title ?? "") || sourceName,
+              source: sourceName,
             };
           })
           .filter((x) => x.title.length > 0);

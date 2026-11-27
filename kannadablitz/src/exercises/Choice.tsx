@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { useEngine } from "../engine/store";
-import { Art, Native, Roman, SpeakButton } from "../ui/kit";
+import { Art, Native, SpeakButton } from "../ui/kit";
 import { usePhonetic } from "../ui/phonetic";
 import type { ExerciseProps } from "./types";
 
@@ -65,7 +65,6 @@ export function ChoiceExercise({ ex, onAnswer, locked }: ExerciseProps) {
             <Native size={ex.vocab.script.length > 10 ? 34 : 46} as="div">{ex.vocab.script}</Native>
             <div className="row" style={{ gap: 8 }}>
               <SpeakButton text={ex.vocab.script} roman={ex.vocab.roman} small />
-              {picked && <Roman force>{ex.vocab.roman}</Roman>}
             </div>
           </div>
         </div>

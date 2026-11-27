@@ -21,7 +21,6 @@ export function RevealWord({ ex, onAnswer, locked }: ExerciseProps) {
         ) : (
           <div className="reveal-body">
             <span className="meaning">{v.meaning}</span>
-            <Roman force>{v.roman}</Roman>
             {ex.example && (
               <div className="example">
                 <Native as="div">{ex.example.script}</Native>
@@ -63,7 +62,7 @@ export function LetterLearn({ ex, onAnswer, locked }: ExerciseProps) {
           <div className="stack" style={{ gap: 2 }}>
             <span className="eyebrow">As in</span>
             <div className="row" style={{ gap: 8 }}><Native size={26}>{ex.vocab.script}</Native></div>
-            <span className="muted">{ex.vocab.meaning} · <Roman force>{ex.vocab.roman}</Roman></span>
+            <span className="muted">{ex.vocab.meaning}</span>
           </div>
         </div>
       )}
@@ -90,7 +89,6 @@ export function PhraseReveal({ ex, onAnswer, locked }: ExerciseProps) {
         ) : (
           <div className="reveal-body">
             <span className="meaning">{p.meaning}</span>
-            <Roman force>{p.roman}</Roman>
             <p className="muted" style={{ maxWidth: 420 }}>{p.context}</p>
           </div>
         )}

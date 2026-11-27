@@ -5,7 +5,7 @@ import { dueWords, levelProgress, liveStreak, packOf, wordCounts } from "../engi
 import { hashString } from "../engine/rng";
 import { useEngine } from "../engine/store";
 import { Icon } from "../ui/Icon";
-import { Bar, DebugLabel, Native, Postcard, Ring, Roman, Stamp } from "../ui/kit";
+import { Bar, DebugLabel, Native, Postcard, Ring, Stamp, useMeaningMode } from "../ui/kit";
 import { MascotGreetingCard } from "../ui/Mascot";
 import { DailyWordCard } from "./DailyWord";
 
@@ -23,20 +23,20 @@ function mascotContext(today: number, goal: number, streak: number) {
   return "evening" as const;
 }
 
-export function WeekChart() {
+export function WeekChart({ compact = false }: { compact?: boolean }) {
   const { state } = useEngine();
   const days = lastNDays(7);
   const max = Math.max(state.learner.goalXp, ...days.map((d) => state.days[d]?.xp ?? 0));
   const today = dayKey();
   return (
-    <div className="week" aria-label="XP over the last seven days">
+    <div className={`week ${compact ? "compact" : ""}`} aria-label="XP over the last seven days">
       <DebugLabel name="WeekChart" />
       {days.map((d) => {
         const xp = state.days[d]?.xp ?? 0;
         const met = xp >= state.learner.goalXp;
         return (
           <div key={d} className={`day ${d === today ? "today" : ""}`} title={`${d}: ${xp} XP`}>
-            <div className={`col ${met ? "met" : xp ? "some" : ""}`} style={{ height: `${Math.max(6, (xp / max) * 100)}%` }} />
+            <div className={`col ${met ? "met" : xp ? "some" : ""}`} style={{ height: `${Math.max(10, (xp / max) * 100)}%` }} />
             <span>{new Date(d + "T12:00").toLocaleDateString(undefined, { weekday: "narrow" })}</span>
           </div>
         );
@@ -58,7 +58,9 @@ export function Home() {
   const counts = wordCounts(progress);
   const greetPhrase = pack.phrases.find((p) => p.situation === "greetings");
   const phraseOfDay = pack.phrases[hashString(dayKey()) % pack.phrases.length];
+  const meaningMode = useMeaningMode();
   const [phraseOpen, setPhraseOpen] = useState(false);
+  const showPhraseMeaning = meaningMode === "always" || (meaningMode === "tap" && phraseOpen);
   const recent = Object.entries(progress.words).sort((a, b) => b[1].lastSeen - a[1].lastSeen).slice(0, 8).map(([id]) => ix.vocab.get(id)).filter(Boolean);
   const pc = pack.postcards.find((p) => p.id === level.postcardId);
   const lp = levelProgress(packOf(state), level);
@@ -96,20 +98,24 @@ export function Home() {
           </button>
         </section>
 
-        <section className="card row wrap" style={{ alignItems: "center", gap: 20 }} aria-label="Daily goal">
+        <section className="card stack daily-goal-card" style={{ gap: 10 }} aria-label="Daily goal">
           <DebugLabel name="DailyGoalCard" />
-          <Ring value={today / goal} size={112} color={today >= goal ? "var(--leaf)" : "var(--saffron)"}>
-            <div style={{ fontSize: 22 }}>{today}</div><div className="muted" style={{ fontSize: 11 }}>/ {goal} XP</div>
-          </Ring>
-          <div className="stack" style={{ gap: 10, flex: "1 1 200px" }}>
-            <div className="row between"><span className="eyebrow">Daily goal</span><button type="button" className="btn sm ghost" onClick={() => go({ name: "settings" })}>Edit</button></div>
-            <div className="row" style={{ gap: 18 }}>
-              <div className="stat"><b>{streak}</b><span>day streak</span></div>
-              <div className="stat"><b>{state.settings.livesEnabled ? state.lives.count : "∞"}</b><span>lives</span></div>
-              <div className="stat"><b>{counts.learned}</b><span>words</span></div>
-            </div>
-            <WeekChart />
+          <div className="row between">
+            <span className="eyebrow">Daily goal</span>
+            <button type="button" className="btn sm ghost" style={{ padding: "4px 8px" }} onClick={() => go({ name: "settings" })}>Edit</button>
           </div>
+          <div className="row" style={{ alignItems: "center", gap: 14 }}>
+            <Ring value={today / goal} size={68} stroke={7} color={today >= goal ? "var(--leaf)" : "var(--saffron)"}>
+              <div style={{ fontSize: 15, lineHeight: 1.05 }}>{today}</div>
+              <div className="muted" style={{ fontSize: 10 }}>/{goal}</div>
+            </Ring>
+            <div className="row" style={{ gap: 16, flex: 1, justifyContent: "space-around" }}>
+              <div className="stat compact"><b>{streak}</b><span>streak</span></div>
+              <div className="stat compact"><b>{state.settings.livesEnabled ? state.lives.count : "∞"}</b><span>lives</span></div>
+              <div className="stat compact"><b>{counts.learned}</b><span>words</span></div>
+            </div>
+          </div>
+          <WeekChart compact />
         </section>
       </div>
 
@@ -135,12 +141,12 @@ export function Home() {
 
         <section className="card stack" aria-label="Phrase of the day">
           <span className="eyebrow">Phrase of the day · {phraseOfDay.situation}</span>
-          <button type="button" onClick={() => setPhraseOpen(true)} style={{ border: "none", background: "none", padding: 0, textAlign: "left" }} aria-expanded={phraseOpen}>
+          <button type="button" onClick={() => setPhraseOpen((o) => !o)} style={{ border: "none", background: "none", padding: 0, textAlign: "left" }} aria-expanded={showPhraseMeaning}>
             <Native as="div" size={28}>{phraseOfDay.script}</Native>
           </button>
-          {phraseOpen ? (
-            <div className="reveal-body"><strong>{phraseOfDay.meaning}</strong><Roman force>{phraseOfDay.roman}</Roman><span className="muted" style={{ fontSize: 13 }}>{phraseOfDay.context}</span></div>
-          ) : <button type="button" className="reveal-hint" style={{ alignSelf: "flex-start", background: "none" }} onClick={() => setPhraseOpen(true)}><Icon name="hand" /> Tap to reveal</button>}
+          {showPhraseMeaning ? (
+            <div className="reveal-body"><strong>{phraseOfDay.meaning}</strong><span className="muted" style={{ fontSize: 13 }}>{phraseOfDay.context}</span></div>
+          ) : meaningMode === "tap" ? <button type="button" className="reveal-hint" style={{ alignSelf: "flex-start", background: "none" }} onClick={() => setPhraseOpen(true)}><Icon name="hand" /> Tap to reveal</button> : null}
           <button type="button" className="btn sm ghost" style={{ alignSelf: "flex-start" }} onClick={() => go({ name: "discover" })}>More phrases <Icon name="arrowRight" /></button>
         </section>
       </div>

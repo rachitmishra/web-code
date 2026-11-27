@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import type { MascotContext, MascotLine, MascotMood } from "../content/schema";
 import { useEngine } from "../engine/store";
 import { Icon } from "./Icon";
-import { DebugLabel, Modal, Native, SpeakButton } from "./kit";
+import { DebugLabel, Modal, Native, SpeakButton, useMeaningMode } from "./kit";
 
 /**
  * Relatable Mysuru elephant calf mascot portrait.
@@ -158,9 +158,11 @@ export function MascotGreetingCard({
   context: MascotContext;
   learnerName: string;
 }) {
-  const { pack } = useEngine();
+  const { pack, state } = useEngine();
+  const meaningMode = useMeaningMode();
   const mascot = pack.mascot;
   const [tapCount, setTapCount] = useState(0);
+  const [meaningOpen, setMeaningOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
 
   const greetingPool = useMemo(() => {
@@ -172,7 +174,14 @@ export function MascotGreetingCard({
 
   if (!mascot || greetingPool.length === 0) return null;
   const line = greetingPool[tapCount % greetingPool.length];
+  const showPhon = state.settings.showPhonetics;
   const phonetics = pack.phonetics ? pack.phonetics(line.roman) : line.roman;
+  const showMeaning = meaningMode === "always" || (meaningMode === "tap" && meaningOpen);
+
+  const cycleLine = () => {
+    setTapCount((n) => n + 1);
+    setMeaningOpen(false);
+  };
 
   return (
     <>
@@ -182,45 +191,56 @@ export function MascotGreetingCard({
           <button
             type="button"
             className="mascot-avatar-btn"
-            onClick={() => setTapCount((n) => n + 1)}
+            onClick={cycleLine}
             aria-label={`Tap ${mascot.name} for another greeting`}
-            title={`Tap ${mascot.name} to say hi!`}
+            title={`Tap ${mascot.name} for another greeting`}
           >
-            <MascotAvatar mood={line.mood} size={82} />
+            <MascotAvatar mood={line.mood} size={74} />
+            <span className="mascot-name-badge">{mascot.name}</span>
           </button>
 
           <div className="mascot-bubble stack" style={{ gap: 6, flex: 1, minWidth: 0 }}>
-            <div className="row between wrap" style={{ gap: 6 }}>
-              <div className="row" style={{ gap: 6 }}>
-                <strong style={{ fontSize: 14 }}>{mascot.name}</strong>
-                <Native size={14} say={false} style={{ color: "var(--terracotta)" }}>{mascot.nameScript}</Native>
-                <span className="muted" style={{ fontSize: 12 }}>· {mascot.role}</span>
+            <div className="row between" style={{ alignItems: "flex-start", gap: 8 }}>
+              <button
+                type="button"
+                className={`mascot-phrase-btn ${meaningMode === "tap" ? "tappable" : ""}`}
+                onClick={() => { if (meaningMode === "tap") setMeaningOpen((o) => !o); }}
+                aria-expanded={meaningMode === "tap" ? meaningOpen : undefined}
+              >
+                {showPhon && <span className="mascot-phon">{phonetics}</span>}
+                <Native as="span" size={19} say={false} style={{ lineHeight: 1.35, color: "var(--ink)" }}>
+                  {line.script}
+                </Native>
+              </button>
+
+              <div className="row" style={{ gap: 6, flexShrink: 0 }}>
+                <SpeakButton text={line.script} roman={line.roman} small />
+                <button
+                  type="button"
+                  className="icon-btn"
+                  style={{ width: 36, height: 36 }}
+                  onClick={cycleLine}
+                  aria-label="Say something else"
+                  title="Say something else"
+                >
+                  <Icon name="refresh" />
+                </button>
+                <button
+                  type="button"
+                  className="icon-btn"
+                  style={{ width: 36, height: 36 }}
+                  onClick={() => setChatOpen(true)}
+                  aria-label={`Chat with ${mascot.name} (Coming soon)`}
+                  title="Live Chat · Coming soon"
+                >
+                  <Icon name="chat" />
+                </button>
               </div>
-              <SpeakButton text={line.script} roman={line.roman} small />
             </div>
 
-            <Native as="p" size={19} say={false} style={{ lineHeight: 1.35, color: "var(--ink)" }}>
-              {line.script}
-            </Native>
-            <p className="mascot-phon">{phonetics}</p>
-            <p className="muted" style={{ fontSize: 13.5, fontWeight: 600 }}>{line.meaning}</p>
-
-            <div className="row wrap" style={{ gap: 8, marginTop: 4 }}>
-              <button
-                type="button"
-                className="chip"
-                onClick={() => setTapCount((n) => n + 1)}
-              >
-                <Icon name="sparkle" /> Say something else
-              </button>
-              <button
-                type="button"
-                className="chip mascot-chat-pill"
-                onClick={() => setChatOpen(true)}
-              >
-                <Icon name="bolt" /> Live Chat · Soon
-              </button>
-            </div>
+            {showMeaning && (
+              <p className="muted" style={{ fontSize: 13.5, fontWeight: 600 }}>{line.meaning}</p>
+            )}
           </div>
         </div>
       </section>
@@ -243,8 +263,8 @@ export function MascotGreetingCard({
               {mascot.chatStarters.map((st) => (
                 <div key={st.script} className="mascot-starter row between" style={{ gap: 10 }}>
                   <div className="stack" style={{ gap: 2 }}>
+                    {showPhon && <span className="mascot-phon" style={{ fontSize: 12 }}>{pack.phonetics ? pack.phonetics(st.roman) : st.roman}</span>}
                     <Native size={16} say={false}>{st.script}</Native>
-                    <span className="mascot-phon" style={{ fontSize: 12 }}>{pack.phonetics ? pack.phonetics(st.roman) : st.roman}</span>
                     <span className="muted" style={{ fontSize: 12.5 }}>{st.meaning}</span>
                   </div>
                   <SpeakButton text={st.script} roman={st.roman} small />
