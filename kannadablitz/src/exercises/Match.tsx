@@ -54,11 +54,12 @@ export function MatchGrid({ ex, onAnswer, locked }: ExerciseProps) {
   const m = useMatcher(pairs, (mistakes) => onAnswer({ correct: mistakes === 0, mistakes }));
   return (
     <div>
-      <p className="prompt">Match the pairs</p>
-      <p className="prompt-sub">Tap a {pack.config.name} word on the left, then its match on the right. {m.matched.size}/{pairs.length} matched</p>
+      <div className="row between" style={{ marginBottom: 16 }}>
+        <p className="prompt" style={{ marginBottom: 0 }}>Match the pairs</p>
+        <span className="muted" style={{ fontSize: 13, fontWeight: 700 }}>{m.matched.size}/{pairs.length}</span>
+      </div>
       <div className="columns">
         <div className="col">
-          <div className="col-head">{pack.config.name}</div>
           {left.map((c) => (
             <button key={c.key} type="button" className={m.cls(c)} disabled={locked || m.matched.has(c.pairId)} onClick={() => m.tap(c)} lang={lang} data-say={say(c.roman)}>
               {c.text}
@@ -66,7 +67,6 @@ export function MatchGrid({ ex, onAnswer, locked }: ExerciseProps) {
           ))}
         </div>
         <div className="col">
-          <div className="col-head">Meaning</div>
           {right.map((c) => (
             <button key={c.key} type="button" className={m.cls(c)} disabled={locked || m.matched.has(c.pairId)} onClick={() => m.tap(c)}>
               {c.text}
@@ -89,17 +89,17 @@ export function MatchColumns({ ex, onAnswer, locked }: ExerciseProps) {
   const m = useMatcher(pairs, (mistakes) => onAnswer({ correct: mistakes === 0, mistakes }));
   return (
     <div>
-      <p className="prompt">Connect each word to its meaning</p>
-      <p className="prompt-sub">{m.matched.size}/{pairs.length} pairs</p>
+      <div className="row between" style={{ marginBottom: 16 }}>
+        <p className="prompt" style={{ marginBottom: 0 }}>Match the pairs</p>
+        <span className="muted" style={{ fontSize: 13, fontWeight: 700 }}>{m.matched.size}/{pairs.length}</span>
+      </div>
       <div className="columns">
         <div className="col">
-          <div className="col-head">{pack.config.name}</div>
           {left.map((c) => (
             <button key={c.key} type="button" className={m.cls(c)} disabled={locked || m.matched.has(c.pairId)} onClick={() => m.tap(c)} lang={lang} data-say={say(c.roman)}>{c.text}</button>
           ))}
         </div>
         <div className="col">
-          <div className="col-head">Meaning</div>
           {right.map((c) => (
             <button key={c.key} type="button" className={m.cls(c)} disabled={locked || m.matched.has(c.pairId)} onClick={() => m.tap(c)}>{c.text}</button>
           ))}

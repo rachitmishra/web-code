@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { checkSentence } from "../engine/exercises";
 import { useEngine } from "../engine/store";
 import { Icon } from "../ui/Icon";
-import { Roman, SpeakButton } from "../ui/kit";
+import { Roman, SpeakButton, WordPeek } from "../ui/kit";
 import type { ExerciseProps } from "./types";
 import { useSayScript } from "../ui/phonetic";
 
@@ -144,6 +144,7 @@ export function SentenceFill({ ex, onAnswer, locked }: ExerciseProps) {
   const choices = ex.choices ?? [];
   const [picked, setPicked] = useState<string | null>(null);
   const [showMeaning, setShowMeaning] = useState(true);
+  const [peekIdx, setPeekIdx] = useState<number | null>(null);
 
   const choose = (id: string) => {
     if (locked || picked) return;
@@ -186,9 +187,13 @@ export function SentenceFill({ ex, onAnswer, locked }: ExerciseProps) {
               {pickedChoice ? pickedChoice.label : "_____"}
             </span>
           ) : (
-            <span key={i} lang={pack.config.id} className="sentence-tok" data-say={sayIt(tok)}>
-              {tok}
-            </span>
+            <WordPeek
+              key={i}
+              token={tok}
+              className="sentence-tok"
+              active={peekIdx === i}
+              onToggle={() => setPeekIdx((cur) => (cur === i ? null : i))}
+            />
           ),
         )}
       </div>

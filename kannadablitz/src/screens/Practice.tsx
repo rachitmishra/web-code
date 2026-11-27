@@ -22,9 +22,10 @@ export function PracticeHub() {
 
   const tiles = [
     { title: "Fast Match", body: `30 or 60 seconds of rapid matching. Best: ${Math.max(progress.stats.fastMatchBest30, progress.stats.fastMatchBest60)}`, icon: "bolt", tone: "saffron", go: () => go({ name: "fastmatch" }) },
-    { title: "Flashcards", body: "Swipe through cards. Mark what you know, keep what you don't.", icon: "cards", tone: "sky", go: () => go({ name: "flashcards" }) },
+    { title: "Word Translation", body: `Pick the right translation for each ${pack.config.name} word from four options.`, icon: "target", tone: "sky", go: () => go({ name: "session", id: "word-quiz" }) },
+    { title: "Flashcards", body: "Swipe through cards. Mark what you know, keep what you don't.", icon: "cards", tone: "gold", go: () => go({ name: "flashcards" }) },
     { title: "Sentence Builder", body: `Arrange ${pack.config.name} words into natural sentences.`, icon: "tiles", tone: "terracotta", go: () => go({ name: "session", id: "sentences-build" }) },
-    { title: "Fill in the Blank", body: `Complete real ${pack.config.name} sentences by picking the missing word.`, icon: "pen", tone: "gold", go: () => go({ name: "session", id: "sentences-fill" }) },
+    { title: "Fill in the Blank", body: `Complete real ${pack.config.name} sentences by picking the missing word.`, icon: "pen", tone: "saffron", go: () => go({ name: "session", id: "sentences-fill" }) },
     { title: "Revision centre", body: due ? `${due} due now · ${weak} tricky` : "Spaced repetition of everything you've learned", icon: "repeat", tone: "leaf", go: () => go({ name: "revision" }) },
   ];
 

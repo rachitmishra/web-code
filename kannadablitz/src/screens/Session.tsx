@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { go } from "../app/router";
-import { materializeAll, revisionPlans, sentencePracticePlans } from "../engine/exercises";
+import { materializeAll, revisionPlans, sentencePracticePlans, wordQuizPlans } from "../engine/exercises";
 import { dueWords, findSublevel, starsFor, sublevelState, weakWords } from "../engine/progress";
 import { seeded, shuffle } from "../engine/rng";
 import { useEngine } from "../engine/store";
@@ -38,6 +38,15 @@ function usePlan(id: string): Plan | null {
     }
     const learned = Object.entries(progress.words).filter(([, c]) => c.correct + c.wrong > 0).map(([k]) => k);
     const fallback = curriculum.levels.find((l) => l.mode !== "letters" && l.mode !== "writing")?.vocabIds.slice(0, 12) ?? pack.vocab.slice(0, 12).map((v) => v.id);
+    if (id === "word-quiz") {
+      const pool = shuffle([...new Set([...learned, ...fallback])], rng);
+      const plans = wordQuizPlans(pool, 10);
+      return {
+        title: "Word translation",
+        exercises: materializeAll(ix, plans, "prac.word-quiz", rng),
+        kind: "practice",
+      };
+    }
     let ids: string[];
     let title: string;
     if (id === "saved") { ids = progress.saved; title = "Saved words"; }

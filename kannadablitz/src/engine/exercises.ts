@@ -229,6 +229,11 @@ export function revisionPlans(vocabIds: string[], count = 10): ExercisePlan[] {
   return out;
 }
 
+/** Practice plans for matching a word to its correct translation from options. */
+export function wordQuizPlans(vocabIds: string[], count = 10): ExercisePlan[] {
+  return vocabIds.slice(0, count).map((id) => ({ type: "meaning_pick", vocabIds: [id] }));
+}
+
 /** Practice plans for sentence building and fill-in-the-blank drills. */
 export function sentencePracticePlans(sentenceIds: string[], mode: "build" | "fill" | "mixed", count = 8): ExercisePlan[] {
   const picked = sentenceIds.slice(0, count);

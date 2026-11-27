@@ -565,11 +565,33 @@ export function TraceBoard({ glyph, roman, freehand = false, onScored, disabled 
 
 export function TraceExercise({ ex, onAnswer, locked }: ExerciseProps) {
   const { pack } = useEngine();
+  const [showTip, setShowTip] = useState(false);
   const l = ex.letter!;
   return (
     <div>
-      <p className="prompt">{ex.freehand ? "Now write it from memory" : "Trace the letter"} <span className="native" style={{ color: "var(--terracotta)" }}>{l.script}</span> <span className="roman" style={{ fontSize: 16 }}>({l.roman})</span></p>
-      <p className="prompt-sub">{pack.config.writingTip}</p>
+      <div className="row between" style={{ marginBottom: showTip ? 10 : 18, alignItems: "center" }}>
+        <p className="prompt" style={{ marginBottom: 0 }}>
+          {ex.freehand ? "Now write it from memory" : "Trace the letter"}{" "}
+          <span className="native" style={{ color: "var(--terracotta)" }}>{l.script}</span>{" "}
+          <span className="roman" style={{ fontSize: 16 }}>({l.roman})</span>
+        </p>
+        {pack.config.writingTip && (
+          <button
+            type="button"
+            className={`icon-btn ${showTip ? "playing" : ""}`}
+            style={{ width: 34, height: 34, flexShrink: 0 }}
+            aria-expanded={showTip}
+            aria-label="Writing tip"
+            title="Writing tip"
+            onClick={() => setShowTip((v) => !v)}
+          >
+            <Icon name="info" />
+          </button>
+        )}
+      </div>
+      {showTip && pack.config.writingTip && (
+        <p className="trace-tip-box">{pack.config.writingTip}</p>
+      )}
       <TraceBoard key={`${l.id}.${ex.freehand}`} glyph={l.script} roman={l.roman} freehand={ex.freehand} disabled={locked} onScored={(score) => onAnswer({ correct: score >= 0.3, score })} />
     </div>
   );

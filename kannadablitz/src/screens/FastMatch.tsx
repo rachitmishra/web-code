@@ -210,11 +210,9 @@ function Game({ pool, seconds, onEnd, reducedMotion }: {
       </div>
       <div className="columns fm-columns">
         <div className="col fm-col fm-col-left">
-          <div className="col-head fm-col-head left">{pack.config.name}</div>
           {left.map((s) => <button key={s.key} type="button" className={cls("l", s.v.id)} onClick={() => tap("l", s.v.id)} lang={pack.config.id} data-say={sayIt(s.v.script)}>{s.v.script}</button>)}
         </div>
         <div className="col fm-col fm-col-right">
-          <div className="col-head fm-col-head right">Meaning</div>
           {right.map((s) => <button key={s.key} type="button" className={cls("r", s.v.id)} onClick={() => tap("r", s.v.id)}>{s.v.meaning}</button>)}
         </div>
       </div>

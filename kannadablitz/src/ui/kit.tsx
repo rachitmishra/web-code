@@ -26,6 +26,95 @@ export function Native({ children, size, className = "", as: Tag = "span", style
   );
 }
 
+/** Resolve a native-script token's English meaning from pack vocabulary (exact or longest root prefix). */
+export function lookupWordMeaning(token: string, vocab: VocabEntry[]): string | undefined {
+  const clean = token.replace(/[.,!?;:"'()—–-]+/g, "").trim();
+  if (!clean) return undefined;
+  const exact = vocab.find((v) => v.script === clean);
+  if (exact) return exact.meaning;
+  let best: VocabEntry | undefined;
+  for (const v of vocab) {
+    if (v.script.length >= 2 && !v.script.includes(" ") && clean.startsWith(v.script)) {
+      if (!best || v.script.length > best.script.length) best = v;
+    }
+  }
+  return best?.meaning;
+}
+
+/** Single native-script word with phonetics on top and optional tap-to-peek English meaning. */
+export function WordPeek({
+  token,
+  className = "",
+  size,
+  active = false,
+  onToggle,
+}: {
+  token: string;
+  className?: string;
+  size?: number;
+  active?: boolean;
+  onToggle?: () => void;
+}) {
+  const { pack, state } = useEngine();
+  const sayScript = useSayScript();
+  const enabled = state.settings.showWordMeaning ?? true;
+  const meaning = enabled ? lookupWordMeaning(token, pack.vocab) : undefined;
+  const said = sayScript(token);
+
+  if (!meaning) {
+    return (
+      <span
+        className={`word-peek-plain ${className}`}
+        lang={pack.config.id}
+        style={size ? { fontSize: size } : undefined}
+        data-say={said}
+      >
+        {token}
+      </span>
+    );
+  }
+
+  return (
+    <span className="word-peek-wrap">
+      <button
+        type="button"
+        className={`word-peek ${active ? "open" : ""} ${className}`}
+        lang={pack.config.id}
+        style={size ? { fontSize: size } : undefined}
+        data-say={said}
+        aria-expanded={active}
+        onClick={(e) => { e.stopPropagation(); onToggle?.(); }}
+      >
+        {token}
+      </button>
+      {active && (
+        <span className="word-peek-tip" role="tooltip">
+          {meaning}
+        </span>
+      )}
+    </span>
+  );
+}
+
+/** Renders a multi-word native passage with per-word phonetics on top and tap-to-peek meanings. */
+export function NativeWords({ text, size, className = "" }: { text: string; size?: number; className?: string }) {
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const tokens = text.split(/\s+/).filter(Boolean);
+  return (
+    <span className={`native-words ${className}`}>
+      {tokens.map((tok, i) => (
+        <WordPeek
+          key={`${i}.${tok}`}
+          token={tok}
+          size={size}
+          active={openIdx === i}
+          onToggle={() => setOpenIdx((cur) => (cur === i ? null : i))}
+        />
+      ))}
+    </span>
+  );
+}
+
 /** Romanisation, hidden when the learner turns it off in Settings. */
 export function Roman({ children, force = false }: { children: ReactNode; force?: boolean }) {
   const { state } = useEngine();

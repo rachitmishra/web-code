@@ -42,7 +42,7 @@ export interface AppState {
   version: number;
   activePack: string;
   learner: { name: string; onboarded: boolean; goalXp: number; reason: string; syncTag?: string };
-  settings: { livesEnabled: boolean; maxLives: number; showRoman: boolean; showPhonetics: boolean; sound: boolean; reducedMotion: boolean; debug?: boolean; theme?: "studio" | "glass" | "canvas"; newsPhonetics?: boolean; newsMeaning?: boolean };
+  settings: { livesEnabled: boolean; maxLives: number; showRoman: boolean; showPhonetics: boolean; showWordMeaning?: boolean; sound: boolean; reducedMotion: boolean; debug?: boolean; theme?: "studio" | "glass" | "canvas"; newsPhonetics?: boolean; newsMeaning?: boolean };
   lives: { count: number; regenFrom: number | null };
   streak: { count: number; best: number; lastDay: string | null; freezes: number };
   days: Record<string, { xp: number; minutes: number; exercises: number }>;
@@ -66,7 +66,7 @@ export function initialState(packId: string): AppState {
     version: STATE_VERSION,
     activePack: packId,
     learner: { name: "", onboarded: false, goalXp: 50, reason: "" },
-    settings: { livesEnabled: true, maxLives: 5, showRoman: true, showPhonetics: true, sound: true, reducedMotion: false, debug: false, theme: "glass", newsPhonetics: true, newsMeaning: true },
+    settings: { livesEnabled: true, maxLives: 5, showRoman: true, showPhonetics: true, showWordMeaning: true, sound: true, reducedMotion: false, debug: false, theme: "glass", newsPhonetics: true, newsMeaning: true },
     lives: { count: 5, regenFrom: null },
     streak: { count: 0, best: 0, lastDay: null, freezes: 1 },
     days: {},

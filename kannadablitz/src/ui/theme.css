@@ -116,19 +116,45 @@ p { margin: 0; }
 img { max-width: 100%; }
 
 .native { font-family: var(--native-font); font-weight: 600; line-height: 1.25; letter-spacing: 0; }
-/* Every native-script word carries its English pronunciation underneath (from data-say). */
-.native[data-say]::after, [data-say].native-tile::after, .word-tile[data-say]::after, .chip[data-say]::after, .sentence-tok[data-say]::after, .sentence-blank[data-say]::after {
-  content: attr(data-say); display: block; margin-top: 0.15em;
-  font-family: var(--font-ui); font-size: max(11px, min(0.34em, 18px)); font-weight: 700; font-style: normal;
-  letter-spacing: 0.02em; line-height: 1.25; color: var(--terracotta); white-space: normal; text-shadow: none;
+/* Every native-script word carries its phonetics ON TOP (ruby-style from data-say). */
+.native[data-say]::before, [data-say].native-tile::before, .word-tile[data-say]::before, .chip[data-say]::before, .sentence-tok[data-say]::before, .sentence-blank[data-say]::before, .word-peek[data-say]::before, .word-peek-plain[data-say]::before {
+  content: attr(data-say); display: block; margin-bottom: 0.16em;
+  font-family: var(--font-ui); font-size: max(11px, min(0.36em, 15px)); font-weight: 700; font-style: normal;
+  letter-spacing: 0.02em; line-height: 1.2; color: var(--ink-soft); white-space: normal; text-shadow: none;
 }
-span.native[data-say] { display: inline-flex; flex-direction: column; align-items: center; vertical-align: top; }
+span.native[data-say] { display: inline-flex; flex-direction: column; align-items: center; vertical-align: bottom; }
 .chip[data-say] { flex-direction: column; gap: 0; border-radius: 14px; line-height: 1.15; }
-.chip[data-say]::after { font-size: 11px; }
+.chip[data-say]::before { font-size: 11px; }
 .word-tile[data-say] { display: inline-flex; flex-direction: column; align-items: center; line-height: 1.15; }
-.word-tile[data-say]::after { font-size: 12px; }
-.chip .native[data-say]::after { font-size: 11px; }
-.card.ink .native[data-say]::after, .stamp-inner .native[data-say]::after { color: inherit; opacity: 0.8; }
+.word-tile[data-say]::before { font-size: 12px; }
+.chip .native[data-say]::before { font-size: 11px; }
+.card.ink .native[data-say]::before, .stamp-inner .native[data-say]::before { color: inherit; opacity: 0.8; }
+
+/* Tap-to-peek word meaning (dotted underline + compact popover) */
+.native-words { display: inline-flex; flex-wrap: wrap; align-items: flex-end; gap: 8px 10px; }
+.word-peek-wrap { position: relative; display: inline-flex; align-items: flex-end; }
+.word-peek, .word-peek-plain {
+  display: inline-flex; flex-direction: column; align-items: center;
+  font-family: var(--native-font); font-weight: 600; line-height: 1.25; color: var(--ink);
+}
+.word-peek {
+  border: none; background: transparent; padding: 2px 2px 3px; cursor: pointer;
+  border-bottom: 2px dotted var(--ink-faint); border-radius: 0;
+  transition: color 0.15s, border-color 0.15s;
+}
+.word-peek:hover, .word-peek.open { border-bottom-color: var(--terracotta); color: var(--terracotta); }
+.word-peek-tip {
+  position: absolute; z-index: 35; left: 50%; top: calc(100% + 6px); transform: translateX(-50%);
+  padding: 5px 10px; border-radius: 10px; background: var(--ink); color: #FFFFFF;
+  font-family: var(--font-ui); font-size: 12.5px; font-weight: 700; line-height: 1.25; white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(24, 24, 27, 0.22); animation: rise 0.16s var(--ease) both;
+}
+.trace-tip-box {
+  margin: 0 0 16px; padding: 10px 14px; border-radius: 14px;
+  background: var(--paper-2); border: 1.5px solid var(--line);
+  font-size: 13px; font-weight: 600; color: var(--ink-soft); line-height: 1.45;
+  animation: rise 0.18s var(--ease) both;
+}
 .hand { font-family: var(--font-hand); font-weight: 700; }
 .eyebrow { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
 .muted { color: var(--ink-soft); }
@@ -313,9 +339,9 @@ button.pill:active { transform: scale(0.95); }
 .say b { font-weight: 800; }
 .say.small { font-size: 12px; gap: 4px; }
 .say.small::before { display: none; }
-.tile[data-say]::after, .choice[data-say]::after, .fm-tile[data-say]::after {
-  content: attr(data-say); display: block; margin-top: 3px; font-family: var(--font-ui); font-size: 12px; font-weight: 700;
-  letter-spacing: 0.02em; color: var(--terracotta); line-height: 1.2;
+.tile[data-say]::before, .choice[data-say]::before, .fm-tile[data-say]::before {
+  content: attr(data-say); display: block; margin-bottom: 3px; font-family: var(--font-ui); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.02em; color: var(--ink-soft); line-height: 1.2;
 }
 .choice[data-say] { flex-direction: column; }
 .icon-btn .ico { width: 20px; height: 20px; }
@@ -546,7 +572,7 @@ button.pill:active { transform: scale(0.95); }
   font-family: var(--native-font); font-size: 24px; font-weight: 700; line-height: 1.25;
   color: var(--ink); padding: 4px 2px;
 }
-.sentence-tok[data-say]::after, .sentence-blank[data-say]::after { font-size: 12px; }
+.sentence-tok[data-say]::before, .sentence-blank[data-say]::before { font-size: 12px; }
 .sentence-blank {
   display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
   min-width: 96px; padding: 4px 14px; border-radius: 12px;

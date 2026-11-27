@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { useEngine } from "../engine/store";
 import { Icon } from "../ui/Icon";
-import { Art, Native, Roman, Say, SpeakButton } from "../ui/kit";
+import { Art, Native, NativeWords, Roman, Say, SpeakButton } from "../ui/kit";
 import type { ExerciseProps } from "./types";
 
 /** Native-script-first reveal card: word + art first, meaning on tap. */
@@ -175,7 +175,7 @@ export function ReadingExercise({ ex, onAnswer, locked }: ExerciseProps) {
       <div className="card">
         <span className="eyebrow">{r.title}</span>
         <Native as="h2" size={26} style={{ margin: "6px 0 12px" }}>{r.titleScript}</Native>
-        <Native as="p" size={19} style={{ lineHeight: 1.7, fontWeight: 500 }}>{r.script}</Native>
+        <div style={{ lineHeight: 1.7 }}><NativeWords text={r.script} size={19} /></div>
         <hr className="divider" />
         {showEn ? <p className="muted">{r.meaning}</p> : (
           <button type="button" className="btn sm ghost" onClick={() => setShowEn(true)}><Icon name="eye" /> Show translation</button>
