@@ -23,7 +23,7 @@ export const TOPIC_LABEL: Record<Topic, string> = {
 const GROUP_LABEL: Record<string, string> = {
   velar: "Velars", palatal: "Palatals", retroflex: "Retroflex", dental: "Dentals",
   labial: "Labials", approximant: "Semivowels", sibilant: "Sibilants", ottakshara: "Ottaksharas",
-  yogavaha: "Yogavahas",
+  yogavaha: "Yogavahas", kagunita: "Consonant + Vowel",
 };
 
 function selectVocab(pack: LanguagePack, spec: LevelSpec, used: Set<string>): VocabEntry[] {

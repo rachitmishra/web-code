@@ -4,6 +4,40 @@ import { sample, shuffle, type Rng } from "./rng";
 
 const TEACHING = new Set(["letter_learn", "word_intro", "phrase_reveal", "flashcard"]);
 
+/**
+ * Split an Indic/Kannada word into visual syllable clusters (aksharas):
+ * consonant + (virama + consonant)* + optional vowel signs + anusvara/visarga.
+ */
+export function splitAksharas(word: string): string[] {
+  const chars = Array.from(word.trim());
+  const out: string[] = [];
+  const isVirama = (cp: number) => cp === 0x0ccd || cp === 0x094d;
+  const isMark = (cp: number) =>
+    (cp >= 0x0c81 && cp <= 0x0c83) ||
+    (cp >= 0x0cbc && cp <= 0x0cd6) ||
+    (cp >= 0x0901 && cp <= 0x0903) ||
+    (cp >= 0x093c && cp <= 0x094f) ||
+    cp === 0x200c || cp === 0x200d;
+  let i = 0;
+  while (i < chars.length) {
+    if (/\s/.test(chars[i])) { i++; continue; }
+    let cluster = chars[i++];
+    while (i < chars.length) {
+      const cp = chars[i].codePointAt(0) ?? 0;
+      if (isVirama(cp)) {
+        cluster += chars[i++];
+        if (i < chars.length && !/\s/.test(chars[i])) cluster += chars[i++];
+      } else if (isMark(cp)) {
+        cluster += chars[i++];
+      } else {
+        break;
+      }
+    }
+    out.push(cluster);
+  }
+  return out;
+}
+
 export interface PackIndex {
   pack: LanguagePack;
   vocab: Map<string, VocabEntry>;
@@ -104,6 +138,30 @@ export function materialize(ix: PackIndex, plan: ExercisePlan, key: string, rng:
     case "word_intro":
     case "flashcard":
       return v ? { ...base, skill: "vocab", vocab: v, example: exampleFor(ix, v) } : null;
+    case "word_swipe": {
+      if (!v) return null;
+      const target = splitAksharas(v.script);
+      if (target.length < 2) return null;
+      const targetSet = new Set(target);
+      const distractorPool: string[] = [];
+      for (const w of shuffle(ix.pack.vocab, rng)) {
+        if (distractorPool.length >= 6) break;
+        if (w.id === v.id || w.script.includes(" ")) continue;
+        for (const ak of splitAksharas(w.script)) {
+          if (!targetSet.has(ak) && !distractorPool.includes(ak)) {
+            distractorPool.push(ak);
+            if (distractorPool.length >= 6) break;
+          }
+        }
+      }
+      const extraCount = target.length <= 3 ? 3 : 2;
+      const extras = distractorPool.slice(0, extraCount);
+      const nodes = shuffle(
+        [...target, ...extras].map((text, idx) => ({ id: `${v.id}.sw.${idx}`, text })),
+        rng,
+      );
+      return { ...base, skill: "vocab", vocab: v, example: exampleFor(ix, v), swipeTarget: target, swipeNodes: nodes };
+    }
     case "meaning_pick":
     case "script_pick": {
       if (!v) return null;
@@ -232,6 +290,28 @@ export function revisionPlans(vocabIds: string[], count = 10): ExercisePlan[] {
 /** Practice plans for matching a word to its correct translation from options. */
 export function wordQuizPlans(vocabIds: string[], count = 10): ExercisePlan[] {
   return vocabIds.slice(0, count).map((id) => ({ type: "meaning_pick", vocabIds: [id] }));
+}
+
+/** Practice plans for swipe-to-build word spelling exercises (single words of 2–5 aksharas). */
+export function wordSwipePlans(vocabIds: string[], ix: PackIndex, count = 8): ExercisePlan[] {
+  const picked: string[] = [];
+  for (const id of vocabIds) {
+    if (picked.length >= count) break;
+    const v = ix.vocab.get(id);
+    if (!v || v.script.includes(" ")) continue;
+    const len = splitAksharas(v.script).length;
+    if (len >= 2 && len <= 5) picked.push(id);
+  }
+  return picked.map((id) => ({ type: "word_swipe", vocabIds: [id] }));
+}
+
+/** Practice plans for tracing consonant + vowel combinations (guided then freehand). */
+export function comboTracePlans(letterIds: string[], count = 8): ExercisePlan[] {
+  return letterIds.slice(0, count).map((letterId, i) => ({
+    type: "letter_trace",
+    letterId,
+    freehand: i >= Math.ceil(count / 2),
+  }));
 }
 
 /** Practice plans for sentence building and fill-in-the-blank drills. */

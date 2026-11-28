@@ -6,6 +6,7 @@ export type ExerciseType =
   | "letter_find"    // see sound → choose the letter
   | "letter_trace"   // trace / free-draw
   | "word_intro"     // teach: native-first word card, tap to reveal
+  | "word_swipe"     // swipe across letter nodes to build a word
   | "meaning_pick"   // see script → choose meaning
   | "script_pick"    // see meaning → choose script
   | "match_grid"     // tile pairs
@@ -106,6 +107,10 @@ export interface Exercise {
   tiles?: { id: string; text: string }[];
   /** index of the blanked token in sentence.tokens for sentence_fill */
   blankIndex?: number;
+  /** ordered syllable/letter clusters for word_swipe */
+  swipeTarget?: string[];
+  /** shuffled swipe wheel nodes (target clusters + distractors) for word_swipe */
+  swipeNodes?: { id: string; text: string }[];
   freehand?: boolean;
 }
 

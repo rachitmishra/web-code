@@ -4,6 +4,7 @@ import { Flashcard, LetterLearn, PhraseReveal, ReadingExercise, RevealWord } fro
 import { MatchColumns, MatchGrid } from "./Match";
 import { SentenceBuild, SentenceFill } from "./Sentence";
 import { TraceExercise } from "./Trace";
+import { WordSwipe } from "./WordSwipe";
 import { DebugLabel } from "../ui/kit";
 
 function exerciseName(type: ExerciseProps["ex"]["type"]): string {
@@ -15,6 +16,7 @@ function exerciseName(type: ExerciseProps["ex"]["type"]): string {
     case "script_pick": return "ChoiceExercise (script_pick)";
     case "letter_trace": return "TraceExercise";
     case "word_intro": return "RevealWord";
+    case "word_swipe": return "WordSwipe";
     case "flashcard": return "Flashcard";
     case "match_grid": return "MatchGrid";
     case "match_columns": return "MatchColumns";
@@ -35,6 +37,7 @@ export function ExerciseView(props: ExerciseProps) {
       case "script_pick": return <ChoiceExercise {...props} />;
       case "letter_trace": return <TraceExercise {...props} />;
       case "word_intro": return <RevealWord {...props} />;
+      case "word_swipe": return <WordSwipe {...props} />;
       case "flashcard": return <Flashcard {...props} />;
       case "match_grid": return <MatchGrid {...props} />;
       case "match_columns": return <MatchColumns {...props} />;

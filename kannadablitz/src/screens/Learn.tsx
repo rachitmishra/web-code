@@ -128,6 +128,7 @@ const TYPE_LABEL: Record<ExerciseType, { label: string; icon: string }> = {
   letter_find: { label: "Sound → letter", icon: "target" },
   letter_trace: { label: "Tracing & drawing", icon: "pen" },
   word_intro: { label: "New words", icon: "sparkle" },
+  word_swipe: { label: "Swipe word builder", icon: "hand" },
   meaning_pick: { label: "Read & choose", icon: "eye" },
   script_pick: { label: "Recall the script", icon: "letter" },
   match_grid: { label: "Word matching", icon: "tiles" },

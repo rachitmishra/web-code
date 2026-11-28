@@ -57,7 +57,7 @@ export interface Letter {
   id: string;
   script: string;
   roman: string;
-  kind: "vowel" | "yogavaha" | "consonant" | "conjunct";
+  kind: "vowel" | "yogavaha" | "consonant" | "conjunct" | "combo";
   /** Phonetic group, e.g. "velar" — used to build sublevels */
   group: string;
   hint: string;

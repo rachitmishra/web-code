@@ -17,11 +17,19 @@ export function PracticeHub() {
   const sayIt = useSayScript();
   const due = dueWords(progress).length;
   const weak = weakWords(progress).length;
+  const [traceFilter, setTraceFilter] = useState<"letters" | "combo" | "conjunct">("letters");
+  const filteredLetters = useMemo(() => {
+    if (traceFilter === "combo") return pack.letters.filter((l) => l.kind === "combo");
+    if (traceFilter === "conjunct") return pack.letters.filter((l) => l.kind === "conjunct");
+    return pack.letters.filter((l) => l.kind === "vowel" || l.kind === "yogavaha" || l.kind === "consonant");
+  }, [pack.letters, traceFilter]);
   const [letterId, setLetterId] = useState(pack.letters[0]?.id);
-  const letter = pack.letters.find((l) => l.id === letterId) ?? pack.letters[0];
+  const letter = filteredLetters.find((l) => l.id === letterId) ?? filteredLetters[0] ?? pack.letters[0];
 
   const tiles = [
     { title: "Fast Match", body: `30 or 60 seconds of rapid matching. Best: ${Math.max(progress.stats.fastMatchBest30, progress.stats.fastMatchBest60)}`, icon: "bolt", tone: "saffron", go: () => go({ name: "fastmatch" }) },
+    { title: "Swipe Word Builder", body: `Swipe across ${pack.config.name} letters to build and spell words.`, icon: "hand", tone: "terracotta", go: () => go({ name: "session", id: "word-swipe" }) },
+    { title: "Syllable Tracing", body: `Trace consonant + vowel combinations step by step.`, icon: "pen", tone: "leaf", go: () => go({ name: "session", id: "combo-trace" }) },
     { title: "Word Translation", body: `Pick the right translation for each ${pack.config.name} word from four options.`, icon: "target", tone: "sky", go: () => go({ name: "session", id: "word-quiz" }) },
     { title: "Flashcards", body: "Swipe through cards. Mark what you know, keep what you don't.", icon: "cards", tone: "gold", go: () => go({ name: "flashcards" }) },
     { title: "Sentence Builder", body: `Arrange ${pack.config.name} words into natural sentences.`, icon: "tiles", tone: "terracotta", go: () => go({ name: "session", id: "sentences-build" }) },
@@ -44,12 +52,24 @@ export function PracticeHub() {
 
       <section className="card stack">
         <div className="row between wrap">
-          <div><span className="eyebrow">Writing desk</span><h2>Letter tracing</h2></div>
-          <span className="muted" style={{ fontSize: 13 }}>{pack.config.writingTip}</span>
+          <div><span className="eyebrow">Writing desk</span><h2>Letter &amp; syllable tracing</h2></div>
+          <div className="row wrap" style={{ gap: 6 }}>
+            {(["letters", "combo", "conjunct"] as const).map((tab) => (
+              <button
+                key={tab}
+                type="button"
+                className={`chip ${traceFilter === tab ? "active" : ""}`}
+                onClick={() => setTraceFilter(tab)}
+                aria-pressed={traceFilter === tab}
+              >
+                {tab === "letters" ? "Vowels & Consonants" : tab === "combo" ? "Consonant + Vowel" : "Conjuncts"}
+              </button>
+            ))}
+          </div>
         </div>
         <div className="row wrap" style={{ gap: 6 }}>
-          {pack.letters.map((l) => (
-            <button key={l.id} type="button" className={`chip ${l.id === letterId ? "active" : ""}`} onClick={() => setLetterId(l.id)} lang={pack.config.id} style={{ fontFamily: "var(--native-font)", fontSize: 18, padding: "4px 12px" }} aria-pressed={l.id === letterId} data-say={sayIt(l.script)}>
+          {filteredLetters.map((l) => (
+            <button key={l.id} type="button" className={`chip ${l.id === letter?.id ? "active" : ""}`} onClick={() => setLetterId(l.id)} lang={pack.config.id} style={{ fontFamily: "var(--native-font)", fontSize: 18, padding: "4px 12px" }} aria-pressed={l.id === letter?.id} data-say={sayIt(l.script)}>
               {l.script}
             </button>
           ))}

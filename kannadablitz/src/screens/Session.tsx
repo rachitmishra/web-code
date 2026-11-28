@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { go } from "../app/router";
-import { materializeAll, revisionPlans, sentencePracticePlans, wordQuizPlans } from "../engine/exercises";
+import { comboTracePlans, materializeAll, revisionPlans, sentencePracticePlans, wordQuizPlans, wordSwipePlans } from "../engine/exercises";
 import { dueWords, findSublevel, starsFor, sublevelState, weakWords } from "../engine/progress";
 import { seeded, shuffle } from "../engine/rng";
 import { useEngine } from "../engine/store";
@@ -44,6 +44,25 @@ function usePlan(id: string): Plan | null {
       return {
         title: "Word translation",
         exercises: materializeAll(ix, plans, "prac.word-quiz", rng),
+        kind: "practice",
+      };
+    }
+    if (id === "word-swipe") {
+      const pool = shuffle([...new Set([...learned, ...fallback, ...pack.vocab.map((v) => v.id)])], rng);
+      const plans = wordSwipePlans(pool, ix, 8);
+      return {
+        title: "Swipe word builder",
+        exercises: materializeAll(ix, plans, "prac.word-swipe", rng),
+        kind: "practice",
+      };
+    }
+    if (id === "combo-trace") {
+      const combos = shuffle(pack.letters.filter((l) => l.kind === "combo").map((l) => l.id), rng);
+      const fallbackLetters = shuffle(pack.letters.map((l) => l.id), rng);
+      const plans = comboTracePlans(combos.length ? combos : fallbackLetters, 8);
+      return {
+        title: "Consonant + Vowel tracing",
+        exercises: materializeAll(ix, plans, "prac.combo-trace", rng),
         kind: "practice",
       };
     }

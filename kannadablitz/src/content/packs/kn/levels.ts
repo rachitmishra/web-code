@@ -19,8 +19,8 @@ export const KN_LEVELS: LevelSpec[] = [
   }),
   L(3, {
     title: "Writing Kannada", titleScript: "ಕನ್ನಡ ಬರವಣಿಗೆ", difficulty: 1, mode: "writing",
-    objective: "Trace and draw letters with the anti-clockwise strokes, then meet the ottaksharas.",
-    letterKinds: ["vowel", "consonant", "conjunct"],
+    objective: "Trace letters, consonant + vowel combinations (ಕಾಗುಣಿತ), and ottaksharas.",
+    letterKinds: ["vowel", "consonant", "combo", "conjunct"],
   }),
   L(4, {
     title: "First Words", titleScript: "ಮೊದಲ ಪದಗಳು", difficulty: 1, mode: "vocab",

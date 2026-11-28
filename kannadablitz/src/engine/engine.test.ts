@@ -3,7 +3,7 @@ import { KANNADA_PACK } from "../content/packs/kn";
 import { HINDI_PACK } from "../content/packs/hi";
 import { sanitizeImportedPack, validatePack } from "../content/validate";
 import { buildCurriculum, EXERCISES_PER_SUBLEVEL, REQUIRED_SUBLEVELS } from "./curriculum";
-import { checkSentence, indexPack, materialize, materializeAll, sentencePracticePlans } from "./exercises";
+import { checkSentence, comboTracePlans, indexPack, materialize, materializeAll, sentencePracticePlans, splitAksharas, wordSwipePlans } from "./exercises";
 import { seeded } from "./rng";
 import {
   applyAnswer, applySessionComplete, initialState, liveStreak, nextSublevel, packOf, regenLives, sublevelState, LIFE_REGEN_MS,
@@ -102,6 +102,23 @@ describe("exercises", () => {
     const plans = sentencePracticePlans(KANNADA_PACK.sentences.map((s) => s.id), "fill", 6);
     expect(plans).toHaveLength(6);
     expect(plans.every((p) => p.type === "sentence_fill")).toBe(true);
+  });
+  it("word swipe builds akshara wheel with distractors and combo trace covers consonant+vowel", () => {
+    const rng = seeded(7);
+    const swipePlans = wordSwipePlans(KANNADA_PACK.vocab.map((v) => v.id), ix, 6);
+    expect(swipePlans).toHaveLength(6);
+    for (const p of swipePlans) {
+      const e = materialize(ix, p, `sw.${p.vocabIds![0]}`, rng)!;
+      expect(e.type).toBe("word_swipe");
+      expect(e.swipeTarget!.length).toBeGreaterThanOrEqual(2);
+      expect(e.swipeNodes!.length).toBeGreaterThan(e.swipeTarget!.length);
+      expect(splitAksharas(e.vocab!.script)).toEqual(e.swipeTarget);
+    }
+    const combos = KANNADA_PACK.letters.filter((l) => l.kind === "combo");
+    expect(combos.length).toBeGreaterThanOrEqual(20);
+    const tracePlans = comboTracePlans(combos.map((l) => l.id), 6);
+    expect(tracePlans).toHaveLength(6);
+    expect(tracePlans.every((p) => p.type === "letter_trace")).toBe(true);
   });
 });
 

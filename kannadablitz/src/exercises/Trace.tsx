@@ -569,9 +569,9 @@ export function TraceExercise({ ex, onAnswer, locked }: ExerciseProps) {
   const l = ex.letter!;
   return (
     <div>
-      <div className="row between" style={{ marginBottom: showTip ? 10 : 18, alignItems: "center" }}>
+      <div className="row between" style={{ marginBottom: showTip || l.kind === "combo" ? 10 : 18, alignItems: "center" }}>
         <p className="prompt" style={{ marginBottom: 0 }}>
-          {ex.freehand ? "Now write it from memory" : "Trace the letter"}{" "}
+          {ex.freehand ? "Now write it from memory" : l.kind === "combo" ? "Trace the combination" : "Trace the letter"}{" "}
           <span className="native" style={{ color: "var(--terracotta)" }}>{l.script}</span>{" "}
           <span className="roman" style={{ fontSize: 16 }}>({l.roman})</span>
         </p>
@@ -589,6 +589,9 @@ export function TraceExercise({ ex, onAnswer, locked }: ExerciseProps) {
           </button>
         )}
       </div>
+      {l.kind === "combo" && l.hint && (
+        <p className="muted" style={{ fontSize: 13.5, fontWeight: 700, marginBottom: 12 }}>{l.hint}</p>
+      )}
       {showTip && pack.config.writingTip && (
         <p className="trace-tip-box">{pack.config.writingTip}</p>
       )}
